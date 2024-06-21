@@ -11,10 +11,15 @@ const NavDesktop = ({ navItems }) => (
         <a 
           key={item.href} 
           href={item.href} 
-          className='rounded-full shadow-lg bg-gray-100 shadow-gray-400 m-2 p-4 cursor-pointer hover:scale-110 ease-in duration-300 hover:shadow-md hover:shadow-purple-400'
+          className='group relative flex items-center rounded-full shadow-lg bg-gray-100 shadow-gray-400 m-2 p-4 cursor-pointer hover:scale-110 hover:shadow-md hover:shadow-purple-400 hover:rounded-3xl ease-in-out duration-200'
           aria-label={item.text}
         >
-          <item.icon size={20} />
+          <item.icon size={25} />
+
+          {/* Tooltip */}
+          <span className="ml-3 absolute left-full whitespace-nowrap hidden group-hover:block transition-all duration-200">
+            {item.text}
+          </span>
         </a>
       ))}
     </div>

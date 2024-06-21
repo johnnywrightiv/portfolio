@@ -1,5 +1,5 @@
 import React from 'react';
-import NavItem from './NavItem';
+import NavMobileItem from './NavMobileItem';
 
 const NavMobile = ({ navItems, closeMobileNav }) => (
   <div 
@@ -8,7 +8,7 @@ const NavMobile = ({ navItems, closeMobileNav }) => (
     aria-label="Mobile navigation"
   >
     {navItems.map((item) => (
-      <NavItem key={item.href} {...item} closeMenu={closeMobileNav}/>
+      <NavMobileItem key={item.href} {...item} closeMenu={closeMobileNav}/>
     ))}
   </div>
 );
