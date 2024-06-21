@@ -5,7 +5,7 @@ import { AiOutlineHome, AiOutlineMenu, AiOutlineMail, AiOutlineUser } from 'reac
 
 const MEDIUM_BREAKPOINT = 768;
 
-const NavMenu = () => {
+const Navbar = () => {
   const [mobileNav, setMobileNav] = useState(false)
 
   const navItems = [
@@ -82,4 +82,4 @@ const NavMenu = () => {
   );
 };
 
-export default NavMenu;
+export default Navbar;

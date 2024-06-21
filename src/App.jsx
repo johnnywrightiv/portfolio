@@ -1,10 +1,10 @@
-import SideNav from './components/NavMenu'
+import Navbar from "./components/NavBar"
 
 function App() {
 
   return (
     <>
-     <SideNav/>
+     <Navbar/>
     </>
   )
 }
