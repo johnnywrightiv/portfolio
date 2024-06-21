@@ -1,4 +1,4 @@
-import SideNav from './components/SideNav'
+import SideNav from './components/NavMenu'
 
 function App() {
 
