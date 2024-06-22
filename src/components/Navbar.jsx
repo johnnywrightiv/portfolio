@@ -37,10 +37,10 @@ const Navbar = () => {
   
   return (
     <nav>
-      {/* Mobile Hamburger Button */}
+      {/* Mobile Hamburger Icon */}
       <button 
         onClick={toggleMobileNav} 
-        className='absolute top-4 right-4 z-[99] md:hidden'
+        className='absolute top-4 right-4 z-[99] md:hidden flex items-center rounded-full bg-gray-100 shadow-gray-400 m-2 p-4 cursor-pointer'
         aria-label="Toggle mobile navigation"
         aria-expanded={mobileNav}
       >
