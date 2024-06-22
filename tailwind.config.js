@@ -23,7 +23,8 @@ export default {
         cta: "rgba(var(--cta))",
         "cta-active": "rgba(var(--cta-active))",
         "cta-text": "rgba(var(--cta-text))",
-      }
+      },
+      customButton: 'flex items-center rounded-full shadow-lg bg-gray-100 shadow-gray-400 m-2 p-4 cursor-pointer hover:scale-110 hover:shadow-md hover:shadow-purple-400 hover:rounded-3xl ease-in-out duration-200',
     },
   },
   plugins: [],
