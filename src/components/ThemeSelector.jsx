@@ -3,6 +3,7 @@ import { useThemeContext } from '../contexts/ThemeContext';
 import { capitalize } from '../utils/capitalize';
 import { FiSun, FiMoon, FiSettings } from "react-icons/fi";
 import useBlur from '../utils/useBlur';
+import IconButton from './IconButton';
 
 const ThemeSelector = ({ isMobile = false }) => {
   const { theme, changeTheme, systemTheme, availableThemes } = useThemeContext();
@@ -23,10 +24,10 @@ const ThemeSelector = ({ isMobile = false }) => {
       <div className="relative">
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className='flex items-center rounded-full shadow-lg bg-gray-100 shadow-gray-400 m-2 p-4 cursor-pointer hover:scale-110 hover:shadow-md hover:shadow-purple-400 hover:rounded-3xl ease-in-out duration-200'
+          className='group flex items-center rounded-full shadow-lg bg-gray-100 shadow-gray-400 m-2 p-4 cursor-pointer hover:scale-110 hover:shadow-md hover:shadow-purple-400 hover:rounded-3xl ease-in-out duration-200'
           aria-label="Theme Toggle"
         >
-          <ThemeIcon size={25} />
+          <ThemeIcon size={25} className="group-hover:text-purple-600 transition-colors duration-200" />
         </button>
         
         {isOpen && (
@@ -41,7 +42,7 @@ const ThemeSelector = ({ isMobile = false }) => {
                   }`}
                 >
                   <span>
-                    {t === 'dark' ? <FiMoon size={20} /> : t === 'system' ? <FiSettings size={20} /> : <FiSun size={20} />}
+                    {t === 'dark' ? <FiMoon size={20} className="group-hover:text-purple-600 transition-colors duration-200" /> : t === 'system' ? <FiSettings size={20} className="group-hover:text-purple-600 transition-colors duration-200" /> : <FiSun size={20} className="group-hover:text-purple-600 transition-colors duration-200" />}
                   </span>
                   <span className="pl-2">{capitalize(t)}</span>
                 </button>

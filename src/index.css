@@ -3,10 +3,7 @@
 @tailwind utilities;
 
 * {
-  @apply transition-colors duration-300;
-}
-
-* {
+  @apply transition-colors duration-500;
   scroll-behavior: smooth;
 }
 
@@ -42,7 +39,7 @@
   background: rgba(var(--background));
 }
 
-/* .red {
+.red {
   --background: 254, 202, 202;
 
   --border: 185, 28, 28;
@@ -56,8 +53,4 @@
   --cta-text: 239, 68, 68;
 
   background: rgba(var(--background));
-} */
-
-:root {
-  --grape: 114, 35, 204;
 }
