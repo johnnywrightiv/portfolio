@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import { useThemeContext } from '../contexts/ThemeContext';
 import { capitalize } from '../utils/capitalize';
-import { GoSun, GoMoon } from "react-icons/go";
+import { FiSun, FiMoon, FiSettings } from "react-icons/fi";
+import useBlur from '../utils/useBlur';
 
 const ThemeSelector = () => {
   const { theme, changeTheme, systemTheme, availableThemes } = useThemeContext();
@@ -9,15 +10,18 @@ const ThemeSelector = () => {
 
   const effectiveTheme = theme === 'system' ? systemTheme : theme;
 
+  const closeDropdown = useCallback(() => setIsDropdownOpen(false), []);
+  const dropdownRef = useBlur(closeDropdown);
+
   return (
-    <div className="text-grape fixed top-0 z-10">
-      <div className="relative">
+    <div className="md:block hidden fixed top-4 z-10">
+      <div className="relative" ref={dropdownRef}>
         <button
           onClick={() => setIsDropdownOpen(!isDropdownOpen)}
           className='flex items-center rounded-full shadow-lg bg-gray-100 shadow-gray-400 m-2 p-4 cursor-pointer hover:scale-110 hover:shadow-md hover:shadow-purple-400 hover:rounded-3xl ease-in-out duration-200'
           aria-label="Theme Toggle"
         >
-          {effectiveTheme === 'dark' ? <GoSun size={25} /> : <GoMoon size={25} />}
+          {effectiveTheme === 'dark' ? <FiSun size={25} /> : <FiMoon size={25} />}
         </button>
         
         {isDropdownOpen && (
@@ -32,8 +36,12 @@ const ThemeSelector = () => {
                   }}
                   className='group flex items-center rounded-full shadow-lg bg-gray-100 shadow-gray-400 m-1 p-2 cursor-pointer hover:scale-110 hover:shadow-md hover:shadow-purple-400 hover:rounded-3xl ease-in-out duration-200'
                 >
-                  {capitalize(t)}
+                  <span>
+                    {t === 'dark' ? <FiMoon size={20} /> : t === 'system' ? <FiSettings /> : <FiSun size={20} />}
+                  </span>
+                  <span className="pl-2">{capitalize(t)}</span>
                 </button>
+                
               ))}
             </div>
           </div>

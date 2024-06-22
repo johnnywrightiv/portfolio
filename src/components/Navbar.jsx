@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { AiOutlineHome, AiOutlineMenu, AiOutlineMail, AiOutlineUser } from 'react-icons/ai';
 import { BsFileEarmarkCode } from "react-icons/bs";
+import { IoClose } from "react-icons/io5";
 import NavMobile from './NavMobile';
 import NavDesktop from './NavDesktop';
 
@@ -40,11 +41,11 @@ const Navbar = () => {
       {/* Mobile Hamburger Icon */}
       <button 
         onClick={toggleMobileNav} 
-        className='absolute top-4 right-4 z-[99] md:hidden flex items-center rounded-full bg-gray-100 shadow-gray-400 m-2 p-4 cursor-pointer'
+        className='absolute top-4 right-4 z-[99] md:hidden flex items-center rounded-full shadow-lg bg-gray-100 shadow-gray-400 m-2 p-4 cursor-pointer hover:scale-110 hover:shadow-md hover:shadow-purple-400 hover:rounded-3xl ease-in-out duration-200'
         aria-label="Toggle mobile navigation"
         aria-expanded={mobileNav}
       >
-        <AiOutlineMenu />
+        {mobileNav ? <IoClose size={20}/> : <AiOutlineMenu />}
       </button>
   
       {/* Mobile Navigation Menu */}

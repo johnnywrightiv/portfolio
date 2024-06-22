@@ -1,5 +1,6 @@
 import React from 'react';
 import NavMobileItem from './NavMobileItem';
+import ThemeSelectorMobile from './ThemeSelectorMobile';
 
 const NavMobile = ({ navItems, closeMobileNav }) => (
   <div 
@@ -10,6 +11,7 @@ const NavMobile = ({ navItems, closeMobileNav }) => (
     {navItems.map((item) => (
       <NavMobileItem key={item.href} {...item} closeMenu={closeMobileNav}/>
     ))}
+    <ThemeSelectorMobile />
   </div>
 );
 

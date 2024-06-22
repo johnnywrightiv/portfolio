@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-const THEMES = ['system', 'light', 'dark', 'red']; // Add more themes here
+const THEMES = ['light', 'dark', 'system']; // Add more themes here
 
 export const useTheme = () => {
   const [theme, setTheme] = useState(() => {
