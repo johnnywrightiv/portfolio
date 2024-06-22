@@ -7,9 +7,10 @@ import useBlur from '../utils/useBlur';
 const ThemeSelector = ({ isMobile = false }) => {
   const { theme, changeTheme, systemTheme, availableThemes } = useThemeContext();
   const [isOpen, setIsOpen] = useState(false);
-  const effectiveTheme = theme === 'system' ? systemTheme : theme;
   const closeMenu = useCallback(() => setIsOpen(false), []);
   const menuRef = useBlur(closeMenu);
+
+  const effectiveTheme = theme === 'system' ? systemTheme : theme;
   const ThemeIcon = effectiveTheme === 'dark' ? FiSun : FiMoon;
 
   const handleChangeTheme = (newTheme) => {

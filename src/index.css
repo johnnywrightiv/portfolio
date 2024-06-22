@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+  @apply transition-colors duration-300;
+}
+
 .light {
   --background: 245, 245, 245;
 
