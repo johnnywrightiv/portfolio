@@ -29,7 +29,7 @@ const Contact = () => {
         <IconButton
           icon={FaLinkedin}
           onClick={handleLinkedinClick}
-          className="text-blue-600"
+          className="text-linkedin"
           aria-label="LinkedIn"
         />
       </div>
