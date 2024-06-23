@@ -1,0 +1,18 @@
+[
+  {
+    "title": "Project One",
+    "image": "path/to/image1.jpg",
+    "description": "This is a short description of Project One.",
+    "technologies": ["React", "Node.js", "MongoDB", "Tailwind CSS"],
+    "liveDemoLink": "https://example.com/project-one",
+    "githubLink": "https://github.com/username/project-one"
+  },
+  {
+    "title": "Project Two",
+    "image": "path/to/image2.jpg",
+    "description": "This is a short description of Project Two.",
+    "technologies": ["Next.js", "Express", "MySQL", "Bootstrap"],
+    "liveDemoLink": "https://example.com/project-two",
+    "githubLink": "https://github.com/username/project-two"
+  }
+]
