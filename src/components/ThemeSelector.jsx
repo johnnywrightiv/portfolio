@@ -31,19 +31,19 @@ const ThemeSelector = ({ isMobile = false }) => {
         
         {isOpen && (
           <div className="absolute top-0 left-20 mt-2 p-2 rounded-md">
-            <div className="flex flex-col">
+            <div className="flex flex-col custom-icon">
               {availableThemes.map(t => (
                 <button
                   key={t}
                   onClick={() => handleChangeTheme(t)}
                   className={`custom-button group ${
-                    theme === t ? 'bg-purple-200' : ''
+                    theme === t ? 'bg-cta/20' : ''
                   }`}
                 >
                   <span>
                     {t === 'dark' ? <FiMoon size={20} className="custom-icon" /> : t === 'system' ? <FiSettings size={20} className="custom-icon" /> : <FiSun size={20} className="custom-icon" />}
                   </span>
-                  <span className="pl-2">{capitalize(t)}</span>
+                  <span className="pl-2 custom-icon">{capitalize(t)}</span>
                 </button>
               ))}
             </div>

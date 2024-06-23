@@ -15,6 +15,10 @@
   .custom-icon {
     @apply group-hover:text-cta ease-in;
   }
+
+  .custom-text {
+    @apply text-primary;
+  }
 }
 
 .light {
@@ -46,7 +50,9 @@
   --tertiary: 0, 206, 209; /* Example: turquoise */
   --highlight: 255, 215, 0; /* Example: gold */
 
-  --cta: 99, 102, 241;
+  --cta: 16, 185, 129;
+  /* --cta: 99, 102, 241; */
+
   --cta-active: 79, 70, 229;
   --cta-text: 255, 255, 255;
 
