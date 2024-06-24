@@ -2,7 +2,8 @@
   {
     "title": "Project One",
     "image": "https://cdn.hashnode.com/res/hashnode/image/upload/v1631097232556/i1bd_7yl0.png?auto=compress,format&format=webp",
-    "description": "This is a short description of Project One.",
+    "blurb": "This is a short description of Project One.",
+    "description": "This is a long description of Project One. Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis nam reiciendis, aspernatur maiores vel quam magnam explicabo quos mollitia deleniti esse sint cum aliquam debitis beatae vero. Quaerat, dolore amet quia doloribus optio modi, praesentium autem illum perferendis odio veniam temporibus perspiciatis culpa quis impedit! Velit voluptates amet quis cupiditate fugiat voluptatibus nisi earum, placeat fuga.",
     "technologies": ["React", "Node.js", "MongoDB", "Tailwind CSS"],
     "liveDemoLink": "https://example.com/project-one",
     "githubLink": "https://github.com/username/project-one"
@@ -10,7 +11,8 @@
   {
     "title": "Project Two",
     "image": "https://saigontechnology.com/assets/media/saas-development-costs.webp",
-    "description": "This is a short description of Project Two.",
+    "blurb": "This is a short description of Project Two.",
+    "description": "This is a long description of Project Two. Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis nam reiciendis, aspernatur maiores vel quam magnam explicabo quos mollitia deleniti esse sint cum aliquam debitis beatae vero. Quaerat, dolore amet quia doloribus optio modi, praesentium autem illum perferendis odio veniam temporibus perspiciatis culpa quis impedit! Velit voluptates amet quis cupiditate fugiat voluptatibus nisi earum, placeat fuga.",
     "technologies": ["Next.js", "Express", "MySQL", "Bootstrap"],
     "liveDemoLink": "https://example.com/project-two",
     "githubLink": "https://github.com/username/project-two"
@@ -18,7 +20,8 @@
   {
     "title": "Project Three",
     "image": "https://cdn.prod.website-files.com/5e593fb060cf877cf875dd1f/661c40bcec1d75e76b52f4f4_fd7f6b23-9cdb-41c6-b807-86dc195e415a.png",
-    "description": "This is a short description of Project Three.",
+    "blurb": "This is a short description of Project Three.",
+    "description": "This is a long description of Project Three. Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis nam reiciendis, aspernatur maiores vel quam magnam explicabo quos mollitia deleniti esse sint cum aliquam debitis beatae vero. Quaerat, dolore amet quia doloribus optio modi, praesentium autem illum perferendis odio veniam temporibus perspiciatis culpa quis impedit! Velit voluptates amet quis cupiditate fugiat voluptatibus nisi earum, placeat fuga.",
     "technologies": ["HTML", "CSS", "Handlebars", "jQuery"],
     "liveDemoLink": "https://example.com/project-two",
     "githubLink": "https://github.com/username/project-two"

@@ -7,7 +7,7 @@ import { FaGithub } from 'react-icons/fa';
 import { BsGlobeAmericas } from 'react-icons/bs';
 
 const ProjectModal = ({ project, onClose, onPrev, onNext }) => {
-  const { title, image, description, technologies, liveDemoLink, githubLink } = project;
+  const { title, image, blurb, description, technologies, liveDemoLink, githubLink } = project;
   const modalRef = useBlur(onClose);
   const contentRef = useRef(null);
 
@@ -83,11 +83,11 @@ const ProjectModal = ({ project, onClose, onPrev, onNext }) => {
         />
         <div ref={contentRef} className="bg-card rounded-lg p-6 max-h-[80vh] overflow-y-auto">
           <h2 className="text-3xl font-bold text-primary mb-4">{title}</h2>
-          <p className="text-secondary text-xl mb-6">{description}</p>
+          <p className="text-secondary text-xl mb-6">{blurb}</p>
           <div className="aspect-w-16 aspect-h-9 mb-6">
             <img src={image} alt={title} className="rounded-lg object-cover w-auto h-auto" />
           </div>
-          <p className="text-secondary text-xl mb-6">A longer description, and further details, and other sections I want to add, and all that good jazz! Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis nam reiciendis, aspernatur maiores vel quam magnam explicabo quos mollitia deleniti esse sint cum aliquam debitis beatae vero. Quaerat, dolore amet quia doloribus optio modi, praesentium autem illum perferendis odio veniam temporibus perspiciatis culpa quis impedit! Velit voluptates amet quis cupiditate fugiat voluptatibus nisi earum, placeat fuga.</p>
+          <p className="text-secondary text-xl mb-6">{description}</p>
           <div className="mb-6">
             <h3 className="text-2xl font-semibold text-primary mb-2">Technologies Used</h3>
             <div className="flex flex-wrap gap-2">

@@ -33,8 +33,9 @@
 
   --primary: 23, 23, 23;
   --secondary: 115, 115, 115;
-  --tertiary: 0, 128, 128; /* Example: teal */
-  --highlight: 255, 165, 0; /* Example: orange */
+  /* --tertiary: 0, 108, 178; */
+  --tertiary: 23, 23, 23;
+  --highlight: 255, 165, 0;
 
   --htag: 31, 41, 55;
   --ptag: 75, 85, 99;
@@ -61,8 +62,8 @@
 
   --primary: 250, 250, 250;
   --secondary: 115, 115, 115;
-  --tertiary: 0, 206, 209; /* Example: turquoise */
-  --highlight: 255, 215, 0; /* Example: gold */
+  --tertiary: 0, 206, 209;
+  --highlight: 255, 215, 0;
 
   --htag: 229, 231, 235;
   --ptag: 156, 163, 175;
