@@ -1,7 +1,7 @@
 [
   {
     "title": "Project One",
-    "image": "path/to/image1.jpg",
+    "image": "https://cdn.hashnode.com/res/hashnode/image/upload/v1631097232556/i1bd_7yl0.png?auto=compress,format&format=webp",
     "description": "This is a short description of Project One.",
     "technologies": ["React", "Node.js", "MongoDB", "Tailwind CSS"],
     "liveDemoLink": "https://example.com/project-one",
@@ -9,9 +9,17 @@
   },
   {
     "title": "Project Two",
-    "image": "path/to/image2.jpg",
+    "image": "https://saigontechnology.com/assets/media/saas-development-costs.webp",
     "description": "This is a short description of Project Two.",
     "technologies": ["Next.js", "Express", "MySQL", "Bootstrap"],
+    "liveDemoLink": "https://example.com/project-two",
+    "githubLink": "https://github.com/username/project-two"
+  },
+  {
+    "title": "Project Three",
+    "image": "https://cdn.prod.website-files.com/5e593fb060cf877cf875dd1f/661c40bcec1d75e76b52f4f4_fd7f6b23-9cdb-41c6-b807-86dc195e415a.png",
+    "description": "This is a short description of Project Three.",
+    "technologies": ["HTML", "CSS", "Handlebars", "jQuery"],
     "liveDemoLink": "https://example.com/project-two",
     "githubLink": "https://github.com/username/project-two"
   }
