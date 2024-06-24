@@ -33,6 +33,7 @@
   --highlight: 255, 165, 0; /* Example: orange */
 
   --cta: 139, 92, 246;
+  /* --cta: 99, 102, 241; */
   --cta-active: 124, 58, 237;
   --cta-text: 255, 255, 255;
 
@@ -53,7 +54,6 @@
   --highlight: 255, 215, 0; /* Example: gold */
 
   --cta: 16, 185, 129;
-  /* --cta: 99, 102, 241; */
 
   --cta-active: 79, 70, 229;
   --cta-text: 255, 255, 255;
