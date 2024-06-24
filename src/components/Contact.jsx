@@ -16,9 +16,9 @@ const Contact = () => {
   };
 
   return (
-    <div id='contact' className="md:h-screen bg-slate-300 flex flex-col items-center justify-center p-16">
-      <h1 className="text-4xl font-bold text-gray-800 mb-6">Contact Me</h1>
-      <button className="text-lg text-gray-600 mb-4" onClick={handleEmailClick}>johnnywrightiv@gmail.com</button>
+    <div id='contact' className="md:h-screen bg-contact-bg flex flex-col items-center justify-center p-16">
+      <h1 className="text-4xl font-bold text-htag mb-6">Contact Me</h1>
+      <button className="text-lg text-ptag mb-4" onClick={handleEmailClick}>johnnywrightiv@gmail.com</button>
       <div className="flex space-x-4 pr-2">
         <IconButton
           icon={FaGithub}

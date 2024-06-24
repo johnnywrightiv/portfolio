@@ -9,7 +9,7 @@
 
 @layer components {
   .custom-button {
-    @apply flex items-center rounded-full shadow-lg bg-background shadow-secondary/80 text-primary m-2 p-4 cursor-pointer hover:scale-110 hover:shadow-md hover:shadow-cta hover:rounded-3xl ease-in;
+    @apply flex items-center rounded-full shadow-md bg-background shadow-secondary/50 text-primary m-2 p-4 cursor-pointer hover:scale-110 hover:shadow-sm hover:shadow-cta hover:rounded-3xl ease-in;
   }
 
   .custom-icon {
@@ -23,6 +23,10 @@
 
 .light {
   --background: 245, 245, 245;
+  /* --hero-bg:  */
+  /* --about-bg:  */
+  /* --projects-bg:  */
+  --contact-bg: 203, 213, 225;
 
   --border: 230, 230, 230;
   --card: 255, 255, 255;
@@ -32,8 +36,12 @@
   --tertiary: 0, 128, 128; /* Example: teal */
   --highlight: 255, 165, 0; /* Example: orange */
 
+  --htag: 31, 41, 55;
+  --ptag: 75, 85, 99;
+
   --cta: 139, 92, 246;
-  /* --cta: 99, 102, 241; */
+  /* --cta: 99, 102, 241; <-- old cta from dark theme  */
+
   --cta-active: 124, 58, 237;
   --cta-text: 255, 255, 255;
 
@@ -44,6 +52,10 @@
 
 .dark {
   --background: 0, 0, 0;
+  /* --hero-bg:  */
+  /* --about-bg:  */
+  /* --projects-bg:  */
+  --contact-bg: 30, 41, 59;
 
   --border: 38, 38, 38;
   --card: 23, 23, 23;
@@ -52,6 +64,9 @@
   --secondary: 115, 115, 115;
   --tertiary: 0, 206, 209; /* Example: turquoise */
   --highlight: 255, 215, 0; /* Example: gold */
+
+  --htag: 229, 231, 235;
+  --ptag: 156, 163, 175;
 
   --cta: 16, 185, 129;
 
