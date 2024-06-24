@@ -19,7 +19,7 @@ const ThemeSelector = ({ isMobile = false }) => {
   };
 
   return (
-    <div className={isMobile ? "fixed left-4 top-4 z-10" : "md:block hidden fixed top-4 z-10"} ref={menuRef}>
+    <div className={isMobile ? "fixed right-1 top-4 z-10" : "md:block hidden fixed top-4 z-10"} ref={menuRef}>
       <div className="relative">
         <button
           onClick={() => setIsOpen(!isOpen)}
@@ -30,14 +30,14 @@ const ThemeSelector = ({ isMobile = false }) => {
         </button>
         
         {isOpen && (
-          <div className="absolute top-0 left-20 mt-2 p-2 rounded-md">
+          <div className={`absolute -top-5 mt-2 p-2 rounded-md ${isMobile ? '-left-36' : 'left-16'}`}>
             <div className="flex flex-col custom-icon">
               {availableThemes.map(t => (
                 <button
                   key={t}
                   onClick={() => handleChangeTheme(t)}
                   className={`custom-button group ${
-                    theme === t ? 'bg-cta/20' : ''
+                    theme === t ? 'bg-cta/60' : ''
                   }`}
                 >
                   <span>

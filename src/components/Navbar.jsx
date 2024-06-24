@@ -43,7 +43,7 @@ const Navbar = () => {
       <IconButton
         icon={mobileNav ? IoClose : AiOutlineMenu}
         onClick={toggleMobileNav}
-        className='fixed top-4 right-4 z-[99] md:hidden'
+        className='fixed top-4  z-[99] md:hidden'
         aria-label="Toggle mobile navigation"
         aria-expanded={mobileNav}
       />

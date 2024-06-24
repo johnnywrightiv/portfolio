@@ -1,31 +1,31 @@
 import React from 'react';
 import TechBadge from './TechBadge';
 
-const ProjectCard = ({ project }) => {
-  const { title, image, description, technologies, liveDemoLink, githubLink } = project;
+const ProjectCard = ({ project, onSeeMore }) => {
+  const { title, image, description, technologies } = project;
+  
   return (
-    <div className="bg-card shadow-lg border-2 border-border rounded-lg p-6 m-4 max-w-sm">
+    <div className="bg-card shadow-lg border-2 border-border rounded-lg p-6 m-4 w-80">
       <h3 className="text-2xl font-bold text-primary mb-2">{title}</h3>
-      <img src={image} alt={title} className="rounded-lg mb-4" />
+      <div className="aspect-w-16 aspect-h-9 mb-4">
+        <img src={image} alt={title} className="rounded-lg object-cover w-full h-full" />
+      </div>
       <p className="text-secondary mb-4">{description}</p>
       <div className="mb-4">
         <h4 className="text-lg font-semibold text-primary mb-2">Technologies Used</h4>
-        <div className="flex flex-wrap">
+        <div className="flex flex-wrap gap-1">
           {technologies.map((tech) => (
             <TechBadge key={tech} text={tech} size="small" />
           ))}
         </div>
       </div>
-      <div className="flex justify-between items-center">
-        <button className="text-cta hover:text-cta-active" onClick={() => alert('See more functionality to be implemented')}>See More</button>
-        <div className="flex space-x-4">
-          {liveDemoLink && (
-            <a href={liveDemoLink} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800">Live Demo</a>
-          )}
-          {githubLink && (
-            <a href={githubLink} target="_blank" rel="noopener noreferrer" className="text-primary/90 hover:text-secondary/90">GitHub Repo</a>
-          )}
-        </div>
+      <div className="flex justify-center">
+        <button 
+          className="text-cta hover:text-cta-active"
+          onClick={onSeeMore}
+        >
+          See More
+        </button>
       </div>
     </div>
   );
