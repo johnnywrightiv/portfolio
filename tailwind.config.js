@@ -23,7 +23,6 @@ export default {
         ptag: "rgba(var(--ptag))",
         cta: "rgba(var(--cta))",
         "cta-active": "rgba(var(--cta-active))",
-        "cta-text": "rgba(var(--cta-text))",
         linkedin: "rgba(var(--linkedin))",
       },
     },
