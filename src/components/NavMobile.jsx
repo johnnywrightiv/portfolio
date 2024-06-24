@@ -12,11 +12,11 @@ const NavMobile = ({ navItems, closeMobileNav }) => (
         key={href} 
         href={href} 
         onClick={closeMobileNav} 
-        className='w-[75%] flex justify-center items-center rounded-full shadow-lg bg-gray-200 shadow-gray-400 m-4 p-4 cursor-pointer'>
+        className='w-[75%] flex justify-center items-center rounded-full shadow-md bg-card shadow-gray-400/50 m-4 p-4 cursor-pointer'>
         <div className="w-8 flex justify-center">
-          <Icon size={25} />
+          <Icon size={25} className="text-primary" />
         </div>
-        <span className="pl-4">{text}</span>
+        <span className="pl-4 text-primary">{text}</span>
       </a>
     ))}
     <ThemeSelector isMobile={true} />
