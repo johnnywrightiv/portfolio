@@ -3,7 +3,7 @@ import ThemeSelector from './ThemeSelector';
 
 const NavMobile = ({ navItems, closeMobileNav }) => (
   <div 
-    className='fixed w-full h-screen bg-background/90 flex flex-col justify-center items-center z-20'
+    className='fixed w-full h-screen bg-background/80 flex flex-col justify-center items-center z-20'
     role="navigation"
     aria-label="Mobile navigation"
   >

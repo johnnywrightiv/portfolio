@@ -3,7 +3,7 @@ import TechBadge from './TechBadge';
 
 const About = () => {
   return (
-    <div id='about' className="md:h-screen bg-orange-300 flex flex-col items-center justify-center p-8">
+    <div id='about' className="sm:h-screen bg-orange-300 flex flex-col items-center justify-center p-8">
       <h1 className="text-5xl font-bold text-htag mb-6 text-center">
         Hi, I'm <span className="block md:hidden p-2"></span> John Wright
       </h1>
@@ -24,10 +24,16 @@ const About = () => {
           <TechBadge text="Node.js" />
           <TechBadge text="Express" />
           <TechBadge text="MongoDB" />
+          <TechBadge text="NoSQL" />
           <TechBadge text="Tailwind" />
           <TechBadge text="Bootstrap" />
           <TechBadge text="Python" />
           <TechBadge text="jQuery" />
+          <TechBadge text="Vercel" />
+          <TechBadge text="Figma" />
+          <TechBadge text="Photoshop" />
+          <TechBadge text="Git & GitHub" />
+          <TechBadge text="VSCode" />
         </div>
       </div>
     </div>
