@@ -7,7 +7,7 @@ const IconButton = ({ icon: Icon, text, onClick, className = ''}) => (
   >
     <Icon size={25} className="custom-icon" />
     {text && 
-      <span className="ml-3 p-2 absolute left-full rounded-2xl whitespace-nowrap hidden group-hover:block text-primary" style={{ background: `radial-gradient(ellipse at center, rgba(var(--cta), .3), rgba(255, 255, 255, .3))` }}>
+      <span className="ml-3 p-2 absolute left-full rounded-2xl whitespace-nowrap hidden group-hover:block text-primary" style={{ background: `radial-gradient(ellipse at center, rgba(var(--cta), .7), rgba(255, 255, 255, .5))` }}>
         {text}
       </span>
     }
