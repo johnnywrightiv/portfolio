@@ -7,7 +7,7 @@ import { VscVscodeInsiders } from "react-icons/vsc";
 
 const About = () => {
   return (
-    <div id='about' className="md:h-screen bg-orange-300 flex flex-col items-center justify-center p-8">
+    <div id='about' className="min-h-screen bg-orange-300 flex flex-col items-center justify-center p-8">
       <h1 className="text-5xl font-bold text-htag mb-6 text-center">
         Hi, I'm <span className="block md:hidden p-2"></span> John Wright
       </h1>
