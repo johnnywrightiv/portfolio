@@ -100,7 +100,7 @@ const ProjectCard = ({ project, onSeeMore }) => {
   const { title, image, blurb, technologies } = project;
 
   return (
-    <div className="group bg-card shadow-lg border-2 border-border rounded-lg p-6 m-4 flex items-center w-[60%] mx-auto transition-all duration-300 hover:shadow-2xl hover:scale-105 hover:border-primary">
+    <div className="group bg-card shadow-lg border-2 border-border rounded-lg p-6 m-4 flex items-center w-[90%] mx-auto transition-all duration-300 hover:shadow-2xl hover:scale-105 hover:border-primary">
       <div className="w-60 h-40 mr-6 overflow-hidden rounded-lg">
         <img 
           src={image} 
