@@ -29,15 +29,15 @@ const About = () => {
           <TechBadge text="Express" icon={SiExpress} color="bg-[#000000]" />
           <TechBadge text="MongoDB" icon={SiMongodb} color="bg-[#47A248]" />
           <TechBadge text="NoSQL" icon={FaDatabase} color="bg-[#003B57]" />
+          <TechBadge text="Git & GitHub" icon={FaGitAlt} color="bg-[#F05032]" /> {/* #181717 black */}
           <TechBadge text="Tailwind" icon={FaCss3Alt} color="bg-[#06B6D4]" />
           <TechBadge text="Bootstrap" icon={FaBootstrap} color="bg-[#7952B3]" />
+          <TechBadge text="Figma" icon={FaFigma} color="bg-[#F24E1E]" />
+          <TechBadge text="Photoshop" icon={SiAdobephotoshop} color="bg-[#31A8FF]" />
+          <TechBadge text="VSCode" icon={VscVscodeInsiders} color="bg-[#007ACC]" />
           <TechBadge text="Python" icon={FaPython} color="bg-[#3776AB]" />
           <TechBadge text="jQuery" icon={SiJquery} color="bg-[#0769AD]" />
           <TechBadge text="Vercel" icon={SiVercel} color="bg-[#000000]" />
-          <TechBadge text="Figma" icon={FaFigma} color="bg-[#F24E1E]" />
-          <TechBadge text="Photoshop" icon={SiAdobephotoshop} color="bg-[#31A8FF]" />
-          <TechBadge text="Git & GitHub" icon={FaGitAlt} color="bg-[#F05032]" /> {/* #181717 black */}
-          <TechBadge text="VSCode" icon={VscVscodeInsiders} color="bg-[#007ACC]" />
         </div>
       </div>
     </div>

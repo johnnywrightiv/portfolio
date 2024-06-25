@@ -2,9 +2,15 @@
   {
     "title": "Project One",
     "image": "https://cdn.hashnode.com/res/hashnode/image/upload/v1631097232556/i1bd_7yl0.png?auto=compress,format&format=webp",
-    "blurb": "This is a short description of Project One.",
+    "blurb": "This is a short description of Project One. skdfhaljdkh jlhkgsdakjfg kjafhgd kjhagerkjg  jhkgakjgh dshjgfjk ajsdhg svkj  kjh  ahkjhasdv",
     "description": "This is a long description of Project One. Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis nam reiciendis, aspernatur maiores vel quam magnam explicabo quos mollitia deleniti esse sint cum aliquam debitis beatae vero. Quaerat, dolore amet quia doloribus optio modi, praesentium autem illum perferendis odio veniam temporibus perspiciatis culpa quis impedit! Velit voluptates amet quis cupiditate fugiat voluptatibus nisi earum, placeat fuga.",
-    "technologies": ["React", "Node.js", "MongoDB", "Tailwind CSS"],
+    "technologies": [
+      "React",
+      "Node.js",
+      "MongoDB",
+      "Tailwind CSS",
+      "Tailwind CSS"
+    ],
     "liveDemoLink": "https://example.com/project-one",
     "githubLink": "https://github.com/username/project-one"
   },

@@ -6,7 +6,7 @@ const TechBadge = ({ text, icon: IconComponent, size = 'normal', color }) => {
   const badgeStyle = color ? `${color} text-white` : 'bg-border text-tertiary';
 
   return (
-    <span className={`rounded-full shadow-md flex items-center ${badgeStyle} ${sizeClasses}`}>
+    <span className={`flex-shrink-0 rounded-full shadow-md flex items-center ${badgeStyle} ${sizeClasses}`}>
       {IconComponent && <IconComponent className={`mr-2 ${color ? 'badge-shadow' : ''}`} />}
       {text && <span className={color ? 'badge-shadow' : ''}>{text}</span>}
     </span>
