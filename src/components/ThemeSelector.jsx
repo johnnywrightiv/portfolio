@@ -37,7 +37,7 @@ const ThemeSelector = ({ isMobile = false }) => {
                   key={t}
                   onClick={() => handleChangeTheme(t)}
                   className={`custom-button group ${
-                    theme === t ? 'bg-cta/60' : ''
+                    theme === t ? 'bg-secondary/80' : ''
                   }`}
                 >
                   <span>
