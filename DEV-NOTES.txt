@@ -1,0 +1,35 @@
+To Do:
+
+
+- code cleanup day?... optimize components for readability
+
+
+
+- improve button location style on ProjectCards and check responsiveness
+
+- make < & > buttons in modal smaller in responsive view?
+
+- mobile nav hamburger icon positioning?
+
+
+
+
+
+- contact on reverse side of about card?
+
+
+
+- hero animation?
+
+- other element animations?
+
+
+
+- background colors, gradients, and patterns?
+
+
+
+
+- add content (image & projects)
+
+- deploy and move on!
