@@ -23,6 +23,7 @@
 
 .light {
   --background: 245, 245, 245;
+  --about-bg: 129, 212, 250;
   /* --hero-bg:  */
   /* --about-bg:  */
   /* --projects-bg:  */
@@ -76,4 +77,17 @@
 
 .subtle-outline {
   filter: drop-shadow(0px 0px 1px rgba(0, 0, 0, 0.3));
+}
+
+:root {
+  --light-mode-gradient: linear-gradient(
+    to right,
+    rgb(179, 157, 219),
+    rgb(129, 212, 250)
+  );
+  --dark-mode-gradient: linear-gradient(
+    to right,
+    rgb(69, 39, 160),
+    rgb(0, 105, 92)
+  );
 }

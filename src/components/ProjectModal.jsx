@@ -91,8 +91,8 @@ const ProjectModal = ({ project, onClose, onPrev, onNext }) => {
           <div className="mb-6">
             <h3 className="text-2xl font-semibold text-primary mb-2">Technologies Used</h3>
             <div className="flex flex-wrap gap-2">
-              {technologies.map((tech) => (
-                <TechBadge key={tech} text={tech} size="medium" />
+              {technologies.map((tech, index) => (
+                <TechBadge key={`${tech}-${index}`} text={tech} size="medium" />
               ))}
             </div>
           </div>

@@ -20,8 +20,8 @@ const ProjectCard = ({ project, onSeeMore }) => {
           <p className="text-secondary mb-4 ">{blurb}</p>
           <h4 className="text-lg font-semibold text-primary mb-2">Technologies Used</h4>
           <div className="flex flex-wrap gap-1 mb-4">
-            {technologies.map((tech) => (
-              <TechBadge key={tech} text={tech} size="small" />
+            {technologies.map((tech, index) => (
+              <TechBadge key={`${tech}-${index}`} text={tech} size="small" />
             ))}
           </div>
         </div>
