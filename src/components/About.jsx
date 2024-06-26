@@ -6,7 +6,6 @@ import { SiMongodb, SiRedux, SiNextdotjs, SiExpress, SiTailwindcss, SiJquery, Si
 const About = () => {
   return (
     <div id='about' className="min-h-screen bg-gradient-to-br from-orange-300 to-orange-400 flex items-center justify-center p-8">
-      {/* <div className="max-w-4xl w-full bg-card bg-opacity-90 backdrop-filter backdrop-blur-lg rounded-xl shadow-2xl p-12 transition-all duration-500 ease-in-out hover:shadow-3xl"> */}
       <div className="max-w-4xl w-full bg-card bg-opacity-90 backdrop-filter backdrop-blur-lg rounded-xl shadow-2xl p-12 transition-all duration-500 ease-in-out hover:shadow-3xl hover:scale-105">
         <h1 className="text-5xl font-bold text-primary mb-8">
           Hey, I'm <span className='text-cta font-light'>John Wright</span> 👋
