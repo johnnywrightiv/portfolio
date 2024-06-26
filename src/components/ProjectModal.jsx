@@ -104,7 +104,7 @@ const ProjectModal = ({ project, onClose, onPrev, onNext }) => {
               </a>
             )}
             {githubLink && (
-              <a href={githubLink} target="_blank" rel="noopener noreferrer" className="bg-primary text-background px-4 py-2 rounded hover:bg-secondary flex items-center">
+              <a href={githubLink} target="_blank" rel="noopener noreferrer" className="bg-primary text-background px-4 py-2 rounded hover:bg-primary/80 flex items-center">
                 <FaGithub className="mr-2" />
                 GitHub
               </a>

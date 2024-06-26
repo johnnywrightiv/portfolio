@@ -28,7 +28,7 @@ const ProjectCard = ({ project, onSeeMore }) => {
       </div>
       <div className="mt-4 md:mt-2 flex justify-end">
         <button
-          className="bg-cta text-white px-4 py-2 rounded-full font-semibold transition-all duration-300 hover:bg-cta-active hover:shadow-md whitespace-nowrap"
+          className="bg-cta text-white px-4 py-2 rounded-full font-semibold transition-all duration-300 hover:bg-cta-active hover:scale-110 hover:shadow-md whitespace-nowrap"
           onClick={onSeeMore}
         >
           See More
