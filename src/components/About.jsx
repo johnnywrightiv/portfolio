@@ -23,7 +23,7 @@ const About = () => {
               I'm a passionate full-stack developer with a keen eye for improving UX. My journey in tech so far has afforded me firsthand experience across the development lifecycle - from project management and design, to crafting sleek UIs, to architecting APIs and robust backend systems.
             </p>
             <p className="text-lg text-ptag">
-              When I'm not coding, you'll often find me playing or producing music, trying out new recipies in the kitchen, enjoying the great outdoors, and exploring the latest tech trends.
+              When I'm not coding, you'll often find me playing or producing music, trying out new recipes in the kitchen, enjoying the great outdoors, and exploring the latest tech trends.
             </p>
           </div>
         </div>
