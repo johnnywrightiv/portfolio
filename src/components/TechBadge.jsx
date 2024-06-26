@@ -1,15 +1,15 @@
 import React from 'react';
+import { useThemeContext } from '../contexts/ThemeContext';
 
-const TechBadge = ({ text, icon: IconComponent, size = 'normal', color }) => {
-  const sizeClasses = size === 'small' ? 'text-sm m-1 p-1' : 'm-2 p-2';
-
-  const badgeStyle = color ? `${color} text-white` : 'bg-border text-tertiary';
+const TechBadge = ({ Icon, name, color, darkColor }) => {
+  const { theme, systemTheme } = useThemeContext();
+  const isDarkMode = theme === 'dark' || (theme === 'system' && systemTheme === 'dark');
 
   return (
-    <span className={`flex-shrink-0 rounded-full shadow-md flex items-center ${badgeStyle} ${sizeClasses}`}>
-      {IconComponent && <IconComponent className={`mr-2 ${color ? 'badge-shadow' : ''}`} />}
-      {text && <span className={color ? 'badge-shadow' : ''}>{text}</span>}
-    </span>
+    <div className="flex flex-col items-center m-2 transition-transform duration-300 ease-in-out hover:scale-110">
+      <Icon className={`text-3xl mb-1 badge-shadow ${isDarkMode && darkColor ? darkColor : color}`} />
+      <span className={`text-xs badge-shadow ${isDarkMode && darkColor ? darkColor : color}`}>{name}</span>
+    </div>
   );
 };
 

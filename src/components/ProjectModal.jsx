@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import TechBadge from './TechBadge';
+import TechBubble from './TechBubble';
 import useBlur from '../utils/useBlur';
 import IconButton from './IconButton';
 import { IoClose, IoChevronBack, IoChevronForward } from 'react-icons/io5';
@@ -92,7 +92,7 @@ const ProjectModal = ({ project, onClose, onPrev, onNext }) => {
             <h3 className="text-2xl font-semibold text-primary mb-2">Technologies Used</h3>
             <div className="flex flex-wrap gap-2">
               {technologies.map((tech, index) => (
-                <TechBadge key={`${tech}-${index}`} text={tech} size="medium" />
+                <TechBubble key={`${tech}-${index}`} text={tech} size="medium" />
               ))}
             </div>
           </div>

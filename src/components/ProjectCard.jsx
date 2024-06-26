@@ -1,5 +1,5 @@
 import React from 'react';
-import TechBadge from './TechBadge';
+import TechBubble from './TechBubble';
 
 const ProjectCard = ({ project, onSeeMore }) => {
   const { title, image, blurb, technologies } = project;
@@ -21,7 +21,7 @@ const ProjectCard = ({ project, onSeeMore }) => {
           <h4 className="text-lg font-semibold text-primary mb-2">Technologies Used</h4>
           <div className="flex flex-wrap gap-1 mb-4">
             {technologies.map((tech, index) => (
-              <TechBadge key={`${tech}-${index}`} text={tech} size="small" />
+              <TechBubble key={`${tech}-${index}`} text={tech} size="small" />
             ))}
           </div>
         </div>

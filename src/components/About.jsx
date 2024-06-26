@@ -1,20 +1,7 @@
 import React from 'react';
-import { useThemeContext } from '../contexts/ThemeContext';
+import TechBadge from './TechBadge';
 import { FaHtml5, FaCss3Alt, FaJsSquare, FaReact, FaNodeJs, FaGitAlt, FaBootstrap, FaPython, FaFigma } from 'react-icons/fa';
 import { SiMongodb, SiRedux, SiNextdotjs, SiExpress, SiTailwindcss, SiJquery, SiAdobephotoshop } from "react-icons/si";
-
-
-const TechIcon = ({ Icon, name, color, darkColor }) => {
-  const { theme, systemTheme } = useThemeContext();
-  const isDarkMode = theme === 'dark' || (theme === 'system' && systemTheme === 'dark');
-
-  return (
-    <div className="flex flex-col items-center m-2 transition-transform duration-300 ease-in-out hover:scale-110">
-      <Icon className={`text-3xl mb-1 badge-shadow ${isDarkMode && darkColor ? darkColor : color}`} />
-      <span className={`text-xs badge-shadow ${isDarkMode && darkColor ? darkColor : color}`}>{name}</span>
-    </div>
-  );
-};
 
 const About = () => {
   return (
@@ -45,22 +32,22 @@ const About = () => {
         </h2>
         
         <div className="flex flex-wrap justify-center text-cta">
-          <TechIcon Icon={FaHtml5} name="HTML5" color="text-[#E34F26]" />
-          <TechIcon Icon={FaCss3Alt} name="CSS3" color="text-[#1572B6]" />
-          <TechIcon Icon={FaJsSquare} name="JavaScript" color="text-[#F7DF1E]" />
-          <TechIcon Icon={FaReact} name="React" color="text-[#61DAFB]" />
-          <TechIcon Icon={SiRedux} name="Redux" color="text-[#764ABC]" />
-          <TechIcon Icon={SiNextdotjs} name="Next.js" color="text-[#000000]" darkColor="text-white" />
-          <TechIcon Icon={SiTailwindcss} name="Tailwind" color="text-[#06B6D4]" />
-          <TechIcon Icon={FaBootstrap} name="Bootstrap" color="text-[#7952B3]" />
-          <TechIcon Icon={FaNodeJs} name="Node.js" color="text-[#5FA04E]" />
-          <TechIcon Icon={SiExpress} name="Express" color="text-[#000000]" darkColor="text-white" />
-          <TechIcon Icon={SiMongodb} name="MongoDB" color="text-[#47A248]" />
-          <TechIcon Icon={FaPython} name="Python" color="text-[#3776AB]" />
-          <TechIcon Icon={FaGitAlt} name="Git" color="text-[#F05032]" />
-          {/* <TechIcon Icon={SiJquery} name="jQuery" color="text-[#0769AD]" /> */}
-          {/* <TechIcon Icon={FaFigma} name="Figma" color="text-[#F24E1E]" /> */}
-          {/* <TechIcon Icon={SiAdobephotoshop} name="Photoshop" color="text-[#31A8FF]" /> */}
+          <TechBadge Icon={FaHtml5} name="HTML5" color="text-[#E34F26]" />
+          <TechBadge Icon={FaCss3Alt} name="CSS3" color="text-[#1572B6]" />
+          <TechBadge Icon={FaJsSquare} name="JavaScript" color="text-[#F7DF1E]" />
+          <TechBadge Icon={FaReact} name="React" color="text-[#61DAFB]" />
+          <TechBadge Icon={SiRedux} name="Redux" color="text-[#764ABC]" />
+          <TechBadge Icon={SiNextdotjs} name="Next.js" color="text-[#000000]" darkColor="text-white" />
+          <TechBadge Icon={SiTailwindcss} name="Tailwind" color="text-[#06B6D4]" />
+          <TechBadge Icon={FaBootstrap} name="Bootstrap" color="text-[#7952B3]" />
+          <TechBadge Icon={FaNodeJs} name="Node.js" color="text-[#5FA04E]" />
+          <TechBadge Icon={SiExpress} name="Express" color="text-[#000000]" darkColor="text-white" />
+          <TechBadge Icon={SiMongodb} name="MongoDB" color="text-[#47A248]" />
+          <TechBadge Icon={FaPython} name="Python" color="text-[#3776AB]" />
+          <TechBadge Icon={FaGitAlt} name="Git" color="text-[#F05032]" />
+          {/* <TechBadge Icon={SiJquery} name="jQuery" color="text-[#0769AD]" /> */}
+          {/* <TechBadge Icon={FaFigma} name="Figma" color="text-[#F24E1E]" /> */}
+          {/* <TechBadge Icon={SiAdobephotoshop} name="Photoshop" color="text-[#31A8FF]" /> */}
 
         </div>
       </div>
