@@ -5,6 +5,20 @@ To Do:
 
 
 
+
+
+
+
+- background colors based on theme/highligh
+- remove card hover on md: breakpoint
+- match card border styling across about & projects
+
+
+
+
+
+
+
 - improve button location style on ProjectCards and check responsiveness
 
 - make < & > buttons in modal smaller in responsive view?
@@ -15,20 +29,11 @@ To Do:
 
 
 
-- contact on reverse side of about card?
-
-
-
 - hero animation?
 
-- other element animations?
-
-
+- other animations?
 
 - background colors, gradients, and patterns?
-
-
-
 
 - add content (image & projects)
 

@@ -5,7 +5,7 @@ import { FiSun, FiMoon, FiSettings } from "react-icons/fi";
 import useBlur from '../utils/useBlur';
 
 const ThemeSelector = ({ isMobile = false }) => {
-  const { theme, changeTheme, systemTheme, availableThemes } = useThemeContext();
+  const { theme, changeTheme, systemTheme, availableThemes, dynamicColor } = useThemeContext();
   const [isOpen, setIsOpen] = useState(false);
   const closeMenu = useCallback(() => setIsOpen(false), []);
   const menuRef = useBlur(closeMenu);
@@ -18,12 +18,14 @@ const ThemeSelector = ({ isMobile = false }) => {
     setIsOpen(false);
   };
 
+  const hoverColor = dynamicColor ? 'hover:shadow-dynamic hover:text-dynamic transition duration-100' : 'hover:shadow-cta hover:text-cta transition duration-100';
+
   return (
     <div className={isMobile ? "fixed right-1 top-4 z-10" : "md:block hidden fixed top-4 z-10"} ref={menuRef}>
       <div className="relative">
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className='custom-button group'
+          className={`custom-button group ${hoverColor}`}
           aria-label="Theme Toggle"
         >
           <ThemeIcon size={25} className="custom-icon" />
@@ -38,7 +40,7 @@ const ThemeSelector = ({ isMobile = false }) => {
                   onClick={() => handleChangeTheme(t)}
                   className={`custom-button group ${
                     theme === t ? 'bg-secondary/80' : ''
-                  }`}
+                  } ${hoverColor}`}
                 >
                   <span>
                     {t === 'dark' ? <FiMoon size={20} className="custom-icon" /> : t === 'system' ? <FiSettings size={20} className="custom-icon" /> : <FiSun size={20} className="custom-icon" />}

@@ -2,12 +2,14 @@ import React, { useEffect, useRef, useCallback } from 'react';
 import TechBubble from './TechBubble';
 import useBlur from '../utils/useBlur';
 import IconButton from './IconButton';
+import { useThemeContext } from '../contexts/ThemeContext';
 import { IoClose, IoChevronBack, IoChevronForward } from 'react-icons/io5';
 import { FaGithub } from 'react-icons/fa';
 import { BsGlobeAmericas } from 'react-icons/bs';
 
 const ProjectModal = ({ project, onClose, onPrev, onNext }) => {
   const { title, image, blurb, description, technologies, liveDemoLink, githubLink } = project;
+  const { dynamicColor } = useThemeContext();
   const modalRef = useBlur(onClose);
   const contentRef = useRef(null);
 
@@ -113,16 +115,22 @@ const ProjectModal = ({ project, onClose, onPrev, onNext }) => {
           </div>
           <div className="flex justify-start space-x-4">
             {liveDemoLink && (
-              <a href={liveDemoLink} target="_blank" rel="noopener noreferrer" className="bg-cta text-white px-4 py-2 rounded hover:bg-cta-active flex items-center">
+              <button 
+                onClick={() => window.open(liveDemoLink, '_blank')} 
+                className={`${dynamicColor ? 'bg-dynamic' : 'bg-cta'} text-white px-4 py-2 rounded-xl font-semibold transition-all duration-300 hover:${dynamicColor ? 'bg-dynamic hover:opacity-80' : 'bg-cta hover:opacity-80'} hover:scale-105 hover:shadow-md flex items-center`}
+              >
                 <BsGlobeAmericas className="mr-2" />
                 Website
-              </a>
+              </button>
             )}
             {githubLink && (
-              <a href={githubLink} target="_blank" rel="noopener noreferrer" className="bg-primary text-background px-4 py-2 rounded hover:bg-primary/80 flex items-center">
+              <button 
+                onClick={() => window.open(githubLink, '_blank')} 
+                className="bg-primary text-background px-4 py-2 rounded-xl font-semibold transition-all duration-300 hover:bg-primary/80 hover:scale-105 hover:shadow-md flex items-center"
+              >
                 <FaGithub className="mr-2" />
                 GitHub
-              </a>
+              </button>
             )}
           </div>
         </div>

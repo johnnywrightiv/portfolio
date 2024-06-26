@@ -1,8 +1,10 @@
 import React from 'react';
 import TechBubble from './TechBubble';
+import { useThemeContext } from '../contexts/ThemeContext';
 
 const ProjectCard = ({ project, onSeeMore }) => {
   const { title, image, blurb, technologies } = project;
+  const { dynamicColor } = useThemeContext();
 
   return (
     <div className="group bg-card shadow-lg border-2 border-border rounded-xl p-4 md:p-6 m-4 flex flex-col w-[90%] mx-auto transition-all duration-300 hover:shadow-2xl hover:scale-105 hover:border-primary">
@@ -28,7 +30,7 @@ const ProjectCard = ({ project, onSeeMore }) => {
       </div>
       <div className="mt-4 md:mt-2 flex justify-end">
         <button
-          className="bg-cta text-white px-4 py-2 rounded-full font-semibold transition-all duration-300 hover:bg-cta-active hover:scale-110 hover:shadow-md whitespace-nowrap"
+          className={`${dynamicColor ? 'bg-dynamic' : 'bg-cta'} text-white px-4 py-2 rounded-xl font-semibold transition-all duration-300 hover:${dynamicColor ? 'bg-dynamic hover:opacity-80' : 'bg-cta hover:opacity-80'} hover:scale-105 hover:shadow-md whitespace-nowrap`}
           onClick={onSeeMore}
         >
           See More
