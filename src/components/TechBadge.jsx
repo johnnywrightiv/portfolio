@@ -10,8 +10,16 @@ const TechBadge = ({ Icon, name, color, darkColor, onClick }) => {
       className="flex flex-col items-center m-2 transition-transform duration-300 ease-in-out hover:scale-110 cursor-pointer"
       onClick={onClick}
     >
-      <Icon className={`text-3xl mb-1 badge-shadow ${isDarkMode && darkColor ? darkColor : color}`} />
-      <span className={`text-xs badge-shadow ${isDarkMode && darkColor ? darkColor : color}`}>{name}</span>
+      <Icon 
+        style={{ color: isDarkMode && darkColor ? darkColor : color }} 
+        className="text-3xl mb-1" 
+      />
+      <span 
+        style={{ color: isDarkMode && darkColor ? darkColor : color }}
+        className="text-xs"
+      >
+        {name}
+      </span>
     </div>
   );
 };

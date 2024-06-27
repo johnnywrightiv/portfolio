@@ -1,6 +1,7 @@
 import React from 'react';
 import TechBadge from './TechBadge';
 import { useThemeContext } from '../contexts/ThemeContext';
+import { determineTextColorClass } from '../utils/determineTextColorClass';
 import { FaHtml5, FaCss3Alt, FaJsSquare, FaReact, FaNodeJs, FaGitAlt, FaPython, FaBootstrap, FaFigma } from 'react-icons/fa';
 import { SiMongodb, SiRedux, SiNextdotjs, SiExpress, SiTailwindcss, SiJquery, SiAdobephotoshop } from "react-icons/si";
 
@@ -25,22 +26,23 @@ const techStack = [
 
 const IMAGE_URL = "/real-me.jpg";
 
+
 const About = () => {
   const { setColor, dynamicColor } = useThemeContext();
-
+  const textColorClass = determineTextColorClass(dynamicColor);
 
   return (
     <div id='about' className="min-h-screen flex items-center justify-center p-8 transition-all duration-500">
-      <div className="max-w-4xl w-full bg-card bg-opacity-90 backdrop-filter backdrop-blur-lg rounded-xl shadow-2xl p-12 transition-all duration-500 ease-in-out hover:shadow-3xl hover:scale-105">
-        <h1 className="text-5xl font-bold text-primary mb-8">
-          Hey, I'm <span className={`${dynamicColor ? 'text-dynamic' : 'text-cta'} font-light`}>John Wright</span> 👋
+      <div className="max-w-4xl w-full bg-card bg-opacity-90 backdrop-filter backdrop-blur-lg rounded-xl shadow-2xl p-12 transition-all duration-500 ease-in-out md:hover:shadow-3xl md:hover:scale-105 border-2 border-border/80">
+        <h1 className="text-5xl font-bold text-htag mb-8">
+          Hey, I'm <span className={`${textColorClass} font-light`}>John Wright</span> 👋
         </h1>
         
         <div className="flex flex-col md:flex-row items-start mb-12">
           <img 
             src={IMAGE_URL}
             alt="John Wright" 
-            className="w-48 h-48 rounded-full shadow-lg mb-6 md:mb-0 md:mr-8 transition-transform duration-300 ease-in-out hover:scale-105"
+            className="w-48 h-48 rounded-full shadow-lg mb-6 md:mb-0 md:mr-8 transition-transform duration-300 ease-in-out md:hover:scale-105"
           />
           <div className="flex-1">
             <p className="text-lg text-ptag mb-4">
@@ -52,7 +54,7 @@ const About = () => {
           </div>
         </div>
         
-        <h2 className="text-3xl font-bold text-primary text-center mb-6">
+        <h2 className="text-3xl font-bold text-htag text-center mb-6">
           My Tech Stack
         </h2>
         

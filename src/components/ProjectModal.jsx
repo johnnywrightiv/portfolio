@@ -99,14 +99,14 @@ const ProjectModal = ({ project, onClose, onPrev, onNext }) => {
           className="absolute top-1/2 lg:-right-20 -right-5 text-primary hover:text-cta-active"
         />
         <div ref={contentRef} className="bg-card rounded-lg p-6 max-h-[80vh] overflow-y-auto">
-          <h2 className="text-3xl font-bold text-primary mb-4">{title}</h2>
+          <h2 className="text-3xl font-bold text-htag mb-4">{title}</h2>
           <p className="text-secondary text-xl mb-6">{blurb}</p>
           <div className="aspect-w-16 aspect-h-9 mb-6">
             <img src={image} alt={title} className="rounded-lg object-cover w-auto h-auto" />
           </div>
           <p className="text-secondary text-xl mb-6">{description}</p>
           <div className="mb-6">
-            <h3 className="text-2xl font-semibold text-primary mb-2">Technologies Used</h3>
+            <h3 className="text-2xl font-semibold text-htag mb-2">Technologies Used</h3>
             <div className="flex flex-wrap gap-2">
               {technologies.map((tech, index) => (
                 <TechBubble key={`${tech}-${index}`} text={tech} size="medium" />

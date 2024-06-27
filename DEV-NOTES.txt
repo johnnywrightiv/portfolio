@@ -1,6 +1,5 @@
 To Do:
 
-
 - code cleanup day?... optimize components for readability
 
 
@@ -9,31 +8,21 @@ To Do:
 
 
 
-- background colors based on theme/highligh
-- remove card hover on md: breakpoint
-- match card border styling across about & projects
+
+
+- ProjectModal: add more link options <-- update projects.json data (live site, admin site, front repo, server repo)
+
+- ProjectCards: improve button location
 
 
 
 
 
+** check responsiveness (About & ProjectCards)
 
+- animations (hero section, mouse follow, contact & other elements?)
 
-- improve button location style on ProjectCards and check responsiveness
-
-- make < & > buttons in modal smaller in responsive view?
-
-- mobile nav hamburger icon positioning?
-
-
-
-
-
-- hero animation?
-
-- other animations?
-
-- background colors, gradients, and patterns?
+- background (gradients/patterns)?
 
 - add content (image & projects)
 
