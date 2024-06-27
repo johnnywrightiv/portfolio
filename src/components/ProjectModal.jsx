@@ -8,7 +8,7 @@ import { FaGithub } from 'react-icons/fa';
 import { BsGlobeAmericas } from 'react-icons/bs';
 
 const ProjectModal = ({ project, onClose, onPrev, onNext }) => {
-  const { title, image, blurb, description, technologies, liveDemoLink, githubLink } = project;
+  const { title, image, blurb, description, technologies, links } = project;
   const { dynamicColor } = useThemeContext();
   const modalRef = useBlur(onClose);
   const contentRef = useRef(null);
@@ -80,6 +80,25 @@ const ProjectModal = ({ project, onClose, onPrev, onNext }) => {
     };
   }, [onNext, onPrev]);
 
+  const renderLinkButton = (link) => {
+    const isGithub = link.name.toLowerCase().includes('github') || link.url.includes('github');
+    const Icon = isGithub ? FaGithub : BsGlobeAmericas;
+    const buttonClass = isGithub
+      ? "bg-primary text-background hover:bg-primary/80"
+      : `${dynamicColor ? 'bg-dynamic hover:bg-dynamic' : 'bg-cta hover:bg-cta'} text-white hover:opacity-80`;
+
+    return (
+      <button 
+        key={link.url}
+        onClick={() => window.open(link.url, '_blank')} 
+        className={`${buttonClass} px-4 py-2 rounded-xl font-semibold transition-all duration-300 hover:scale-105 hover:shadow-md flex items-center`}
+      >
+        <Icon className="mr-2" />
+        {link.name}
+      </button>
+    );
+  };
+
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
       <div ref={modalRef} className="relative w-full max-w-4xl">
@@ -88,21 +107,41 @@ const ProjectModal = ({ project, onClose, onPrev, onNext }) => {
           onClick={onClose}
           className="absolute lg:-top-20 lg:-right-20 -top-16 mt-1 -right-5 text-primary hover:text-cta-active"
         />
+
+        <IconButton
+          icon={IoClose}
+          onClick={onClose}
+          className="hidden lg:block absolute lg:-top-20 lg:-right-20 -top-16 mt-1 -right-5 text-primary hover:text-cta-active"
+        />
         <IconButton
           icon={IoChevronBack}
           onClick={onPrev}
-          className="absolute top-1/2 lg:-left-20 -left-5 text-primary hover:text-cta-active"
+          className="hidden lg:block absolute top-1/2 -left-20 text-primary hover:text-cta-active"
         />
         <IconButton
           icon={IoChevronForward}
           onClick={onNext}
-          className="absolute top-1/2 lg:-right-20 -right-5 text-primary hover:text-cta-active"
+          className="hidden lg:block absolute top-1/2 -right-20 text-primary hover:text-cta-active"
         />
+
+        <IoChevronBack
+          onClick={onPrev}
+          className="block lg:hidden absolute top-1/2 -left-5 text-3xl bg-card/40 rounded-full text-primary hover:text-cta-active"
+        />
+        <IoChevronForward
+          onClick={onNext}
+          className="block lg:hidden absolute top-1/2 -right-5 text-3xl bg-card/40 rounded-full text-primary hover:text-cta-active"
+        />
+
         <div ref={contentRef} className="bg-card rounded-lg p-6 max-h-[80vh] overflow-y-auto">
           <h2 className="text-3xl font-bold text-htag mb-4">{title}</h2>
           <p className="text-secondary text-xl mb-6">{blurb}</p>
-          <div className="aspect-w-16 aspect-h-9 mb-6">
-            <img src={image} alt={title} className="rounded-lg object-cover w-auto h-auto" />
+          <div className="w-full h-64 overflow-hidden rounded-lg mb-6">
+            <img
+              src={image}
+              alt={title}
+              className="object-cover w-full h-full transition-transform duration-300"
+            />
           </div>
           <p className="text-secondary text-xl mb-6">{description}</p>
           <div className="mb-6">
@@ -113,25 +152,8 @@ const ProjectModal = ({ project, onClose, onPrev, onNext }) => {
               ))}
             </div>
           </div>
-          <div className="flex justify-start space-x-4">
-            {liveDemoLink && (
-              <button 
-                onClick={() => window.open(liveDemoLink, '_blank')} 
-                className={`${dynamicColor ? 'bg-dynamic' : 'bg-cta'} text-white px-4 py-2 rounded-xl font-semibold transition-all duration-300 hover:${dynamicColor ? 'bg-dynamic hover:opacity-80' : 'bg-cta hover:opacity-80'} hover:scale-105 hover:shadow-md flex items-center`}
-              >
-                <BsGlobeAmericas className="mr-2" />
-                Website
-              </button>
-            )}
-            {githubLink && (
-              <button 
-                onClick={() => window.open(githubLink, '_blank')} 
-                className="bg-primary text-background px-4 py-2 rounded-xl font-semibold transition-all duration-300 hover:bg-primary/80 hover:scale-105 hover:shadow-md flex items-center"
-              >
-                <FaGithub className="mr-2" />
-                GitHub
-              </button>
-            )}
+          <div className="flex flex-wrap gap-4">
+            {links.map(renderLinkButton)}
           </div>
         </div>
       </div>

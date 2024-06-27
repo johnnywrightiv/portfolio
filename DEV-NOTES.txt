@@ -1,24 +1,12 @@
 To Do:
 
-- code cleanup day?... optimize components for readability
 
-
-
-
-
-
-
-
-
-- ProjectModal: add more link options <-- update projects.json data (live site, admin site, front repo, server repo)
-
-- ProjectCards: improve button location
-
-
-
-
+** code cleanup day?... optimize components for readability
 
 ** check responsiveness (About & ProjectCards)
+
+
+
 
 - animations (hero section, mouse follow, contact & other elements?)
 

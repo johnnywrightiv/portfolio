@@ -9,10 +9,27 @@
       "Node.js",
       "MongoDB",
       "Tailwind CSS",
+      "Tailwind CSS",
       "Tailwind CSS"
     ],
-    "liveDemoLink": "https://example.com/project-one",
-    "githubLink": "https://github.com/username/project-one"
+    "links": [
+      {
+        "name": "Front-End Code",
+        "url": "https://github.com/username/project-one-frontend"
+      },
+      {
+        "name": "Server Code",
+        "url": "https://github.com/username/project-one-backend"
+      },
+      {
+        "name": "Live Demo",
+        "url": "https://example.com/project-one"
+      },
+      {
+        "name": "Admin Dashboard",
+        "url": "https://admin.example.com/project-one"
+      }
+    ]
   },
   {
     "title": "Project Two",
@@ -20,8 +37,16 @@
     "blurb": "This is a short description of Project Two.",
     "description": "This is a long description of Project Two. Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis nam reiciendis, aspernatur maiores vel quam magnam explicabo quos mollitia deleniti esse sint cum aliquam debitis beatae vero. Quaerat, dolore amet quia doloribus optio modi, praesentium autem illum perferendis odio veniam temporibus perspiciatis culpa quis impedit! Velit voluptates amet quis cupiditate fugiat voluptatibus nisi earum, placeat fuga.",
     "technologies": ["Next.js", "Express", "MySQL", "Bootstrap"],
-    "liveDemoLink": "https://example.com/project-two",
-    "githubLink": "https://github.com/username/project-two"
+    "links": [
+      {
+        "name": "GitHub",
+        "url": "https://github.com/username/project-two"
+      },
+      {
+        "name": "Live Demo",
+        "url": "https://example.com/project-two"
+      }
+    ]
   },
   {
     "title": "Project Three",
@@ -29,7 +54,15 @@
     "blurb": "This is a short description of Project Three.",
     "description": "This is a long description of Project Three. Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis nam reiciendis, aspernatur maiores vel quam magnam explicabo quos mollitia deleniti esse sint cum aliquam debitis beatae vero. Quaerat, dolore amet quia doloribus optio modi, praesentium autem illum perferendis odio veniam temporibus perspiciatis culpa quis impedit! Velit voluptates amet quis cupiditate fugiat voluptatibus nisi earum, placeat fuga.",
     "technologies": ["HTML", "CSS", "Handlebars", "jQuery"],
-    "liveDemoLink": "https://example.com/project-two",
-    "githubLink": "https://github.com/username/project-two"
+    "links": [
+      {
+        "name": "GitHub",
+        "url": "https://github.com/username/project-three"
+      },
+      {
+        "name": "Live Demo",
+        "url": "https://example.com/project-three"
+      }
+    ]
   }
 ]

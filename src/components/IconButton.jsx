@@ -4,6 +4,7 @@ import { useThemeContext } from '../contexts/ThemeContext';
 const IconButton = ({ icon: Icon, text, onClick, className = '' }) => {
   const { dynamicColor } = useThemeContext();
 
+  // NOTE: remove dynamicColor and ternary for old theme. just leave last argument (cta)
   const hoverColor = dynamicColor ? 'hover:shadow-dynamic hover:text-dynamic transition duration-100' : 'hover:shadow-cta hover:text-cta transition duration-100';
 
   return (
