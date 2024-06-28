@@ -28,7 +28,7 @@ const Projects = () => {
 
   return (
     <div id='projects' className='flex flex-col items-center justify-center p-10'>
-      <h1 className="text-5xl font-bold text-htag mb-6 text-center justify-center bg-card rounded-xl px-6 py-4 border-2 border-border/80">My Projects</h1>
+      <h1 className="sm:text-5xl text-4xl font-bold text-htag mb-6 text-center justify-center bg-card rounded-xl px-6 py-4 border-2 border-border/80">My Projects</h1>
       <div className="flex flex-wrap justify-center">
         {projectsData.map((project, index) => (
           <ProjectCard 
