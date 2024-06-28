@@ -3,8 +3,6 @@ To Do:
 
 ** code cleanup day?... optimize components for readability
 
-** check responsiveness (About & ProjectCards)
-
 
 
 

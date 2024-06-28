@@ -105,32 +105,32 @@ const ProjectModal = ({ project, onClose, onPrev, onNext }) => {
         <IconButton
           icon={IoClose}
           onClick={onClose}
-          className="absolute lg:-top-20 lg:-right-20 -top-16 mt-1 -right-5 text-primary hover:text-cta-active"
+          className="absolute lg:-top-20 lg:-right-20 -top-16 mt-1 -right-5 text-primary hover:text-dynamic"
         />
 
         <IconButton
           icon={IoClose}
           onClick={onClose}
-          className="hidden lg:block absolute lg:-top-20 lg:-right-20 -top-16 mt-1 -right-5 text-primary hover:text-cta-active"
+          className="hidden lg:block absolute lg:-top-20 lg:-right-20 -top-16 mt-1 -right-5 text-primary hover:text-dynamic"
         />
         <IconButton
           icon={IoChevronBack}
           onClick={onPrev}
-          className="hidden lg:block absolute top-1/2 -left-20 text-primary hover:text-cta-active"
+          className="hidden lg:block absolute top-1/2 -left-20 text-primary opacity-80 hover:text-dynamic"
         />
         <IconButton
           icon={IoChevronForward}
           onClick={onNext}
-          className="hidden lg:block absolute top-1/2 -right-20 text-primary hover:text-cta-active"
+          className="hidden lg:block absolute top-1/2 -right-20 text-primary opacity-80 hover:text-dynamic"
         />
 
         <IoChevronBack
           onClick={onPrev}
-          className="block lg:hidden absolute top-1/2 -left-5 text-3xl bg-card/40 rounded-full text-primary hover:text-cta-active"
+          className="block lg:hidden absolute top-1/2 -left-5 text-4xl p-2 bg-card/80 rounded-full text-primary hover:text-dynamic"
         />
         <IoChevronForward
           onClick={onNext}
-          className="block lg:hidden absolute top-1/2 -right-5 text-3xl bg-card/40 rounded-full text-primary hover:text-cta-active"
+          className="block lg:hidden absolute top-1/2 -right-5 text-4xl p-2 bg-card/80 rounded-full text-primary hover:text-dynamic"
         />
 
         <div ref={contentRef} className="bg-card rounded-lg p-6 max-h-[80vh] overflow-y-auto">

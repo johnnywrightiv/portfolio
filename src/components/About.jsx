@@ -34,17 +34,19 @@ const About = () => {
   return (
     <div id='about' className="min-h-screen flex items-center justify-center p-8 transition-all duration-500">
       <div className="max-w-4xl w-full bg-card bg-opacity-90 backdrop-filter backdrop-blur-lg rounded-xl shadow-2xl p-12 transition-all duration-500 ease-in-out md:hover:shadow-3xl md:hover:scale-105 border-2 border-border/80">
-        <h1 className="text-5xl font-bold text-htag mb-8">
-          Hey, I'm <span className={`${textColorClass} font-light`}>John Wright</span> 👋
+        <h1 className="sm:text-5xl text-4xl font-bold text-htag mb-8 md:text-start text-center">
+          Hey, I'm 
+          <span className={`block sm:inline ${textColorClass} font-light`}> John Wright </span>
+          <span className='hidden sm:inline'>👋</span>
         </h1>
         
-        <div className="flex flex-col md:flex-row items-start mb-12">
+        <div className="flex flex-col md:flex-row items-center md:items-start mb-12">
           <img 
             src={IMAGE_URL}
             alt="John Wright" 
             className="w-48 h-48 rounded-full shadow-lg mb-6 md:mb-0 md:mr-8 transition-transform duration-300 ease-in-out md:hover:scale-105"
           />
-          <div className="flex-1">
+          <div className="flex-1 text-center md:text-left">
             <p className="text-lg text-ptag mb-4">
               I'm a passionate full-stack developer with a keen eye for improving UX. My journey in tech so far has afforded me firsthand experience across the development lifecycle - from project management and design, to crafting sleek UIs, to architecting APIs and robust backend systems.
             </p>
