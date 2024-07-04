@@ -12,7 +12,7 @@ import BreakpointOverlay from "./utils/BreakpointOverlay";
 const AppContent = () => {
   
   return (
-    <div className="bg-background">
+    <div className='bg-background'>
       <CursorAnimation />
       <ThemeSelector />
       <Navbar />

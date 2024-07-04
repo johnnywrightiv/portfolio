@@ -71,6 +71,34 @@
   --linkedin: 250, 250, 250;
 }
 
+@media (prefers-reduced-motion) {
+  .hide {
+    transition: none;
+  }
+}
+
+.hide {
+  /* background: red; */
+  opacity: 0;
+  transition: all 1s;
+  filter: blur(5px);
+  transform: translateX(-100%);
+}
+
+.show {
+  /* background: blue; */
+  opacity: 1;
+  filter: blur(0);
+  transform: translateX(0);
+}
+
+.project-card:nth-child(2) {
+  transition-delay: 200ms;
+}
+.project-card:nth-child(3) {
+  transition-delay: 300ms;
+}
+
 #cursor {
   background: linear-gradient(
     to right,
