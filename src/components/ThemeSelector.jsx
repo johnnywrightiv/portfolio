@@ -22,7 +22,7 @@ const ThemeSelector = ({ isMobile = false }) => {
   const hoverColor = dynamicColor ? 'hover:shadow-dynamic hover:text-dynamic transition duration-100' : 'hover:shadow-cta hover:text-cta transition duration-100';
 
   return (
-    <div className={isMobile ? "fixed right-1 top-4 z-10" : "md:block hidden fixed top-4 z-10"} ref={menuRef}>
+    <div className={isMobile ? "fixed right-1 top-4 z-20" : "md:block hidden fixed top-4 z-30"} ref={menuRef}>
       <div className="relative">
         <button
           onClick={() => setIsOpen(!isOpen)}
@@ -39,7 +39,7 @@ const ThemeSelector = ({ isMobile = false }) => {
                 <button
                   key={t}
                   onClick={() => handleChangeTheme(t)}
-                  className={`custom-button group ${
+                  className={`custom-button opacity-85 group ${
                     theme === t ? 'bg-secondary/80' : ''
                   } ${hoverColor}`}
                 >

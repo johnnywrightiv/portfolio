@@ -5,16 +5,17 @@ import About from "./components/About";
 import Projects from "./components/Projects";
 import Contact from "./components/Contact";
 import ThemeSelector from "./components/ThemeSelector";
-import { ThemeProvider, useThemeContext } from "./contexts/ThemeContext";
+import { CursorAnimation } from './components/CursorAnimation';
+import { ThemeProvider } from "./contexts/ThemeContext";
 import BreakpointOverlay from "./utils/BreakpointOverlay";
 
 const AppContent = () => {
-  const { dynamicColor } = useThemeContext();
   
   return (
-    <div className={`${dynamicColor ? 'bg-dynamic' : 'bg-cta'}`}>
-      <ThemeSelector/>
-      <Navbar/>
+    <div className="bg-background">
+      <CursorAnimation />
+      <ThemeSelector />
+      <Navbar />
       <Hero />
       <About />
       <Projects />
@@ -27,7 +28,7 @@ function App() {
   return (
     <ThemeProvider>
       <AppContent />
-      <BreakpointOverlay/>
+      <BreakpointOverlay />
     </ThemeProvider>
   );
 }

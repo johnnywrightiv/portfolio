@@ -1,14 +1,10 @@
 To Do:
 
+- animatie elements on scroll
 
-** code cleanup day?... optimize components for readability
+- background (gradients / patterns / hero)?
 
 
-
-
-- animations (hero section, mouse follow, contact & other elements?)
-
-- background (gradients/patterns)?
 
 
 

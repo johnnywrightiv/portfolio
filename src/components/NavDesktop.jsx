@@ -3,7 +3,7 @@ import IconButton from './IconButton';
 
 const NavDesktop = ({ navItems }) => (
   <div 
-    className='md:block hidden fixed top-[25%] z-10'
+    className='md:block hidden fixed top-[25%] z-20'
     role="navigation"
     aria-label="Desktop navigation"
   >

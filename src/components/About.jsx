@@ -11,11 +11,11 @@ const techStack = [
   { Icon: FaJsSquare, name: "JavaScript", color: "#F7DF1E" },
   { Icon: FaReact, name: "React", color: "#61DAFB" },
   { Icon: SiRedux, name: "Redux", color: "#764ABC" },
-  { Icon: SiNextdotjs, name: "Next.js", color: "#000000", darkColor: "white" },
+  { Icon: SiNextdotjs, name: "Next.js", color: "#000000", darkColor: "#FFFFFF" },
   { Icon: SiTailwindcss, name: "Tailwind", color: "#06B6D4" },
   { Icon: FaBootstrap, name: "Bootstrap", color: "#7952B3" },
   { Icon: FaNodeJs, name: "Node.js", color: "#5FA04E" },
-  { Icon: SiExpress, name: "Express", color: "#000000", darkColor: "white" },
+  { Icon: SiExpress, name: "Express", color: "#000000", darkColor: "#FFFFFF" },
   { Icon: SiMongodb, name: "MongoDB", color: "#47A248" },
   { Icon: FaPython, name: "Python", color: "#3776AB" },
   { Icon: FaGitAlt, name: "Git", color: "#F05032" },
@@ -32,8 +32,8 @@ const About = () => {
   const textColorClass = determineTextColorClass(dynamicColor);
 
   return (
-    <div id='about' className="min-h-screen flex items-center justify-center p-8 transition-all duration-500">
-      <div className="max-w-4xl w-full bg-card bg-opacity-90 backdrop-filter backdrop-blur-lg rounded-xl shadow-2xl p-12 transition-all duration-500 ease-in-out md:hover:shadow-3xl md:hover:scale-105 border-2 border-border/80">
+    <div id='about' className="min-h-screen flex items-center justify-center p-8 transition-all duration-500 z-20">
+      <div className="max-w-4xl w-full bg-card bg-opacity-90 backdrop-filter backdrop-blur-lg rounded-xl shadow-2xl p-12 border-2 border-border transition-all duration-500 ease-in-out md:hover:shadow-3xl md:hover:scale-105 md:hover:border-primary/80 z-10">
         <h1 className="sm:text-5xl text-4xl font-bold text-htag mb-8 md:text-start text-center">
           Hey, I'm 
           <span className={`block sm:inline ${textColorClass} font-light`}> John Wright </span>
@@ -44,7 +44,7 @@ const About = () => {
           <img 
             src={IMAGE_URL}
             alt="John Wright" 
-            className="w-48 h-48 rounded-full shadow-lg mb-6 md:mb-0 md:mr-8 transition-transform duration-300 ease-in-out md:hover:scale-105"
+            className="w-48 h-48 rounded-full shadow-lg mb-6 md:mb-0 md:mr-8"
           />
           <div className="flex-1 text-center md:text-left">
             <p className="text-lg text-ptag mb-4">
