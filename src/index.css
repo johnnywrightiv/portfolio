@@ -78,18 +78,36 @@
 }
 
 .hide {
-  /* background: red; */
   opacity: 0;
   transition: all 1s;
-  filter: blur(5px);
-  transform: translateX(-100%);
 }
 
 .show {
-  /* background: blue; */
   opacity: 1;
-  filter: blur(0);
+}
+
+.animate-fade {
+  transform: scale(0.5);
+}
+
+.animate-fade.show {
+  transform: scale(1);
+}
+
+.animate-slide-left {
+  transform: translateX(-100%);
+}
+
+.animate-slide-left.show {
   transform: translateX(0);
+}
+
+.animate-slide-up {
+  transform: translateY(100%);
+}
+
+.animate-slide-up.show {
+  transform: translateY(0);
 }
 
 .project-card:nth-child(2) {

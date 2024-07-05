@@ -9,7 +9,7 @@ const ProjectCard = ({ project, onSeeMore }) => {
   const { dynamicColor } = useThemeContext();
 
   return (
-    <div ref={ref} className="project-card group bg-card shadow-lg border-2 border-border rounded-xl p-4 md:p-6 m-4 flex flex-col w-[90%] mx-auto transition-all duration-300 md:hover:shadow-2xl md:hover:scale-105 md:hover:border-primary/80 hide">
+    <div ref={ref} className="project-card group bg-card shadow-lg border-2 border-border rounded-xl p-4 md:p-6 m-4 flex flex-col w-[90%] mx-auto transition-all duration-300 md:hover:shadow-2xl md:hover:scale-105 md:hover:border-primary/80 hide animate-slide-left">
       <div className="flex flex-col md:flex-row items-start">
         <div className="w-full md:w-72 h-48 md:h-64 lg:h-80 md:mr-6 overflow-hidden rounded-lg mb-4 md:mb-0 flex-shrink-0">
           <img

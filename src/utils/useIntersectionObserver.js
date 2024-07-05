@@ -1,15 +1,15 @@
 import { useEffect, useRef } from 'react';
 
-function useIntersectionObserver(options = {}) {
+function useIntersectionObserver(animationType = 'fade', options = {}) {
   const ref = useRef(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          entry.target.classList.add('show');
+          entry.target.classList.add('show', `animate-${animationType}`);
         } else {
-          entry.target.classList.remove('show');
+          entry.target.classList.remove('show', `animate-${animationType}`);
         }
       });
     }, options);
@@ -23,7 +23,7 @@ function useIntersectionObserver(options = {}) {
         observer.unobserve(ref.current);
       }
     };
-  }, [options]);
+  }, [animationType, options]);
 
   return ref;
 }

@@ -1,13 +1,6 @@
 To Do:
 
-- animatie elements on scroll
-
 - background (gradients / patterns / hero)?
-
-
-
-
-
 
 - add project content (screenshots, links, info, tech stacks)
 

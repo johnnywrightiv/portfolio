@@ -18,7 +18,7 @@ const Contact = () => {
   };
 
   return (
-    <div id='contact' ref={ref} className="bg-contact-bg flex flex-col items-center justify-center p-16 z-20 hide">
+    <div id='contact' ref={ref} className="bg-contact-bg flex flex-col items-center justify-center p-16 z-20 hide animate-fade">
       <h1 className="text-4xl font-bold text-htag mb-6 z-10">Contact Me</h1>
       <button className="text-lg text-ptag mb-4 z-10" onClick={handleEmailClick}>johnnywrightiv@gmail.com</button>
       <div className="flex space-x-4 pr-2 z-10">

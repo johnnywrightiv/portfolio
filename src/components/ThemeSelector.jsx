@@ -25,7 +25,7 @@ const ThemeSelector = ({ isMobile = false }) => {
 
   return (
     <div ref={menuRef}>
-      <div className={isMobile ? "fixed right-1 top-4 z-20" : "md:block hidden fixed top-4 z-30 hide"} ref={ref}>
+      <div className={isMobile ? "fixed right-1 top-4 z-20" : "md:block hidden fixed top-4 z-30 hide animate-slide-left"} ref={ref}>
         <div className="relative">
           <button
             onClick={() => setIsOpen(!isOpen)}

@@ -8,7 +8,7 @@ const NavDesktop = ({ navItems }) => {
   return (
     <div 
       ref={ref}
-      className='md:block hidden fixed top-[25%] z-20 hide'
+      className='md:block hidden fixed top-[25%] z-20 hide animate-slide-left'
       role="navigation"
       aria-label="Desktop navigation"
     >
