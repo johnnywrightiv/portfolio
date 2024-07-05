@@ -1,10 +1,14 @@
 import React from 'react';
 import IconButton from './IconButton';
-import { FaGithub, FaLinkedin } from 'react-icons/fa';
+import { useThemeContext } from '../contexts/ThemeContext';
 import useIntersectionObserver from '../utils/useIntersectionObserver';
+import useNavigation from '../utils/useNavigation';
+import { FaGithub, FaLinkedin } from 'react-icons/fa';
 
 const Contact = () => {
+  const navigateTo = useNavigation();
   const ref = useIntersectionObserver();
+  const { dynamicColor } = useThemeContext();
   
   const handleEmailClick = () => {
     window.location.href = 'mailto:johnnywrightiv@gmail.com';
@@ -22,7 +26,7 @@ const Contact = () => {
     <div className="overflow-hidden">
       <footer id='contact' ref={ref} className={`bg-gradient-to-br from-contact-bg to-cta/40 flex flex-col items-center justify-center p-16 z-20 hide animate-zoom-in rounded-xl border-secondary/50 border-t-2`}>
         <h1 className="text-4xl font-bold text-htag mb-6 z-10">Contact Me</h1>
-        <button className="text-lg text-ptag mb-4 z-10" onClick={handleEmailClick}>johnnywrightiv@gmail.com</button>
+        <button className={`text-lg text-ptag mb-4 z-10 ${dynamicColor ? 'hover:text-dynamic' : 'hover:text-cta'}`} onClick={handleEmailClick}>johnnywrightiv@gmail.com</button>
         <div className="flex space-x-4 pr-2 z-10">
           <IconButton
             icon={FaGithub}
@@ -37,6 +41,12 @@ const Contact = () => {
             aria-label="LinkedIn"
           />
         </div>
+        <button
+          onClick={() => navigateTo('main')}
+          className={`text-primary z-30 ${dynamicColor ? 'hover:text-dynamic' : 'hover:text-cta'} absolute bottom-10 right-10`}
+        >
+          ↑ Back to Top
+        </button>
       </footer>
     </div>
   );

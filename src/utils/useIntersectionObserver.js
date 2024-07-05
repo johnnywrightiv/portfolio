@@ -9,7 +9,8 @@ function useIntersectionObserver(animationType = 'fade', options = {}) {
         if (entry.isIntersecting) {
           entry.target.classList.add('show', `animate-${animationType}`);
         } else {
-          entry.target.classList.remove('show', `animate-${animationType}`);
+          // NOTE: uncomment to make animations repeat when coming into view again. leave out to only animate once.
+          // entry.target.classList.remove('show', `animate-${animationType}`);
         }
       });
     }, options);
