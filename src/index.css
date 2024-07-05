@@ -79,7 +79,7 @@
 
 .hide {
   opacity: 0;
-  transition: all 1s;
+  transition: all 1.5s;
 }
 
 .show {
@@ -87,10 +87,12 @@
 }
 
 .animate-fade {
-  transform: scale(0.5);
+  opacity: 0;
+  transform: scale(0.95);
 }
 
 .animate-fade.show {
+  opacity: 1;
   transform: scale(1);
 }
 
@@ -110,11 +112,12 @@
   transform: translateY(0);
 }
 
-.project-card:nth-child(2) {
-  transition-delay: 200ms;
+.animate-zoom-in {
+  transform: scale(0);
 }
-.project-card:nth-child(3) {
-  transition-delay: 300ms;
+
+.animate-zoom-in.show {
+  transform: scale(1);
 }
 
 #cursor {

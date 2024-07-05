@@ -4,7 +4,7 @@ import { determineTextColorClass } from '../utils/determineTextColorClass';
 
 const TechBubble = ({ text, size = 'normal' }) => {
   const sizeClasses = size === 'small' ? 'text-sm m-1 p-1' : 'm-2 p-2';
-  const { setColor, dynamicColor } = useThemeContext();
+  const { dynamicColor } = useThemeContext();
   const textColorClass = determineTextColorClass(dynamicColor);
 
   const badgeStyle =`bg-border/50 ${textColorClass}`;

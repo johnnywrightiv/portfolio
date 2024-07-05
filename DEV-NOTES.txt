@@ -1,7 +1,20 @@
 To Do:
 
-- background (gradients / patterns / hero)?
+- hero text animation
+- hero 'scroll to about' button
+- contact 'scroll to top' button
+
+
+- figure out background... texture, screen, etc?
+
+
+
+
+
+
 
 - add project content (screenshots, links, info, tech stacks)
+
+- code cleanup for readability & accessibility
 
 - deploy and move on!
