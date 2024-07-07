@@ -14,7 +14,7 @@ const AppContent = () => {
   const ref = useIntersectionObserver();
   
   return (
-    <div ref={ref} className='bg-background bg-texture hide md:block animate-fade'>
+    <div ref={ref} className='bg-background bg-texture hide animate-fade'>
       <CursorAnimation />
       <ThemeSelector />
       <Navbar />

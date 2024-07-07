@@ -24,7 +24,7 @@ const Contact = () => {
 
   return (
     <div className="overflow-hidden">
-      <footer id='contact' ref={ref} className={`bg-gradient-to-br from-contact-bg to-cta flex flex-col items-center justify-center p-16 z-20 hide md:animate-zoom-in show rounded-t-xl border-secondary/50 border-t-2`}>
+      <footer id='contact' ref={ref} className={`bg-gradient-to-br from-contact-bg to-cta flex flex-col items-center justify-center p-16 z-20 hide animate-zoom-in rounded-t-xl border-secondary/50 border-t-2`}>
         <h1 className="text-4xl font-bold text-htag mb-6 z-10">Contact Me</h1>
         <button className={`text-lg text-ptag mb-4 z-10 ${dynamicColor ? 'hover:text-dynamic' : 'hover:text-cta'}`} onClick={handleEmailClick}>johnnywrightiv@gmail.com</button>
         <div className="flex space-x-4 pr-2 z-10">

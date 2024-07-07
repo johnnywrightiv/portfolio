@@ -26,7 +26,7 @@ const Hero = () => {
       {showButton && (
         <button
           onClick={() => navigateTo('about')}
-          className={`text-primary z-30 text-5xl bg-card rounded-full ${dynamicColor ? 'hover:text-dynamic' : 'hover:text-cta'} absolute bottom-12 animate-fade animate-pulse`}
+          className={`text-primary z-30 text-5xl rounded-full ${dynamicColor ? 'hover:text-dynamic' : 'hover:text-cta'} absolute bottom-12 animate-fade animate-pulse`}
         >
           <CiCircleChevDown />
         </button>
