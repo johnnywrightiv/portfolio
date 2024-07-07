@@ -8,11 +8,13 @@ import ThemeSelector from "./components/ThemeSelector";
 import { CursorAnimation } from './components/CursorAnimation';
 import { ThemeProvider } from "./contexts/ThemeContext";
 import BreakpointOverlay from "./utils/BreakpointOverlay";
+import useIntersectionObserver from './utils/useIntersectionObserver'
 
 const AppContent = () => {
+  const ref = useIntersectionObserver();
   
   return (
-    <div className='bg-background'>
+    <div ref={ref} className='bg-background bg-texture hide md:block animate-fade'>
       <CursorAnimation />
       <ThemeSelector />
       <Navbar />

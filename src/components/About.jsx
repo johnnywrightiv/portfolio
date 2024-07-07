@@ -35,7 +35,7 @@ const About = () => {
 
   return (
     <div id='about' className="min-h-screen flex items-center justify-center p-8 transition-all duration-500 z-20">
-      <div ref={ref} className="max-w-4xl w-full bg-card bg-opacity-90 backdrop-filter backdrop-blur-lg rounded-xl shadow-2xl p-12 border-2 border-border transition-all duration-500 ease-in-out md:hover:shadow-3xl md:hover:scale-105 md:hover:border-primary/80 z-10 hide animate-fade">
+      <div ref={ref} className="max-w-4xl w-full bg-card bg-opacity-90 backdrop-filter backdrop-blur-lg rounded-xl shadow-2xl p-12 border-2 border-border transition-all duration-500 ease-in-out md:hover:shadow-3xl md:hover:scale-105 md:hover:border-primary/80 z-10 hide md:animate-zoom-in show">
         <h1 className="sm:text-5xl text-4xl font-bold text-htag mb-8 md:text-start text-center">
           Hey, I'm 
           <span className={`block sm:inline ${textColorClass} font-light`}> John Wright </span>
