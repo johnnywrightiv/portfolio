@@ -1,103 +1,110 @@
-import React, { useEffect, useRef, useCallback } from 'react';
-import TechBubble from './TechBubble';
-import useBlur from '../utils/useBlur';
-import IconButton from './IconButton';
-import { useThemeContext } from '../contexts/ThemeContext';
-import { IoClose, IoChevronBack, IoChevronForward } from 'react-icons/io5';
-import { FaGithub } from 'react-icons/fa';
-import { BsGlobeAmericas } from 'react-icons/bs';
+import React, { useEffect, useRef, useCallback } from 'react'
+import TechBubble from './TechBubble'
+import useBlur from '../utils/useBlur'
+import IconButton from './IconButton'
+import { useThemeContext } from '../contexts/ThemeContext'
+import { IoClose, IoChevronBack, IoChevronForward } from 'react-icons/io5'
+import { FaGithub } from 'react-icons/fa'
+import { BsGlobeAmericas } from 'react-icons/bs'
 
 const ProjectModal = ({ project, onClose, onPrev, onNext }) => {
-  const { title, image, blurb, description, technologies, links } = project;
-  const { dynamicColor } = useThemeContext();
-  const modalRef = useBlur(onClose);
-  const contentRef = useRef(null);
+  const { title, image, blurb, description, technologies, links } = project
+  const { dynamicColor } = useThemeContext()
+  const modalRef = useBlur(onClose)
+  const contentRef = useRef(null)
 
   useEffect(() => {
-    document.body.style.overflow = 'hidden';
+    document.body.style.overflow = 'hidden'
     return () => {
-      document.body.style.overflow = 'unset';
-    };
-  }, []);
-
-  const handleKeyDown = useCallback((event) => {
-    if (event.key === 'ArrowLeft') {
-      onPrev();
-    } else if (event.key === 'ArrowRight') {
-      onNext();
+      document.body.style.overflow = 'unset'
     }
-  }, [onPrev, onNext]);
+  }, [])
+
+  const handleKeyDown = useCallback(
+    (event) => {
+      if (event.key === 'ArrowLeft') {
+        onPrev()
+      } else if (event.key === 'ArrowRight') {
+        onNext()
+      }
+    },
+    [onPrev, onNext]
+  )
 
   useEffect(() => {
-    document.addEventListener('keydown', handleKeyDown);
+    document.addEventListener('keydown', handleKeyDown)
     return () => {
-      document.removeEventListener('keydown', handleKeyDown);
-    };
-  }, [handleKeyDown]);
+      document.removeEventListener('keydown', handleKeyDown)
+    }
+  }, [handleKeyDown])
 
   useEffect(() => {
-    let touchStartX = 0;
-    let touchEndX = 0;
-    let touchStartY = 0;
-    let touchEndY = 0;
+    let touchStartX = 0
+    let touchEndX = 0
+    let touchStartY = 0
+    let touchEndY = 0
 
     const handleTouchStart = (e) => {
-      touchStartX = e.touches[0].clientX;
-      touchStartY = e.touches[0].clientY;
-    };
+      touchStartX = e.touches[0].clientX
+      touchStartY = e.touches[0].clientY
+    }
 
     const handleTouchMove = (e) => {
-      touchEndX = e.touches[0].clientX;
-      touchEndY = e.touches[0].clientY;
-    };
+      touchEndX = e.touches[0].clientX
+      touchEndY = e.touches[0].clientY
+    }
 
     const handleTouchEnd = () => {
-      const horizontalDistance = touchStartX - touchEndX;
-      const verticalDistance = touchStartY - touchEndY;
+      const horizontalDistance = touchStartX - touchEndX
+      const verticalDistance = touchStartY - touchEndY
 
-      if (Math.abs(horizontalDistance) > Math.abs(verticalDistance) && Math.abs(horizontalDistance) > 75) {
+      if (
+        Math.abs(horizontalDistance) > Math.abs(verticalDistance) &&
+        Math.abs(horizontalDistance) > 75
+      ) {
         if (horizontalDistance > 0) {
-          onNext();
+          onNext()
         } else {
-          onPrev();
+          onPrev()
         }
       }
-    };
+    }
 
-    const content = contentRef.current;
+    const content = contentRef.current
     if (content) {
-      content.addEventListener('touchstart', handleTouchStart);
-      content.addEventListener('touchmove', handleTouchMove);
-      content.addEventListener('touchend', handleTouchEnd);
+      content.addEventListener('touchstart', handleTouchStart)
+      content.addEventListener('touchmove', handleTouchMove)
+      content.addEventListener('touchend', handleTouchEnd)
     }
 
     return () => {
       if (content) {
-        content.removeEventListener('touchstart', handleTouchStart);
-        content.removeEventListener('touchmove', handleTouchMove);
-        content.removeEventListener('touchend', handleTouchEnd);
+        content.removeEventListener('touchstart', handleTouchStart)
+        content.removeEventListener('touchmove', handleTouchMove)
+        content.removeEventListener('touchend', handleTouchEnd)
       }
-    };
-  }, [onNext, onPrev]);
+    }
+  }, [onNext, onPrev])
 
   const renderLinkButton = (link) => {
-    const isGithub = link.name.toLowerCase().includes('github') || link.url.includes('github');
-    const Icon = isGithub ? FaGithub : BsGlobeAmericas;
+    const isGithub =
+      link.name.toLowerCase().includes('github') || link.url.includes('github')
+    const Icon = isGithub ? FaGithub : BsGlobeAmericas
     const buttonClass = isGithub
-      ? "bg-primary text-background hover:bg-primary/80"
-      : `${dynamicColor ? 'bg-dynamic hover:bg-dynamic' : 'bg-cta hover:bg-cta'} text-white hover:opacity-80`;
+      ? 'bg-primary text-background hover:bg-primary/80'
+      : `${dynamicColor ? 'bg-dynamic hover:bg-dynamic' : 'bg-cta hover:bg-cta'} text-white hover:opacity-80`
 
     return (
-      <button 
+      <button
         key={link.url}
-        onClick={() => window.open(link.url, '_blank')} 
+        onClick={() => window.open(link.url, '_blank')}
         className={`${buttonClass} px-4 py-2 rounded-xl font-semibold transition-all duration-300 hover:scale-105 hover:shadow-md flex items-center`}
       >
         <Icon className="mr-2" />
         {link.name}
       </button>
-    );
-  };
+    )
+  }
 
   return (
     <div className="fixed inset-0 bg-primary/40 flex items-center justify-center p-4 z-50">
@@ -133,7 +140,10 @@ const ProjectModal = ({ project, onClose, onPrev, onNext }) => {
           className="block lg:hidden absolute top-1/2 -right-5 text-4xl p-2 bg-card/80 rounded-full text-primary hover:text-dynamic"
         />
 
-        <div ref={contentRef} className="bg-card rounded-lg p-6 max-h-[80vh] overflow-y-auto">
+        <div
+          ref={contentRef}
+          className="bg-card rounded-lg p-6 max-h-[80vh] overflow-y-auto"
+        >
           <h2 className="text-3xl font-bold text-htag mb-4">{title}</h2>
           <p className="text-secondary text-xl mb-6">{blurb}</p>
           <div className="w-full h-64 overflow-hidden rounded-lg mb-6">
@@ -145,10 +155,16 @@ const ProjectModal = ({ project, onClose, onPrev, onNext }) => {
           </div>
           <p className="text-secondary text-xl mb-6">{description}</p>
           <div className="mb-6">
-            <h3 className="text-2xl font-semibold text-htag mb-2">Technologies Used</h3>
+            <h3 className="text-2xl font-semibold text-htag mb-2">
+              Technologies Used
+            </h3>
             <div className="flex flex-wrap gap-2">
               {technologies.map((tech, index) => (
-                <TechBubble key={`${tech}-${index}`} text={tech} size="medium" />
+                <TechBubble
+                  key={`${tech}-${index}`}
+                  text={tech}
+                  size="medium"
+                />
               ))}
             </div>
           </div>
@@ -158,7 +174,7 @@ const ProjectModal = ({ project, onClose, onPrev, onNext }) => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default ProjectModal;
+export default ProjectModal

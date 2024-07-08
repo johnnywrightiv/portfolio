@@ -1,14 +1,14 @@
-import React from 'react';
-import IconButton from './IconButton';
-import useIntersectionObserver from '../utils/useIntersectionObserver';
+import React from 'react'
+import IconButton from './IconButton'
+import useIntersectionObserver from '../utils/useIntersectionObserver'
 
 const NavDesktop = ({ navItems }) => {
-  const ref = useIntersectionObserver();
+  const ref = useIntersectionObserver()
 
   return (
-    <div 
+    <div
       ref={ref}
-      className='md:block hidden fixed top-[25%] z-20 hide animate-slide-left'
+      className="md:block hidden fixed top-[25%] z-20 hide animate-slide-left"
       role="navigation"
       aria-label="Desktop navigation"
     >
@@ -18,13 +18,13 @@ const NavDesktop = ({ navItems }) => {
             key={item.href}
             icon={item.icon}
             text={item.text}
-            onClick={() => window.location.href = item.href}
+            onClick={() => (window.location.href = item.href)}
             aria-label={item.text}
           />
         ))}
       </div>
     </div>
   )
-};
+}
 
-export default NavDesktop;
+export default NavDesktop

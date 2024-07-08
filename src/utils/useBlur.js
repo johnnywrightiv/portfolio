@@ -1,31 +1,31 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react'
 
 function useBlur(callback) {
-  const ref = useRef();
+  const ref = useRef()
 
   useEffect(() => {
     function handleClickOutside(event) {
       if (ref.current && !ref.current.contains(event.target)) {
-        callback();
+        callback()
       }
     }
 
     function handleEscapeKey(event) {
       if (event.key === 'Escape') {
-        callback();
+        callback()
       }
     }
 
-    document.addEventListener('mousedown', handleClickOutside);
-    document.addEventListener('keydown', handleEscapeKey);
+    document.addEventListener('mousedown', handleClickOutside)
+    document.addEventListener('keydown', handleEscapeKey)
 
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-      document.removeEventListener('keydown', handleEscapeKey);
-    };
-  }, [callback]);
+      document.removeEventListener('mousedown', handleClickOutside)
+      document.removeEventListener('keydown', handleEscapeKey)
+    }
+  }, [callback])
 
-  return ref;
+  return ref
 }
 
-export default useBlur;
+export default useBlur

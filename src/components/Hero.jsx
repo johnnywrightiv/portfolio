@@ -1,49 +1,52 @@
-import React, { useState, useEffect } from 'react';
-import { useThemeContext } from '../contexts/ThemeContext';
-import useIntersectionObserver from '../utils/useIntersectionObserver';
-import useNavigation from '../utils/useNavigation';
-import { CiCircleChevDown } from "react-icons/ci";
-import { TypeAnimation } from 'react-type-animation';
+import React, { useState, useEffect } from 'react'
+import { useThemeContext } from '../contexts/ThemeContext'
+import useIntersectionObserver from '../utils/useIntersectionObserver'
+import useNavigation from '../utils/useNavigation'
+import { CiCircleChevDown } from 'react-icons/ci'
+import { TypeAnimation } from 'react-type-animation'
 
 const Hero = () => {
-  const navigateTo = useNavigation();
-  const ref = useIntersectionObserver();
-  const { dynamicColor } = useThemeContext();
-  const [showButton, setShowButton] = useState(false);
-  const [showH1, setShowH1] = useState(false);
+  const navigateTo = useNavigation()
+  const ref = useIntersectionObserver()
+  const { dynamicColor } = useThemeContext()
+  const [showButton, setShowButton] = useState(false)
+  const [showH1, setShowH1] = useState(false)
 
   useEffect(() => {
     const h1Timer = setTimeout(() => {
-      setShowH1(true);
-    }, 1500);
+      setShowH1(true)
+    }, 1500)
 
     const buttonTimer = setTimeout(() => {
-      setShowButton(true);
-    }, 3500);
+      setShowButton(true)
+    }, 3500)
 
     return () => {
-      clearTimeout(h1Timer);
-      clearTimeout(buttonTimer);
-    };
-  }, []);
+      clearTimeout(h1Timer)
+      clearTimeout(buttonTimer)
+    }
+  }, [])
 
   const handleButtonClick = () => {
-    setShowButton(false);
-    navigateTo('about');
-  };
+    setShowButton(false)
+    navigateTo('about')
+  }
 
   return (
-    <div id='main' className='h-screen flex flex-col items-center justify-center p-8 z-10'>
-        
+    <div
+      id="main"
+      className="h-screen flex flex-col items-center justify-center p-8 z-10"
+    >
       {showH1 && (
-        <h1 ref={ref} className="text-5xl font-bold text-htag mb-12 text-center hide animate-fade absolute">
+        <h1
+          ref={ref}
+          className="text-5xl font-bold text-htag mb-12 text-center hide animate-fade absolute"
+        >
           <TypeAnimation
-            sequence={[
-              'welcome to my portfolio',
-            ]}
+            sequence={['welcome to my portfolio']}
             wrapper="span"
             speed={40}
-            repeat="no" 
+            repeat="no"
           />
         </h1>
       )}
@@ -53,14 +56,16 @@ const Hero = () => {
           <button
             onClick={handleButtonClick}
             className={`text-primary z-30 rounded-full ${dynamicColor ? 'hover:text-dynamic' : 'hover:text-cta'} absolute bottom-12 animate-fade animate-pulse`}
-            >
-            <CiCircleChevDown className='text-5xl text-center' />
+          >
+            <CiCircleChevDown className="text-5xl text-center" />
           </button>
-          <p className="text-center text-primary absolute bottom-4 animate-fade animate-pulse">psst... it's down here</p>
+          <p className="text-center text-primary absolute bottom-4 animate-fade animate-pulse">
+            psst... it's down here
+          </p>
         </>
       )}
     </div>
-  );
-};
+  )
+}
 
-export default Hero;
+export default Hero

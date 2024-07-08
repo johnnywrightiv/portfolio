@@ -1,32 +1,32 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react'
 
 const BreakpointOverlay = () => {
   const [windowSize, setWindowSize] = useState({
     width: window.innerWidth,
     height: window.innerHeight,
-  });
+  })
 
   useEffect(() => {
     const handleResize = () => {
       setWindowSize({
         width: window.innerWidth,
         height: window.innerHeight,
-      });
-    };
+      })
+    }
 
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
 
   const getBreakpoint = (width) => {
-    if (width < 640) return 'sm';
-    if (width < 768) return 'md';
-    if (width < 1024) return 'lg';
-    if (width < 1280) return 'xl';
-    return '2xl';
-  };
+    if (width < 640) return 'sm'
+    if (width < 768) return 'md'
+    if (width < 1024) return 'lg'
+    if (width < 1280) return 'xl'
+    return '2xl'
+  }
 
-  const breakpoint = getBreakpoint(windowSize.width);
+  const breakpoint = getBreakpoint(windowSize.width)
 
   return (
     <div style={overlayStyle}>
@@ -36,8 +36,8 @@ const BreakpointOverlay = () => {
         <p>{`Height: ${windowSize.height}px`}</p>
       </div>
     </div>
-  );
-};
+  )
+}
 
 const overlayStyle = {
   position: 'fixed',
@@ -48,11 +48,11 @@ const overlayStyle = {
   padding: '10px',
   borderRadius: '5px',
   zIndex: 9999,
-};
+}
 
 const contentStyle = {
   textAlign: 'center',
   fontSize: '14px',
-};
+}
 
-export default BreakpointOverlay;
+export default BreakpointOverlay

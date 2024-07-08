@@ -2,6 +2,4 @@ To Do:
 
 - add project content (screenshots, links, info, tech stacks)
 
-- code cleanup for readability & accessibility
-
 - deploy and move on!
