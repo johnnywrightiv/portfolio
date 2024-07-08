@@ -65,7 +65,7 @@ const About = () => {
             {' '}
             John Wright{' '}
           </span>
-          <span id="wave" className="hidden md:inline">
+          <span id="wave" className="">
             👋
           </span>
         </h1>
@@ -82,7 +82,7 @@ const About = () => {
               experiences. My journey in tech has provided me with real world
               experience across the development lifecycle—from managing projects
               and designing user flows to crafting sleek UIs, creative backend
-              solutions, and thoughtful APIs.
+              solutions and thoughtful APIs.
             </p>
             <p className="text-lg text-ptag">
               When I'm not coding, you can catch me playing or producing music,

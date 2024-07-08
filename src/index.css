@@ -29,17 +29,11 @@
   }
 
   .bg-texture {
-    background-image: url("https://www.transparenttextures.com/patterns/cubes.png");
-    /* background-image: url("https://www.transparenttextures.com/patterns/inspiration-geometry.png");
-    background-image: url("https://www.transparenttextures.com/patterns/kuji.png");
-    background-image: url("https://www.transparenttextures.com/patterns/nami.png");
-    background-image: url("https://www.transparenttextures.com/patterns/old-map.png");
-    background-image: url("https://www.transparenttextures.com/patterns/skulls.png");
-    background-image: url("https://www.transparenttextures.com/patterns/swirl.png");
-    background-image: url("https://www.transparenttextures.com/patterns/tree-bark.png");
-    background-image: url("https://www.transparenttextures.com/patterns/washi.png");
-    background-image: url("https://www.transparenttextures.com/patterns/wild-flowers.png");
-    background-image: url("https://www.transparenttextures.com/patterns/xv.png"); */
+    background-image: url('https://www.transparenttextures.com/patterns/cubes.png');
+    /* background-image: url('https://www.transparenttextures.com/patterns/inspiration-geometry.png'); */
+    /* background-image: url('https://www.transparenttextures.com/patterns/nami.png'); */
+    /* background-image: url('https://www.transparenttextures.com/patterns/swirl.png'); */
+    /* background-image: url('https://www.transparenttextures.com/patterns/washi.png'); */
     background-repeat: repeat;
     background-position: center;
     z-index: 1;
@@ -88,11 +82,11 @@
   --linkedin: 250, 250, 250;
 }
 
-/* Animations */
+/* === Animations === */
 #cursor {
   background: linear-gradient(
     to right,
-    var(--dynamic-color, rgb(207, 79, 143)),
+    var(--dynamic-color, rgb(189, 113, 109)),
     rgb(var(--cta))
   );
   height: 300px;
@@ -135,10 +129,10 @@
   }
 }
 
-/* NOTE: Uncomment to remove animations on mobile. Account for elements being hidden. */
-/* @media (max-width: 768px) {
+/* remove animations on mobile */
+@media (max-width: 767px) {
   .hide {
-    transition: none;
+    transition: ease-in 0.2;
   }
 
   .animate-fade,
@@ -153,57 +147,63 @@
     transform: none;
     opacity: 1;
   }
-} */
 
-.hide {
-  opacity: 0;
-  transition: all 1.5s;
+  #wave {
+    display: none;
+  }
 }
 
-.show {
-  opacity: 1;
-}
+/* use animations above md breakpoint */
+@media (min-width: 768px) {
+  .hide {
+    opacity: 0;
+    transition: all 1.5s;
+  }
 
-.animate-fade {
-  opacity: 0;
-}
+  .show {
+    opacity: 1;
+  }
 
-.animate-fade.show {
-  opacity: 1;
-}
+  .animate-fade {
+    opacity: 0;
+  }
 
-.animate-slide-left {
-  transform: translateX(-100%);
-}
+  .animate-fade.show {
+    opacity: 1;
+  }
 
-.animate-slide-left.show {
-  transform: translateX(0);
-}
+  .animate-slide-left {
+    transform: translateX(-100%);
+  }
 
-.animate-slide-up {
-  transform: translateY(100%);
-}
+  .animate-slide-left.show {
+    transform: translateX(0);
+  }
 
-.animate-slide-up.show {
-  transform: translateY(0);
-}
+  .animate-slide-up {
+    transform: translateY(100%);
+  }
 
-.animate-zoom-in {
-  transform: scale(0);
-}
+  .animate-slide-up.show {
+    transform: translateY(0);
+  }
 
-.animate-zoom-in.show {
-  transform: scale(1);
-}
+  .animate-zoom-in {
+    transform: scale(0);
+  }
 
-#wave {
-  display: inline-block;
-  transition: transform 0.2s ease-in-out;
-}
+  .animate-zoom-in.show {
+    transform: scale(1);
+  }
 
-#wave:hover {
-  animation: wave-animation 1s cubic-bezier(0.36, 0.45, 0.63, 0.53) infinite;
-  transform-origin: bottom right;
+  #wave {
+    display: inline-block;
+    transition: transform 0.2s ease-in-out;
+  }
+  #wave:hover {
+    animation: wave-animation 1s cubic-bezier(0.36, 0.45, 0.63, 0.53) infinite;
+    transform-origin: bottom right;
+  }
 }
 
 @keyframes wave-animation {
