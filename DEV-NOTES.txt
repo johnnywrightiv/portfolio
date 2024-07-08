@@ -1,14 +1,5 @@
 To Do:
 
-- hero text animation
-- figure out background... texture, screen, etc?
-
-
-
-
-
-
-
 - add project content (screenshots, links, info, tech stacks)
 
 - code cleanup for readability & accessibility

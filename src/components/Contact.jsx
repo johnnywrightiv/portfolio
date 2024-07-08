@@ -25,7 +25,7 @@ const Contact = () => {
 
   return (
     <div className="overflow-hidden">
-      <footer id='contact' ref={ref} className={`bg-gradient-to-br from-contact-bg to-cta flex flex-col items-center justify-center pt-10 pb-6 z-20 hide animate-slide-up rounded-t-xl border-secondary/50 border-t-2`}>
+      <footer id='contact' ref={ref} className={`bg-gradient-to-br from-contact-bg to-cta flex flex-col items-center justify-center pt-10 pb-6 z-20 hide animate-zoom-in rounded-t-xl border-secondary/50 border-t-2`}>
         <h1 className="text-4xl font-bold text-htag mb-4">Contact Me</h1>
         <div className=" w-1/2 flex-1 text-center pb-2">
           <a 

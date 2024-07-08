@@ -29,8 +29,17 @@
   }
 
   .bg-texture {
-    /* background-image: url("https://www.transparenttextures.com/patterns/grunge-wall.png"); */
     background-image: url("https://www.transparenttextures.com/patterns/cubes.png");
+    /* background-image: url("https://www.transparenttextures.com/patterns/inspiration-geometry.png");
+    background-image: url("https://www.transparenttextures.com/patterns/kuji.png");
+    background-image: url("https://www.transparenttextures.com/patterns/nami.png");
+    background-image: url("https://www.transparenttextures.com/patterns/old-map.png");
+    background-image: url("https://www.transparenttextures.com/patterns/skulls.png");
+    background-image: url("https://www.transparenttextures.com/patterns/swirl.png");
+    background-image: url("https://www.transparenttextures.com/patterns/tree-bark.png");
+    background-image: url("https://www.transparenttextures.com/patterns/washi.png");
+    background-image: url("https://www.transparenttextures.com/patterns/wild-flowers.png");
+    background-image: url("https://www.transparenttextures.com/patterns/xv.png"); */
     background-repeat: repeat;
     background-position: center;
     z-index: 1;
@@ -126,7 +135,7 @@
   }
 }
 
-/* NOTE: Uncomment to remove animations on mobile */
+/* NOTE: Uncomment to remove animations on mobile. Account for elements being hidden. */
 /* @media (max-width: 768px) {
   .hide {
     transition: none;
@@ -185,4 +194,32 @@
 
 .animate-zoom-in.show {
   transform: scale(1);
+}
+
+#wave {
+  display: inline-block;
+  transition: transform 0.2s ease-in-out;
+}
+
+#wave:hover {
+  animation: wave-animation 1s cubic-bezier(0.36, 0.45, 0.63, 0.53) infinite;
+  transform-origin: bottom right;
+}
+
+@keyframes wave-animation {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(10deg);
+  }
+  50% {
+    transform: rotate(0deg);
+  }
+  75% {
+    transform: rotate(-10deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
 }
