@@ -4,6 +4,7 @@ import { useThemeContext } from '../contexts/ThemeContext';
 import useIntersectionObserver from '../utils/useIntersectionObserver';
 import useNavigation from '../utils/useNavigation';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
+import { IoIosMail } from 'react-icons/io'
 
 const Contact = () => {
   const navigateTo = useNavigation();
@@ -24,10 +25,22 @@ const Contact = () => {
 
   return (
     <div className="overflow-hidden">
-      <footer id='contact' ref={ref} className={`bg-gradient-to-br from-contact-bg to-cta flex flex-col items-center justify-center p-16 z-20 hide animate-zoom-in rounded-t-xl border-secondary/50 border-t-2`}>
-        <h1 className="text-4xl font-bold text-htag mb-6 z-10">Contact Me</h1>
-        <button className={`text-lg text-ptag mb-4 z-10 ${dynamicColor ? 'hover:text-dynamic' : 'hover:text-cta'}`} onClick={handleEmailClick}>johnnywrightiv@gmail.com</button>
-        <div className="flex space-x-4 pr-2 z-10">
+      <footer id='contact' ref={ref} className={`bg-gradient-to-br from-contact-bg to-cta flex flex-col items-center justify-center pt-10 pb-6 z-20 hide animate-slide-up rounded-t-xl border-secondary/50 border-t-2`}>
+        <h1 className="text-4xl font-bold text-htag mb-4">Contact Me</h1>
+        <div className=" w-1/2 flex-1 text-center pb-2">
+          <a 
+            href={handleEmailClick}
+            className={`text-lg text-ptag ${dynamicColor ? 'hover:text-dynamic' : 'hover:text-cta'}`}>
+            johnnywrightiv@gmail.com
+          </a>
+        </div>
+        <div className="flex">
+          <IconButton
+            icon={IoIosMail}
+            onClick={handleEmailClick}
+            className="text-primary"
+            aria-label="Email"
+          />
           <IconButton
             icon={FaGithub}
             onClick={handleGithubClick}
@@ -43,7 +56,7 @@ const Contact = () => {
         </div>
         <button
           onClick={() => navigateTo('main')}
-          className={`text-ptag z-30 ${dynamicColor ? 'hover:text-dynamic' : 'hover:text-cta'}  pt-10 items-end`}
+          className={`text-ptag z-30 ${dynamicColor ? 'hover:text-dynamic' : 'hover:text-cta'}  pt-12 items-end`}
         >
           ↑ Back to Top
         </button>

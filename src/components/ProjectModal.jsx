@@ -100,7 +100,7 @@ const ProjectModal = ({ project, onClose, onPrev, onNext }) => {
   };
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
+    <div className="fixed inset-0 bg-primary/40 flex items-center justify-center p-4 z-50">
       <div ref={modalRef} className="relative w-full max-w-4xl">
         <IconButton
           icon={IoClose}

@@ -15,7 +15,7 @@ const NavMobile = ({ navItems, closeMobileNav }) => {
   return (
     <div 
       ref={blurRef}
-      className='fixed w-full h-screen bg-background/80 flex flex-col justify-center items-center z-50'
+      className='fixed w-full h-screen bg-primary/40 flex flex-col justify-center items-center z-50'
       role="navigation"
       aria-label="Mobile navigation"
     >
