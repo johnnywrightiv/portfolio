@@ -7,8 +7,7 @@ import useIntersectionObserver from '../utils/useIntersectionObserver'
 
 const ThemeSelector = ({ isMobile = false }) => {
   const ref = useIntersectionObserver()
-  const { theme, changeTheme, systemTheme, availableThemes, dynamicColor } =
-    useThemeContext()
+  const { theme, changeTheme, systemTheme, availableThemes, dynamicColor } = useThemeContext()
   const [isOpen, setIsOpen] = useState(false)
   const closeMenu = useCallback(() => setIsOpen(false), [])
   const menuRef = useBlur(closeMenu)

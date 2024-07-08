@@ -11,18 +11,6 @@ const Contact = () => {
   const ref = useIntersectionObserver()
   const { dynamicColor } = useThemeContext()
 
-  const handleEmailClick = () => {
-    window.location.href = 'mailto:johnnywrightiv@gmail.com'
-  }
-
-  const handleGithubClick = () => {
-    window.open('https://github.com/johnnywrightiv', '_blank')
-  }
-
-  const handleLinkedinClick = () => {
-    window.open('https://linkedin.com/in/johnnywrightiv', '_blank')
-  }
-
   return (
     <div className="overflow-hidden">
       <footer
@@ -32,32 +20,31 @@ const Contact = () => {
       >
         <h1 className="text-4xl font-bold text-htag mb-4">Contact Me</h1>
         <div className=" w-1/2 flex-1 text-center pb-2">
-          <a
-            onClick={handleEmailClick}
-            className={`text-lg text-ptag ${dynamicColor ? 'hover:text-dynamic' : 'hover:text-cta'}`}
-          >
-            johnnywrightiv@gmail.com
-          </a>
+          <p className='text-lg text-ptag'>johnnywrightiv@gmail.com</p>
         </div>
         <div className="flex">
-          <IconButton
-            icon={IoIosMail}
-            onClick={handleEmailClick}
-            className="text-primary"
-            aria-label="Email"
-          />
-          <IconButton
-            icon={FaGithub}
-            onClick={handleGithubClick}
-            className="text-primary"
-            aria-label="GitHub"
-          />
-          <IconButton
-            icon={FaLinkedin}
-            onClick={handleLinkedinClick}
-            className="text-linkedin"
-            aria-label="LinkedIn"
-          />
+          <a href="mailto:johnnywrightiv@gmail.com">
+            <IconButton
+              icon={IoIosMail}
+              className="text-primary"
+              aria-label="Email"
+            />
+          </a>
+          <a href="https://github.com/johnnywrightiv" target="_blank">
+            <IconButton
+              icon={FaGithub}
+              className="text-primary"
+              aria-label="GitHub"
+            />
+
+          </a>
+          <a href="https://linkedin.com/in/johnnywrightiv" target="_blank">
+            <IconButton
+              icon={FaLinkedin}
+              className="text-linkedin"
+              aria-label="LinkedIn"
+            />
+          </a>
         </div>
         <button
           onClick={() => navigateTo('main')}

@@ -5,9 +5,9 @@ import About from './components/About'
 import Projects from './components/Projects'
 import Contact from './components/Contact'
 import ThemeSelector from './components/ThemeSelector'
+import BreakpointOverlay from './components/BreakpointOverlay'
 import { CursorAnimation } from './components/CursorAnimation'
 import { ThemeProvider } from './contexts/ThemeContext'
-import BreakpointOverlay from './utils/BreakpointOverlay'
 import useIntersectionObserver from './utils/useIntersectionObserver'
 
 const AppContent = () => {

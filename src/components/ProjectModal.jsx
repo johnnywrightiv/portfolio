@@ -13,6 +13,7 @@ const ProjectModal = ({ project, onClose, onPrev, onNext }) => {
   const modalRef = useBlur(onClose)
   const contentRef = useRef(null)
 
+  // Disable body scroll when modal is open
   useEffect(() => {
     document.body.style.overflow = 'hidden'
     return () => {
@@ -20,6 +21,7 @@ const ProjectModal = ({ project, onClose, onPrev, onNext }) => {
     }
   }, [])
 
+  // Handle keyboard navigation
   const handleKeyDown = useCallback(
     (event) => {
       if (event.key === 'ArrowLeft') {
@@ -31,6 +33,7 @@ const ProjectModal = ({ project, onClose, onPrev, onNext }) => {
     [onPrev, onNext]
   )
 
+  // Add and remove keyboard event listener
   useEffect(() => {
     document.addEventListener('keydown', handleKeyDown)
     return () => {
@@ -38,6 +41,7 @@ const ProjectModal = ({ project, onClose, onPrev, onNext }) => {
     }
   }, [handleKeyDown])
 
+  // Handle touch swipe navigation
   useEffect(() => {
     let touchStartX = 0
     let touchEndX = 0
@@ -58,6 +62,7 @@ const ProjectModal = ({ project, onClose, onPrev, onNext }) => {
       const horizontalDistance = touchStartX - touchEndX
       const verticalDistance = touchStartY - touchEndY
 
+      // Check if swipe was primarily horizontal and significant
       if (
         Math.abs(horizontalDistance) > Math.abs(verticalDistance) &&
         Math.abs(horizontalDistance) > 75
@@ -86,6 +91,7 @@ const ProjectModal = ({ project, onClose, onPrev, onNext }) => {
     }
   }, [onNext, onPrev])
 
+  // Render link buttons (GitHub or website)
   const renderLinkButton = (link) => {
     const isGithub =
       link.name.toLowerCase().includes('github') || link.url.includes('github')
@@ -95,31 +101,30 @@ const ProjectModal = ({ project, onClose, onPrev, onNext }) => {
       : `${dynamicColor ? 'bg-dynamic hover:bg-dynamic' : 'bg-cta hover:bg-cta'} text-white hover:opacity-80`
 
     return (
-      <button
+      <a
         key={link.url}
-        onClick={() => window.open(link.url, '_blank')}
+        href={link.url}
+        target="_blank"
         className={`${buttonClass} px-4 py-2 rounded-xl font-semibold transition-all duration-300 hover:scale-105 hover:shadow-md flex items-center`}
       >
         <Icon className="mr-2" />
         {link.name}
-      </button>
+      </a>
     )
   }
 
+  // Render the modal
   return (
     <div className="fixed inset-0 bg-primary/40 flex items-center justify-center p-4 z-50">
       <div ref={modalRef} className="relative w-full max-w-4xl">
+        {/* Close button */}
         <IconButton
           icon={IoClose}
           onClick={onClose}
           className="absolute lg:-top-20 lg:-right-20 -top-16 mt-1 -right-5 text-primary hover:text-dynamic"
         />
 
-        <IconButton
-          icon={IoClose}
-          onClick={onClose}
-          className="hidden lg:block absolute lg:-top-20 lg:-right-20 -top-16 mt-1 -right-5 text-primary hover:text-dynamic"
-        />
+        {/* Navigation buttons for desktop */}
         <IconButton
           icon={IoChevronBack}
           onClick={onPrev}
@@ -131,15 +136,17 @@ const ProjectModal = ({ project, onClose, onPrev, onNext }) => {
           className="hidden lg:block absolute top-1/2 -right-20 text-primary opacity-80 hover:text-dynamic"
         />
 
+        {/* Navigation buttons for mobile */}
         <IoChevronBack
           onClick={onPrev}
-          className="block lg:hidden absolute top-1/2 -left-5 text-4xl p-2 bg-card/80 rounded-full text-primary hover:text-dynamic"
+          className="block lg:hidden absolute top-1/2 -left-5 text-4xl p-2 bg-card/80 rounded-full text-primary hover:text-dynamic cursor-pointer"
         />
         <IoChevronForward
           onClick={onNext}
-          className="block lg:hidden absolute top-1/2 -right-5 text-4xl p-2 bg-card/80 rounded-full text-primary hover:text-dynamic"
+          className="block lg:hidden absolute top-1/2 -right-5 text-4xl p-2 bg-card/80 rounded-full text-primary hover:text-dynamic cursor-pointer"
         />
 
+        {/* Modal content */}
         <div
           ref={contentRef}
           className="bg-card rounded-lg p-6 max-h-[80vh] overflow-y-auto"

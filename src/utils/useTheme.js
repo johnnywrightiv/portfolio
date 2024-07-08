@@ -4,7 +4,7 @@ const THEMES = ['light', 'dark', 'system'] // Add more themes here
 
 export const useTheme = () => {
   const [theme, setTheme] = useState(() => {
-    // if no theme in localStorage, use dark mode by default...
+    // NOTE: if no theme in localStorage, use dark mode by default...
     // UX best practice would be to use system, but dark mode looks better!
     return localStorage.getItem('theme') || 'dark'
   })

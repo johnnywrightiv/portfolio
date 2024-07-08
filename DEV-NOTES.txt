@@ -1,5 +1,0 @@
-To Do:
-
-- add project content (screenshots, links, info, tech stacks)
-
-- deploy and move on!
