@@ -19,7 +19,7 @@ const Hero = () => {
 
     const buttonTimer = setTimeout(() => {
       setShowButton(true)
-    }, 400)
+    }, 4000)
 
     return () => {
       clearTimeout(h1Timer)
