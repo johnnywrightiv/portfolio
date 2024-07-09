@@ -3,7 +3,7 @@
     "title": "This Website",
     "image": "../Portfolio4.png",
     "blurb": "Explore my development journey through an interactive and engaging portfolio website, highlighting my skills in responsive front-end design and animation",
-    "description": "Designing and building this React-based portfolio website was an opportunity to focus on what I am passionate about, creating stunning, interactice, and user-focused web applications. Moving beyond the typical constraints of MVP development, this project allowed me to dive deep into front-end technologies and design principles. The site features custom animations and responsive design, showcasing some of my various development projects while highlighting my proficiency in React, Context API, and CSS including frameworks like Tailwind.",
+    "description": "Designing and building this React-based portfolio website was an opportunity to focus on what I am passionate about, creating stunning, interactive, and user-focused web applications. Moving beyond the typical constraints of MVP development, this project allowed me to dive deep into front-end technologies and design principles. The site features custom animations and responsive design, showcasing some of my various development projects while highlighting my proficiency in React, Context API, and CSS including frameworks like Tailwind.",
     "technologies": [
       "React",
       "Context",
@@ -23,7 +23,7 @@
     "title": "Restaurant Website & Admin Dashboard ",
     "image": "../u2CanQue2.png",
     "blurb": "Full-stack order management app for a BBQ restaurant, featuring a responsive front-end with checkout integration, a robust back-end with API, and an admin dashboard",
-    "description": "This project highlights my proficiency in full-stack development and ability to work within existing codebases to create impactful solutions. Tasked with transitioning from a static menu on the front-end to a dynamic back-end based system that could be edited and allow for rotating daily and holiday specials, I created new database models and API endpoints, solved UI bugs related to the restructuring, and created aditional admin features to impliment the new CRUD functionality. This project presented unique challenges, such as complex data restructuring and integrating changes into existing live applications. It provided valuable experience in debugging, problem-solving, and project architecture.",
+    "description": "This project highlights my proficiency in full-stack development and ability to work within existing codebases to create impactful solutions. Tasked with transitioning from a static menu on the front-end to a dynamic back-end based system that could be edited and allow for rotating daily and holiday specials, I created new database models and API endpoints, solved UI bugs related to the restructuring, and created additional admin features to implement the new CRUD functionality. This project presented unique challenges, such as complex data restructuring and integrating changes into existing live applications. It provided valuable experience in debugging, problem-solving, and project architecture.",
     "technologies": [
       "React",
       "Next.js",
