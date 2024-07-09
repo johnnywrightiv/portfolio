@@ -24,7 +24,9 @@ export const ThemeProvider = ({ children }) => {
     } else {
       document.documentElement.style.removeProperty('--dynamic-color')
     }
-  }, [dynamicColor])
+     // Set body background color based on theme
+     document.body.style.backgroundColor = themeData.theme === 'dark' ? 'black' : 'white'
+  }, [dynamicColor, themeData.theme])
 
   return (
     <ThemeContext.Provider
