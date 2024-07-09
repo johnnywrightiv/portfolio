@@ -22,7 +22,7 @@ const ProjectCard = ({ project, onSeeMore }) => {
             onClick={onSeeMore}
           />
         </div>
-        <div className="flex-1 flex flex-col md:h-64 lg:h-80">
+        <div className="flex-1 flex flex-col">
           <h3 className="text-2xl font-bold text-htag mb-2">{title}</h3>
           <p className="text-secondary mb-4">{blurb}</p>
           <h4 className="text-lg font-semibold text-htag mb-2">
@@ -35,7 +35,7 @@ const ProjectCard = ({ project, onSeeMore }) => {
           </div>
         </div>
       </div>
-      <div className="mt-4 md:mt-2 flex justify-end">
+      <div className="mt-6 flex justify-end">
         <button
           className={`${dynamicColor ? 'bg-dynamic' : 'bg-cta'} text-white px-4 py-2 rounded-xl font-semibold transition-all duration-300 md:hover:${dynamicColor ? 'bg-dynamic hover:opacity-80' : 'bg-cta hover:opacity-80'} md:hover:scale-105 md:hover:shadow-md whitespace-nowrap border-2 border-border/50`}
           onClick={onSeeMore}
