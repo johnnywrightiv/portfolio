@@ -30,7 +30,7 @@ function App() {
   return (
     <ThemeProvider>
       <AppContent />
-      <BreakpointOverlay />
+      {/* <BreakpointOverlay /> */}
     </ThemeProvider>
   )
 }
