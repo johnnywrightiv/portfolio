@@ -117,14 +117,12 @@ const ProjectModal = ({ project, onClose, onPrev, onNext }) => {
   return (
     <div className="fixed inset-0 bg-primary/40 flex items-center justify-center p-4 z-50">
       <div ref={modalRef} className="relative w-full max-w-4xl">
-        {/* Close button */}
+        {/* Navigation buttons for desktop */}
         <IconButton
           icon={IoClose}
           onClick={onClose}
-          className="absolute lg:-top-20 lg:-right-20 -top-16 mt-1 -right-5 text-primary hover:text-dynamic"
+          className="hidden lg:block absolute lg:-top-20 lg:-right-20 -top-16 mt-1 -right-5 text-primary hover:text-dynamic"
         />
-
-        {/* Navigation buttons for desktop */}
         <IconButton
           icon={IoChevronBack}
           onClick={onPrev}
@@ -137,13 +135,17 @@ const ProjectModal = ({ project, onClose, onPrev, onNext }) => {
         />
 
         {/* Navigation buttons for mobile */}
+        <IoClose
+          onClick={onClose}
+          className="block lg:hidden absolute -top-8 -right-4 text-4xl p-2 bg-card/80 rounded-full text-primary hover:text-dynamic cursor-pointer"
+        />
         <IoChevronBack
           onClick={onPrev}
-          className="block lg:hidden absolute top-1/2 -left-5 text-4xl p-2 bg-card/80 rounded-full text-primary hover:text-dynamic cursor-pointer"
+          className="block lg:hidden absolute top-1/2 -left-4 text-4xl p-2 bg-card/80 rounded-full text-primary hover:text-dynamic cursor-pointer"
         />
         <IoChevronForward
           onClick={onNext}
-          className="block lg:hidden absolute top-1/2 -right-5 text-4xl p-2 bg-card/80 rounded-full text-primary hover:text-dynamic cursor-pointer"
+          className="block lg:hidden absolute top-1/2 -right-4 text-4xl p-2 bg-card/80 rounded-full text-primary hover:text-dynamic cursor-pointer"
         />
 
         {/* Modal content */}
