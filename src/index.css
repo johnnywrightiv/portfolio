@@ -93,8 +93,9 @@
   width: 300px;
   position: fixed;
   z-index: 0;
-  left: 50%;
-  top: 50%;
+  pointer-events: none;
+  transform: translate(0, 0);
+  transition: transform 3s ease;
   translate: -50% -50%;
   border-radius: 50%;
   filter: blur(150px);

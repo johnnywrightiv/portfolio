@@ -1,0 +1,13 @@
+#cursor {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-color: red;
+  border-radius: 50%;
+  pointer-events: none;
+  transition:
+    left 3s,
+    top 3s; /* Adjust the duration as needed */
+  left: 0; /* Set initial position */
+  top: 0; /* Set initial position */
+}
