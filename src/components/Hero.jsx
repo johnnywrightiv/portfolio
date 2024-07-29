@@ -15,11 +15,11 @@ const Hero = () => {
   useEffect(() => {
     const h1Timer = setTimeout(() => {
       setShowH1(true)
-    }, 1500)
+    }, 1000)
 
     const buttonTimer = setTimeout(() => {
       setShowButton(true)
-    }, 4000)
+    }, 5000)
 
     return () => {
       clearTimeout(h1Timer)
@@ -43,7 +43,12 @@ const Hero = () => {
           className="text-5xl font-bold text-htag mb-12 text-center hide animate-fade absolute"
         >
           <TypeAnimation
-            sequence={['welcome to my portfolio']}
+            style={{ whiteSpace: 'pre-line', height: '195px', display: 'block' }}
+            sequence={[
+              `Hello World, \n \n`,
+              750, 
+              `Hello World, \n \n Welcome to my Portfolio`
+            ]}
             wrapper="span"
             speed={40}
             repeat="no"
