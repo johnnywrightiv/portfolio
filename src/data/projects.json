@@ -75,5 +75,29 @@
         "url": "https://github.com/Johnnywrightiv/agile-trello-clone"
       }
     ]
+  },
+
+  {
+    "title": "Recipe App",
+    "image": "../Recipe-App.png",
+    "blurb": "Front-End recipe app; consumes third-party party API. Users can discover recipes based on their available ingredients, search by category, or generate random recipe suggestions.",
+    "description": "This project was developed during my first hackathon, in collaboration with two fellow developers. Our team focused on utilizing the Spoonacular API to render data from various endpoints. We aimed to create innovative user functionality based on the available data which includes multiple routes, each designed to allow users to query the recipe database in a specific way, catering to the diverse recipe discovery needs of users.",
+    "technologies": [
+      "React",
+      "React Router",
+      "Redux",
+      "Bootstrap CSS",
+      "Spoonacular API"
+    ],
+    "links": [
+      {
+        "name": "Live Demo",
+        "url": "https://recipe-app-mike242424.vercel.app/"
+      },
+      {
+        "name": "GitHub Repository",
+        "url": "https://github.com/mike242424/recipe-app"
+      }
+    ]
   }
 ]
