@@ -20,7 +20,7 @@
   },
 
   {
-    "title": "Order Management App with Admin Dashboard ",
+    "title": "Order Management App with Dashboard ",
     "image": "../u2CanQue2.png",
     "blurb": "Full-stack order management app for a BBQ restaurant, featuring a responsive front-end with checkout integration, a robust back-end with API, and an admin dashboard",
     "description": "This project highlights my proficiency in full-stack development and ability to work within existing codebases to create impactful solutions. Tasked with transitioning from a static menu on the front-end to a dynamic back-end based system that could be edited and allow for rotating daily and holiday specials, I created new database models and API endpoints, solved UI bugs related to the restructuring, and created additional admin features to implement the new CRUD functionality. This project presented unique challenges, such as complex data restructuring and integrating changes into existing live applications. It provided valuable experience in debugging, problem-solving, and project architecture.",
@@ -60,8 +60,9 @@
     "technologies": [
       "React",
       "Redux Toolkit",
-      "Bootstrap CSS",
+      "Bootstrap",
       "Node.js",
+      "Socket.io",
       "Express",
       "MongoDB"
     ],
@@ -84,8 +85,8 @@
     "description": "This project was developed during my first hackathon in collaboration with two fellow developers. Our team focused on utilizing the Spoonacular API to render data from various endpoints. We aimed to create innovative user functionality based on the available data, by creating multiple routes, each designed to allow users to query the recipe database in specific ways to cater to the diverse recipe discovery needs of users.",
     "technologies": [
       "React",
-      "React Router",
       "Redux",
+      "React Router",
       "Bootstrap CSS",
       "Spoonacular API"
     ],
