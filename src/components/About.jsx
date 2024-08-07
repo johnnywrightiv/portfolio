@@ -4,11 +4,7 @@ import { useThemeContext } from '../contexts/ThemeContext'
 import { determineTextColorClass } from '../utils/determineTextColorClass'
 import useIntersectionObserver from '../utils/useIntersectionObserver'
 import {
-  FaHtml5,
-  FaCss3Alt,
   FaSass,
-  FaJsSquare,
-  FaTypeScript,
   FaReact,
   FaNodeJs,
   FaGitAlt,
@@ -17,6 +13,10 @@ import {
   FaFigma,
 } from 'react-icons/fa'
 import {
+  SiHtml5,
+  SiCss3,
+  SiJavascript,
+  SiTypescript,
   SiMongodb,
   SiRedux,
   SiNextdotjs,
@@ -27,22 +27,22 @@ import {
 } from 'react-icons/si'
 
 const techStack = [
-  { Icon: FaHtml5, name: 'HTML5', color: '#E34F26' },
-  { Icon: FaCss3Alt, name: 'CSS3', color: '#1572B6' },
-  { Icon: FaSass, name: 'SASS', color: '#C7618C' },
-  { Icon: FaJsSquare, name: 'JavaScript', color: '#F7DF1E' },
-  { Icon: FaTypeScript, name: 'TypeScript', color: '#007ACC' },
+  { Icon: SiHtml5, name: 'HTML5', color: '#E34F26' },
+  { Icon: SiCss3, name: 'CSS3', color: '#1572B6' },
+  { Icon: SiJavascript, name: 'JavaScript', color: '#F7DF1E' },
+  { Icon: SiTypescript, name: 'TypeScript', color: '#007ACC' },
   { Icon: FaReact, name: 'React', color: '#61DAFB' },
   { Icon: SiRedux, name: 'Redux', color: '#764ABC' },
   { Icon: SiNextdotjs, name: 'Next.js', color: '#000000', darkColor: '#FFFFFF' },
+  { Icon: SiJquery, name: "jQuery", color: "#0769AD" },
   { Icon: SiTailwindcss, name: 'Tailwind', color: '#06B6D4' },
   { Icon: FaBootstrap, name: 'Bootstrap', color: '#7952B3' },
+  { Icon: FaSass, name: 'SASS', color: '#C7618C' },
+  { Icon: FaPython, name: 'Python', color: '#3776AB' },
   { Icon: FaNodeJs, name: 'Node.js', color: '#5FA04E' },
   { Icon: SiExpress, name: 'Express', color: '#000000', darkColor: '#FFFFFF' },
   { Icon: SiMongodb, name: 'MongoDB', color: '#47A248' },
-  { Icon: FaPython, name: 'Python', color: '#3776AB' },
   { Icon: FaGitAlt, name: 'Git', color: '#F05032' },
-  // { Icon: SiJquery, name: "jQuery", color: "#0769AD" },
   // { Icon: FaFigma, name: "Figma", color: "#F24E1E" },
   // { Icon: SiAdobephotoshop, name: "Photoshop", color: "#31A8FF" }
 ]
@@ -101,7 +101,7 @@ const About = () => {
           My Tech Stack
         </h2>
 
-        <div className="flex flex-wrap justify-center">
+        <div className="grid grid-cols-4 sm:grid-cols-8 gap-x-16 sm:gap-2 lg:gap-1 justify-items-center">
           {techStack.map(({ Icon, name, color, darkColor }) => (
             <TechBadge
               key={name}
