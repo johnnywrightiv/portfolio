@@ -6,7 +6,9 @@ import useIntersectionObserver from '../utils/useIntersectionObserver'
 import {
   FaHtml5,
   FaCss3Alt,
+  FaSass,
   FaJsSquare,
+  FaTypeScript,
   FaReact,
   FaNodeJs,
   FaGitAlt,
