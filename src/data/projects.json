@@ -79,7 +79,7 @@
   },
 
   {
-    "title": "Recipe Generator Front-End App",
+    "title": "Recipe Generator",
     "image": "../Recipe-App.png",
     "blurb": "Front-End recipe app; consumes third-party party API. Users can discover recipes based on their available ingredients, search by category, or generate random recipe suggestions.",
     "description": "This project was developed during my first hackathon in collaboration with two fellow developers. Our team focused on utilizing the Spoonacular API to render data from various endpoints. We aimed to create innovative user functionality based on the available data, by creating multiple routes, each designed to allow users to query the recipe database in specific ways to cater to the diverse recipe discovery needs of users.",
