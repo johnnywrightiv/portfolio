@@ -27,7 +27,9 @@ import {
 const techStack = [
   { Icon: FaHtml5, name: 'HTML5', color: '#E34F26' },
   { Icon: FaCss3Alt, name: 'CSS3', color: '#1572B6' },
+  { Icon: FaSass, name: 'SASS', color: '#C7618C' },
   { Icon: FaJsSquare, name: 'JavaScript', color: '#F7DF1E' },
+  { Icon: FaTypeScript, name: 'TypeScript', color: '#007ACC' },
   { Icon: FaReact, name: 'React', color: '#61DAFB' },
   { Icon: SiRedux, name: 'Redux', color: '#764ABC' },
   { Icon: SiNextdotjs, name: 'Next.js', color: '#000000', darkColor: '#FFFFFF' },
