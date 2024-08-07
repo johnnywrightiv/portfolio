@@ -1,14 +1,14 @@
 [
   {
-    "title": "Developer Portfolio Website",
+    "title": "Developer Portfolio",
     "image": "../Portfolio4.png",
     "blurb": "Explore my development journey through an interactive and engaging portfolio website, highlighting my skills in responsive front-end design and animation",
     "description": "Designing and building this React-based portfolio website was an opportunity to focus on what I am passionate about, creating stunning, interactive, and user-focused web applications. Moving beyond the typical constraints of MVP development, this project allowed me to dive deep into front-end technologies and design principles. The site features custom animations and responsive design, showcasing some of my various development projects while highlighting my proficiency in React, Context API, and CSS including frameworks like Tailwind.",
     "technologies": [
       "React",
       "Context",
-      "Tailwind CSS",
-      "Custom CSS",
+      "Tailwind",
+      "CSS Animations",
       "Vercel"
     ],
     "links": [
@@ -27,7 +27,7 @@
     "technologies": [
       "React",
       "Next.js",
-      "Tailwind CSS",
+      "Tailwind",
       "Node.js",
       "Express",
       "MongoDB"
@@ -79,7 +79,7 @@
   },
 
   {
-    "title": "Recipe Generator App",
+    "title": "Recipe Generator Front-End App",
     "image": "../Recipe-App.png",
     "blurb": "Front-End recipe app; consumes third-party party API. Users can discover recipes based on their available ingredients, search by category, or generate random recipe suggestions.",
     "description": "This project was developed during my first hackathon in collaboration with two fellow developers. Our team focused on utilizing the Spoonacular API to render data from various endpoints. We aimed to create innovative user functionality based on the available data, by creating multiple routes, each designed to allow users to query the recipe database in specific ways to cater to the diverse recipe discovery needs of users.",
@@ -87,7 +87,7 @@
       "React",
       "Redux",
       "React Router",
-      "Bootstrap CSS",
+      "Bootstrap",
       "Spoonacular API"
     ],
     "links": [
