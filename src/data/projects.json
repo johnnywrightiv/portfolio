@@ -2,7 +2,7 @@
   {
     "title": "Developer Portfolio",
     "image": "../Portfolio4.png",
-    "blurb": "Explore my development journey through an interactive and engaging portfolio website, highlighting my skills in responsive front-end design and animation",
+    "blurb": "Explore my development journey through an interactive portfolio website, highlighting my skills in responsive front-end design and animation",
     "description": "Designing and building this React-based portfolio website was an opportunity to focus on what I am passionate about, creating stunning, interactive, and user-focused web applications. Moving beyond the typical constraints of MVP development, this project allowed me to dive deep into front-end technologies and design principles. The site features custom animations and responsive design, showcasing some of my various development projects while highlighting my proficiency in React, Context API, and CSS including frameworks like Tailwind.",
     "technologies": [
       "React",
