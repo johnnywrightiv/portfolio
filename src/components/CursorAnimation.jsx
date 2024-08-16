@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react'
+import { useEffect, useRef } from 'react'
 
 export const CursorAnimation = () => {
   const cursorRef = useRef(null)
@@ -21,7 +21,7 @@ export const CursorAnimation = () => {
           left: `${clientX}px`,
           top: `${clientY}px`,
         },
-        { duration: 3000, fill: 'forwards' }
+        { duration: 7000, fill: 'forwards' }
       )
     }
 

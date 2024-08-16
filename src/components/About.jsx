@@ -1,4 +1,3 @@
-import React from 'react'
 import TechBadge from './TechBadge'
 import { useThemeContext } from '../contexts/ThemeContext'
 import { determineTextColorClass } from '../utils/determineTextColorClass'
@@ -7,10 +6,10 @@ import {
   FaSass,
   FaReact,
   FaNodeJs,
-  FaGitAlt,
   FaPython,
   FaBootstrap,
-  FaFigma,
+  // FaGitAlt,
+  // FaFigma,
 } from 'react-icons/fa'
 import {
   SiHtml5,
@@ -23,8 +22,11 @@ import {
   SiExpress,
   SiTailwindcss,
   SiJquery,
-  SiAdobephotoshop,
+  // SiAdobephotoshop,
 } from 'react-icons/si'
+import { BiLogoPostgresql } from "react-icons/bi"
+
+
 
 const techStack = [
   { Icon: SiHtml5, name: 'HTML5', color: '#E34F26' },
@@ -38,11 +40,12 @@ const techStack = [
   { Icon: SiTailwindcss, name: 'Tailwind', color: '#06B6D4' },
   { Icon: FaBootstrap, name: 'Bootstrap', color: '#7952B3' },
   { Icon: FaSass, name: 'SASS', color: '#C7618C' },
-  { Icon: FaPython, name: 'Python', color: '#3776AB' },
   { Icon: FaNodeJs, name: 'Node.js', color: '#5FA04E' },
   { Icon: SiExpress, name: 'Express', color: '#000000', darkColor: '#FFFFFF' },
   { Icon: SiMongodb, name: 'MongoDB', color: '#47A248' },
-  { Icon: FaGitAlt, name: 'Git', color: '#F05032' },
+  { Icon: FaPython, name: 'Python', color: '#3776AB' },
+  { Icon: BiLogoPostgresql, name: "PostrgeSQL", color: "#336791" },
+  // { Icon: FaGitAlt, name: 'Git', color: '#F05032' },
   // { Icon: FaFigma, name: "Figma", color: "#F24E1E" },
   // { Icon: SiAdobephotoshop, name: "Photoshop", color: "#31A8FF" }
 ]
@@ -64,7 +67,7 @@ const About = () => {
         className="max-w-4xl w-full bg-card bg-opacity-90 backdrop-filter backdrop-blur-lg rounded-xl shadow-2xl p-10 border-2 border-border transition-all duration-500 ease-in-out md:hover:shadow-3xl md:hover:scale-105 md:hover:border-primary/80 z-10 hide animate-zoom-in"
       >
         <h1 className="sm:text-5xl text-4xl font-bold text-htag mb-8 md:text-start text-center">
-          Hey, I'm
+          {" Hey, I'm "}
           <span className={`block sm:inline ${textColorClass} font-light`}>
             {' '}
             John Wright{' '}
@@ -89,10 +92,7 @@ const About = () => {
               solutions and thoughtful APIs.
             </p>
             <p className="text-lg text-ptag">
-              When I'm not coding, you can catch me playing or producing music,
-              trying out new recipes in the kitchen, watching basketball with my
-              cats, enjoying the great outdoors, or exploring the latest trends
-              in tech.
+            {" When I'm not coding, you can catch me playing or producing music, trying out new recipes in the kitchen, watching basketball with my cats, enjoying the great outdoors, or exploring the latest trends in tech. "}
             </p>
           </div>
         </div>
