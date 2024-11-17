@@ -1,0 +1,112 @@
+[
+	{
+		"title": "Custom Developer Portfolio",
+		"keyFeatures": ["abc", "123"],
+		"technicalHighlights": ["xyz", "456"],
+		"image": "/Portfolio4.png",
+		"blurb": "Explore my development journey through an interactive portfolio website, highlighting my skills in responsive front-end design and animation",
+		"description": "Designing and building this React-based portfolio website was an opportunity to focus on what I am passionate about, creating stunning, interactive, and user-focused web applications. Moving beyond the typical constraints of MVP development, this project allowed me to dive deep into front-end technologies and design principles. The site features custom animations and responsive design, showcasing some of my various development projects while highlighting my proficiency in React, Context API, and CSS including frameworks like Tailwind.",
+		"technologies": [
+			"React",
+			"Context",
+			"Tailwind",
+			"CSS Animations",
+			"Vercel"
+		],
+		"links": [
+			{
+				"name": "GitHub Repository",
+				"url": "https://github.com/Johnnywrightiv/portfolio"
+			}
+		]
+	},
+
+	{
+		"title": "Order Management App with Dashboard and Payment Integration",
+		"keyFeatures": ["abc", "123"],
+		"technicalHighlights": ["xyz", "456"],
+		"image": "/u2CanQue2.png",
+		"blurb": "Full-stack order management app for a BBQ restaurant, featuring a responsive front-end with checkout integration, a robust back-end with API, and an admin dashboard",
+		"description": "This project highlights my proficiency in full-stack development and ability to work within existing codebases to create impactful solutions. Tasked with transitioning from a static menu on the front-end to a dynamic back-end based system that could be edited and allow for rotating daily and holiday specials, I created new database models and API endpoints, solved UI bugs related to the restructuring, and created additional admin features to implement the new CRUD functionality. This project presented unique challenges, such as complex data restructuring and integrating changes into existing live applications. It provided valuable experience in debugging, problem-solving, and project architecture.",
+		"technologies": [
+			"React",
+			"Next.js",
+			"Tailwind",
+			"Node.js",
+			"Express",
+			"MongoDB"
+		],
+		"links": [
+			{
+				"name": "Live Web App",
+				"url": "https://www.u2canque-takeout.com"
+			},
+			{
+				"name": "Front-End Code",
+				"url": "https://github.com/nilslandsberg/u2CanQue"
+			},
+			{
+				"name": "Admin Dash Code",
+				"url": "https://github.com/nilslandsberg/u2canque-admin"
+			},
+			{
+				"name": "Server Code",
+				"url": "https://github.com/nilslandsberg/u2canque-server"
+			}
+		]
+	},
+
+	{
+		"title": "Project Management App with Drag & Drop and Real-Time Connections",
+		"keyFeatures": ["abc", "123"],
+		"technicalHighlights": ["xyz", "456"],
+		"image": "/TreHej3.png",
+		"blurb": "Full-stack Trello clone featuring Kanban boards with seamless drag-and-drop functionality, user authentication, and real-time updates - developed as part of an agile sprint",
+		"description": "Serving as the product lead for a Trello clone, I guided my cohort of fellow developers through a full agile sprint from concept to deployment. I researched the required functionalities, created user journeys, defined scopes, and planned the design of the overall system. This project enhanced my full-stack development skills and deepened my understanding of project management and agile methodologies. By tackling complex design challenges and navigating intricate data structures, I honed my problem-solving abilities. Throughout the process, I led our team in making critical decisions and prioritizing features to ensure timely delivery. This experience highlights my technical proficiency as well as my capacity to lead a development team through complex projects.",
+		"technologies": [
+			"React",
+			"Redux Toolkit",
+			"Bootstrap",
+			"Node.js",
+			"Socket.io",
+			"Express",
+			"MongoDB"
+		],
+		"links": [
+			{
+				"name": "Live Demo",
+				"url": "https://tre-hej.vercel.app/"
+			},
+			{
+				"name": "GitHub Repository",
+				"url": "https://github.com/Johnnywrightiv/agile-trello-clone"
+			}
+		]
+	},
+
+	{
+		"title": "Recipe Generator App",
+		"keyFeatures": ["abc", "123"],
+		"technicalHighlights": ["xyz", "456"],
+		"image": "/Recipe-App.png",
+		"blurb": "Front-End recipe app; consumes third-party party API. Users can discover recipes based on their available ingredients, search by category, or generate random recipe suggestions.",
+		"description": "This project was developed during my first hackathon in collaboration with two fellow developers. Our team focused on utilizing the Spoonacular API to render data from various endpoints. We aimed to create innovative user functionality based on the available data, by creating multiple routes, each designed to allow users to query the recipe database in specific ways to cater to the diverse recipe discovery needs of users.",
+		"technologies": [
+			"React",
+			"Redux",
+			"React Router",
+			"Bootstrap",
+			"Spoonacular API"
+		],
+		"links": [
+			{
+				"name": "Live Demo",
+				"url": "https://recipe-app-mike242424.vercel.app/"
+			},
+			{
+				"name": "GitHub Repository",
+				"url": "https://github.com/mike242424/recipe-app"
+			}
+		]
+	}
+]

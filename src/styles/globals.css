@@ -1,0 +1,173 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+	--transition-duration: 200ms;
+
+	--background: 195 40% 98%;
+	--foreground: 207 89% 12%;
+	--card: 195 40% 98%;
+	--card-foreground: 195 30% 5%;
+	--popover: 195 40% 98%;
+	--popover-foreground: 195 30% 5%;
+	--primary: 195 88% 36.1%;
+	--primary-foreground: 0 0% 100%;
+	--secondary: 207 89% 12%;
+	--secondary-foreground: 0 0% 100%;
+	--accent: 260 31% 65%;
+	--accent-foreground: 195 30% 5%;
+	--muted: 195 20% 90%;
+	--muted-foreground: 195 30% 30%;
+	--destructive: 0 84% 60%;
+	--destructive-foreground: 195 30% 98%;
+	--border: 207 89% 12%;
+	--input: 207 89% 12%;
+	--ring: 195 88% 36.1%;
+	--radius: 0.5rem;
+
+	--chart-1: #e63946;
+	--chart-2: #f1faee;
+	--chart-3: #a8dadc;
+	--chart-4: #457b9d;
+	--chart-5: #1d3557;
+}
+
+.dark {
+	--background: 195 30% 5%;
+	--foreground: 195 40% 98%;
+	--card: 195 30% 5%;
+	--card-foreground: 195 40% 98%;
+	--popover: 195 30% 5%;
+	--popover-foreground: 195 40% 98%;
+	--primary: 195 88% 36.1%;
+	--primary-foreground: 0 0% 100%;
+	--secondary: 207 89% 20%;
+	--secondary-foreground: 0 0% 100%;
+	--accent: 260 31% 45%;
+	--accent-foreground: 195 40% 98%;
+	--muted: 195 20% 20%;
+	--muted-foreground: 195 30% 70%;
+	--destructive: 0 84% 60%;
+	--destructive-foreground: 195 40% 98%;
+	--border: 207 89% 20%;
+	--input: 207 89% 20%;
+	--ring: 195 88% 36.1%;
+}
+
+@layer base {
+	* {
+		@apply border-border;
+		box-sizing: border-box;
+		margin: 0;
+		padding: 0;
+		transition:
+			border-color var(--transition-duration) ease,
+			background-color var(--transition-duration) ease,
+			color var(--transition-duration) ease;
+	}
+
+	body {
+		@apply font-body bg-background text-foreground;
+		transition:
+			background-color var(--transition-duration) ease,
+			color var(--transition-duration) ease;
+	}
+
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		@apply font-heading text-primary;
+	}
+
+	p {
+		@apply text-muted-foreground;
+	}
+
+	a {
+		@apply text-accent hover:text-primary no-underline;
+	}
+
+	.fancy-word {
+		@apply from-primary to-accent bg-gradient-to-r bg-clip-text text-transparent;
+	}
+}
+
+@layer components {
+	.btn {
+		@apply bg-primary text-primary-foreground hover:bg-secondary rounded-[var(--radius)] px-4 py-2 transition-colors duration-200;
+	}
+
+	.card {
+		@apply bg-card border-border rounded-[var(--radius)] border p-4 shadow-lg;
+	}
+
+	.popover {
+		@apply bg-popover text-popover-foreground rounded-[var(--radius)] p-4;
+	}
+}
+
+@keyframes slideInFromBottom {
+	0% {
+		transform: translateY(100%);
+		opacity: 0;
+	}
+	100% {
+		transform: translateY(0);
+		opacity: 1;
+	}
+}
+
+.animate-slide-in-from-bottom {
+	animation: slideInFromBottom 0.7s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+		transform: translateY(20px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@keyframes slideInLeft {
+	from {
+		opacity: 0;
+		transform: translateX(-100px);
+	}
+	to {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}
+
+@keyframes slideInRight {
+	from {
+		opacity: 0;
+		transform: translateX(100px);
+	}
+	to {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}
+
+@layer utilities {
+	.animate-fade-in {
+		animation: fadeIn 0.8s ease-out forwards;
+	}
+
+	.animate-slide-in-left {
+		animation: slideInLeft 0.8s ease-out forwards;
+	}
+
+	.animate-slide-in-right {
+		animation: slideInRight 0.8s ease-out forwards;
+	}
+}
