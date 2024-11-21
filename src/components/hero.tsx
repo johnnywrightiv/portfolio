@@ -2,6 +2,8 @@
 
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
+import { TypeAnimation } from 'react-type-animation';
+import HeroAnimation from '@/components/hero-animation';
 
 export default function Hero() {
 	const scrollToSection = (href: string) => {
@@ -20,16 +22,17 @@ export default function Hero() {
 
 	return (
 		<section className="relative flex min-h-screen flex-col justify-center overflow-hidden">
+			<HeroAnimation />
 			<div className="absolute inset-0">
 				<div className="from-primary/20 h-2/3 bg-gradient-to-b to-background" />
 				<div className="h-1/3 bg-background" />
 			</div>
-			<div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
+			<div className="hero-fade-in container relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
 				<div className="flex flex-col items-center gap-8 text-center">
 					<div className="relative">
 						<div className="from-primary to-accent absolute -inset-1 rounded-full bg-gradient-to-r blur" />
 						<Image
-							src="/headshot.jpeg"
+							src="/avatar.png"
 							alt="Profile"
 							width={200}
 							height={200}
@@ -37,19 +40,33 @@ export default function Hero() {
 						/>
 					</div>
 					<div>
-						<h1 className="text-secondary text-7xl font-extrabold dark:text-foreground">
-							Hello I&apos;m John, <br></br>I build
-							<span className="fancy-word"> websites</span>
+						<h1 className="text-secondary text-4xl sm:text-7xl font-extrabold dark:text-foreground">
+							Hello I&apos;m John, <br /> I build{" "}
+							<TypeAnimation
+								className='fancy-word'
+								sequence={[
+									`websites`,
+									2000,
+									`applications`,
+									2000,
+									`software`,
+									2000,
+									`products`,
+									2000,
+								]}
+								wrapper="span"
+								speed={20}
+							/>
 						</h1>
 						<p className="text-muted-foreground mt-4 text-xl">
-							Building exceptional digital experiences with{' '}
+							Crafting user-friendly digital experiences with{' '}
 							<span className="fancy-word">clean code</span> and thoughtful
 							design
 						</p>
 					</div>
 					<div className="flex gap-4">
 						<Button
-							className="from-primary to-accent bg-gradient-to-r text-lg hover:opacity-90 py-6"
+							className="from-primary to-accent bg-gradient-to-r py-6 text-lg hover:opacity-90"
 							size="lg"
 							onClick={() => scrollToSection('#projects')}
 						>
@@ -57,7 +74,7 @@ export default function Hero() {
 						</Button>
 						<Button
 							variant="outline"
-							className="border-primary hover:bg-primary/10 text-lg py-6"
+							className="border-primary hover:bg-primary/10 py-6 text-lg"
 							size="lg"
 							onClick={() => scrollToSection('#contact')}
 						>

@@ -110,19 +110,24 @@
 	}
 }
 
-@keyframes slideInFromBottom {
+@keyframes heroFadeIn {
 	0% {
-		transform: translateY(100%);
 		opacity: 0;
 	}
 	100% {
-		transform: translateY(0);
 		opacity: 1;
 	}
 }
 
-.animate-slide-in-from-bottom {
-	animation: slideInFromBottom 0.7s ease-in-out forwards;
+@keyframes slideInFromBottom {
+	from {
+		opacity: 0;
+		transform: translateY(100%);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
 }
 
 @keyframes fadeIn {
@@ -169,5 +174,13 @@
 
 	.animate-slide-in-right {
 		animation: slideInRight 0.8s ease-out forwards;
+	}
+
+	.animate-slide-in-from-bottom {
+		animation: slideInFromBottom 1s ease-out forwards;
+	}
+
+	.hero-fade-in {
+		animation: fadeIn 0.5s ease-in-out;
 	}
 }

@@ -8,8 +8,8 @@ import { useEffect, useState, useRef, SetStateAction } from 'react';
 export default function About() {
 	const { theme } = useTheme();
 	const [isVisible, setIsVisible] = useState(false);
-	const [imageSrc, setImageSrc] = useState('/headshot.jpeg'); // State to hold the image source
-	const [imageOpacity, setImageOpacity] = useState(1); // State to control opacity during image transition
+	const [imageSrc, setImageSrc] = useState('/headshot.jpeg');
+	const [imageOpacity, setImageOpacity] = useState(1);
 	const aboutRef = useRef(null);
 
 	// Intersection Observer to reveal content when it comes into view
@@ -35,7 +35,7 @@ export default function About() {
 	}, []);
 
 	const handleMouseEnter = (newImageSrc: SetStateAction<string>) => {
-		setImageOpacity(0);
+		setImageOpacity(0.3);
 		setTimeout(() => {
 			setImageSrc(newImageSrc);
 			setImageOpacity(1);
@@ -43,7 +43,7 @@ export default function About() {
 	};
 
 	const handleMouseLeave = () => {
-		setImageOpacity(0);
+		setImageOpacity(0.3);
 		setTimeout(() => {
 			setImageSrc('/headshot.jpeg');
 			setImageOpacity(1);
@@ -54,7 +54,7 @@ export default function About() {
 		<section
 			ref={aboutRef}
 			id="about"
-			className="from-primary/10 to-accent/10 flex min-h-screen w-full items-center bg-gradient-to-br"
+			className="from-primary/10 to-accent/10 flex min-h-screen w-full items-center bg-gradient-to-br overflow-hidden"
 		>
 			<div className="container mx-auto max-w-6xl px-6 py-24">
 				<div className="mb-12">
@@ -65,7 +65,7 @@ export default function About() {
 							!isVisible
 								? 'translate-y-10 opacity-0'
 								: 'translate-y-0 opacity-100',
-							'ease-in-out' // Smooth easing for header transition
+							'ease-in-out'
 						)}
 					>
 						<span className="fancy-word">About</span> Me
@@ -84,7 +84,6 @@ export default function About() {
 						)}
 					>
 						<div className="from-background/50 absolute inset-0 rounded-3xl bg-gradient-to-br shadow-lg">
-							{/* Image with smooth opacity transition */}
 							<img
 								src={imageSrc}
 								alt="Profile"
