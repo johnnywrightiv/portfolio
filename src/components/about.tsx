@@ -99,6 +99,8 @@ export default function About() {
 								alt="Profile"
 								className="h-full w-full rounded-3xl object-cover transition-opacity duration-500 ease-in-out"
 								style={{ opacity: imageOpacity }}
+								width="1413"
+								height="1413"
 							/>
 						</div>
 					</div>
