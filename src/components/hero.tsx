@@ -56,7 +56,7 @@ export default function Hero() {
 									2000,
 								]}
 								wrapper="span"
-								cursor=false
+								cursor={false}
 								speed={20}
 							/>
 						</h1>
