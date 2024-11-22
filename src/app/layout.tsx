@@ -40,11 +40,11 @@ export default function RootLayout({
 				>
 					<main>{children}</main>
 				</ThemeProvider>
-			<footer className="pb-4">
-				<div className="text-muted-foreground container mx-auto px-4 text-center text-xs">
-					<p>&copy; {new Date().getFullYear()} John Wright</p>
-				</div>
-			</footer>
+				<footer className="pb-4">
+					<div className="container mx-auto px-4 text-center text-xs text-muted-foreground">
+						<p>&copy; {new Date().getFullYear()} John Wright</p>
+					</div>
+				</footer>
 			</body>
 		</html>
 	);

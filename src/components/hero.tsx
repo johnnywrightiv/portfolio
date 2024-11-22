@@ -24,13 +24,13 @@ export default function Hero() {
 		<section className="relative flex min-h-screen flex-col justify-center overflow-hidden">
 			<HeroAnimation />
 			<div className="absolute inset-0">
-				<div className="from-primary/20 h-2/3 bg-gradient-to-b to-background" />
+				<div className="h-2/3 bg-gradient-to-b from-primary/20 to-background" />
 				<div className="h-1/3 bg-background" />
 			</div>
 			<div className="hero-fade-in container relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
 				<div className="flex flex-col items-center gap-8 text-center">
 					<div className="relative">
-						<div className="from-primary to-accent absolute -inset-1 rounded-full bg-gradient-to-r blur" />
+						<div className="absolute -inset-1 rounded-full bg-gradient-to-r from-primary to-accent blur" />
 						<Image
 							src="/avatar.png"
 							alt="Profile"
@@ -41,7 +41,7 @@ export default function Hero() {
 						/>
 					</div>
 					<div>
-						<h1 className="text-secondary text-4xl font-extrabold sm:text-7xl dark:text-foreground">
+						<h1 className="text-4xl font-extrabold text-secondary dark:text-foreground sm:text-7xl">
 							Hello I&apos;m John, <br /> I build{' '}
 							<TypeAnimation
 								className="fancy-word"
@@ -59,7 +59,7 @@ export default function Hero() {
 								speed={20}
 							/>
 						</h1>
-						<p className="text-muted-foreground mt-4 text-xl">
+						<p className="mt-4 text-xl text-muted-foreground">
 							Crafting beautiful digital experiences with{' '}
 							<span className="fancy-word">user-friendly</span>, thoughtful
 							design
@@ -67,7 +67,7 @@ export default function Hero() {
 					</div>
 					<div className="flex gap-4">
 						<Button
-							className="from-primary to-accent bg-gradient-to-r py-6 text-lg hover:opacity-90"
+							className="bg-gradient-to-r from-primary to-accent py-6 text-lg hover:opacity-90"
 							size="lg"
 							onClick={() => scrollToSection('#projects')}
 						>
@@ -75,7 +75,7 @@ export default function Hero() {
 						</Button>
 						<Button
 							variant="outline"
-							className="border-primary hover:bg-primary/10 py-6 text-lg"
+							className="border-primary py-6 text-lg hover:bg-primary/10"
 							size="lg"
 							onClick={() => scrollToSection('#contact')}
 						>

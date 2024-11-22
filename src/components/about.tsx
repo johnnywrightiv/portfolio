@@ -1,9 +1,11 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 'use client';
 
 import { useTheme } from 'next-themes';
 import { Card, CardContent } from '@/components/ui/card';
 import { cn } from '@/lib/utils';
 import { useEffect, useState, useRef, SetStateAction } from 'react';
+import Image from 'next/image';
 
 export default function About() {
 	const { theme } = useTheme();
@@ -60,7 +62,7 @@ export default function About() {
 		<section
 			ref={aboutRef}
 			id="about"
-			className="from-primary/10 to-accent/10 flex min-h-screen w-full items-center overflow-hidden bg-gradient-to-br"
+			className="flex min-h-screen w-full items-center overflow-hidden bg-gradient-to-br from-primary/10 to-accent/10"
 		>
 			<div className="container mx-auto max-w-6xl px-6 py-24">
 				<div className="mb-12">
@@ -91,8 +93,8 @@ export default function About() {
 							'transform transition-all duration-700 ease-in-out'
 						)}
 					>
-						<div className="from-background/50 absolute inset-0 rounded-3xl bg-gradient-to-br shadow-lg">
-							<img
+						<div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-background/50 shadow-lg">
+							<Image
 								src={imageSrc}
 								alt="Profile"
 								className="h-full w-full rounded-3xl object-cover transition-opacity duration-500 ease-in-out"
@@ -111,15 +113,15 @@ export default function About() {
 							'ease-in-out'
 						)}
 					>
-						<div className="from-muted/50 to-muted/10 rounded-3xl bg-gradient-to-br p-8">
+						<div className="rounded-3xl bg-gradient-to-br from-muted/50 to-muted/10 p-8">
 							<h2 className="mb-6 text-2xl font-semibold">A little about me</h2>
-							<p className="text-muted-foreground mb-4 text-lg leading-relaxed">
+							<p className="mb-4 text-lg leading-relaxed text-muted-foreground">
 								I am a full-stack developer with a passion for creating
 								intuitive applications that optimize the user experience. I
 								specialize in both front-end design and back-end development.
 							</p>
-							<p className="text-muted-foreground text-lg leading-relaxed">
-								When I'm not coding, you can catch me playing{' '}
+							<p className="text-lg leading-relaxed text-muted-foreground">
+								When I&#39;m not coding, you can catch me playing{' '}
 								<span
 									className="cursor-pointer underline transition-all duration-300 ease-in-out"
 									onMouseEnter={() => handleMouseEnter('/music-image.jpeg')}
@@ -146,7 +148,7 @@ export default function About() {
 								!
 							</p>
 						</div>
-						<Card className="from-accent/10 to-primary/10 border-none bg-gradient-to-br">
+						<Card className="border-none bg-gradient-to-br from-accent/10 to-primary/10">
 							<CardContent className="p-8">
 								<h2 className="mb-6 text-2xl font-semibold">Tech Stack</h2>
 								<div className="flex flex-wrap gap-3">
@@ -162,7 +164,7 @@ export default function About() {
 									].map((tech) => (
 										<span
 											key={tech}
-											className="bg-accent/10 border-accent/50 text-accent-foreground rounded-full border px-6 py-2 text-lg font-medium"
+											className="rounded-full border border-accent/50 bg-accent/10 px-6 py-2 text-lg font-medium text-accent-foreground"
 										>
 											{tech}
 										</span>

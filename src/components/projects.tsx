@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
@@ -26,13 +27,13 @@ import { DialogDescription } from '@radix-ui/react-dialog';
 export default function Projects() {
 	const { theme } = useTheme();
 	const [currentProjectIndex, setCurrentProjectIndex] = useState(0);
-  const [isDialogOpen, setIsDialogOpen] = useState(false);
-  const [isHeaderVisible, setIsHeaderVisible] = useState(false);
-  const [isProjectsVisible, setIsProjectsVisible] = useState(false);
-  const [mounted, setMounted] = useState(false);
+	const [isDialogOpen, setIsDialogOpen] = useState(false);
+	const [isHeaderVisible, setIsHeaderVisible] = useState(false);
+	const [isProjectsVisible, setIsProjectsVisible] = useState(false);
+	const [mounted, setMounted] = useState(false);
 
-  const headerRef = useRef(null);
-  const projectsRef = useRef(null);
+	const headerRef = useRef(null);
+	const projectsRef = useRef(null);
 
 	const handleNextProject = (e?: React.MouseEvent) => {
 		e?.stopPropagation();
@@ -48,7 +49,7 @@ export default function Projects() {
 		}
 	};
 
-	useEffect(() => {    
+	useEffect(() => {
 		const handleKeyPress = (e: KeyboardEvent) => {
 			if (!isDialogOpen) return;
 
@@ -61,44 +62,44 @@ export default function Projects() {
 
 		window.addEventListener('keydown', handleKeyPress);
 		return () => window.removeEventListener('keydown', handleKeyPress);
-  }, [isDialogOpen, currentProjectIndex]);
-  
-  useEffect(() => {
-      setMounted(true);
+	}, [isDialogOpen, currentProjectIndex, handleNextProject, handlePrevProject]);
 
-			const headerObserver = new IntersectionObserver(
-				([entry]) => {
-					if (entry.isIntersecting) {
-						setIsHeaderVisible(true);
-					}
-				},
-				{ threshold: 0.1 }
-			);
-			const projectsObserver = new IntersectionObserver(
-				([entry]) => {
-					if (entry.isIntersecting) {
-						setIsProjectsVisible(true);
-					}
-				},
-				{ threshold: 0.1 }
-			);
+	useEffect(() => {
+		setMounted(true);
 
+		const headerObserver = new IntersectionObserver(
+			([entry]) => {
+				if (entry.isIntersecting) {
+					setIsHeaderVisible(true);
+				}
+			},
+			{ threshold: 0.1 }
+		);
+		const projectsObserver = new IntersectionObserver(
+			([entry]) => {
+				if (entry.isIntersecting) {
+					setIsProjectsVisible(true);
+				}
+			},
+			{ threshold: 0.1 }
+		);
+
+		if (headerRef.current) {
+			headerObserver.observe(headerRef.current);
+		}
+		if (projectsRef.current) {
+			projectsObserver.observe(projectsRef.current);
+		}
+
+		return () => {
 			if (headerRef.current) {
-				headerObserver.observe(headerRef.current);
+				headerObserver.unobserve(headerRef.current);
 			}
 			if (projectsRef.current) {
-				projectsObserver.observe(projectsRef.current);
+				projectsObserver.unobserve(projectsRef.current);
 			}
-
-			return () => {
-				if (headerRef.current) {
-					headerObserver.unobserve(headerRef.current);
-				}
-				if (projectsRef.current) {
-					projectsObserver.unobserve(projectsRef.current);
-				}
-			};
-		}, []);
+		};
+	}, []);
 
 	return (
 		<section
@@ -143,7 +144,7 @@ export default function Projects() {
 									index % 2 === 0 ? 'slide-in-left' : 'slide-in-right'
 								}
 							>
-								<div className="from-primary/5 to-accent/5 border-accent/10 hover:border-accent/20 transform overflow-hidden rounded-3xl border bg-gradient-to-br p-8 transition-all duration-300 hover:scale-[1.02] hover:shadow-lg lg:p-12">
+								<div className="transform overflow-hidden rounded-3xl border border-accent/10 bg-gradient-to-br from-primary/5 to-accent/5 p-8 transition-all duration-300 hover:scale-[1.02] hover:border-accent/20 hover:shadow-lg lg:p-12">
 									<div className="grid gap-8 lg:grid-cols-2 lg:gap-12">
 										<div
 											className={cn(
@@ -187,14 +188,14 @@ export default function Projects() {
 												className="object-cover"
 											/>
 										</div>
-										<p className="text-muted-foreground text-xl leading-relaxed">
+										<p className="text-xl leading-relaxed text-muted-foreground">
 											{project.description}
 										</p>
 										<div className="flex flex-wrap gap-2">
 											{project.technologies.map((tech) => (
 												<span
 													key={tech}
-													className="bg-accent/10 border-accent/50 text-accent-foreground rounded-full border px-4 py-2 text-sm"
+													className="rounded-full border border-accent/50 bg-accent/10 px-4 py-2 text-sm text-accent-foreground"
 												>
 													{tech}
 												</span>
@@ -203,19 +204,19 @@ export default function Projects() {
 									</div>
 									<div className="flex flex-col justify-between space-y-12">
 										<div className="space-y-4 text-xl">
-											<div className="bg-muted/10 rounded-lg p-4">
+											<div className="rounded-lg bg-muted/10 p-4">
 												<h3 className="mb-2 font-semibold">Key Features</h3>
-												<ul className="text-muted-foreground ml-4 list-disc space-y-1">
+												<ul className="ml-4 list-disc space-y-1 text-muted-foreground">
 													{project.keyFeatures.map((feature, index) => (
 														<li key={index}>{feature}</li>
 													))}
 												</ul>
 											</div>
-											<div className="bg-muted/10 rounded-lg p-4">
+											<div className="rounded-lg bg-muted/10 p-4">
 												<h3 className="mb-2 font-semibold">
 													Technical Highlights
 												</h3>
-												<ul className="text-muted-foreground ml-4 list-disc space-y-1">
+												<ul className="ml-4 list-disc space-y-1 text-muted-foreground">
 													{project.technicalHighlights.map(
 														(highlight, index) => (
 															<li key={index}>{highlight}</li>
@@ -233,8 +234,8 @@ export default function Projects() {
 														'flex items-center gap-2 py-6 text-lg',
 														link.name.includes('GitHub') ||
 															link.name.includes('Code')
-															? 'border-primary hover:bg-primary/10 text-muted-foreground'
-															: 'from-primary to-accent text-primary-foreground hover:text-primary-foreground bg-gradient-to-r hover:opacity-90'
+															? 'border-primary text-muted-foreground hover:bg-primary/10'
+															: 'bg-gradient-to-r from-primary to-accent text-primary-foreground hover:text-primary-foreground hover:opacity-90'
 													)}
 													size="lg"
 													asChild
@@ -261,7 +262,7 @@ export default function Projects() {
 									<Button
 										variant="ghost"
 										size="icon"
-										className="hover:bg-background/80 bg-background/50 rounded-full p-2"
+										className="rounded-full bg-background/50 p-2 hover:bg-background/80"
 										onClick={handlePrevProject}
 										disabled={currentProjectIndex === 0}
 									>
@@ -270,7 +271,7 @@ export default function Projects() {
 									<Button
 										variant="ghost"
 										size="icon"
-										className="hover:bg-background/80 bg-background/50 rounded-full p-2"
+										className="rounded-full bg-background/50 p-2 hover:bg-background/80"
 										onClick={handleNextProject}
 										disabled={currentProjectIndex === projects.length - 1}
 									>
@@ -286,13 +287,14 @@ export default function Projects() {
 	);
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const ProjectInfo = ({ project }: { project: any }) => (
 	<div className="space-y-6">
 		<div>
 			<h3 className="text-2xl font-semibold sm:text-3xl lg:text-4xl">
 				{project.title}
 			</h3>
-			<p className="text-muted-foreground mt-2 text-lg">{project.blurb}</p>
+			<p className="mt-2 text-lg text-muted-foreground">{project.blurb}</p>
 		</div>
 		<div className="flex flex-wrap gap-4">
 			<div className="space-y-2">
@@ -301,33 +303,34 @@ const ProjectInfo = ({ project }: { project: any }) => (
 					{project.technologies.map((tech: string) => (
 						<span
 							key={tech}
-							className="bg-accent/10 border-accent/50 text-accent-foreground rounded-full border px-3 py-1 text-xs"
+							className="rounded-full border border-accent/50 bg-accent/10 px-3 py-1 text-xs text-accent-foreground"
 						>
 							{tech}
 						</span>
 					))}
 				</div>
 			</div>
-    </div>
-    <div className="flex justify-center pt-4">
+		</div>
+		<div className="flex justify-center pt-4">
 			<Button
 				variant="outline"
-				className="group/btn text-muted-foreground border-secondary hover:bg-primary/5 -ml-4"
+				className="group/btn -ml-4 border-secondary text-muted-foreground hover:bg-primary/5"
 			>
 				View project details
 				<ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover/btn:translate-x-1" />
 			</Button>
-    </div>
+		</div>
 	</div>
 );
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const ProjectImage = ({ project }: { project: any }) => (
-	<div className="from-muted/50 to-muted/10 relative aspect-[16/10] overflow-hidden rounded-lg p-2">
+	<div className="relative aspect-[16/10] overflow-hidden rounded-lg from-muted/50 to-muted/10 p-2">
 		<Image
 			src={project.image}
 			alt={project.title}
-      fill
-      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+			fill
+			sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
 			className="object-cover"
 		/>
 	</div>
