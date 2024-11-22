@@ -158,8 +158,12 @@
 		"technologies": ["React", "Tailwind", "Custom CSS", "Animations", "Vercel"],
 		"links": [
 			{
-				"name": "GitHub",
+				"name": "Life Site",
 				"url": "https://portfolio-git-v1-johnnys-projects-2201ec05.vercel.app"
+			},
+			{
+				"name": "GitHub",
+				"url": "https://github.com/johnnywrightiv/portfolio/tree/v1"
 			}
 		]
 	},
