@@ -21,6 +21,7 @@ import {
 } from '@/components/ui/dialog';
 import Link from 'next/link';
 import projects from '@/data/projects.json';
+import { DialogDescription } from '@radix-ui/react-dialog';
 
 export default function Projects() {
 	const { theme } = useTheme();
@@ -28,6 +29,7 @@ export default function Projects() {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [isHeaderVisible, setIsHeaderVisible] = useState(false);
   const [isProjectsVisible, setIsProjectsVisible] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
   const headerRef = useRef(null);
   const projectsRef = useRef(null);
@@ -46,8 +48,7 @@ export default function Projects() {
 		}
 	};
 
-	useEffect(() => {
-    
+	useEffect(() => {    
 		const handleKeyPress = (e: KeyboardEvent) => {
 			if (!isDialogOpen) return;
 
@@ -62,7 +63,9 @@ export default function Projects() {
 		return () => window.removeEventListener('keydown', handleKeyPress);
   }, [isDialogOpen, currentProjectIndex]);
   
-    useEffect(() => {
+  useEffect(() => {
+      setMounted(true);
+
 			const headerObserver = new IntersectionObserver(
 				([entry]) => {
 					if (entry.isIntersecting) {
@@ -100,14 +103,14 @@ export default function Projects() {
 	return (
 		<section
 			id="projects"
-			className="container mx-auto px-4 py-20 sm:px-6 lg:px-8 overflow-hidden"
+			className="container mx-auto overflow-hidden px-4 py-20 sm:px-6 lg:px-8"
 			ref={projectsRef}
 		>
 			<h1
 				ref={headerRef}
 				className={cn(
-					'overflow-y-visible mb-12 transform text-end text-4xl font-bold tracking-tight transition-transform duration-1000 md:text-5xl lg:text-6xl',
-					theme === 'light' ? 'text-secondary' : 'text-foreground',
+					'mb-12 transform overflow-y-visible text-end text-4xl font-bold tracking-tight transition-transform duration-1000 md:text-5xl lg:text-6xl',
+					mounted && theme === 'light' ? 'text-secondary' : 'text-foreground',
 					isHeaderVisible
 						? 'translate-y-0 opacity-100'
 						: 'translate-y-full opacity-0'
@@ -164,96 +167,116 @@ export default function Projects() {
 								</div>
 							</div>
 						</DialogTrigger>
-						<DialogContent className="max-h-[95vh] w-[95vw] max-w-7xl overflow-y-auto">
+						<DialogContent className="max-h-[98vh] w-[95vw] max-w-7xl overflow-y-auto">
 							<DialogHeader>
 								<DialogTitle className="text-3xl font-bold">
 									{project.title}
 								</DialogTitle>
+								<DialogDescription className="hidden">
+									project details
+								</DialogDescription>
 							</DialogHeader>
-							<div className="mt-6 grid gap-8 lg:grid-cols-2">
-								<div>
-									<div className="relative aspect-video w-full overflow-hidden rounded-lg">
-										<Image
-											src={project.image}
-											alt={project.title}
-											fill
-											className="object-cover"
-										/>
+							<div className="relative space-y-8">
+								<div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
+									<div className="col-span-2 space-y-6">
+										<div className="relative aspect-[16/9] w-full overflow-hidden rounded-lg">
+											<Image
+												src={project.image}
+												alt={project.title}
+												fill
+												className="object-cover"
+											/>
+										</div>
+										<p className="text-muted-foreground text-xl leading-relaxed">
+											{project.description}
+										</p>
+										<div className="flex flex-wrap gap-2">
+											{project.technologies.map((tech) => (
+												<span
+													key={tech}
+													className="bg-accent/10 border-accent/50 text-accent-foreground rounded-full border px-4 py-2 text-sm"
+												>
+													{tech}
+												</span>
+											))}
+										</div>
+									</div>
+									<div className="flex flex-col justify-between space-y-12">
+										<div className="space-y-4 text-xl">
+											<div className="bg-muted/10 rounded-lg p-4">
+												<h3 className="mb-2 font-semibold">Key Features</h3>
+												<ul className="text-muted-foreground ml-4 list-disc space-y-1">
+													{project.keyFeatures.map((feature, index) => (
+														<li key={index}>{feature}</li>
+													))}
+												</ul>
+											</div>
+											<div className="bg-muted/10 rounded-lg p-4">
+												<h3 className="mb-2 font-semibold">
+													Technical Highlights
+												</h3>
+												<ul className="text-muted-foreground ml-4 list-disc space-y-1">
+													{project.technicalHighlights.map(
+														(highlight, index) => (
+															<li key={index}>{highlight}</li>
+														)
+													)}
+												</ul>
+											</div>
+										</div>
+										<div className="flex flex-wrap justify-center gap-4 sm:justify-end">
+											{project.links.map((link) => (
+												<Button
+													key={link.name}
+													variant="outline"
+													className={cn(
+														'flex items-center gap-2 py-6 text-lg',
+														link.name.includes('GitHub') ||
+															link.name.includes('Code')
+															? 'border-primary hover:bg-primary/10 text-muted-foreground'
+															: 'from-primary to-accent text-primary-foreground hover:text-primary-foreground bg-gradient-to-r hover:opacity-90'
+													)}
+													size="lg"
+													asChild
+												>
+													<Link
+														href={link.url}
+														target="_blank"
+														rel="noopener noreferrer"
+													>
+														{link.name.includes('GitHub') ||
+														link.name.includes('Code') ? (
+															<Github className="h-5 w-5" />
+														) : (
+															<Globe className="h-5 w-5" />
+														)}
+														{link.name}
+													</Link>
+												</Button>
+											))}
+										</div>
 									</div>
 								</div>
-								{/* Left Column */}
-								<div className="space-y-8">
-									{/* Description */}
-									<p className="text-muted-foreground text-xl leading-relaxed">
-										{project.description}
-									</p>
-								</div>
-								{/* Right Column */}
-							</div>
-							{/* Tags */}
-							<div className="flex flex-wrap gap-2">
-								{project.technologies.map((tech) => (
-									<span
-										key={tech}
-										className="bg-accent/10 border-accent/50 text-accent-foreground rounded-full border px-4 py-2 text-base"
-									>
-										{tech}
-									</span>
-								))}
-							</div>
-							{/* Links */}
-							<div className="flex flex-wrap justify-center gap-4 md:justify-end">
-								{project.links.map((link) => (
+								<div className="absolute left-0 right-0 top-1/2 flex -translate-y-1/2 justify-between">
 									<Button
-										key={link.name}
-										variant="outline"
-										className={cn(
-											'flex items-center gap-2 py-6 text-lg',
-											link.name.includes('GitHub') ||
-											link.name.includes('Code')
-												? 'border-primary hover:bg-primary/10 text-muted-foreground'
-												: 'from-primary to-accent text-primary-foreground hover:text-primary-foreground bg-gradient-to-r hover:opacity-90'
-										)}
-										size="lg"
-										asChild
+										variant="ghost"
+										size="icon"
+										className="hover:bg-background/80 bg-background/50 rounded-full p-2"
+										onClick={handlePrevProject}
+										disabled={currentProjectIndex === 0}
 									>
-										<Link
-											href={link.url}
-											target="_blank"
-											rel="noopener noreferrer"
-										>
-											{link.name.includes('GitHub') ||
-											link.name.includes('Code')
-                       ? (
-												<Github className="h-5 w-5" />
-											) : (
-												<Globe className="h-5 w-5" />
-											)}
-											{link.name}
-										</Link>
+										<ArrowLeftCircle className="h-8 w-8" />
 									</Button>
-								))}
-							</div>
-							{/* Navigation Buttons */}
-							<div className="absolute left-0 right-0 top-1/2 flex -translate-y-1/2 justify-between">
-								<Button
-									variant="ghost"
-									size="icon"
-									className="hover:bg-background/80 bg-background/50 rounded-full p-2"
-									onClick={handlePrevProject}
-									disabled={currentProjectIndex === 0}
-								>
-									<ArrowLeftCircle className="h-8 w-8" />
-								</Button>
-								<Button
-									variant="ghost"
-									size="icon"
-									className="hover:bg-background/80 bg-background/50 rounded-full p-2"
-									onClick={handleNextProject}
-									disabled={currentProjectIndex === projects.length - 1}
-								>
-									<ArrowRightCircle className="h-8 w-8" />
-								</Button>
+									<Button
+										variant="ghost"
+										size="icon"
+										className="hover:bg-background/80 bg-background/50 rounded-full p-2"
+										onClick={handleNextProject}
+										disabled={currentProjectIndex === projects.length - 1}
+									>
+										<ArrowRightCircle className="h-8 w-8" />
+									</Button>
+								</div>
 							</div>
 						</DialogContent>
 					</Dialog>
@@ -303,7 +326,8 @@ const ProjectImage = ({ project }: { project: any }) => (
 		<Image
 			src={project.image}
 			alt={project.title}
-			fill
+      fill
+      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
 			className="object-cover"
 		/>
 	</div>

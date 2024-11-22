@@ -7,10 +7,16 @@ import { useEffect, useState, useRef, SetStateAction } from 'react';
 
 export default function About() {
 	const { theme } = useTheme();
+	const [mounted, setMounted] = useState(false);
 	const [isVisible, setIsVisible] = useState(false);
 	const [imageSrc, setImageSrc] = useState('/headshot.jpeg');
 	const [imageOpacity, setImageOpacity] = useState(1);
 	const aboutRef = useRef(null);
+
+	// Handle mounting state
+	useEffect(() => {
+		setMounted(true);
+	}, []);
 
 	// Intersection Observer to reveal content when it comes into view
 	useEffect(() => {
@@ -54,14 +60,16 @@ export default function About() {
 		<section
 			ref={aboutRef}
 			id="about"
-			className="from-primary/10 to-accent/10 flex min-h-screen w-full items-center bg-gradient-to-br overflow-hidden"
+			className="from-primary/10 to-accent/10 flex min-h-screen w-full items-center overflow-hidden bg-gradient-to-br"
 		>
 			<div className="container mx-auto max-w-6xl px-6 py-24">
 				<div className="mb-12">
 					<h1
 						className={cn(
 							'text-4xl font-bold tracking-tight transition-all duration-700 md:text-5xl lg:text-6xl',
-							theme === 'light' ? 'text-secondary' : 'text-foreground',
+							mounted && theme === 'light'
+								? 'text-secondary'
+								: 'text-foreground',
 							!isVisible
 								? 'translate-y-10 opacity-0'
 								: 'translate-y-0 opacity-100',
@@ -107,7 +115,7 @@ export default function About() {
 							<h2 className="mb-6 text-2xl font-semibold">A little about me</h2>
 							<p className="text-muted-foreground mb-4 text-lg leading-relaxed">
 								I am a full-stack developer with a passion for creating
-								beautiful, intuitive, and user-friendly applications. I
+								intuitive applications that optimize the user experience. I
 								specialize in both front-end design and back-end development.
 							</p>
 							<p className="text-muted-foreground text-lg leading-relaxed">
@@ -146,7 +154,6 @@ export default function About() {
 								!
 							</p>
 						</div>
-
 						<Card className="from-accent/10 to-primary/10 border-none bg-gradient-to-br">
 							<CardContent className="p-8">
 								<h2 className="mb-6 text-2xl font-semibold">Tech Stack</h2>
@@ -163,7 +170,7 @@ export default function About() {
 									].map((tech) => (
 										<span
 											key={tech}
-											className="bg-accent/10 border-accent/50 border text-accent-foreground rounded-full px-6 py-2 text-lg font-medium"
+											className="bg-accent/10 border-accent/50 text-accent-foreground rounded-full border px-6 py-2 text-lg font-medium"
 										>
 											{tech}
 										</span>

@@ -55,6 +55,30 @@
 	--ring: 195 88% 36.1%;
 }
 
+@media (prefers-color-scheme: dark) {
+	.dark {
+		--background: 195 30% 5%;
+		--foreground: 195 40% 98%;
+		--card: 195 30% 5%;
+		--card-foreground: 195 40% 98%;
+		--popover: 195 30% 5%;
+		--popover-foreground: 195 40% 98%;
+		--primary: 195 88% 36.1%;
+		--primary-foreground: 0 0% 100%;
+		--secondary: 207 89% 20%;
+		--secondary-foreground: 0 0% 100%;
+		--accent: 260 31% 45%;
+		--accent-foreground: 195 40% 98%;
+		--muted: 195 20% 20%;
+		--muted-foreground: 195 30% 70%;
+		--destructive: 0 84% 60%;
+		--destructive-foreground: 195 40% 98%;
+		--border: 207 89% 20%;
+		--input: 207 89% 20%;
+		--ring: 195 88% 36.1%;
+	}
+}
+
 @layer base {
 	* {
 		@apply border-border;

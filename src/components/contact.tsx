@@ -9,11 +9,13 @@ import { FaGithub, FaLinkedin, FaEnvelope, FaFileAlt } from 'react-icons/fa';
 import Link from 'next/link';
 
 export default function Contact() {
-	const { theme } = useTheme();
+  const { theme } = useTheme();
+  const [mounted, setMounted] = useState(false);
 	const [isVisible, setIsVisible] = useState(false);
-	const contactRef = useRef(null);
-
+  const contactRef = useRef(null);
+  
 	useEffect(() => {
+    setMounted(true);
 		const observer = new IntersectionObserver(
 			([entry]) => {
 				if (entry.isIntersecting) {
@@ -42,7 +44,7 @@ export default function Contact() {
 				<h1
 					className={cn(
 						'mb-6 text-center text-4xl font-bold tracking-tight md:text-5xl lg:text-6xl',
-						theme === 'light' ? 'text-secondary' : 'text-foreground'
+						mounted && theme === 'light' ? 'text-secondary' : 'text-foreground'
 					)}
 				>
 					<span className="fancy-word">Contact</span>
@@ -63,7 +65,7 @@ export default function Contact() {
 									variant="outline"
 									className="text-muted-foreground group relative flex h-14 w-14 items-center justify-center rounded-full"
 								>
-									<Link href="mailto:example@example.com">
+									<Link href="mailto:johnnywrightiv@gmail.com">
 										<FaEnvelope className="group-hover:scale-110" />
 									</Link>
 								</Button>
@@ -74,7 +76,7 @@ export default function Contact() {
 									className="text-muted-foreground group relative flex h-14 w-14 items-center justify-center rounded-full"
 								>
 									<Link
-										href="https://www.linkedin.com/in/yourprofile"
+										href="https://www.linkedin.com/in/johnnywrightiv"
 										target="_blank"
 										rel="noopener noreferrer"
 									>
@@ -88,7 +90,7 @@ export default function Contact() {
 									className="text-muted-foreground group relative flex h-14 w-14 items-center justify-center rounded-full"
 								>
 									<Link
-										href="https://github.com/yourprofile"
+										href="https://github.com/johnnywrightiv"
 										target="_blank"
 										rel="noopener noreferrer"
 									>
@@ -101,9 +103,12 @@ export default function Contact() {
 								variant="outline"
 								className="text-muted-foreground flex items-center gap-2 px-8 py-6 text-lg"
 							>
-								<a target='_blank' href="https://drive.google.com/file/d/1Wtz_DBp1dt-X8Sc6Vc0pvuBUAUKeYuHV/view?usp=share_link">
+								<a
+									target="_blank"
+									href="https://drive.google.com/file/d/1iz5BXX2xA9gtOgHfFUB6abzMLuuG1Z3s/view?usp=sharing"
+								>
 									<FaFileAlt />
-									View Resume
+									View Resumé
 								</a>
 							</Button>
 						</div>

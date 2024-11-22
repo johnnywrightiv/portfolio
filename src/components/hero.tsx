@@ -36,14 +36,15 @@ export default function Hero() {
 							alt="Profile"
 							width={200}
 							height={200}
+							priority
 							className="relative rounded-full border-4 border-background object-cover"
 						/>
 					</div>
 					<div>
-						<h1 className="text-secondary text-4xl sm:text-7xl font-extrabold dark:text-foreground">
-							Hello I&apos;m John, <br /> I build{" "}
+						<h1 className="text-secondary text-4xl font-extrabold sm:text-7xl dark:text-foreground">
+							Hello I&apos;m John, <br /> I build{' '}
 							<TypeAnimation
-								className='fancy-word'
+								className="fancy-word"
 								sequence={[
 									`websites`,
 									2000,
@@ -59,8 +60,8 @@ export default function Hero() {
 							/>
 						</h1>
 						<p className="text-muted-foreground mt-4 text-xl">
-							Crafting user-friendly digital experiences with{' '}
-							<span className="fancy-word">clean code</span> and thoughtful
+							Crafting beautiful digital experiences with{' '}
+							<span className="fancy-word">user-friendly</span>, thoughtful
 							design
 						</p>
 					</div>

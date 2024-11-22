@@ -1,14 +1,21 @@
 [
 	{
 		"title": "Harmony Companion (WIP)",
-		"keyFeatures": ["abc", "123"],
-		"technicalHighlights": ["xyz", "456"],
+		"keyFeatures": [
+			"Aids musicians in creating harmonic accompaniment",
+			"Interactive visual and audio tools for scale and chord visualization",
+			"Practice logs with reviews and visual progress tracking statistics"
+		],
+		"technicalHighlights": [
+			"Built with a modular design for seamless feature expansion",
+			"Highly responsive UI with accessibility in mind"
+		],
 		"image": "/harmony-app.png",
-		"blurb": "words about the improv harmony companion",
-		"description": "description about the improv harmony companion",
+		"blurb": "A tool for improvising musicians, Harmony Companion helps users create harmonic accompaniment and practice theory concepts in real-time. With features like interactive visual and audio aids and progress tracking, this app empowers musicians to explore and improve their skills.",
+		"description": "This project was born out of a frustration in my own improvisation practice, constantly needing to find or create different harmonic backing tracks to practice varied styles of music or theory concepts. I wanted to build an interactive app that was highliy customizable and could update theory paramters on the fly to update the harmonic accompaniment.",
 		"technologies": [
-			"Next.js",
 			"Typescript",
+			"Next.js",
 			"React",
 			"Tailwind",
 			"shadcn UI",
@@ -20,22 +27,31 @@
 				"url": "https://google.com/"
 			},
 			{
-				"name": "GitHub Repository",
-				"url": "https://github.com/johnnywrightiv"
+				"name": "GitHub",
+				"url": "https://github.com/johnnywrightiv/improv-harmony-companion"
 			}
 		]
 	},
 
 	{
 		"title": "Workout Tracker MVP",
-		"keyFeatures": ["abc", "123"],
-		"technicalHighlights": ["xyz", "456"],
+		"keyFeatures": [
+			"Create custom templates",
+			"Log workouts and exercises",
+			"Mobile-friendly UI design for improved on-the-go tracking"
+		],
+		"technicalHighlights": [
+			"Secured using NextAuth/Auth.js",
+			"Redux for state management",
+			"MongoDB for storing users, workouts, and templates",
+			"shadcn for UI library"
+		],
 		"image": "/workout-app.png",
-		"blurb": "words about the workout tracker mvp",
-		"description": "description about the workout tracker mvp",
+		"blurb": "A minimal viable product for tracking workouts, featuring exercise logs, template creation, progress tracking, custom color themes, and a sleek, mobile-friendly design.",
+		"description": "This project highlights my ability to deliver impactful real-world tools for web and mobile. I implemented secure authentication, responsive designs, and Next.js API endpoints to create a seamless user experience. By using Next.js for the frontend and backend, I ensured efficient data handling, while Tailwind and Shadcn UI gave the app a clean and modern look.",
 		"technologies": [
-			"Typescript",
 			"Next.js",
+			"Typescript",
 			"Tailwind",
 			"shadcn UI",
 			"MongoDB",
@@ -44,22 +60,30 @@
 		"links": [
 			{
 				"name": "Live Demo",
-				"url": "https://google.com/"
+				"url": "https://workout-tracker-eta-green.vercel.app/"
 			},
 			{
-				"name": "GitHub Repository",
-				"url": "https://github.com/johnnywrightiv"
+				"name": "GitHub",
+				"url": "https://github.com/johnnywrightiv/workout-tracker"
 			}
 		]
 	},
 
 	{
 		"title": "Order Management App",
-		"keyFeatures": ["abc", "123"],
-		"technicalHighlights": ["xyz", "456"],
+		"keyFeatures": [
+			"Key contributor to a major data system design restructuring",
+			"Restaurant website with menu and order management portal",
+			"Payment integration with Clover"
+		],
+		"technicalHighlights": [
+			"Next.js with Node/Express server",
+			"MongoDB for database",
+			"Tailwind for styling"
+		],
 		"image": "/u2CanQue.png",
-		"blurb": "with dashboard and payment integration - Full-stack order management app for a BBQ restaurant, featuring a responsive front-end with checkout integration, a robust back-end with API, and an admin dashboard",
-		"description": "This project highlights my proficiency in full-stack development and ability to work within existing codebases to create impactful solutions. Tasked with transitioning from a static menu on the front-end to a dynamic back-end based system that could be edited and allow for rotating daily and holiday specials, I created new database models and API endpoints, solved UI bugs related to the restructuring, and created additional admin features to implement the new CRUD functionality. This project presented unique challenges, such as complex data restructuring and integrating changes into existing live applications. It provided valuable experience in debugging, problem-solving, and project architecture.",
+		"blurb": "Full-stack order management app for a BBQ restaurant, featuring a responsive front-end with checkout integration, a robust back-end with API, and an admin dashboard",
+		"description": "This project showcases my ability to turn static systems into dynamic, scalable solutions. I built new frontend functionality that makes editing the clients menu easy and convenient. On the backend I created new data models and API endpoints and restructured the existing database. Throughout the process I solved UI and data realted bugs and integrated updates into a live application.",
 		"technologies": [
 			"Next.js",
 			"React",
@@ -70,7 +94,7 @@
 		],
 		"links": [
 			{
-				"name": "Live Web App",
+				"name": "Live Website",
 				"url": "https://www.u2canque-takeout.com"
 			},
 			{
@@ -90,11 +114,20 @@
 
 	{
 		"title": "Project Management App",
-		"keyFeatures": ["abc", "123"],
-		"technicalHighlights": ["xyz", "456"],
+		"keyFeatures": [
+			"Fully functional Kanban boards",
+			"Drag-and-drop user interface",
+			"Live updates between users in the same organizaition"
+		],
+		"technicalHighlights": [
+			"User authentication in database",
+			"Redux for state mangement",
+			"Node/Express server with websocket connections",
+			"MongoDB to store users, organizations, and boards"
+		],
 		"image": "/TreHej.png",
-		"blurb": "with drag and drop and real-time connections - Full-stack Trello clone featuring Kanban boards with seamless drag-and-drop functionality, user authentication, and real-time updates - developed as part of an agile sprint",
-		"description": "Serving as the product lead for a Trello clone, I guided my cohort of fellow developers through a full agile sprint from concept to deployment. I researched the required functionalities, created user journeys, defined scopes, and planned the design of the overall system. This project enhanced my full-stack development skills and deepened my understanding of project management and agile methodologies. By tackling complex design challenges and navigating intricate data structures, I honed my problem-solving abilities. Throughout the process, I led our team in making critical decisions and prioritizing features to ensure timely delivery. This experience highlights my technical proficiency as well as my capacity to lead a development team through complex projects.",
+		"blurb": "Full-stack Trello clone featuring Kanban boards with user authentication, seamless drag-and-drop functionality, and real-time team updates.",
+		"description": "I designed and developed a fully functional Trello clone as part of an Agile development team. Acting as Prouct Owner, I led daily standups, researched requirements, created user journeys, defined scopes, and planned the overall system design. Throghout the process I led our team in making critical decisions, solving issues, and prioritizing features to ensure timely delivery.",
 		"technologies": [
 			"React",
 			"Redux",
@@ -109,30 +142,27 @@
 				"url": "https://tre-hej.vercel.app/"
 			},
 			{
-				"name": "GitHub Repository",
+				"name": "GitHub",
 				"url": "https://github.com/Johnnywrightiv/agile-trello-clone"
 			}
 		]
 	},
 
 	{
-		"title": "Custom Developer Portfolio",
-		"keyFeatures": ["abc", "123"],
-		"technicalHighlights": ["xyz", "456"],
-		"image": "/Portfolio.png",
-		"blurb": "Explore my development journey through an interactive portfolio website, highlighting my skills in responsive front-end design and animation",
-		"description": "Designing and building this React-based portfolio website was an opportunity to focus on what I am passionate about, creating stunning, interactive, and user-focused web applications. Moving beyond the typical constraints of MVP development, this project allowed me to dive deep into front-end technologies and design principles. The site features custom animations and responsive design, showcasing some of my various development projects while highlighting my proficiency in React, Context API, and CSS including frameworks like Tailwind.",
-		"technologies": [
-			"React",
-			"Context",
-			"Tailwind",
-			"Custom CSS",
-			"Animations",
-			"Vercel"
+		"title": "Custom Portfolio Site",
+		"keyFeatures": ["Dynamic color themes", "Custom CSS animations"],
+		"technicalHighlights": [
+			"Tailwind and CSS variables",
+			"Built UI elements from scratch",
+			"Uses context provider for dark mode and dynamic color theme"
 		],
+		"image": "/Portfolio.png",
+		"blurb": "Explore my development journey through an interactive portfolio website, highlighting my skills in responsive design, front-end development, and animation.",
+		"description": "Designing this portfolio website was an opportunity to focus on what I am passionate about; creating interactive user-focused web applications. This project allowed me to dive deep into front-end technologies and design principles while gaining valuble experience in animation.",
+		"technologies": ["React", "Tailwind", "Custom CSS", "Animations", "Vercel"],
 		"links": [
 			{
-				"name": "GitHub Repository",
+				"name": "GitHub",
 				"url": "https://github.com/Johnnywrightiv/portfolio"
 			}
 		]
@@ -140,11 +170,20 @@
 
 	{
 		"title": "Recipe Generator App",
-		"keyFeatures": ["abc", "123"],
-		"technicalHighlights": ["xyz", "456"],
+		"keyFeatures": [
+			"Get randomized recipes ",
+			"Search recipes by categories",
+			"Discover recipes from list of available ingredients",
+			"Calculates and renders ingredient/recipe details"
+		],
+		"technicalHighlights": [
+			"UI built with Bootstrap",
+			"Redux for state management",
+			"Axios for calls to API endpoints"
+		],
 		"image": "/Recipe-App.png",
-		"blurb": "Front-End recipe app; consumes third-party party API. Users can discover recipes based on their available ingredients, search by category, or generate random recipe suggestions.",
-		"description": "This project was developed during my first hackathon in collaboration with two fellow developers. Our team focused on utilizing the Spoonacular API to render data from various endpoints. We aimed to create innovative user functionality based on the available data, by creating multiple routes, each designed to allow users to query the recipe database in specific ways to cater to the diverse recipe discovery needs of users.",
+		"blurb": "Front-end recipe app. Users can discover recipes based on their available ingredients, search by category, or generate random recipe suggestions.",
+		"description": "This project was developed during my first hackathon in collaboration with two fellow developers. Our team focused on utilizing the Spoonacular API to get recipe data from various endpoints. We aimed to create a useful application with simple user functionalities based on the available data.",
 		"technologies": ["React", "Redux", "Bootstrap", "Spoonacular API"],
 		"links": [
 			{
@@ -152,7 +191,7 @@
 				"url": "https://recipe-app-mike242424.vercel.app/"
 			},
 			{
-				"name": "GitHub Repository",
+				"name": "GitHub",
 				"url": "https://github.com/mike242424/recipe-app"
 			}
 		]

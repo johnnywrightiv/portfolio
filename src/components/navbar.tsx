@@ -1,11 +1,11 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useTheme } from 'next-themes';
 import { Menu, MoonIcon, SunIcon } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
+import { Sheet, SheetContent, SheetDescription, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
 
 const navItems = [
 	{ name: 'About', href: '#about' },
@@ -13,8 +13,43 @@ const navItems = [
 	{ name: 'Contact', href: '#contact' },
 ];
 
+const ThemeToggle = () => {
+  const { setTheme, resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return (
+      <Button
+        className="text-muted-foreground hover:text-primary bg-transparent transition-none hover:bg-transparent"
+        size="icon"
+        aria-label="Theme toggle placeholder"
+      >
+        <div className="h-5 w-5" />
+      </Button>
+    );
+  }
+
+  return (
+    <Button
+      className="text-muted-foreground hover:text-primary bg-transparent transition-none hover:bg-transparent"
+      size="icon"
+      onClick={() => setTheme(resolvedTheme === 'light' ? 'dark' : 'light')}
+      aria-label="Toggle theme"
+    >
+      {resolvedTheme === 'light' ? (
+        <MoonIcon className="h-5 w-5" />
+      ) : (
+        <SunIcon className="h-5 w-5" />
+      )}
+    </Button>
+  );
+};
+
 export default function Navbar() {
-	const { setTheme, theme } = useTheme();
 	const [isSheetOpen, setIsSheetOpen] = useState(false);
 
 	const scrollToSection = (href: string) => {
@@ -53,49 +88,32 @@ export default function Navbar() {
 							{item.name}
 						</button>
 					))}
-					<Button
-						className="text-muted-foreground hover:text-primary bg-transparent transition-none hover:bg-transparent"
-						size="icon"
-						onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
-					>
-						{theme === 'light' ? (
-							<MoonIcon className="h-5 w-5" />
-						) : (
-							<SunIcon className="h-5 w-5" />
-						)}
-					</Button>
+					<ThemeToggle />
 				</div>
 
 				{/* Mobile Navigation */}
-				<Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
+        <Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
 					<SheetTrigger asChild className="md:hidden">
 						<Button variant="ghost" size="icon">
 							<Menu className="h-6 w-6" />
 						</Button>
 					</SheetTrigger>
 					<SheetContent side="left" className="w-full max-w-full sm:max-w-sm">
-						<div className="flex flex-col gap-6 pt-10">
+          <SheetTitle className='hidden'>Navigation</SheetTitle>
+          <SheetDescription className='hidden'>Mobile Navigation</SheetDescription>
+						<div className="flex flex-col justify-center gap-6 pt-10 space-y-6">
 							{navItems.map((item) => (
 								<button
 									key={item.name}
 									onClick={() => scrollToSection(item.href)}
-									className="hover:text-primary text-2xl font-semibold text-foreground transition-colors"
+									className="hover:text-primary text-4xl font-semibold text-foreground transition-colors"
 								>
 									{item.name}
 								</button>
-							))}
-							<Button
-								variant="ghost"
-								size="icon"
-								onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
-								className="self-start"
-							>
-								{theme === 'light' ? (
-									<MoonIcon className="h-6 w-6" />
-								) : (
-									<SunIcon className="h-6 w-6" />
-								)}
-							</Button>
+              ))}
+              <div className='text-center'>
+							<ThemeToggle />
+              </div>
 						</div>
 					</SheetContent>
 				</Sheet>
