@@ -32,7 +32,7 @@ export default function Hero() {
 					<div className="relative">
 						<div className="absolute -inset-1 rounded-full bg-gradient-to-r from-primary to-accent blur" />
 						<Image
-							src="/avatar.png"
+							src="/avatar.jpg"
 							alt="Profile"
 							width={200}
 							height={200}
