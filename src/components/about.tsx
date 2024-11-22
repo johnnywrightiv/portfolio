@@ -127,15 +127,7 @@ export default function About() {
 								>
 									music
 								</span>
-								, practicing my{' '}
-								<span
-									className="cursor-pointer underline transition-all duration-300 ease-in-out"
-									onMouseEnter={() => handleMouseEnter('/jumpshot-image.jpeg')}
-									onMouseLeave={handleMouseLeave}
-								>
-									jumpshot
-								</span>
-								, hanging indoors with my{' '}
+								, hanging with my{' '}
 								<span
 									className="cursor-pointer underline transition-all duration-300 ease-in-out"
 									onMouseEnter={() => handleMouseEnter('/cats-image.jpeg')}
@@ -143,7 +135,7 @@ export default function About() {
 								>
 									cats
 								</span>
-								, or exploring the great{' '}
+								, practicing my jumpshot, or exploring the great{' '}
 								<span
 									className="cursor-pointer underline transition-all duration-300 ease-in-out"
 									onMouseEnter={() => handleMouseEnter('/outdoors-image.jpeg')}
