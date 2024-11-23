@@ -12,7 +12,7 @@
 		],
 		"image": "/Harmony-App.png",
 		"blurb": "A tool for improvising musicians, Harmony Companion helps users create harmonic accompaniment and practice theory concepts in real-time. With features like interactive visual and audio aids and progress tracking, this app empowers musicians to explore and improve their skills.",
-		"description": "This project was born out of a frustration in my own improvisation practice, constantly needing to find or create different harmonic backing tracks to practice varied styles of music or theory concepts. I wanted to build an interactive app that was highly customizable and could update theory paparametersram on the fly to update the harmonic accompaniment.",
+		"description": "This project was born out of a frustration in my own improvisation practice, constantly needing to find or create different harmonic backing tracks to practice varied styles of music or theory concepts. I wanted to build an interactive app that was highly customizable and could update theory parameters on the fly to update the harmonic accompaniment.",
 		"technologies": [
 			"Typescript",
 			"Next.js",
