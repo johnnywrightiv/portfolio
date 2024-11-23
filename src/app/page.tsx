@@ -9,7 +9,7 @@ import Projects from '@/components/projects';
 const page = () => {
 	return (
 		<div>
-			<Navbar />
+			{/* <Navbar /> */}
 			<Hero />
 			<About />
 			<Projects />

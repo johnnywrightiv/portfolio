@@ -74,7 +74,7 @@ export default function Navbar() {
 	};
 
 	return (
-		<nav className="fixed top-0 z-50 flex w-full justify-center border-b bg-background/80 backdrop-blur-sm">
+		<nav className="absoulute top-0 z-50 flex w-full justify-center border-b bg-background/80 backdrop-blur-sm">
 			<div className="container flex h-16 w-full items-center justify-between px-4">
 				<Link
 					href="/"

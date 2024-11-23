@@ -4,6 +4,7 @@ import { Poppins } from 'next/font/google';
 import { Quicksand } from 'next/font/google';
 
 import { ThemeProvider } from '@/components/theme-provider';
+import Navbar from '@/components/navbar';
 
 const poppins = Poppins({
 	weight: '400',
@@ -38,6 +39,7 @@ export default function RootLayout({
 					enableSystem
 					disableTransitionOnChange
 				>
+					<Navbar />
 					<main>{children}</main>
 				</ThemeProvider>
 				<footer className="pb-4">

@@ -12,7 +12,7 @@
 		],
 		"image": "/Harmony-App.png",
 		"blurb": "A tool for improvising musicians, Harmony Companion helps users create harmonic accompaniment and practice theory concepts in real-time. With features like interactive visual and audio aids and progress tracking, this app empowers musicians to explore and improve their skills.",
-		"description": "This project was born out of a frustration in my own improvisation practice, constantly needing to find or create different harmonic backing tracks to practice varied styles of music or theory concepts. I wanted to build an interactive app that was highliy customizable and could update theory paramters on the fly to update the harmonic accompaniment.",
+		"description": "This project was born out of a frustration in my own improvisation practice, constantly needing to find or create different harmonic backing tracks to practice varied styles of music or theory concepts. I wanted to build an interactive app that was highly customizable and could update theory paparametersram on the fly to update the harmonic accompaniment.",
 		"technologies": [
 			"Typescript",
 			"Next.js",
@@ -79,7 +79,7 @@
 		],
 		"image": "/U2CanQue.png",
 		"blurb": "Full-stack order management app for a BBQ restaurant, featuring a responsive front-end with checkout integration, a robust back-end with API, and an admin dashboard",
-		"description": "This project showcases my ability to turn static systems into dynamic, scalable solutions. I built new frontend functionality that makes editing the clients menu easy and convenient. On the backend I created new data models and API endpoints and restructured the existing database. Throughout the process I solved UI and data realted bugs and integrated updates into a live application.",
+		"description": "This project showcases my ability to turn static systems into dynamic, scalable solutions. I built new frontend functionality that makes editing the clients menu easy and convenient. On the backend I created new data models and API endpoints and restructured the existing database. Throughout the process I solved UI and data related bugs and integrated updates into a live application.",
 		"technologies": [
 			"Next.js",
 			"React",
@@ -113,17 +113,17 @@
 		"keyFeatures": [
 			"Fully functional Kanban boards",
 			"Drag-and-drop user interface",
-			"Live updates between users in the same organizaition"
+			"Live updates between users in the same organization"
 		],
 		"technicalHighlights": [
 			"User authentication in database",
-			"Redux for state mangement",
+			"Redux for state management",
 			"Node/Express server with websocket connections",
 			"MongoDB to store users, organizations, and boards"
 		],
 		"image": "/TreHej.png",
 		"blurb": "Full-stack Trello clone featuring Kanban boards with user authentication, seamless drag-and-drop functionality, and real-time team updates.",
-		"description": "I designed and developed a fully functional Trello clone as part of an Agile development team. Acting as Prouct Owner, I led daily standups, researched requirements, created user journeys, defined scopes, and planned the overall system design. Throghout the process I led our team in making critical decisions, solving issues, and prioritizing features to ensure timely delivery.",
+		"description": "I designed and developed a fully functional Trello clone as part of an Agile development team. Acting as Product Owner, I led daily standups, researched requirements, created user journeys, defined scopes, and planned the overall system design. Throughout the process I led our team in making critical decisions, solving issues, and prioritizing features to ensure timely delivery.",
 		"technologies": [
 			"React",
 			"Redux",
@@ -154,7 +154,7 @@
 		],
 		"image": "/Portfolio.png",
 		"blurb": "Explore my development journey through an interactive portfolio website, highlighting my skills in responsive design, front-end development, and animation.",
-		"description": "Designing this portfolio website was an opportunity to focus on what I am passionate about; creating interactive user-focused web applications. This project allowed me to dive deep into front-end technologies and design principles while gaining valuble experience in animation.",
+		"description": "Designing this portfolio website was an opportunity to focus on what I am passionate about; creating interactive user-focused web applications. This project allowed me to dive deep into front-end technologies and design principles while gaining valuable experience in animation.",
 		"technologies": ["React", "Tailwind", "Custom CSS", "Animations", "Vercel"],
 		"links": [
 			{
