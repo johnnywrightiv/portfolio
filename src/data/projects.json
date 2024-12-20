@@ -30,7 +30,7 @@
 	},
 
 	{
-		"title": "Workout Tracker MVP",
+		"title": "Workout Tracker Mobile App",
 		"keyFeatures": [
 			"Create custom templates",
 			"Log workouts and exercises",
@@ -109,6 +109,38 @@
 	},
 
 	{
+		"title": "Ticketing Platform",
+		"keyFeatures": [
+			"Event management dashboard",
+			"Ticketing email delivery system",
+			"Secure payment processing with Stripe integrartion"
+		],
+		"technicalHighlights": [
+			"Full optimized Next.js app with TypeScript for type safety",
+			"Prisma ORM with SQLite database",
+			"SSR with serverless actions"
+		],
+		"image": "/QuickTix.png",
+		"blurb": "Event ticketing platform with secure payment processing, comprehensive admin controls, and automated ticket delivery system for seamless event management.",
+		"description": "Simple event ticketing platform focusing on seamless experiences for both organizers and attendees. The admin dashboard enables event creation, sales tracking, and customer management, while the public interface handles secure payments through Stripe integration and ticket download along with email delivery.",
+		"technologies": [
+			"SQLite",
+			"Prisma",
+			"Stripe",
+			"Typescript",
+			"Next.js",
+			"React",
+			"Tailwind"
+		],
+		"links": [
+			{
+				"name": "GitHub",
+				"url": "https://github.com/johnnywrightiv/ticketing-platform"
+			}
+		]
+	},
+
+	{
 		"title": "Project Management App",
 		"keyFeatures": [
 			"Fully functional Kanban boards",
@@ -145,7 +177,7 @@
 	},
 
 	{
-		"title": "Custom Portfolio Site",
+		"title": "Interactive Animation Website",
 		"keyFeatures": ["Dynamic color themes", "Custom CSS animations"],
 		"technicalHighlights": [
 			"Tailwind and CSS variables",
