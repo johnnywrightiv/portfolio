@@ -104,7 +104,7 @@ export default function Contact() {
 							>
 								<a
 									target="_blank"
-									href="https://drive.google.com/file/d/1iz5BXX2xA9gtOgHfFUB6abzMLuuG1Z3s/view?usp=sharing"
+									href="https://drive.google.com/file/d/1t06yW2CGVeNjsdIN6pmxtpU-he1mR9WM/view?usp=sharing"
 								>
 									<FaFileAlt />
 									View Resumé
