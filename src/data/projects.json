@@ -1,5 +1,36 @@
 [
 	{
+		"title": "Audiotree Discovery",
+		"keyFeatures": [
+			"Embedded video discovery widget with backend content management portal ",
+			"Advanced search and filtering with metadata tagging",
+			"Supports bulk CSV imports"
+		],
+		"technicalHighlights": [
+			"Built to scale up to tens of thousands of videos",
+			"React and Next.js frontend with custom styling to match the company brand",
+			"MongoDB backend optimized for handling large datasets and quick queries"
+		],
+		"image": "/Audiotree.png",
+		"blurb": "An embedded video repository search tool that helps users explore thousands of live-recorded performances. With advanced search features, filters and sorts, and metadata tagging, the app makes it easy for users to browse videos, discover new artists, and enjoy one of a kind performances.",
+		"description": "Designed for seamless integration and built to scale, this iframe-based widget is embedded directly into the clients existing website, providing a curated video discovery experience. The frontend was meticulously customized to match the existing branding while maintaining smooth performance and usability. A backend admin portal allows content managers to handle large-scale video libraries through CRUD operations and CSV imports. The system is optimized to efficiently supports tens of thousands of videos and advanced search features.",
+		"technologies": [
+			"React",
+			"Next.js",
+			"MongoDB",
+			"Tailwind",
+			"shadcn UI",
+			"Custom CSS"
+		],
+		"links": [
+			{
+				"name": "Live Site",
+				"url": "https://audiotree.tv"
+			}
+		]
+	},
+
+	{
 		"title": "Harmony Companion (WIP)",
 		"keyFeatures": [
 			"Aids musicians in creating harmonic accompaniment",

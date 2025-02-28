@@ -15,12 +15,10 @@ export default function About() {
 	const [imageOpacity, setImageOpacity] = useState(1);
 	const aboutRef = useRef(null);
 
-	// Handle mounting state
 	useEffect(() => {
 		setMounted(true);
 	}, []);
 
-	// Intersection Observer to reveal content when it comes into view
 	useEffect(() => {
 		const observer = new IntersectionObserver(
 			([entry]) => {
@@ -47,7 +45,7 @@ export default function About() {
 		setTimeout(() => {
 			setImageSrc(newImageSrc);
 			setImageOpacity(1);
-		}, 200);
+		}, 100);
 	};
 
 	const handleMouseLeave = () => {
@@ -55,7 +53,7 @@ export default function About() {
 		setTimeout(() => {
 			setImageSrc('/headshot.jpeg');
 			setImageOpacity(1);
-		}, 200);
+		}, 100);
 	};
 
 	return (
