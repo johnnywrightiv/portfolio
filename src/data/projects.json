@@ -208,7 +208,7 @@
 	},
 
 	{
-		"title": "Interactive Animation Website",
+		"title": "Interactive Animated Portfolio",
 		"keyFeatures": ["Dynamic color themes", "Custom CSS animations"],
 		"technicalHighlights": [
 			"Tailwind and CSS variables",
@@ -222,7 +222,7 @@
 		"links": [
 			{
 				"name": "Live Site",
-				"url": "https://portfolio-git-v1-johnnys-projects-2201ec05.vercel.app"
+				"url": "https://portfolio-git-v1-johnnys-projects-2201ec05.vercel.app?_vercel_share=cKbv9VKL3Zk5NCgPiSxYqn9KQxJYs4D0"
 			},
 			{
 				"name": "GitHub",
