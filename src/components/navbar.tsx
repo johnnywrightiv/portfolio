@@ -1,62 +1,21 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Link from 'next/link';
-import { useTheme } from 'next-themes';
-import { Menu, MoonIcon, SunIcon } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import {
-	Sheet,
-	SheetContent,
-	SheetDescription,
-	SheetTitle,
-	SheetTrigger,
-} from '@/components/ui/sheet';
+import { useScrollPosition } from '@/hooks/useScrollPosition';
 
 const navItems = [
-	{ name: 'About', href: '#about' },
-	{ name: 'Projects', href: '#projects' },
-	{ name: 'Contact', href: '#contact' },
+	{ name: 'Home', href: '#hero' },
+	{ name: 'Projects', href: '#featured-work' },
+	{ name: 'About', href: '#about-details' },
+	{ name: 'Contact', href: '#about-contact' },
 ];
 
-const ThemeToggle = () => {
-	const { setTheme, resolvedTheme } = useTheme();
-	const [mounted, setMounted] = useState(false);
-
-	useEffect(() => {
-		setMounted(true);
-	}, []);
-
-	if (!mounted) {
-		return (
-			<Button
-				className="bg-transparent text-muted-foreground transition-none hover:bg-transparent hover:text-primary"
-				size="icon"
-				aria-label="Theme toggle placeholder"
-			>
-				<div className="h-5 w-5" />
-			</Button>
-		);
-	}
-
-	return (
-		<Button
-			className="bg-transparent text-muted-foreground transition-none hover:bg-transparent hover:text-primary"
-			size="icon"
-			onClick={() => setTheme(resolvedTheme === 'light' ? 'dark' : 'light')}
-			aria-label="Toggle theme"
-		>
-			{resolvedTheme === 'light' ? (
-				<MoonIcon className="h-5 w-5" />
-			) : (
-				<SunIcon className="h-5 w-5" />
-			)}
-		</Button>
-	);
-};
-
 export default function Navbar() {
-	const [isSheetOpen, setIsSheetOpen] = useState(false);
+	const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+	const hasScrolled = useScrollPosition();
 
 	const scrollToSection = (href: string) => {
 		const element = document.querySelector(href);
@@ -64,68 +23,78 @@ export default function Navbar() {
 			const navHeight = 64;
 			const elementPosition = element.getBoundingClientRect().top;
 			const offsetPosition = elementPosition + window.pageYOffset - navHeight;
-
 			window.scrollTo({
 				top: offsetPosition,
 				behavior: 'smooth',
 			});
 		}
-		setIsSheetOpen(false);
+		setIsMobileMenuOpen(false);
 	};
 
 	return (
-		<nav className="sticky top-0 z-50 flex w-full justify-center border-b bg-background/80 backdrop-blur-sm">
-			<div className="container flex h-16 w-full items-center justify-between px-4">
+		<nav
+			className={`fixed top-0 z-50 w-full transition-all duration-500 ${
+				hasScrolled
+					? 'border-b border-primary/10 bg-popover/40 backdrop-blur-md'
+					: 'bg-transparent'
+			}`}
+		>
+			<div className="container mx-auto flex h-16 items-center justify-between px-4 sm:px-6 lg:px-8">
+				{/* Logo */}
 				<Link
 					href="/"
-					className="flex-shrink-0 text-xl font-bold text-muted-foreground"
+					className="flex-shrink-0 font-heading text-xl font-bold text-primary transition-opacity hover:opacity-80"
 				>
 					John Wright
 				</Link>
 
 				{/* Desktop Navigation */}
-				<div className="hidden flex-grow items-center justify-end md:flex md:gap-6">
+				<div className="hidden items-center md:flex">
 					{navItems.map((item) => (
-						<button
+						<Button
 							key={item.name}
+							variant="ghost"
 							onClick={() => scrollToSection(item.href)}
-							className="text-muted-foreground transition-colors hover:text-primary"
+							className="min-w-[90px] px-4 py-2 text-sm font-medium text-text-secondary transition-colors hover:text-primary"
 						>
 							{item.name}
-						</button>
+						</Button>
 					))}
-					<ThemeToggle />
 				</div>
 
-				{/* Mobile Navigation */}
-				<Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
-					<SheetTrigger asChild className="md:hidden">
-						<Button variant="ghost" size="icon">
-							<Menu className="h-6 w-6" />
-						</Button>
-					</SheetTrigger>
-					<SheetContent side="left" className="w-full max-w-full sm:max-w-sm">
-						<SheetTitle className="hidden">Navigation</SheetTitle>
-						<SheetDescription className="hidden">
-							Mobile Navigation
-						</SheetDescription>
-						<div className="flex flex-col justify-center gap-6 space-y-6 pt-10">
-							{navItems.map((item) => (
-								<button
-									key={item.name}
-									onClick={() => scrollToSection(item.href)}
-									className="text-4xl font-semibold text-foreground transition-colors hover:text-primary"
-								>
-									{item.name}
-								</button>
-							))}
-							<div className="text-center">
-								<ThemeToggle />
-							</div>
-						</div>
-					</SheetContent>
-				</Sheet>
+				{/* Mobile Menu Button */}
+				<Button
+					variant="ghost"
+					size="icon"
+					onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+					className="p-2 text-text-secondary hover:text-primary md:hidden"
+					aria-label="Toggle mobile menu"
+				>
+					{isMobileMenuOpen ? (
+						<X className="h-5 w-5" />
+					) : (
+						<Menu className="h-5 w-5" />
+					)}
+				</Button>
 			</div>
+
+			{/* Mobile Menu */}
+			{isMobileMenuOpen && (
+				<div className="bg-popover/90 shadow-2xl backdrop-blur-sm transition-all duration-500 md:hidden">
+					<div className="container mx-auto space-y-2 px-4 py-4">
+						{navItems.map((item) => (
+							<Button
+								key={item.name}
+								variant="ghost"
+								onClick={() => scrollToSection(item.href)}
+								className="w-full justify-start px-4 py-3 text-base font-medium text-text-secondary transition-colors hover:text-primary"
+							>
+								{item.name}
+							</Button>
+						))}
+					</div>
+				</div>
+			)}
 		</nav>
 	);
 }

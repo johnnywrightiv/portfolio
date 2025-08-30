@@ -1,19 +1,27 @@
 'use client';
 
-import About from '@/components/about';
-import Contact from '@/components/contact';
 import Hero from '@/components/hero';
-import Projects from '@/components/projects';
+import HowIWork from '@/components/how-i-work';
+import FeaturedWork from '@/components/featured-work';
+import AboutContact from '@/components/about-contact';
+import SplashScreen from '@/components/SplashScreen';
+import { useState } from 'react';
 
-const page = () => {
+const Page = () => {
+	const [showSplash, setShowSplash] = useState(true);
+
+	// Callback to hide splash when tech icons are ready
+	const handleTechIconsReady = () => setShowSplash(false);
+
 	return (
-		<div>
-			<Hero />
-			<About />
-			<Projects />
-			<Contact />
+		<div className="relative">
+			{showSplash && <SplashScreen />}
+			<Hero onTechIconsReady={handleTechIconsReady} />
+			<HowIWork />
+			<FeaturedWork />
+			<AboutContact />
 		</div>
 	);
 };
 
-export default page;
+export default Page;

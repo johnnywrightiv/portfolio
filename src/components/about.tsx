@@ -62,14 +62,17 @@ export default function About() {
 			id="about"
 			className="flex min-h-screen w-full items-center overflow-hidden bg-gradient-to-br from-primary/10 to-accent/10"
 		>
-			<div className="container mx-auto max-w-6xl px-6 py-24">
+			<div
+				className="container mx-auto px-6 py-24 lg:px-8 xl:px-12 2xl:px-16"
+				style={{ maxWidth: '1400px' }}
+			>
 				<div className="mb-12">
 					<h1
 						className={cn(
 							'text-4xl font-bold tracking-tight transition-all duration-700 md:text-5xl lg:text-6xl',
 							mounted && theme === 'light'
 								? 'text-secondary'
-								: 'text-foreground',
+								: 'text-text-primary',
 							!isVisible
 								? 'translate-y-10 opacity-0'
 								: 'translate-y-0 opacity-100',
@@ -115,12 +118,12 @@ export default function About() {
 					>
 						<div className="rounded-3xl bg-gradient-to-br from-muted/50 to-muted/10 p-8">
 							<h2 className="mb-6 text-2xl font-semibold">A little about me</h2>
-							<p className="mb-4 text-lg leading-relaxed text-muted-foreground">
+							<p className="mb-4 text-lg leading-relaxed text-text-primary">
 								I am a full-stack developer with a passion for creating
 								intuitive applications that optimize the user experience. I
 								specialize in both front-end design and back-end development.
 							</p>
-							<p className="text-lg leading-relaxed text-muted-foreground">
+							<p className="text-lg leading-relaxed text-text-primary">
 								When I&#39;m not coding, you can catch me playing{' '}
 								<span
 									className="cursor-pointer underline transition-all duration-300 ease-in-out"
@@ -164,7 +167,7 @@ export default function About() {
 									].map((tech) => (
 										<span
 											key={tech}
-											className="rounded-full border border-accent/50 bg-accent/10 px-6 py-2 text-lg font-medium text-accent-foreground"
+											className="rounded-full border border-accent/50 bg-accent/10 px-6 py-2 text-lg font-medium text-text-primary"
 										>
 											{tech}
 										</span>

@@ -37,13 +37,16 @@ export default function Contact() {
 		<section
 			ref={contactRef}
 			id="contact"
-			className="container mx-auto max-w-6xl overflow-hidden px-6 py-8"
+			className="container mx-auto overflow-hidden px-6 py-8 lg:px-8 xl:px-12 2xl:px-16"
+			style={{ maxWidth: '1400px' }}
 		>
 			<div className={`${isVisible ? 'animate-slide-in-from-bottom' : ''}`}>
 				<h1
 					className={cn(
 						'mb-6 text-center text-4xl font-bold tracking-tight md:text-5xl lg:text-6xl',
-						mounted && theme === 'light' ? 'text-secondary' : 'text-foreground'
+						mounted && theme === 'light'
+							? 'text-secondary'
+							: 'text-text-primary'
 					)}
 				>
 					<span className="fancy-word">Contact</span>
@@ -61,46 +64,47 @@ export default function Contact() {
 							<div className="flex gap-8">
 								<Button
 									asChild
-									variant="outline"
-									className="group relative flex h-14 w-14 items-center justify-center rounded-full text-muted-foreground"
+									variant="social"
+									size="icon"
+									className="rounded-full"
 								>
 									<Link href="mailto:johnnywrightiv@gmail.com">
-										<FaEnvelope className="group-hover:scale-110" />
+										<FaEnvelope />
 									</Link>
 								</Button>
-
 								<Button
 									asChild
-									variant="outline"
-									className="group relative flex h-14 w-14 items-center justify-center rounded-full text-muted-foreground"
+									variant="social"
+									size="icon"
+									className="rounded-full"
 								>
 									<Link
 										href="https://www.linkedin.com/in/johnnywrightiv"
 										target="_blank"
 										rel="noopener noreferrer"
 									>
-										<FaLinkedin className="text-2xl group-hover:scale-110" />
+										<FaLinkedin />
 									</Link>
 								</Button>
-
 								<Button
 									asChild
-									variant="outline"
-									className="group relative flex h-14 w-14 items-center justify-center rounded-full text-muted-foreground"
+									variant="social"
+									size="icon"
+									className="rounded-full"
 								>
 									<Link
 										href="https://github.com/johnnywrightiv"
 										target="_blank"
 										rel="noopener noreferrer"
 									>
-										<FaGithub className="text-2xl group-hover:scale-110" />
+										<FaGithub />
 									</Link>
 								</Button>
 							</div>
 							<Button
 								asChild
-								variant="outline"
-								className="flex items-center gap-2 px-8 py-6 text-lg text-muted-foreground"
+								size="lg"
+								className="flex items-center gap-2 px-8 py-6 font-semibold"
 							>
 								<a
 									target="_blank"

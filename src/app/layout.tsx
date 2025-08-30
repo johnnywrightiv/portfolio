@@ -2,7 +2,6 @@ import '@/styles/globals.css';
 import type { Metadata } from 'next';
 import { Poppins } from 'next/font/google';
 import { Quicksand } from 'next/font/google';
-
 import { ThemeProvider } from '@/components/theme-provider';
 import Navbar from '@/components/navbar';
 
@@ -29,25 +28,25 @@ export default function RootLayout({
 	children: React.ReactNode;
 }>) {
 	return (
-		<html suppressHydrationWarning lang="en">
+		<html suppressHydrationWarning lang="en" className="dark">
 			<body
 				className={`${poppins.variable} ${quicksand.variable} font-body antialiased`}
 			>
 				<ThemeProvider
 					attribute="class"
-					defaultTheme="system"
-					enableSystem
+					defaultTheme="dark"
+					enableSystem={false}
 					disableTransitionOnChange
 				>
 					<Navbar />
 					<main>{children}</main>
 				</ThemeProvider>
-				<footer className="pb-4">
-					<div className="container mx-auto px-4 text-center text-xs text-muted-foreground">
-						<p>&copy; {new Date().getFullYear()} John Wright</p>
-					</div>
-				</footer>
 			</body>
+			{/* <footer className="footer fixed bottom-0 w-full border-t border-border bg-surface pb-4 pt-6 text-center text-sm text-muted-foreground/40">
+				<div>
+					&copy; {new Date().getFullYear()} John Wright. All rights reserved.
+				</div>
+			</footer> */}
 		</html>
 	);
 }
