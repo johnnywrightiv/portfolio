@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import { Button } from '@/components/ui/button';
 
 const Error = ({ error, reset }: { error: Error; reset: () => void }) => {
 	return (
@@ -11,12 +12,9 @@ const Error = ({ error, reset }: { error: Error; reset: () => void }) => {
 			<p>
 				<strong>Error:</strong> {error.message}
 			</p>
-			<button
-				className="mr-2 mt-8 rounded border bg-secondary px-4 py-2 text-secondary-foreground hover:scale-105 hover:bg-accent"
-				onClick={() => reset()}
-			>
+			<Button variant="secondary" className="mr-2 mt-8" onClick={() => reset()}>
 				Try again
-			</button>
+			</Button>
 		</div>
 	);
 };

@@ -1,6 +1,11 @@
 [
 	{
 		"title": "Audiotree Discovery",
+		"featured": true,
+		"projectType": {
+			"label": "CLIENT WORK",
+			"color": "text-primary"
+		},
 		"keyFeatures": [
 			"Embedded video discovery widget with backend content management portal ",
 			"Advanced search and filtering with metadata tagging",
@@ -32,6 +37,11 @@
 
 	{
 		"title": "Harmony Companion (WIP)",
+		"featured": true,
+		"projectType": {
+			"label": "SIDE PROJECT",
+			"color": "text-secondary"
+		},
 		"keyFeatures": [
 			"Aids musicians in creating harmonic accompaniment",
 			"Interactive visual and audio tools for scale and chord visualization",
@@ -62,6 +72,11 @@
 
 	{
 		"title": "Workout Tracker Mobile App",
+		"featured": true,
+		"projectType": {
+			"label": "MVP",
+			"color": "text-"
+		},
 		"keyFeatures": [
 			"Create custom templates",
 			"Log workouts and exercises",
@@ -98,6 +113,11 @@
 
 	{
 		"title": "Order Management App",
+		"featured": true,
+		"projectType": {
+			"label": "CLIENT WORK",
+			"color": "text-primary"
+		},
 		"keyFeatures": [
 			"Key contributor to a major data system design restructuring",
 			"Restaurant website with menu and order management portal",
@@ -141,6 +161,11 @@
 
 	{
 		"title": "Ticketing Platform",
+		"featured": true,
+		"projectType": {
+			"label": "SIDE PROJECT",
+			"color": "text-secondary"
+		},
 		"keyFeatures": [
 			"Event management dashboard",
 			"Ticketing email delivery system",
@@ -173,6 +198,11 @@
 
 	{
 		"title": "Project Management App",
+		"featured": false,
+		"projectType": {
+			"label": "SIDE PROJECT",
+			"color": "text-secondary"
+		},
 		"keyFeatures": [
 			"Fully functional Kanban boards",
 			"Drag-and-drop user interface",
@@ -209,6 +239,11 @@
 
 	{
 		"title": "Interactive Animated Portfolio",
+		"featured": false,
+		"projectType": {
+			"label": "SIDE PROJECT",
+			"color": "text-secondary"
+		},
 		"keyFeatures": ["Dynamic color themes", "Custom CSS animations"],
 		"technicalHighlights": [
 			"Tailwind and CSS variables",
@@ -233,6 +268,11 @@
 
 	{
 		"title": "Recipe Generator App",
+		"featured": false,
+		"projectType": {
+			"label": "SIDE PROJECT",
+			"color": "text-secondary"
+		},
 		"keyFeatures": [
 			"Get randomized recipes ",
 			"Search recipes by categories",
