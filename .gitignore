@@ -38,3 +38,8 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+.cursor/config.json
+!.cursor/rules/
+!.cursor/rules/*.mdc
+.context/

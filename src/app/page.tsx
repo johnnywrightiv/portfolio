@@ -1,25 +1,33 @@
 'use client';
 
-import Hero from '@/components/hero';
-import HowIWork from '@/components/how-i-work';
-import FeaturedWork from '@/components/featured-work';
-import AboutContact from '@/components/about-contact';
-import SplashScreen from '@/components/SplashScreen';
-import { useState } from 'react';
+// import Hero from '@/components/hero';
+// import HowIWork from '@/components/how-i-work';
+// import FeaturedWork from '@/components/featured-work';
+// import AboutContact from '@/components/about-contact';
 
 const Page = () => {
-	const [showSplash, setShowSplash] = useState(true);
-
-	// Callback to hide splash when tech icons are ready
-	const handleTechIconsReady = () => setShowSplash(false);
-
 	return (
 		<div className="relative">
-			{showSplash && <SplashScreen />}
-			<Hero onTechIconsReady={handleTechIconsReady} />
+			{/* Homepage Sections (exhaustive list of posible options, will add more and remove as needed) */}
+			{/* <Hero />
+			<TrustedBy />
+			<Services />
 			<HowIWork />
 			<FeaturedWork />
-			<AboutContact />
+			<CareerTimeline />
+			<Testimonials />
+			<FeaturedProjects />
+			<TechnicalSkills />
+			<ClientTestimonials />
+			<FAQ />
+			<About />
+			<Contact />
+			<Footer /> */}
+			{/* Seperate Pages (some of the above sections may be better suited as a combined section or entirely removed from Homepage and possibly includede in a seperate page) */}
+			{/* all projects on projects page, featured projects on home page - individual open in modal  */}
+			{/* <Projects />
+			<Music />
+			<Blog /> */}
 		</div>
 	);
 };

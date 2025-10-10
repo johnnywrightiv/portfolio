@@ -1,100 +1,195 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { Menu } from 'lucide-react';
 import Link from 'next/link';
-import { Menu, X } from 'lucide-react';
+import { usePathname } from 'next/navigation';
 import { Button } from '@/components/ui/button';
-import { useScrollPosition } from '@/hooks/useScrollPosition';
-
-const navItems = [
-	{ name: 'Home', href: '#hero' },
-	{ name: 'Projects', href: '#featured-work' },
-	{ name: 'About', href: '#about-details' },
-	{ name: 'Contact', href: '#about-contact' },
-];
+import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 
 export default function Navbar() {
-	const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-	const hasScrolled = useScrollPosition();
+	const [isScrolled, setIsScrolled] = useState(false);
+	const [isOpen, setIsOpen] = useState(false);
+	const pathname = usePathname();
 
-	const scrollToSection = (href: string) => {
-		const element = document.querySelector(href);
-		if (element) {
-			const navHeight = 64;
-			const elementPosition = element.getBoundingClientRect().top;
-			const offsetPosition = elementPosition + window.pageYOffset - navHeight;
-			window.scrollTo({
-				top: offsetPosition,
-				behavior: 'smooth',
-			});
+	const isHomePage = pathname === '/';
+
+	useEffect(() => {
+		const handleScroll = () => {
+			const scrolled = window.scrollY > 50;
+			setIsScrolled(scrolled);
+		};
+
+		window.addEventListener('scroll', handleScroll, { passive: true });
+		return () => {
+			window.removeEventListener('scroll', handleScroll);
+		};
+	}, []);
+
+	const scrollToSection = (id: string) => {
+		if (!isHomePage) {
+			window.location.href = `/#${id}`;
+			return;
 		}
-		setIsMobileMenuOpen(false);
+		document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+		setIsOpen(false);
 	};
 
 	return (
 		<nav
-			className={`fixed top-0 z-50 w-full transition-all duration-500 ${
-				hasScrolled
-					? 'border-b border-primary/10 bg-popover/40 backdrop-blur-md'
-					: 'bg-transparent'
-			}`}
+			className={`fixed left-0 right-0 top-0 z-50 transition-all duration-300`}
+			role="navigation"
+			aria-label="Main navigation"
 		>
-			<div className="container mx-auto flex h-16 items-center justify-between px-4 sm:px-6 lg:px-8">
-				{/* Logo */}
-				<Link
-					href="/"
-					className="flex-shrink-0 font-heading text-xl font-bold text-primary transition-opacity hover:opacity-80"
+			<div className="container-full">
+				<div
+					className={`transition-all duration-300 ${
+						isScrolled
+							? 'glass rounded-2xl border border-border px-6 py-3 shadow-lg'
+							: 'border border-transparent px-4 py-4 sm:px-6'
+					}`}
 				>
-					John Wright
-				</Link>
+					<div className="flex items-center justify-between">
+						<Link href="/" className="text-lg font-bold text-white sm:text-xl">
+							Arturo Grande
+						</Link>
 
-				{/* Desktop Navigation */}
-				<div className="hidden items-center md:flex">
-					{navItems.map((item) => (
-						<Button
-							key={item.name}
-							variant="ghost"
-							onClick={() => scrollToSection(item.href)}
-							className="min-w-[90px] px-4 py-2 text-sm font-medium text-text-secondary transition-colors hover:text-primary"
-						>
-							{item.name}
-						</Button>
-					))}
-				</div>
-
-				{/* Mobile Menu Button */}
-				<Button
-					variant="ghost"
-					size="icon"
-					onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-					className="p-2 text-text-secondary hover:text-primary md:hidden"
-					aria-label="Toggle mobile menu"
-				>
-					{isMobileMenuOpen ? (
-						<X className="h-5 w-5" />
-					) : (
-						<Menu className="h-5 w-5" />
-					)}
-				</Button>
-			</div>
-
-			{/* Mobile Menu */}
-			{isMobileMenuOpen && (
-				<div className="bg-popover/90 shadow-2xl backdrop-blur-sm transition-all duration-500 md:hidden">
-					<div className="container mx-auto space-y-2 px-4 py-4">
-						{navItems.map((item) => (
-							<Button
-								key={item.name}
-								variant="ghost"
-								onClick={() => scrollToSection(item.href)}
-								className="w-full justify-start px-4 py-3 text-base font-medium text-text-secondary transition-colors hover:text-primary"
+						{/* Desktop Navigation */}
+						<div className="hidden items-center space-x-6 md:flex">
+							{isHomePage ? (
+								<>
+									<button
+										onClick={() => scrollToSection('home')}
+										className="nav-item text-white/75 transition-colors hover:text-white"
+									>
+										Home
+									</button>
+									<button
+										onClick={() => scrollToSection('about')}
+										className="nav-item text-white/75 transition-colors hover:text-white"
+									>
+										About
+									</button>
+									<button
+										onClick={() => scrollToSection('portfolio')}
+										className="nav-item text-white/75 transition-colors hover:text-white"
+									>
+										Projects
+									</button>
+									<button
+										onClick={() => scrollToSection('talks')}
+										className="nav-item text-white/75 transition-colors hover:text-white"
+									>
+										Talks
+									</button>
+								</>
+							) : (
+								<Link
+									href="/"
+									className="nav-item text-white/75 transition-colors hover:text-white"
+								>
+									Home
+								</Link>
+							)}
+							<Link
+								href="/blog"
+								className="nav-item text-white/75 transition-colors hover:text-white"
 							>
-								{item.name}
-							</Button>
-						))}
+								Blog
+							</Link>
+							<Link
+								href="/music"
+								className="nav-item text-white/75 transition-colors hover:text-white"
+							>
+								Music
+							</Link>
+							{isHomePage && (
+								<button
+									onClick={() => scrollToSection('contact')}
+									className="nav-item text-white/75 transition-colors hover:text-white"
+								>
+									Contact
+								</button>
+							)}
+						</div>
+
+						<Sheet open={isOpen} onOpenChange={setIsOpen}>
+							<SheetTrigger asChild>
+								<Button
+									variant="ghost"
+									size="icon"
+									className="text-white hover:bg-white/10 md:hidden"
+									aria-label="Open menu"
+								>
+									<Menu size={24} />
+								</Button>
+							</SheetTrigger>
+							<SheetContent className="w-full border-l border-white/10 bg-black/95 backdrop-blur-xl">
+								<div className="mt-12 flex flex-col space-y-6">
+									{isHomePage ? (
+										<>
+											<button
+												onClick={() => scrollToSection('home')}
+												className="text-left text-2xl text-white transition-colors hover:text-primary"
+											>
+												Home
+											</button>
+											<button
+												onClick={() => scrollToSection('about')}
+												className="text-left text-2xl text-white transition-colors hover:text-primary"
+											>
+												About
+											</button>
+											<button
+												onClick={() => scrollToSection('portfolio')}
+												className="text-left text-2xl text-white transition-colors hover:text-primary"
+											>
+												Projects
+											</button>
+											<button
+												onClick={() => scrollToSection('talks')}
+												className="text-left text-2xl text-white transition-colors hover:text-primary"
+											>
+												Talks
+											</button>
+										</>
+									) : (
+										<Link
+											href="/"
+											className="text-left text-2xl text-white transition-colors hover:text-primary"
+											onClick={() => setIsOpen(false)}
+										>
+											Home
+										</Link>
+									)}
+									<Link
+										href="/blog"
+										className="text-left text-2xl text-white transition-colors hover:text-primary"
+										onClick={() => setIsOpen(false)}
+									>
+										Blog
+									</Link>
+									<Link
+										href="/music"
+										className="text-left text-2xl text-white transition-colors hover:text-primary"
+										onClick={() => setIsOpen(false)}
+									>
+										Music
+									</Link>
+									{isHomePage && (
+										<button
+											onClick={() => scrollToSection('contact')}
+											className="text-left text-2xl text-white transition-colors hover:text-primary"
+										>
+											Contact
+										</button>
+									)}
+								</div>
+							</SheetContent>
+						</Sheet>
 					</div>
 				</div>
-			)}
+			</div>
 		</nav>
 	);
 }

@@ -1,144 +1,179 @@
-// hero.tsx
-'use client';
+"use client"
+import Image from "next/image"
+import { Card } from "@/components/ui/card"
+import { ChevronDown } from "lucide-react"
+import { useLanguage } from "@/contexts/language-context"
 
-import Image from 'next/image';
-import { Button } from '@/components/ui/button';
-import dynamic from 'next/dynamic';
-import { useEffect, useState } from 'react';
-import { ScrollDownButton } from './scroll-down-button';
+export default function HeroSection() {
+  const { t, language } = useLanguage()
 
-interface HeroProps {
-	onTechIconsReady?: () => void;
-}
+  const scrollToAbout = () => {
+    document.getElementById("about")?.scrollIntoView({ behavior: "smooth" })
+  }
 
-// Loading component for the floating icons
-const FloatingIconsLoading = () => (
-	<div className="flex h-screen items-center justify-center">
-		<div className="flex h-16 w-16 animate-spin items-center justify-center rounded-full border-4 border-t-4 border-solid border-primary border-t-accent"></div>
-	</div>
-);
+  return (
+    <section id="home" className="min-h-screen relative flex items-center justify-center overflow-hidden pt-16 md:pt-0">
+      {/* Background */}
+      {/* Eliminando backgrounds con gradientes que causan animación de barrido */}
+      {/* <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-black to-gray-800"></div> */}
+      <div
+        className="absolute inset-0 opacity-10"
+        style={{
+          backgroundImage: "url(/images/background.jpg)",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      ></div>
 
-// Dynamically import FloatingTechIcons with a loading component
-const FloatingTechIcons = dynamic(() => import('./floating-tech-icons-og'), {
-	ssr: false, // Disable SSR for the floating icons to ensure they load properly
-	loading: FloatingIconsLoading,
-});
+      <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 text-center">
+        <div>
+          {/* Profile Introduction */}
+          <div className="flex items-center justify-center mb-4 sm:mb-8">
+            <div className="glass rounded-full p-1 mr-3 sm:mr-4">
+              <Image
+                src="/images/profile.jpg"
+                alt="Artu Grande - Vibecoder & Growth Strategist profile photo"
+                width={40}
+                height={40}
+                className="rounded-full sm:w-[60px] sm:h-[60px]"
+              />
+            </div>
+            <div className="text-center">
+              <p className="text-sm sm:text-lg text-white/75">
+                {language === "en" ? (
+                  <>
+                    Welcome to my <strong>personal portfolio</strong> 👋
+                  </>
+                ) : (
+                  <>
+                    Bienvenido a mi <strong>portfolio personal</strong> 👋
+                  </>
+                )}
+              </p>
+            </div>
+          </div>
 
-export default function Hero({ onTechIconsReady }: HeroProps) {
-	const [, setScrolledPastHero] = useState(false);
+          <div className="relative mb-6 sm:mb-12">
+            <h1 className="text-xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-tight text-white px-2 mb-4">
+              {language === "en" ? (
+                <>
+                  Vibecoder & Growth Strategist <br />
+                  <span className="text-sm sm:text-lg md:text-xl lg:text-2xl font-normal text-white/90 block mt-4">
+                    I scale digital products people love, blending UX, Web3, and AI
+                  </span>
+                </>
+              ) : (
+                <>
+                  Vibecoder & Growth Strategist <br />
+                  <span className="text-sm sm:text-lg md:text-xl lg:text-2xl font-normal text-white/90 block mt-4">
+                    Escalo productos digitales que la gente ama, combinando UX, Web3 e IA
+                  </span>
+                </>
+              )}
+            </h1>
 
-	useEffect(() => {
-		const handleScroll = () => {
-			const heroSection = document.getElementById('hero');
-			if (heroSection) {
-				const heroTop = heroSection.offsetTop;
-				const heroHeight = heroSection.offsetHeight;
-				const triggerPoint = heroTop + heroHeight * 1.0; // 100% down the hero
-				const scrollPosition = window.scrollY + 100; // Add some buffer
-				setScrolledPastHero(scrollPosition > triggerPoint);
-			}
-		};
-		handleScroll();
-		window.addEventListener('scroll', handleScroll, { passive: true });
-		return () => window.removeEventListener('scroll', handleScroll);
-	}, []);
+            {/* Figma icon - moved to top left, away from text */}
+            <div className="absolute -top-8 sm:-top-12 -left-4 sm:-left-8 animate-float-1 transform rotate-12">
+              <div className="glass glass-hover rounded-xl sm:rounded-2xl p-2 sm:p-4 w-10 h-10 sm:w-16 sm:h-16 md:w-20 md:h-20 flex items-center justify-center">
+                <Image
+                  src="/images/figma.png"
+                  alt="Figma design tool - Artu Grande UX expertise"
+                  width={20}
+                  height={20}
+                  className="sm:w-[32px] sm:h-[32px] md:w-[40px] md:h-[40px]"
+                />
+              </div>
+            </div>
 
-	const scrollToSection = (href: string) => {
-		const element = document.querySelector(href);
-		if (element) {
-			const navHeight = 64;
-			const elementPosition = element.getBoundingClientRect().top;
-			const offsetPosition = elementPosition + window.pageYOffset - navHeight;
+            <div className="absolute top-12 sm:top-16 -left-4 sm:-left-8 animate-float-2 transform -rotate-6">
+              <div className="glass glass-hover rounded-xl sm:rounded-2xl p-2 sm:p-4 w-10 h-10 sm:w-16 sm:h-16 md:w-20 md:h-20 flex items-center justify-center">
+                <Image
+                  src="/icons/v0logo.svg"
+                  alt="v0 AI development tool - Vibecoder expertise"
+                  width={20}
+                  height={20}
+                  className="sm:w-[32px] sm:h-[32px] md:w-[40px] md:h-[40px]"
+                />
+              </div>
+            </div>
 
-			window.scrollTo({
-				top: offsetPosition,
-				behavior: 'smooth',
-			});
-		}
-	};
+            {/* Growth icon - moved to top right, away from text */}
+            <div className="absolute -top-8 sm:-top-12 -right-4 sm:-right-8 animate-float-3 transform rotate-6">
+              <div className="glass glass-hover rounded-xl sm:rounded-2xl p-2 sm:p-4 w-10 h-10 sm:w-16 sm:h-16 md:w-20 md:h-20 flex items-center justify-center">
+                <Image
+                  src="/images/growth.png"
+                  alt="Growth strategy - Digital product scaling expertise"
+                  width={20}
+                  height={20}
+                  className="sm:w-[32px] sm:h-[32px] md:w-[40px] md:h-[40px]"
+                />
+              </div>
+            </div>
 
-	return (
-		<section
-			id="hero"
-			className="bg-gradient-hero relative flex min-h-screen flex-col justify-center overflow-hidden"
-		>
-			{/* Diagonal gradient overlay */}
-			<div className="bg-gradient-hero-overlay absolute inset-0" />
+            {/* Vibecoding icon - moved below text, centered */}
+            <div className="absolute -bottom-12 sm:-bottom-16 left-1/2 transform -translate-x-1/2 animate-float-1 rotate-3"></div>
+          </div>
 
-			<div className="absolute inset-0 z-0">
-				{/* Enhanced gradient orbs with subtle animations */}
-				<div
-					className="absolute left-1/4 top-1/4 h-96 w-96 animate-pulse rounded-full bg-gradient-to-br from-primary/30 to-secondary/20 blur-3xl"
-					style={{ animationDuration: '8s' }}
-				/>
-				<div
-					className="absolute bottom-1/4 right-1/4 h-80 w-80 animate-pulse rounded-full bg-gradient-to-br from-secondary/25 to-primary/15 blur-2xl"
-					style={{ animationDuration: '5s' }}
-				/>
-				{/* Additional smaller orbs for depth */}
-				<div
-					className="absolute bottom-1/3 left-1/3 h-64 w-64 animate-pulse rounded-full bg-gradient-to-br from-primary/20 to-transparent blur-2xl"
-					style={{ animationDuration: '7s' }}
-				/>
-				<div
-					className="absolute right-1/3 top-1/3 h-48 w-48 animate-pulse rounded-full bg-gradient-to-br from-secondary/20 to-transparent blur-xl"
-					style={{ animationDuration: '6s' }}
-				/>
-				{/* FloatingTechIcons will be rendered here with loading state */}
-				<FloatingTechIcons onReady={onTechIconsReady} />
-			</div>
-			<div className="relative z-10 w-full px-4 py-32 lg:px-16 xl:px-24 2xl:px-32">
-				<div className="mx-auto flex max-w-[900px] flex-col items-center gap-10 lg:grid lg:max-w-[1400px] lg:grid-cols-2 lg:items-center lg:justify-evenly lg:gap-[6vw] xl:gap-[8vw]">
-					{/* Image - above text on mobile, right on desktop */}
-					<div className="order-1 mb-8 flex justify-center lg:order-2 lg:mb-0">
-						<div className="relative w-fit">
-							<div className="bg-gradient-primary absolute -inset-3 rounded-full blur" />
-							<Image
-								src="/avatar.jpg"
-								alt="Profile"
-								width={320}
-								height={320}
-								priority
-								className="relative rounded-full border-4 border-background object-cover shadow-xl"
-							/>
-						</div>
-					</div>
+          {/* Stats Cards */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6 mb-6 sm:mb-12 px-2">
+            <Card className="glass glass-hover p-3 sm:p-6 text-center group">
+              <div className="flex items-start justify-center space-x-2 sm:space-x-3">
+                <div className="text-lg sm:text-2xl transition-all duration-300 group-hover:scale-110 group-hover:rotate-12">
+                  📱
+                </div>
+                <div>
+                  <p className="font-semibold text-white text-xs sm:text-base">{t("hero.card1")}</p>
+                </div>
+              </div>
+            </Card>
 
-					{/* Text content */}
-					<div className="order-2 flex flex-col items-center justify-center text-center lg:order-1 lg:items-start lg:pl-6 lg:text-left xl:pl-10">
-						<h1 className="mb-6 font-heading text-4xl font-bold tracking-tight text-text-primary sm:text-5xl md:text-6xl">
-							I build digital experiences
-							<br className="hidden sm:inline" /> that drive results
-						</h1>
-						<p className="mb-10 max-w-xl text-lg text-text-secondary sm:text-xl lg:text-2xl">
-							Full-stack developer with a creative background, helping
-							businesses create products that matter.
-						</p>
-						<div className="flex flex-col gap-5 sm:flex-row sm:justify-center sm:gap-4 lg:justify-start">
-							<Button
-								size="lg"
-								className="rounded-xl px-10 py-5 text-lg font-semibold shadow-md sm:px-8 sm:py-4 sm:text-base"
-								onClick={() => scrollToSection('#featured-work')}
-							>
-								View Work
-							</Button>
-							<Button
-								variant="outline"
-								size="lg"
-								className="rounded-xl px-10 py-5 text-lg font-semibold shadow-md sm:px-8 sm:py-4 sm:text-base"
-								onClick={() => scrollToSection('#about-contact')}
-							>
-								Contact Me
-							</Button>
-						</div>
-					</div>
-				</div>
+            <Card className="glass glass-hover p-3 sm:p-6 text-center group">
+              <div className="flex items-start justify-center space-x-2 sm:space-x-3">
+                <div className="text-lg sm:text-2xl transition-all duration-300 group-hover:scale-110 group-hover:rotate-12">
+                  🤖
+                </div>
+                <div>
+                  <p className="font-semibold text-white text-xs sm:text-base">{t("hero.card2")}</p>
+                </div>
+              </div>
+            </Card>
 
-				{/* Optional scroll button */}
-				<div className="mt-20 flex justify-center">
-					<ScrollDownButton targetId="hero" label="Scroll Down" />
-				</div>
-			</div>
-		</section>
-	);
+            <Card className="glass glass-hover p-3 sm:p-6 text-center group">
+              <div className="flex items-start justify-center space-x-2 sm:space-x-3">
+                <div className="text-lg sm:text-2xl transition-all duration-300 group-hover:scale-110 group-hover:rotate-12">
+                  🌍
+                </div>
+                <div>
+                  <p className="font-semibold text-white text-xs sm:text-base">{t("hero.card3")}</p>
+                </div>
+              </div>
+            </Card>
+
+            <Card className="glass glass-hover p-3 sm:p-6 text-center group">
+              <div className="flex items-start justify-center space-x-2 sm:space-x-3">
+                <div className="text-lg sm:text-2xl transition-all duration-300 group-hover:scale-110 group-hover:rotate-12">
+                  🚀
+                </div>
+                <div>
+                  <p className="font-semibold text-white text-xs sm:text-base">{t("hero.card4")}</p>
+                </div>
+              </div>
+            </Card>
+          </div>
+
+          {/* Scroll Button */}
+          <div className="flex justify-center">
+            <button
+              onClick={scrollToAbout}
+              className="animate-gentle-bounce hover:scale-105 transition-all duration-500 group"
+            >
+              <div className="glass glass-hover rounded-full p-2 sm:p-4 w-10 h-10 sm:w-16 sm:h-16 flex items-center justify-center">
+                <ChevronDown className="w-5 h-5 sm:w-8 sm:h-8 text-white group-hover:text-white/80 transition-colors duration-300" />
+              </div>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
 }

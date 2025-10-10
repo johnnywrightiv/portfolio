@@ -1,0 +1,110 @@
+NOTE: this is just a quick reference for creating a sleek, mouse tracked, differing by card, gradient hover animation on cards resembling the card animations on https://n8n.io/
+
+GOAL: Card Gradient Highlight on Hover w/ Mouse Tracking
+
+==========================================
+✅ 1. Add Custom CSS for Gradient Animation
+Create a CSS class in your globals.css or a separate CSS file:
+==========================================
+
+/* styles.css */
+.gradient-hover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #ff9b26, #6b21ef);
+  background-size: 200% 200%;
+  opacity: 0;
+  transition: background-position 0.3s ease, opacity 0.3s ease;
+  will-change: background-position, opacity;
+  z-index: 0;
+  border-radius: 12px; /* Match your card's border radius */
+  pointer-events: none;
+}
+
+==========================================
+✅ 2. Add JavaScript to Track Mouse Movement
+Add this script to your page or component (e.g., in main.jsx or inside a <script> tag in your HTML):
+==========================================
+
+// script.js
+document.addEventListener('DOMContentLoaded', () => {
+  const cards = document.querySelectorAll('.card-container');
+
+  cards.forEach(card => {
+    const gradient = card.querySelector('.gradient-hover');
+
+    card.addEventListener('mousemove', e => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+
+      // Calculate gradient position based on mouse position
+      const gradientX = (x / rect.width) * 100;
+      const gradientY = (y / rect.height) * 100;
+
+      gradient.style.backgroundPosition = `${gradientX}% ${gradientY}%`;
+      gradient.style.opacity = 1;
+    });
+
+    card.addEventListener('mouseleave', () => {
+      gradient.style.opacity = 0;
+    });
+  });
+});
+
+==========================================
+✅ 3. Update Your Card Component in React
+Here's how to use it in your component:
+==========================================
+
+{/* YourCard.tsx */}
+<div className="relative card-container group">
+  <div className="gradient-hover"></div>
+  <Card className="relative z-10">
+    {/* Your card content here */}
+  </Card>
+</div>
+
+==========================================
+✅ 4. Customize Gradient Colors Per Card
+You can use globally defined styles to apply different gradients to each card:
+==========================================
+
+{/* Card 1 */}
+<div className="relative card-container group">
+  <div className="gradient-hover" style={{ background: 'linear-gradient(135deg, #ff9b26, #6b21ef)' }}></div>
+  <Card className="relative z-10">
+    {/* Content */}
+  </Card>
+</div>
+
+{/* Card 2 */}
+<div className="relative card-container group">
+  <div className="gradient-hover" style={{ background: 'linear-gradient(135deg, #ff6b6b, #f9c74f)' }}></div>
+  <Card className="relative z-10">
+    {/* Content */}
+  </Card>
+</div>
+
+==========================================
+✅ 5. Optional: Use Tailwind for the Gradient
+If you're using Tailwind, you can apply the gradient directly with classes. follow our rules.
+==========================================
+
+{/* Card with Tailwind gradient */}
+<div className="relative card-container group">
+  <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-[#ff9b26] to-[#6b21ef] bg-size-200 bg-pos-left-center opacity-0 transition-all duration-300 will-change-transform,opacity z-0"></div>
+  <Card className="relative z-10">
+    {/* Content */}
+  </Card>
+</div>
+
+==========================================
+🎯 Summary
+==========================================
+The gradient follows the mouse using JavaScript to update the background-position.
+You can customize the gradient colors per card.
+The animation is smooth using transition and opacity.

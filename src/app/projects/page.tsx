@@ -8,7 +8,7 @@ import { Badge } from '@/components/ui/badge';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState, useMemo, useCallback } from 'react';
 import { Search, X, Filter } from 'lucide-react';
-import projectsData from '@/data/projects.json';
+import projectsData from '@/data/dev-projects.json';
 import { Dialog } from '@/components/ui/dialog';
 import { DialogContent } from '@/components/ui/dialog';
 import {

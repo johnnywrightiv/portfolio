@@ -1,0 +1,20 @@
+{
+  "categories": [
+    {
+      "name": "Design & UX",
+      "skills": ["Figma", "User Research", "Prototyping", "Design Systems", "Wireframing"]
+    },
+    {
+      "name": "Development",
+      "skills": ["React", "Next.js", "TypeScript", "Tailwind CSS", "Web3"]
+    },
+    {
+      "name": "Strategy",
+      "skills": ["Growth Strategy", "Product Management", "Community Building", "Marketing"]
+    },
+    {
+      "name": "Technologies",
+      "skills": ["AI Integration", "Blockchain", "Smart Contracts", "API Design"]
+    }
+  ]
+}

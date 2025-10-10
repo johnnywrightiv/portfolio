@@ -1,6 +1,5 @@
 import { Lightbulb, Code2, Rocket } from 'lucide-react';
 import { motion } from 'framer-motion';
-import { ScrollDownButton } from './scroll-down-button';
 
 const steps = [
 	{
@@ -166,7 +165,6 @@ export default function HowIWork() {
 						</motion.div>
 					))}
 				</motion.div>
-				<ScrollDownButton targetId="how-i-work" label="See Examples" />
 			</div>
 		</section>
 	);

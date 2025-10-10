@@ -6,7 +6,7 @@
 // import { motion } from 'framer-motion';
 // import { useState, useCallback, useEffect } from 'react';
 // import { ChevronLeft, ChevronRight } from 'lucide-react';
-// import projectsData from '@/data/projects.json';
+// import projectsData from '@/data/dev-projects.json';
 // import { ScrollDownButton } from './scroll-down-button';
 
 // const fadeIn = {
@@ -324,7 +324,7 @@
 // import { motion } from 'framer-motion';
 // import { useState, useCallback, useEffect } from 'react';
 // import { ChevronLeft, ChevronRight, ExternalLink, Github } from 'lucide-react';
-// import projectsData from '@/data/projects.json';
+// import projectsData from '@/data/dev-projects.json';
 // import { ScrollDownButton } from './scroll-down-button';
 
 // const fadeIn = {
@@ -780,7 +780,7 @@
 // import { motion } from 'framer-motion';
 // import { useState, useCallback, useEffect } from 'react';
 // import { ChevronLeft, ChevronRight, ExternalLink, Github } from 'lucide-react';
-// import projectsData from '@/data/projects.json';
+// import projectsData from '@/data/dev-projects.json';
 // import { ScrollDownButton } from './scroll-down-button';
 
 // const fadeIn = {
@@ -1252,7 +1252,7 @@ import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
 import { motion } from 'framer-motion';
 import { useState, useCallback, useEffect } from 'react';
 import { ChevronLeft, ChevronRight, ExternalLink, Github } from 'lucide-react';
-import projectsData from '@/data/projects.json';
+import projectsData from '@/data/dev-projects.json';
 import { ScrollDownButton } from './scroll-down-button';
 
 const fadeIn = {
