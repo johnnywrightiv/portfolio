@@ -5,7 +5,6 @@
 
 // import { useState, useEffect } from 'react';
 // import { ExternalLink, Calendar, Search, Grid, List } from 'lucide-react';
-// import { useLanguage } from '@/contexts/language-context';
 
 // interface MediumPost {
 // 	title: string;
@@ -20,7 +19,6 @@
 // 	const [loading, setLoading] = useState(true);
 // 	const [activeTab, setActiveTab] = useState<'featured' | 'all'>('featured');
 // 	const [searchQuery, setSearchQuery] = useState('');
-// 	const { t } = useLanguage();
 
 // 	useEffect(() => {
 // 		fetchPosts();

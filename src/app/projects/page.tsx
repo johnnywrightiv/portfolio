@@ -389,12 +389,14 @@ export default function AllProjects() {
 								className="border-primary/20 bg-surface/80 py-8 pl-10 pr-10 text-xl text-text-primary placeholder:text-text-secondary focus:border-primary/40"
 							/>
 							{searchTerm && (
-								<button
+								<Button
+									variant="ghost"
+									size="icon"
 									onClick={() => setSearchTerm('')}
 									className="absolute right-3 top-1/2 -translate-y-1/2 text-text-secondary transition-colors hover:text-text-primary"
 								>
 									<X className="h-4 w-4" />
-								</button>
+								</Button>
 							)}
 						</div>
 

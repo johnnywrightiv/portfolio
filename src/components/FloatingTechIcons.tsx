@@ -521,7 +521,7 @@ interface FloatingTechIconsProps {
 	onReady?: () => void;
 }
 
-const FloatingTechIcons = ({ onReady }: FloatingTechIconsProps) => {
+export default function FloatingTechIcons({ onReady }: FloatingTechIconsProps) {
 	const containerRef = useRef<HTMLDivElement>(null);
 	const animationRef = useRef<number>();
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -914,6 +914,4 @@ const FloatingTechIcons = ({ onReady }: FloatingTechIconsProps) => {
 				})}
 		</div>
 	);
-};
-
-export default FloatingTechIcons;
+}

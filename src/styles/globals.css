@@ -686,3 +686,20 @@
 		filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.2));
 	}
 }
+
+.glass {
+	@apply bg-white/5 backdrop-blur-md;
+}
+
+.glass-hover {
+	@apply transition-all duration-300 hover:border-white/20 hover:bg-white/10;
+}
+
+/* Global layout utilities */
+.container-section {
+	@apply mx-auto max-w-7xl px-6 sm:px-8 lg:px-12;
+}
+
+.py-section {
+	@apply py-16 sm:py-20 lg:py-24;
+}

@@ -1,135 +1,202 @@
-"use client"
+'use client';
 
-import { motion } from "framer-motion"
-import { Button } from "@/components/ui/button"
-import Image from "next/image"
-import { MessageCircle } from "lucide-react"
-import Link from "next/link"
+import { motion } from 'framer-motion';
+import { Button } from '@/components/ui/button';
+import Image from 'next/image';
+import { MessageCircle } from 'lucide-react';
+import Link from 'next/link';
 
 export default function Footer() {
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId)
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" })
-    }
-  }
+	const scrollToSection = (sectionId: string) => {
+		const element = document.getElementById(sectionId);
+		if (element) {
+			element.scrollIntoView({ behavior: 'smooth' });
+		}
+	};
 
-  return (
-    <motion.footer
-      id="contact"
-      className="py-section relative bg-gradient-to-t from-black to-gray-900"
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6 }}
-      viewport={{ once: true, amount: 0.1 }}
-    >
-      <div className="container-section">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 mb-12">
-          {/* Main Column - 8 cols */}
-          <div className="md:col-span-8">
-            <h3 className="text-2xl font-bold mb-6 text-white">Let's Connect</h3>
-            <p className="text-white/75 mb-4">Have a project in mind or want to collaborate?</p>
-            <p className="text-white/75 mb-6">info@arturogrande.com</p>
+	return (
+		<motion.footer
+			id="contact"
+			className="py-section relative bg-gradient-to-t from-black to-gray-900"
+			initial={{ opacity: 0, y: 30 }}
+			whileInView={{ opacity: 1, y: 0 }}
+			transition={{ duration: 0.6 }}
+			viewport={{ once: true, amount: 0.1 }}
+		>
+			<div className="container-section">
+				<div className="mb-16 grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-16">
+					{/* Main Column - Let's Connect */}
+					<div className="lg:col-span-8">
+						<h3 className="mb-5 text-2xl font-bold text-white lg:text-3xl">
+							Let&apos;s Connect
+						</h3>
+						<p className="mb-4 text-base text-white/75 lg:text-lg">
+							Have a project in mind or want to collaborate?
+						</p>
+						<p className="mb-6 text-base text-white/75 lg:text-lg">
+							johnnywrightit@gmail.com
+						</p>
 
-            <Button
-              className="glass glass-hover border border-border hover:border-white/40 text-white font-semibold px-6 py-3 mb-6"
-              onClick={() => window.open("https://wa.me/5491154000421?text=Hello!", "_blank")}
-            >
-              <MessageCircle className="w-4 h-4 mr-2" />
-              Get in Touch
-            </Button>
+						<Button
+							className="glass glass-hover mb-8 border border-white/20 px-6 py-3 font-medium text-white hover:border-white/40"
+							asChild
+						>
+							<a
+								href="https://wa.me/5491154000421?text=Hello!"
+								target="_blank"
+								rel="noopener noreferrer"
+							>
+								<MessageCircle className="mr-2 h-4 w-4" />
+								Get in Touch
+							</a>
+						</Button>
 
-            <div className="flex space-x-4">
-              <Button
-                size="icon"
-                className="glass glass-hover rounded-full border-border"
-                onClick={() => window.open("https://twitter.com/ArtuGrande", "_blank")}
-              >
-                <Image src="/icons/x.svg" alt="X" width={20} height={20} />
-              </Button>
-              <Button
-                size="icon"
-                className="glass glass-hover rounded-full border-border"
-                onClick={() => window.open("https://www.instagram.com/artugrande/", "_blank")}
-              >
-                <Image src="/icons/instagram.svg" alt="Instagram" width={20} height={20} />
-              </Button>
-              <Button
-                size="icon"
-                className="glass glass-hover rounded-full border-border"
-                onClick={() => window.open("https://www.linkedin.com/in/arturo-grande/", "_blank")}
-              >
-                <Image src="/icons/linkedin.svg" alt="LinkedIn" width={20} height={20} />
-              </Button>
-              <Button
-                size="icon"
-                className="glass glass-hover rounded-full border-border"
-                onClick={() => window.open("https://medium.com/@infoarturogrande", "_blank")}
-              >
-                <Image src="/icons/medium.svg" alt="Medium" width={20} height={20} />
-              </Button>
-            </div>
-          </div>
+						<div className="flex space-x-4">
+							<Button
+								size="icon"
+								className="glass glass-hover h-12 w-12 rounded-full border border-white/20 hover:border-white/40"
+								asChild
+							>
+								<a
+									href="https://twitter.com/ArtuGrande"
+									target="_blank"
+									rel="noopener noreferrer"
+									aria-label="Follow on X (Twitter)"
+								>
+									<Image src="/icons/x.svg" alt="X" width={20} height={20} />
+								</a>
+							</Button>
+							<Button
+								size="icon"
+								className="glass glass-hover h-12 w-12 rounded-full border border-white/20 hover:border-white/40"
+								asChild
+							>
+								<a
+									href="https://www.instagram.com/artugrande/"
+									target="_blank"
+									rel="noopener noreferrer"
+									aria-label="Follow on Instagram"
+								>
+									<Image
+										src="/icons/instagram.svg"
+										alt="Instagram"
+										width={20}
+										height={20}
+									/>
+								</a>
+							</Button>
+							<Button
+								size="icon"
+								className="glass glass-hover h-12 w-12 rounded-full border border-white/20 hover:border-white/40"
+								asChild
+							>
+								<a
+									href="https://www.linkedin.com/in/arturo-grande/"
+									target="_blank"
+									rel="noopener noreferrer"
+									aria-label="Connect on LinkedIn"
+								>
+									<Image
+										src="/icons/linkedin.svg"
+										alt="LinkedIn"
+										width={20}
+										height={20}
+									/>
+								</a>
+							</Button>
+							<Button
+								size="icon"
+								className="glass glass-hover h-12 w-12 rounded-full border border-white/20 hover:border-white/40"
+								asChild
+							>
+								<a
+									href="https://medium.com/@infoarturogrande"
+									target="_blank"
+									rel="noopener noreferrer"
+									aria-label="Read on Medium"
+								>
+									<Image
+										src="/icons/medium.svg"
+										alt="Medium"
+										width={20}
+										height={20}
+									/>
+								</a>
+							</Button>
+						</div>
+					</div>
 
-          {/* Quick Links - 2 cols */}
-          <div className="md:col-span-2">
-            <h3 className="text-xl font-bold mb-6 text-white">Quick Links</h3>
-            <div className="space-y-3">
-              <button
-                onClick={() => scrollToSection("about")}
-                className="block text-white/75 hover:text-white transition-colors"
-              >
-                About
-              </button>
-              <button
-                onClick={() => scrollToSection("portfolio")}
-                className="block text-white/75 hover:text-white transition-colors"
-              >
-                Projects
-              </button>
-              <button
-                onClick={() => scrollToSection("talks")}
-                className="block text-white/75 hover:text-white transition-colors"
-              >
-                Talks
-              </button>
-              <Link href="/blog" className="block text-white/75 hover:text-white transition-colors">
-                Blog
-              </Link>
-            </div>
-          </div>
+					{/* Quick Links */}
+					<div className="lg:col-span-2">
+						<h3 className="mb-5 text-xl font-bold text-white">Quick Links</h3>
+						<div className="space-y-3">
+							<button
+								onClick={() => scrollToSection('about')}
+								className="block text-base text-white/75 transition-colors hover:text-white"
+							>
+								About
+							</button>
+							<button
+								onClick={() => scrollToSection('portfolio')}
+								className="block text-base text-white/75 transition-colors hover:text-white"
+							>
+								Projects
+							</button>
+							<button
+								onClick={() => scrollToSection('talks')}
+								className="block text-base text-white/75 transition-colors hover:text-white"
+							>
+								Talks
+							</button>
+							<Link
+								href="/blog"
+								className="block text-base text-white/75 transition-colors hover:text-white"
+							>
+								Blog
+							</Link>
+						</div>
+					</div>
 
-          {/* Resources - 2 cols */}
-          <div className="md:col-span-2">
-            <h3 className="text-xl font-bold mb-6 text-white">Resources</h3>
-            <div className="space-y-3">
-              <button
-                onClick={() => scrollToSection("testimonials")}
-                className="block text-white/75 hover:text-white transition-colors"
-              >
-                Testimonials
-              </button>
-              <button
-                onClick={() => scrollToSection("faq")}
-                className="block text-white/75 hover:text-white transition-colors"
-              >
-                FAQ
-              </button>
-              <Link href="/music" className="block text-white/75 hover:text-white transition-colors">
-                Music
-              </Link>
-            </div>
-          </div>
-        </div>
+					{/* Resources */}
+					<div className="lg:col-span-2">
+						<h3 className="mb-5 text-xl font-bold text-white">Resources</h3>
+						<div className="space-y-3">
+							<button
+								onClick={() => scrollToSection('testimonials')}
+								className="block text-base text-white/75 transition-colors hover:text-white"
+							>
+								Testimonials
+							</button>
+							<button
+								onClick={() => scrollToSection('faq')}
+								className="block text-base text-white/75 transition-colors hover:text-white"
+							>
+								FAQ
+							</button>
+							<Link
+								href="/music"
+								className="block text-base text-white/75 transition-colors hover:text-white"
+							>
+								Music
+							</Link>
+						</div>
+					</div>
+				</div>
 
-        {/* Copyright */}
-        <div className="flex justify-center items-center pt-8 border-t border-border">
-          <div className="text-white/75 text-sm">
-            Made with <span className="text-red-500">♥</span> by{" "}
-            <span className="font-bold text-white">ARTUROGRANDE.COM</span> © 2025
-          </div>
-        </div>
-      </div>
-    </motion.footer>
-  )
+				{/* Copyright */}
+				<div className="border-t border-white/10 pt-8">
+					<div className="text-center text-sm text-white/60">
+						<span>
+							Made with <span className="text-red-500">♥</span> by John Wright
+						</span>
+						<br />
+						<span className="mt-1 block">
+							Copyright <sup>&copy;</sup> {new Date().getFullYear()} All Rights
+							Reserved.
+						</span>
+					</div>
+				</div>
+			</div>
+		</motion.footer>
+	);
 }

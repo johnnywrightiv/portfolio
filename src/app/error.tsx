@@ -3,20 +3,28 @@
 import React from 'react';
 import { Button } from '@/components/ui/button';
 
-const Error = ({ error, reset }: { error: Error; reset: () => void }) => {
+export default function Error({
+	error,
+	reset,
+}: {
+	error: Error;
+	reset: () => void;
+}) {
 	return (
-		<div className="mb-2 bg-destructive p-4 text-end">
-			<h1 className="text-destructive-foreground">
-				Oops, something went wrong!
-			</h1>
-			<p>
-				<strong>Error:</strong> {error.message}
-			</p>
-			<Button variant="secondary" className="mr-2 mt-8" onClick={() => reset()}>
-				Try again
-			</Button>
+		<div className="flex h-screen items-center justify-center">
+			<div className="text-center">
+				<h1 className="text-foreground mb-4 text-4xl font-bold">
+					Oops, something went wrong!
+				</h1>
+				<p className="mb-8 text-muted-foreground">
+					<strong>Error:</strong> {error.message}
+				</p>
+				<nav className="flex justify-center">
+					<Button variant="outline" onClick={() => reset()}>
+						Try again
+					</Button>
+				</nav>
+			</div>
 		</div>
 	);
-};
-
-export default Error;
+}

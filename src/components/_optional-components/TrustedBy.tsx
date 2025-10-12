@@ -1,6 +1,5 @@
 'use client';
 
-import { useLanguage } from '@/contexts/language-context';
 import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
 
@@ -51,7 +50,6 @@ const clients = [
 ];
 
 export default function TrustedBySection() {
-	const { t } = useLanguage();
 	const [translateX, setTranslateX] = useState(0);
 	const containerRef = useRef<HTMLDivElement>(null);
 	const [itemWidth, setItemWidth] = useState(0);
@@ -101,10 +99,11 @@ export default function TrustedBySection() {
 			<div className="container mx-auto px-4">
 				<div className="mb-12 text-center">
 					<h2 className="mb-4 text-3xl font-bold text-white md:text-4xl">
-						{t('trustedBy.title')}
+						Trusted by Amazing Companies
 					</h2>
 					<p className="mx-auto max-w-2xl text-lg text-white/75">
-						{t('trustedBy.subtitle')}
+						I&apos;ve had the privilege of working with innovative teams and
+						cutting-edge projects across various industries.
 					</p>
 				</div>
 

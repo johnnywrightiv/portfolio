@@ -1,30 +1,19 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Menu } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
+import { useScrollPosition } from '@/hooks/useScrollPosition';
 
 export default function Navbar() {
-	const [isScrolled, setIsScrolled] = useState(false);
 	const [isOpen, setIsOpen] = useState(false);
 	const pathname = usePathname();
+	const hasScrolled = useScrollPosition();
 
 	const isHomePage = pathname === '/';
-
-	useEffect(() => {
-		const handleScroll = () => {
-			const scrolled = window.scrollY > 50;
-			setIsScrolled(scrolled);
-		};
-
-		window.addEventListener('scroll', handleScroll, { passive: true });
-		return () => {
-			window.removeEventListener('scroll', handleScroll);
-		};
-	}, []);
 
 	const scrollToSection = (id: string) => {
 		if (!isHomePage) {
@@ -44,7 +33,7 @@ export default function Navbar() {
 			<div className="container-full">
 				<div
 					className={`transition-all duration-300 ${
-						isScrolled
+						hasScrolled
 							? 'glass rounded-2xl border border-border px-6 py-3 shadow-lg'
 							: 'border border-transparent px-4 py-4 sm:px-6'
 					}`}
@@ -58,30 +47,34 @@ export default function Navbar() {
 						<div className="hidden items-center space-x-6 md:flex">
 							{isHomePage ? (
 								<>
-									<button
+									<Button
+										variant="ghost"
 										onClick={() => scrollToSection('home')}
 										className="nav-item text-white/75 transition-colors hover:text-white"
 									>
 										Home
-									</button>
-									<button
+									</Button>
+									<Button
+										variant="ghost"
 										onClick={() => scrollToSection('about')}
 										className="nav-item text-white/75 transition-colors hover:text-white"
 									>
 										About
-									</button>
-									<button
+									</Button>
+									<Button
+										variant="ghost"
 										onClick={() => scrollToSection('portfolio')}
 										className="nav-item text-white/75 transition-colors hover:text-white"
 									>
 										Projects
-									</button>
-									<button
+									</Button>
+									<Button
+										variant="ghost"
 										onClick={() => scrollToSection('talks')}
 										className="nav-item text-white/75 transition-colors hover:text-white"
 									>
 										Talks
-									</button>
+									</Button>
 								</>
 							) : (
 								<Link
@@ -104,12 +97,13 @@ export default function Navbar() {
 								Music
 							</Link>
 							{isHomePage && (
-								<button
+								<Button
+									variant="ghost"
 									onClick={() => scrollToSection('contact')}
 									className="nav-item text-white/75 transition-colors hover:text-white"
 								>
 									Contact
-								</button>
+								</Button>
 							)}
 						</div>
 
@@ -128,30 +122,34 @@ export default function Navbar() {
 								<div className="mt-12 flex flex-col space-y-6">
 									{isHomePage ? (
 										<>
-											<button
+											<Button
+												variant="ghost"
 												onClick={() => scrollToSection('home')}
 												className="text-left text-2xl text-white transition-colors hover:text-primary"
 											>
 												Home
-											</button>
-											<button
+											</Button>
+											<Button
+												variant="ghost"
 												onClick={() => scrollToSection('about')}
 												className="text-left text-2xl text-white transition-colors hover:text-primary"
 											>
 												About
-											</button>
-											<button
+											</Button>
+											<Button
+												variant="ghost"
 												onClick={() => scrollToSection('portfolio')}
 												className="text-left text-2xl text-white transition-colors hover:text-primary"
 											>
 												Projects
-											</button>
-											<button
+											</Button>
+											<Button
+												variant="ghost"
 												onClick={() => scrollToSection('talks')}
 												className="text-left text-2xl text-white transition-colors hover:text-primary"
 											>
 												Talks
-											</button>
+											</Button>
 										</>
 									) : (
 										<Link
@@ -177,12 +175,13 @@ export default function Navbar() {
 										Music
 									</Link>
 									{isHomePage && (
-										<button
+										<Button
+											variant="ghost"
 											onClick={() => scrollToSection('contact')}
 											className="text-left text-2xl text-white transition-colors hover:text-primary"
 										>
 											Contact
-										</button>
+										</Button>
 									)}
 								</div>
 							</SheetContent>

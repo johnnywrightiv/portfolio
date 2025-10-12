@@ -4,6 +4,7 @@ import { Poppins } from 'next/font/google';
 import { Quicksand } from 'next/font/google';
 import { ThemeProvider } from '@/components/ThemeProvider';
 import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
 
 const poppins = Poppins({
 	weight: '400',
@@ -70,11 +71,7 @@ export default function RootLayout({
 					<main>{children}</main>
 				</ThemeProvider>
 			</body>
-			<footer className="footer fixed bottom-0 w-full border-t border-border bg-surface pb-4 pt-6 text-center text-sm text-muted-foreground/40">
-				<div>
-					&copy; {new Date().getFullYear()} John Wright. All rights reserved.
-				</div>
-			</footer>
+			<Footer />
 		</html>
 	);
 }
