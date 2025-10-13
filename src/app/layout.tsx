@@ -70,8 +70,8 @@ export default function RootLayout({
 					<Navbar />
 					<main>{children}</main>
 				</ThemeProvider>
+				<Footer />
 			</body>
-			<Footer />
 		</html>
 	);
 }

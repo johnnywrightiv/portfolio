@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import Image from 'next/image';
-import { MessageCircle } from 'lucide-react';
+import { Mail } from 'lucide-react';
 import Link from 'next/link';
 
 export default function Footer() {
@@ -34,19 +34,20 @@ export default function Footer() {
 							Have a project in mind or want to collaborate?
 						</p>
 						<p className="mb-6 text-base text-white/75 lg:text-lg">
-							johnnywrightit@gmail.com
+							johnnywrightiv@gmail.com
 						</p>
 
 						<Button
 							className="glass glass-hover mb-8 border border-white/20 px-6 py-3 font-medium text-white hover:border-white/40"
 							asChild
+							size="sm"
 						>
 							<a
-								href="https://wa.me/5491154000421?text=Hello!"
+								href="mailto:johnnywrightiv@gmail.com"
 								target="_blank"
 								rel="noopener noreferrer"
 							>
-								<MessageCircle className="mr-2 h-4 w-4" />
+								<Mail className="mr-2 h-4 w-4" />
 								Get in Touch
 							</a>
 						</Button>
@@ -58,43 +59,10 @@ export default function Footer() {
 								asChild
 							>
 								<a
-									href="https://twitter.com/ArtuGrande"
+									href="https://www.linkedin.com/in/johnnywrightiv/"
 									target="_blank"
 									rel="noopener noreferrer"
-									aria-label="Follow on X (Twitter)"
-								>
-									<Image src="/icons/x.svg" alt="X" width={20} height={20} />
-								</a>
-							</Button>
-							<Button
-								size="icon"
-								className="glass glass-hover h-12 w-12 rounded-full border border-white/20 hover:border-white/40"
-								asChild
-							>
-								<a
-									href="https://www.instagram.com/artugrande/"
-									target="_blank"
-									rel="noopener noreferrer"
-									aria-label="Follow on Instagram"
-								>
-									<Image
-										src="/icons/instagram.svg"
-										alt="Instagram"
-										width={20}
-										height={20}
-									/>
-								</a>
-							</Button>
-							<Button
-								size="icon"
-								className="glass glass-hover h-12 w-12 rounded-full border border-white/20 hover:border-white/40"
-								asChild
-							>
-								<a
-									href="https://www.linkedin.com/in/arturo-grande/"
-									target="_blank"
-									rel="noopener noreferrer"
-									aria-label="Connect on LinkedIn"
+									aria-label="Connect with me on LinkedIn"
 								>
 									<Image
 										src="/icons/linkedin.svg"
@@ -110,14 +78,33 @@ export default function Footer() {
 								asChild
 							>
 								<a
-									href="https://medium.com/@infoarturogrande"
+									href="https://github.com/johnnywrightiv"
 									target="_blank"
 									rel="noopener noreferrer"
-									aria-label="Read on Medium"
+									aria-label="Follw me on GitHub"
 								>
 									<Image
-										src="/icons/medium.svg"
+										src="/icons/github.svg"
 										alt="Medium"
+										width={20}
+										height={20}
+									/>
+								</a>
+							</Button>
+							<Button
+								size="icon"
+								className="glass glass-hover h-12 w-12 rounded-full border border-white/20 hover:border-white/40"
+								asChild
+							>
+								<a
+									href="https://www.instagram.com/johnnywrightiv/"
+									target="_blank"
+									rel="noopener noreferrer"
+									aria-label="Follow me on Instagram"
+								>
+									<Image
+										src="/icons/instagram.svg"
+										alt="Instagram"
 										width={20}
 										height={20}
 									/>
@@ -127,30 +114,30 @@ export default function Footer() {
 					</div>
 
 					{/* Quick Links */}
-					<div className="lg:col-span-2">
+					<div className="min-w-[140px] lg:col-span-2">
 						<h3 className="mb-5 text-xl font-bold text-white">Quick Links</h3>
 						<div className="space-y-3">
 							<button
 								onClick={() => scrollToSection('about')}
-								className="block text-base text-white/75 transition-colors hover:text-white"
+								className="block whitespace-nowrap text-base text-white/75 transition-colors hover:text-white"
 							>
 								About
 							</button>
 							<button
 								onClick={() => scrollToSection('portfolio')}
-								className="block text-base text-white/75 transition-colors hover:text-white"
+								className="block whitespace-nowrap text-base text-white/75 transition-colors hover:text-white"
 							>
 								Projects
 							</button>
 							<button
 								onClick={() => scrollToSection('talks')}
-								className="block text-base text-white/75 transition-colors hover:text-white"
+								className="block whitespace-nowrap text-base text-white/75 transition-colors hover:text-white"
 							>
 								Talks
 							</button>
 							<Link
 								href="/blog"
-								className="block text-base text-white/75 transition-colors hover:text-white"
+								className="block whitespace-nowrap text-base text-white/75 transition-colors hover:text-white"
 							>
 								Blog
 							</Link>
@@ -158,24 +145,24 @@ export default function Footer() {
 					</div>
 
 					{/* Resources */}
-					<div className="lg:col-span-2">
+					<div className="pr-12 lg:col-span-2">
 						<h3 className="mb-5 text-xl font-bold text-white">Resources</h3>
 						<div className="space-y-3">
 							<button
 								onClick={() => scrollToSection('testimonials')}
-								className="block text-base text-white/75 transition-colors hover:text-white"
+								className="block whitespace-nowrap text-base text-white/75 transition-colors hover:text-white"
 							>
 								Testimonials
 							</button>
 							<button
 								onClick={() => scrollToSection('faq')}
-								className="block text-base text-white/75 transition-colors hover:text-white"
+								className="block whitespace-nowrap text-base text-white/75 transition-colors hover:text-white"
 							>
 								FAQ
 							</button>
 							<Link
 								href="/music"
-								className="block text-base text-white/75 transition-colors hover:text-white"
+								className="block whitespace-nowrap text-base text-white/75 transition-colors hover:text-white"
 							>
 								Music
 							</Link>

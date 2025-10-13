@@ -1,15 +1,14 @@
 'use client';
 
-import { useState } from 'react';
-import { Menu } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { Menu, X } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Button } from '@/components/ui/button';
-import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { useScrollPosition } from '@/hooks/useScrollPosition';
 
 export default function Navbar() {
 	const [isOpen, setIsOpen] = useState(false);
+	const [isInitialized, setIsInitialized] = useState(false);
 	const pathname = usePathname();
 	const hasScrolled = useScrollPosition();
 
@@ -24,171 +23,225 @@ export default function Navbar() {
 		setIsOpen(false);
 	};
 
+	// Initialize component
+	useEffect(() => {
+		setIsInitialized(true);
+	}, []);
+
+	// Auto-close mobile menu when expanding beyond mobile breakpoint
+	useEffect(() => {
+		if (!isInitialized) return;
+
+		const checkMobile = () => {
+			const mobile = window.innerWidth < 787; // 787px breakpoint (matches Tailwind lg:)
+			if (!mobile && isOpen) {
+				// Add small delay to prevent flash
+				setTimeout(() => {
+					setIsOpen(false);
+				}, 100);
+			}
+		};
+
+		window.addEventListener('resize', checkMobile);
+		return () => window.removeEventListener('resize', checkMobile);
+	}, [isOpen, isInitialized]);
+
+	// Prevent page scroll when mobile menu is open
+	useEffect(() => {
+		if (isOpen) {
+			document.body.style.overflow = 'hidden';
+		} else {
+			document.body.style.overflow = 'unset';
+		}
+
+		// Cleanup on unmount
+		return () => {
+			document.body.style.overflow = 'unset';
+		};
+	}, [isOpen]);
+
 	return (
 		<nav
-			className={`fixed left-0 right-0 top-0 z-50 transition-all duration-300`}
+			className="fixed left-0 right-0 top-0 z-50 transition-all duration-300"
 			role="navigation"
 			aria-label="Main navigation"
 		>
-			<div className="container-full">
+			<div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 				<div
 					className={`transition-all duration-300 ${
 						hasScrolled
-							? 'glass rounded-2xl border border-border px-6 py-3 shadow-lg'
-							: 'border border-transparent px-4 py-4 sm:px-6'
+							? 'mt-2 rounded-2xl border border-white/20 bg-white/5 px-5 py-3 shadow-lg backdrop-blur-md'
+							: 'border border-transparent px-4 py-4'
 					}`}
 				>
 					<div className="flex items-center justify-between">
-						<Link href="/" className="text-lg font-bold text-white sm:text-xl">
+						<Link
+							href="/"
+							className="whitespace-nowrap text-xl font-bold text-white"
+						>
 							Arturo Grande
 						</Link>
 
 						{/* Desktop Navigation */}
-						<div className="hidden items-center space-x-6 md:flex">
+						<div className="hidden items-center space-x-8 lg:flex">
 							{isHomePage ? (
 								<>
-									<Button
-										variant="ghost"
+									<button
 										onClick={() => scrollToSection('home')}
-										className="nav-item text-white/75 transition-colors hover:text-white"
+										className="text-white/75 transition-colors hover:text-white"
 									>
 										Home
-									</Button>
-									<Button
-										variant="ghost"
+									</button>
+									<button
 										onClick={() => scrollToSection('about')}
-										className="nav-item text-white/75 transition-colors hover:text-white"
+										className="text-white/75 transition-colors hover:text-white"
 									>
 										About
-									</Button>
-									<Button
-										variant="ghost"
+									</button>
+									<button
 										onClick={() => scrollToSection('portfolio')}
-										className="nav-item text-white/75 transition-colors hover:text-white"
+										className="text-white/75 transition-colors hover:text-white"
 									>
 										Projects
-									</Button>
-									<Button
-										variant="ghost"
+									</button>
+									<button
 										onClick={() => scrollToSection('talks')}
-										className="nav-item text-white/75 transition-colors hover:text-white"
+										className="text-white/75 transition-colors hover:text-white"
 									>
 										Talks
-									</Button>
+									</button>
 								</>
 							) : (
 								<Link
 									href="/"
-									className="nav-item text-white/75 transition-colors hover:text-white"
+									className="text-white/75 transition-colors hover:text-white"
 								>
 									Home
 								</Link>
 							)}
 							<Link
 								href="/blog"
-								className="nav-item text-white/75 transition-colors hover:text-white"
+								className="text-white/75 transition-colors hover:text-white"
 							>
 								Blog
 							</Link>
 							<Link
 								href="/music"
-								className="nav-item text-white/75 transition-colors hover:text-white"
+								className="text-white/75 transition-colors hover:text-white"
 							>
 								Music
 							</Link>
 							{isHomePage && (
-								<Button
-									variant="ghost"
+								<button
 									onClick={() => scrollToSection('contact')}
-									className="nav-item text-white/75 transition-colors hover:text-white"
+									className="text-white/75 transition-colors hover:text-white"
 								>
 									Contact
-								</Button>
+								</button>
 							)}
 						</div>
 
-						<Sheet open={isOpen} onOpenChange={setIsOpen}>
-							<SheetTrigger asChild>
-								<Button
-									variant="ghost"
-									size="icon"
-									className="text-white hover:bg-white/10 md:hidden"
-									aria-label="Open menu"
-								>
-									<Menu size={24} />
-								</Button>
-							</SheetTrigger>
-							<SheetContent className="w-full border-l border-white/10 bg-black/95 backdrop-blur-xl">
-								<div className="mt-12 flex flex-col space-y-6">
-									{isHomePage ? (
-										<>
-											<Button
-												variant="ghost"
-												onClick={() => scrollToSection('home')}
-												className="text-left text-2xl text-white transition-colors hover:text-primary"
-											>
-												Home
-											</Button>
-											<Button
-												variant="ghost"
-												onClick={() => scrollToSection('about')}
-												className="text-left text-2xl text-white transition-colors hover:text-primary"
-											>
-												About
-											</Button>
-											<Button
-												variant="ghost"
-												onClick={() => scrollToSection('portfolio')}
-												className="text-left text-2xl text-white transition-colors hover:text-primary"
-											>
-												Projects
-											</Button>
-											<Button
-												variant="ghost"
-												onClick={() => scrollToSection('talks')}
-												className="text-left text-2xl text-white transition-colors hover:text-primary"
-											>
-												Talks
-											</Button>
-										</>
-									) : (
-										<Link
-											href="/"
-											className="text-left text-2xl text-white transition-colors hover:text-primary"
-											onClick={() => setIsOpen(false)}
-										>
-											Home
-										</Link>
-									)}
-									<Link
-										href="/blog"
-										className="text-left text-2xl text-white transition-colors hover:text-primary"
-										onClick={() => setIsOpen(false)}
-									>
-										Blog
-									</Link>
-									<Link
-										href="/music"
-										className="text-left text-2xl text-white transition-colors hover:text-primary"
-										onClick={() => setIsOpen(false)}
-									>
-										Music
-									</Link>
-									{isHomePage && (
-										<Button
-											variant="ghost"
-											onClick={() => scrollToSection('contact')}
-											className="text-left text-2xl text-white transition-colors hover:text-primary"
-										>
-											Contact
-										</Button>
-									)}
-								</div>
-							</SheetContent>
-						</Sheet>
+						{/* Mobile Menu Button */}
+						<button
+							onClick={() => setIsOpen(true)}
+							className="rounded p-2 text-white hover:bg-white/10 lg:hidden"
+							aria-label="Open menu"
+						>
+							<Menu size={24} />
+						</button>
 					</div>
 				</div>
 			</div>
+
+			{/* Mobile Navigation Sheet */}
+			{isOpen && isInitialized && (
+				<div className="fixed inset-0 z-50 lg:hidden">
+					{/* Backdrop */}
+					<div
+						className="absolute inset-0 bg-black/50 backdrop-blur-sm"
+						onClick={() => setIsOpen(false)}
+					/>
+
+					{/* Sheet */}
+					<div className="absolute right-0 top-0 h-full w-full bg-black/95 backdrop-blur-xl">
+						<div className="flex h-full flex-col">
+							{/* Header with close button */}
+							<div className="flex items-center justify-between border-b border-white/10 p-6">
+								<h2 className="text-lg font-semibold text-white">Menu</h2>
+								<button
+									onClick={() => setIsOpen(false)}
+									className="p-2 text-white transition-colors hover:text-primary"
+									aria-label="Close menu"
+								>
+									<X size={24} />
+								</button>
+							</div>
+
+							{/* Navigation links */}
+							<div className="flex flex-1 flex-col items-center justify-center space-y-8">
+								{isHomePage ? (
+									<>
+										<button
+											onClick={() => scrollToSection('home')}
+											className="text-2xl text-white transition-colors hover:text-primary"
+										>
+											Home
+										</button>
+										<button
+											onClick={() => scrollToSection('about')}
+											className="text-2xl text-white transition-colors hover:text-primary"
+										>
+											About
+										</button>
+										<button
+											onClick={() => scrollToSection('portfolio')}
+											className="text-2xl text-white transition-colors hover:text-primary"
+										>
+											Projects
+										</button>
+										<button
+											onClick={() => scrollToSection('talks')}
+											className="text-2xl text-white transition-colors hover:text-primary"
+										>
+											Talks
+										</button>
+									</>
+								) : (
+									<Link
+										href="/"
+										className="text-2xl text-white transition-colors hover:text-primary"
+										onClick={() => setIsOpen(false)}
+									>
+										Home
+									</Link>
+								)}
+								<Link
+									href="/blog"
+									className="text-2xl text-white transition-colors hover:text-primary"
+									onClick={() => setIsOpen(false)}
+								>
+									Blog
+								</Link>
+								<Link
+									href="/music"
+									className="text-2xl text-white transition-colors hover:text-primary"
+									onClick={() => setIsOpen(false)}
+								>
+									Music
+								</Link>
+								{isHomePage && (
+									<button
+										onClick={() => scrollToSection('contact')}
+										className="text-2xl text-white transition-colors hover:text-primary"
+									>
+										Contact
+									</button>
+								)}
+							</div>
+						</div>
+					</div>
+				</div>
+			)}
 		</nav>
 	);
 }

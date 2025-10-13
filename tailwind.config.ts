@@ -13,6 +13,9 @@ const config: Config = {
 	],
 	theme: {
 		extend: {
+			screens: {
+				lg: '901px',
+			},
 			fontFamily: {
 				body: ['var(--font-body)'],
 				heading: ['var(--font-heading)'],

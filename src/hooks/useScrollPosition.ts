@@ -5,14 +5,8 @@ export function useScrollPosition() {
 
 	useEffect(() => {
 		const handleScroll = () => {
-			const heroSection = document.getElementById('hero');
-			if (heroSection) {
-				const heroTop = heroSection.offsetTop;
-				const heroHeight = heroSection.offsetHeight;
-				const triggerPoint = heroTop + heroHeight * 1.0; // 100% down the hero
-				const scrollPosition = window.scrollY + 100; // Add some buffer
-				setHasScrolled(scrollPosition > triggerPoint);
-			}
+			const scrollPosition = window.scrollY;
+			setHasScrolled(scrollPosition > 50); // Trigger after 50px scroll
 		};
 
 		// Initial check
