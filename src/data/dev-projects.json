@@ -4,7 +4,7 @@
 		"featured": true,
 		"projectType": {
 			"label": "CLIENT WORK",
-			"color": "text-primary"
+			"color": "text-blue-500"
 		},
 		"keyFeatures": [
 			"Embedded video discovery widget with backend content management portal ",
@@ -40,7 +40,7 @@
 		"featured": true,
 		"projectType": {
 			"label": "SIDE PROJECT",
-			"color": "text-secondary"
+			"color": "text-green-500"
 		},
 		"keyFeatures": [
 			"Aids musicians in creating harmonic accompaniment",
@@ -75,7 +75,7 @@
 		"featured": true,
 		"projectType": {
 			"label": "MVP",
-			"color": "text-"
+			"color": "text-orange-500"
 		},
 		"keyFeatures": [
 			"Create custom templates",
@@ -116,7 +116,7 @@
 		"featured": true,
 		"projectType": {
 			"label": "CLIENT WORK",
-			"color": "text-primary"
+			"color": "text-blue-500"
 		},
 		"keyFeatures": [
 			"Key contributor to a major data system design restructuring",
@@ -164,7 +164,7 @@
 		"featured": true,
 		"projectType": {
 			"label": "SIDE PROJECT",
-			"color": "text-secondary"
+			"color": "text-green-500"
 		},
 		"keyFeatures": [
 			"Event management dashboard",
@@ -201,7 +201,7 @@
 		"featured": false,
 		"projectType": {
 			"label": "SIDE PROJECT",
-			"color": "text-secondary"
+			"color": "text-green-500"
 		},
 		"keyFeatures": [
 			"Fully functional Kanban boards",
@@ -242,7 +242,7 @@
 		"featured": false,
 		"projectType": {
 			"label": "SIDE PROJECT",
-			"color": "text-secondary"
+			"color": "text-green-500"
 		},
 		"keyFeatures": ["Dynamic color themes", "Custom CSS animations"],
 		"technicalHighlights": [
@@ -271,7 +271,7 @@
 		"featured": false,
 		"projectType": {
 			"label": "SIDE PROJECT",
-			"color": "text-secondary"
+			"color": "text-green-500"
 		},
 		"keyFeatures": [
 			"Get randomized recipes ",

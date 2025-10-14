@@ -9,15 +9,32 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useState, useMemo, useCallback } from 'react';
 import { Search, X, Filter } from 'lucide-react';
 import projectsData from '@/data/dev-projects.json';
-import { Dialog } from '@/components/ui/dialog';
-import { DialogContent } from '@/components/ui/dialog';
-import {
-	Github,
-	ArrowLeftCircle,
-	ArrowRightCircle,
-	ExternalLink,
-} from 'lucide-react';
 import React from 'react';
+import ProjectModal from '@/components/ProjectModal';
+
+// Type definitions
+interface ProjectType {
+	label: string;
+	color: string;
+}
+
+interface ProjectLink {
+	name: string;
+	url: string;
+}
+
+interface Project {
+	title: string;
+	featured: boolean;
+	projectType?: ProjectType;
+	keyFeatures?: string[];
+	technicalHighlights?: string[];
+	image?: string;
+	blurb: string;
+	description?: string;
+	technologies?: string[];
+	links?: ProjectLink[];
+}
 
 const fadeIn = {
 	hidden: { opacity: 0, y: 20 },
@@ -69,162 +86,6 @@ const filterButtonVariants = {
 		transition: { duration: 0.2 },
 	},
 };
-
-// ProjectModal logic (copied and adapted from src/components/projects.tsx)
-function ProjectModal({
-	project,
-	open,
-	onOpenChange,
-	onPrev,
-	onNext,
-	disablePrev,
-	disableNext,
-}) {
-	// Keyboard navigation inside modal
-	React.useEffect(() => {
-		if (!open) return;
-		const handleKeyDown = (e) => {
-			if (e.key === 'ArrowLeft') onPrev();
-			if (e.key === 'ArrowRight') onNext();
-		};
-		window.addEventListener('keydown', handleKeyDown);
-		return () => window.removeEventListener('keydown', handleKeyDown);
-	}, [open, onPrev, onNext]);
-
-	if (!project) return null;
-	return (
-		<Dialog open={open} onOpenChange={onOpenChange}>
-			<DialogContent className="max-h-[90vh] max-w-4xl overflow-y-auto border-primary/20 bg-surface">
-				<div className="space-y-6">
-					{/* Header */}
-					<div className="space-y-4">
-						<div
-							className={`text-sm font-bold uppercase tracking-wider ${project.projectType?.color || 'text-primary'}`}
-						>
-							{project.projectType?.label || 'Project'}
-						</div>
-						<h2 className="font-heading text-3xl font-semibold text-text-primary">
-							{project.title}
-						</h2>
-						<p className="text-lg text-text-secondary">{project.blurb}</p>
-					</div>
-					{/* Image */}
-					{project.image && (
-						<div className="relative h-64 w-full overflow-hidden rounded-xl bg-muted">
-							<Image
-								src={project.image}
-								alt={project.title}
-								fill
-								className="object-cover"
-								sizes="(max-width: 768px) 100vw, 800px"
-							/>
-						</div>
-					)}
-					{/* Description */}
-					{project.description && (
-						<div className="space-y-2">
-							<h3 className="text-xl font-semibold text-text-primary">
-								Description
-							</h3>
-							<p className="text-text-secondary">{project.description}</p>
-						</div>
-					)}
-					{/* Key Features */}
-					{project.keyFeatures && project.keyFeatures.length > 0 && (
-						<div className="space-y-2">
-							<h3 className="text-xl font-semibold text-text-primary">
-								Key Features
-							</h3>
-							<ul className="list-inside list-disc space-y-1 text-text-secondary">
-								{project.keyFeatures.map((feature, idx) => (
-									<li key={idx}>{feature}</li>
-								))}
-							</ul>
-						</div>
-					)}
-					{/* Technical Highlights */}
-					{project.technicalHighlights &&
-						project.technicalHighlights.length > 0 && (
-							<div className="space-y-2">
-								<h3 className="text-xl font-semibold text-text-primary">
-									Technical Highlights
-								</h3>
-								<ul className="list-inside list-disc space-y-1 text-text-secondary">
-									{project.technicalHighlights.map((highlight, idx) => (
-										<li key={idx}>{highlight}</li>
-									))}
-								</ul>
-							</div>
-						)}
-					{/* Technologies */}
-					<div className="space-y-2">
-						<h3 className="text-xl font-semibold text-text-primary">
-							Technologies
-						</h3>
-						<div className="flex flex-wrap gap-2">
-							{project.technologies?.map((tech) => (
-								<span
-									key={tech}
-									className="rounded-full border border-accent/50 bg-accent/10 px-3 py-1 text-sm text-text-primary"
-								>
-									{tech}
-								</span>
-							))}
-						</div>
-					</div>
-					{/* Links */}
-					{project.links && project.links.length > 0 && (
-						<div className="flex flex-wrap gap-4 pt-4">
-							{project.links.map((link) => (
-								<Button
-									key={link.name}
-									variant={
-										link.name.includes('GitHub') || link.name.includes('Code')
-											? 'outline'
-											: 'default'
-									}
-									asChild
-									className="flex items-center gap-2"
-								>
-									<a href={link.url} target="_blank" rel="noopener noreferrer">
-										{link.name.includes('GitHub') ||
-										link.name.includes('Code') ? (
-											<Github className="h-4 w-4" />
-										) : (
-											<ExternalLink className="h-4 w-4" />
-										)}
-										{link.name}
-									</a>
-								</Button>
-							))}
-						</div>
-					)}
-					{/* Navigation */}
-					<div className="absolute left-0 right-0 top-1/2 flex -translate-y-1/2 justify-between">
-						<Button
-							variant="ghost"
-							size="icon"
-							className="rounded-full bg-background/50 p-2"
-							onClick={onPrev}
-							disabled={disablePrev}
-						>
-							<ArrowLeftCircle className="h-8 w-8" />
-						</Button>
-						<Button
-							variant="ghost"
-							size="icon"
-							className="rounded-full bg-background/50 p-2"
-							onClick={onNext}
-							disabled={disableNext}
-						>
-							<ArrowRightCircle className="h-8 w-8" />
-						</Button>
-					</div>
-				</div>
-			</DialogContent>
-		</Dialog>
-	);
-}
 
 export default function AllProjects() {
 	// Filter states
@@ -325,25 +186,19 @@ export default function AllProjects() {
 	return (
 		<section
 			id="featured-work"
-			className="bg-gradient-featured-work relative flex min-h-screen w-full items-center py-16 pt-32"
+			className="relative flex min-h-screen w-full items-center bg-gradient-to-b from-gray-900 via-black to-gray-900 py-16 pt-32"
 		>
-			{/* Enhanced accent gradient overlay */}
-			<div className="bg-accent-gradient-2 absolute inset-0" />
-
 			{/* Subtle pattern overlay for visual interest */}
-			<div className="bg-pattern-dots absolute inset-0 opacity-30" />
-
-			{/* Additional floating gradient orbs for depth */}
 			<div
-				className="absolute left-1/4 top-1/4 h-64 w-64 animate-pulse rounded-full bg-gradient-to-br from-primary/10 to-secondary/5 blur-2xl"
-				style={{ animationDuration: '12s' }}
-			/>
-			<div
-				className="from-secondary/8 to-primary/4 absolute bottom-1/4 right-1/3 h-48 w-48 animate-pulse rounded-full bg-gradient-to-br blur-xl"
-				style={{ animationDuration: '8s' }}
+				className="absolute inset-0 opacity-30"
+				style={{
+					backgroundImage:
+						'radial-gradient(circle at 1px 1px, rgba(255,255,255,0.15) 1px, transparent 0)',
+					backgroundSize: '20px 20px',
+				}}
 			/>
 
-			<div className="container relative z-10 mx-auto px-2 lg:px-4 xl:px-6 2xl:px-8">
+			<div className="container-section relative z-10">
 				<motion.div
 					className="mb-12 flex flex-col items-center justify-between gap-6 md:flex-row"
 					initial="hidden"
@@ -352,7 +207,7 @@ export default function AllProjects() {
 					variants={fadeIn}
 				>
 					<motion.h2
-						className="font-heading text-4xl font-semibold text-text-primary md:text-5xl"
+						className="text-4xl font-bold text-white md:text-5xl"
 						variants={fadeIn}
 					>
 						All Projects
@@ -361,8 +216,7 @@ export default function AllProjects() {
 						<Link href="/">
 							<Button
 								size="lg"
-								variant="outline"
-								className="rounded-xl bg-transparent px-8 py-4 font-semibold text-text-primary shadow-md"
+								className="glass glass-hover rounded-xl border border-white/20 px-8 py-4 font-semibold text-white hover:border-white/40"
 							>
 								Back Home
 							</Button>
@@ -380,20 +234,37 @@ export default function AllProjects() {
 					{/* Search Bar and Filter Toggle */}
 					<div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
 						<div className="relative max-w-md flex-1">
-							<Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-text-secondary" />
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								width="24"
+								height="24"
+								viewBox="0 0 24 24"
+								fill="none"
+								stroke="currentColor"
+								strokeWidth="2"
+								strokeLinecap="round"
+								strokeLinejoin="round"
+								className="lucide lucide-search absolute left-3 top-1/2 z-10 h-4 w-4 -translate-y-1/2 text-white/80 transition-none"
+								style={{ transition: 'none' }}
+							>
+								<circle cx="11" cy="11" r="8"></circle>
+								<path d="m21 21-4.3-4.3"></path>
+							</svg>
 							<Input
+								id="project-search"
+								name="project-search"
 								type="text"
 								placeholder="Search projects by title, description, or highlights..."
 								value={searchTerm}
 								onChange={(e) => setSearchTerm(e.target.value)}
-								className="border-primary/20 bg-surface/80 py-8 pl-10 pr-10 text-xl text-text-primary placeholder:text-text-secondary focus:border-primary/40"
+								className="border border-white/20 bg-black/50 py-8 pl-10 pr-10 text-xl text-white backdrop-blur-sm placeholder:text-white/70 focus:border-white/40"
 							/>
 							{searchTerm && (
 								<Button
 									variant="ghost"
 									size="icon"
 									onClick={() => setSearchTerm('')}
-									className="absolute right-3 top-1/2 -translate-y-1/2 text-text-secondary transition-colors hover:text-text-primary"
+									className="absolute right-3 top-1/2 -translate-y-1/2 text-white/60 transition-colors hover:text-white"
 								>
 									<X className="h-4 w-4" />
 								</Button>
@@ -405,7 +276,7 @@ export default function AllProjects() {
 								variant="outline"
 								size="sm"
 								onClick={() => setShowFilters(!showFilters)}
-								className="border-primary/20 bg-surface/80 text-text-primary hover:border-primary/40"
+								className="glass glass-hover border border-white/20 text-white hover:border-white/40"
 							>
 								<Filter className="mr-2 h-4 w-4" />
 								Filters
@@ -426,7 +297,7 @@ export default function AllProjects() {
 									variant="outline"
 									size="sm"
 									onClick={clearAllFilters}
-									className="border-primary/20 bg-surface/80 text-text-primary hover:border-primary/40"
+									className="glass glass-hover border border-white/20 text-white hover:border-white/40"
 								>
 									Clear All
 									<X className="h-4 w-4" />
@@ -435,7 +306,7 @@ export default function AllProjects() {
 
 							{/* Results Count */}
 							<motion.div
-								className="text-center text-sm text-text-secondary"
+								className="text-center text-sm text-white/75"
 								variants={fadeIn}
 							>
 								Showing {filteredProjects.length} of {allProjects.length}{' '}
@@ -454,10 +325,10 @@ export default function AllProjects() {
 								transition={{ duration: 0.3 }}
 								className="overflow-hidden"
 							>
-								<div className="space-y-6 rounded-xl border border-primary/20 bg-surface/60 p-6 backdrop-blur-sm">
+								<div className="space-y-6 rounded-xl border border-white/20 bg-black/50 p-6 backdrop-blur-sm">
 									{/* Project Types */}
 									<div>
-										<h3 className="mb-3 text-sm font-semibold uppercase tracking-wider text-text-primary">
+										<h3 className="mb-3 text-sm font-semibold uppercase tracking-wider text-white">
 											Project Types
 										</h3>
 										<div className="flex flex-wrap gap-2">
@@ -472,8 +343,8 @@ export default function AllProjects() {
 														onClick={() => toggleProjectType(type)}
 														className={`rounded-full px-3 py-1.5 text-xs font-medium transition-all duration-200 ${
 															selectedProjectTypes.includes(type)
-																? 'text-primary-foreground bg-primary shadow-md'
-																: 'border border-accent/50 bg-accent/20 text-text-primary hover:bg-accent/30'
+																? 'border border-white/30 bg-white/20 text-white shadow-md'
+																: 'border border-white/20 bg-white/10 text-white hover:bg-white/20'
 														}`}
 													>
 														{type}
@@ -485,7 +356,7 @@ export default function AllProjects() {
 
 									{/* Technologies */}
 									<div>
-										<h3 className="mb-3 text-sm font-semibold uppercase tracking-wider text-text-primary">
+										<h3 className="mb-3 text-sm font-semibold uppercase tracking-wider text-white">
 											Technologies
 										</h3>
 										<div className="flex flex-wrap gap-2">
@@ -500,8 +371,8 @@ export default function AllProjects() {
 														onClick={() => toggleTechnology(tech)}
 														className={`rounded-full px-3 py-1.5 text-xs font-medium transition-all duration-200 ${
 															selectedTechnologies.includes(tech)
-																? 'text-primary-foreground bg-primary shadow-md'
-																: 'border border-accent/50 bg-accent/20 text-text-primary hover:bg-accent/30'
+																? 'border border-white/30 bg-white/20 text-white shadow-md'
+																: 'border border-white/20 bg-white/10 text-white hover:bg-white/20'
 														}`}
 													>
 														{tech}
@@ -538,17 +409,17 @@ export default function AllProjects() {
 										key={`${project.title}-${index}`}
 										variants={cardVariants}
 										layout
-										className="group relative flex h-[580px] cursor-pointer flex-col overflow-hidden rounded-2xl border border-primary/20 bg-surface/80 shadow-lg transition-all duration-500 ease-out hover:border-primary/40 hover:shadow-2xl"
+										className="group relative flex h-[580px] cursor-pointer flex-col overflow-hidden rounded-2xl border border-white/20 bg-black/50 shadow-lg backdrop-blur-sm transition-all duration-500 ease-out hover:border-white/40 hover:shadow-2xl"
 										onClick={() => {
 											setCurrentProjectIndex(index);
 											setIsDialogOpen(true);
 										}}
 									>
 										{/* Hover gradient overlay */}
-										<div className="absolute inset-0 z-10 bg-gradient-to-br from-primary/5 to-secondary/5 opacity-0 transition-opacity duration-500 group-hover:opacity-10" />
+										<div className="absolute inset-0 z-10 bg-gradient-to-br from-white/5 to-white/5 opacity-0 transition-opacity duration-500 group-hover:opacity-10" />
 
 										{/* Image container with fixed aspect ratio */}
-										<div className="relative h-48 w-full flex-shrink-0 overflow-hidden rounded-t-2xl bg-muted">
+										<div className="relative h-48 w-full flex-shrink-0 overflow-hidden rounded-t-2xl bg-gray-800">
 											{project.image ? (
 												<Image
 													src={project.image || '/placeholder.svg'}
@@ -558,11 +429,11 @@ export default function AllProjects() {
 													sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
 												/>
 											) : (
-												<div className="flex h-full w-full items-center justify-center bg-muted text-lg text-muted-foreground transition-colors duration-500 group-hover:bg-muted/80">
+												<div className="flex h-full w-full items-center justify-center bg-gray-800 text-lg text-white/60 transition-colors duration-500 group-hover:bg-gray-700">
 													Project Visual
 												</div>
 											)}
-											<div className="absolute inset-0 bg-gradient-to-t from-surface/60 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+											<div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
 										</div>
 
 										{/* Content container with consistent spacing */}
@@ -573,10 +444,10 @@ export default function AllProjects() {
 												>
 													{project.projectType?.label || 'Project'}
 												</div>
-												<h3 className="mb-4 line-clamp-2 font-heading text-xl font-semibold text-text-primary transition-colors duration-300 group-hover:text-primary">
+												<h3 className="mb-4 line-clamp-2 text-xl font-semibold text-white transition-colors duration-300 group-hover:text-white/90">
 													{project.title}
 												</h3>
-												<p className="mb-6 line-clamp-3 text-text-secondary transition-colors duration-300 group-hover:text-text-primary/80">
+												<p className="mb-6 line-clamp-3 text-white/75 transition-colors duration-300 group-hover:text-white/90">
 													{project.blurb}
 												</p>
 											</div>
@@ -589,8 +460,8 @@ export default function AllProjects() {
 															key={tech}
 															className={`rounded-full border px-3 py-1 text-xs transition-all duration-300 ${
 																selectedTechnologies.includes(tech)
-																	? 'border-primary/50 bg-primary/20 text-primary'
-																	: 'border-accent/50 bg-accent/10 text-text-primary group-hover:border-primary/30 group-hover:bg-primary/10'
+																	? 'border-white/50 bg-white/20 text-white'
+																	: 'border-white/20 bg-white/10 text-white group-hover:border-white/30 group-hover:bg-white/20'
 															}`}
 														>
 															{tech}
@@ -601,7 +472,7 @@ export default function AllProjects() {
 										</div>
 
 										{/* Subtle glow effect on hover */}
-										<div className="absolute -inset-0.5 -z-10 rounded-2xl bg-gradient-to-r from-primary/20 to-secondary/20 opacity-0 blur-sm transition-opacity duration-500 group-hover:opacity-100" />
+										<div className="absolute -inset-0.5 -z-10 rounded-2xl bg-gradient-to-r from-white/20 to-white/20 opacity-0 blur-sm transition-opacity duration-500 group-hover:opacity-100" />
 									</motion.div>
 								))}
 							</motion.div>
@@ -614,23 +485,22 @@ export default function AllProjects() {
 								className="py-16 text-center"
 							>
 								<div className="mb-4 text-6xl">🔍</div>
-								<h3 className="mb-2 text-xl font-semibold text-text-primary">
+								<h3 className="mb-2 text-xl font-semibold text-white">
 									No projects found
 								</h3>
-								<p className="mb-6 text-text-secondary">
+								<p className="mb-6 text-white/75">
 									Try adjusting your search terms or filters to find what
 									you&apos;re looking for.
 								</p>
 								<Button
 									onClick={clearAllFilters}
-									variant="outline"
-									className="border-primary/20 bg-surface/80 text-text-primary hover:border-primary/40"
+									className="glass glass-hover border border-white/20 text-white hover:border-white/40"
 								>
 									Clear All Filters
 								</Button>
 							</motion.div>
 						)}
-						{/* ProjectModal rendered after the grid, for the selected project */}
+						{/* Shared ProjectModal rendered after the grid, for the selected project */}
 						<ProjectModal
 							project={filteredProjects[currentProjectIndex]}
 							open={isDialogOpen && filteredProjects.length > 0}
@@ -645,6 +515,8 @@ export default function AllProjects() {
 							}
 							disablePrev={currentProjectIndex === 0}
 							disableNext={currentProjectIndex === filteredProjects.length - 1}
+							projects={filteredProjects}
+							currentIndex={currentProjectIndex}
 						/>
 					</AnimatePresence>
 				</motion.div>

@@ -5,174 +5,284 @@ import { Button } from '@/components/ui/button';
 import Image from 'next/image';
 import { Mail } from 'lucide-react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 export default function Footer() {
-	const scrollToSection = (sectionId: string) => {
-		const element = document.getElementById(sectionId);
-		if (element) {
-			element.scrollIntoView({ behavior: 'smooth' });
+	const router = useRouter();
+
+	const handleScrollToSection = (sectionId: string) => {
+		// Contact section exists on all pages (footer), so always scroll directly
+		if (sectionId === 'contact') {
+			const element = document.getElementById(sectionId);
+			if (element) {
+				element.scrollIntoView({ behavior: 'smooth' });
+			}
+			return;
+		}
+
+		// For other sections, check if we're on the homepage
+		if (window.location.pathname === '/') {
+			// If on homepage, just scroll to section
+			const element = document.getElementById(sectionId);
+			if (element) {
+				element.scrollIntoView({ behavior: 'smooth' });
+			}
+		} else {
+			// If not on homepage, navigate to homepage with hash
+			router.push(`/#${sectionId}`);
 		}
 	};
 
+	// Animation variants
+	const fadeInUp = {
+		hidden: { opacity: 0, y: 20 },
+		visible: {
+			opacity: 1,
+			y: 0,
+			transition: { duration: 0.5, ease: 'easeOut' as const },
+		},
+	};
+
+	const staggerContainer = {
+		hidden: { opacity: 0 },
+		visible: {
+			opacity: 1,
+			transition: {
+				staggerChildren: 0.1,
+				delayChildren: 0.1,
+			},
+		},
+	};
+
+	const linkVariants = {
+		hidden: { opacity: 0, x: -10 },
+		visible: {
+			opacity: 1,
+			x: 0,
+			transition: { duration: 0.3 },
+		},
+	};
+
 	return (
-		<motion.footer
+		<footer
 			id="contact"
 			className="py-section relative bg-gradient-to-t from-black to-gray-900"
-			initial={{ opacity: 0, y: 30 }}
-			whileInView={{ opacity: 1, y: 0 }}
-			transition={{ duration: 0.6 }}
-			viewport={{ once: true, amount: 0.1 }}
 		>
 			<div className="container-section">
-				<div className="mb-16 grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-16">
+				<motion.div
+					className="mb-16 grid grid-cols-1 gap-12 md:grid-cols-12 md:gap-8 lg:gap-16"
+					initial="hidden"
+					whileInView="visible"
+					viewport={{ once: true, amount: 0.1 }}
+					variants={staggerContainer}
+				>
 					{/* Main Column - Let's Connect */}
-					<div className="lg:col-span-8">
-						<h3 className="mb-5 text-2xl font-bold text-white lg:text-3xl">
-							Let&apos;s Connect
-						</h3>
-						<p className="mb-4 text-base text-white/75 lg:text-lg">
-							Have a project in mind or want to collaborate?
-						</p>
-						<p className="mb-6 text-base text-white/75 lg:text-lg">
-							johnnywrightiv@gmail.com
-						</p>
-
-						<Button
-							className="glass glass-hover mb-8 border border-white/20 px-6 py-3 font-medium text-white hover:border-white/40"
-							asChild
-							size="sm"
+					<motion.div
+						className="md:col-span-6 lg:col-span-8"
+						variants={fadeInUp}
+					>
+						<motion.h3
+							className="mb-5 text-2xl font-bold text-white lg:text-3xl"
+							variants={fadeInUp}
 						>
-							<a
-								href="mailto:johnnywrightiv@gmail.com"
-								target="_blank"
-								rel="noopener noreferrer"
-							>
-								<Mail className="mr-2 h-4 w-4" />
-								Get in Touch
-							</a>
-						</Button>
+							Let&apos;s Connect
+						</motion.h3>
+						<motion.p
+							className="mb-4 text-base text-white/75 lg:text-lg"
+							variants={fadeInUp}
+						>
+							Have a project in mind or want to collaborate?
+						</motion.p>
+						<motion.p
+							className="mb-6 text-base text-white/75"
+							variants={fadeInUp}
+						>
+							johnnywrightiv@gmail.com
+						</motion.p>
 
-						<div className="flex space-x-4">
+						<motion.div variants={fadeInUp}>
 							<Button
-								size="icon"
-								className="glass glass-hover h-12 w-12 rounded-full border border-white/20 hover:border-white/40"
+								className="glass glass-hover mb-8 border border-white/20 px-6 py-3 font-medium text-white hover:border-white/40"
 								asChild
+								size="sm"
 							>
 								<a
-									href="https://www.linkedin.com/in/johnnywrightiv/"
+									href="mailto:johnnywrightiv@gmail.com"
 									target="_blank"
 									rel="noopener noreferrer"
-									aria-label="Connect with me on LinkedIn"
 								>
-									<Image
-										src="/icons/linkedin.svg"
-										alt="LinkedIn"
-										width={20}
-										height={20}
-									/>
+									<Mail className="mr-2 h-4 w-4" />
+									Get in Touch
 								</a>
 							</Button>
-							<Button
-								size="icon"
-								className="glass glass-hover h-12 w-12 rounded-full border border-white/20 hover:border-white/40"
-								asChild
-							>
-								<a
-									href="https://github.com/johnnywrightiv"
-									target="_blank"
-									rel="noopener noreferrer"
-									aria-label="Follw me on GitHub"
+						</motion.div>
+
+						<motion.div className="flex space-x-4" variants={staggerContainer}>
+							<motion.div variants={linkVariants}>
+								<Button
+									size="icon"
+									className="glass glass-hover h-12 w-12 rounded-full border border-white/20 hover:border-white/40"
+									asChild
 								>
-									<Image
-										src="/icons/github.svg"
-										alt="Medium"
-										width={20}
-										height={20}
-									/>
-								</a>
-							</Button>
-							<Button
-								size="icon"
-								className="glass glass-hover h-12 w-12 rounded-full border border-white/20 hover:border-white/40"
-								asChild
-							>
-								<a
-									href="https://www.instagram.com/johnnywrightiv/"
-									target="_blank"
-									rel="noopener noreferrer"
-									aria-label="Follow me on Instagram"
+									<a
+										href="https://www.linkedin.com/in/johnnywrightiv/"
+										target="_blank"
+										rel="noopener noreferrer"
+										aria-label="Connect with me on LinkedIn"
+									>
+										<Image
+											src="/icons/linkedin.svg"
+											alt="LinkedIn"
+											width={20}
+											height={20}
+										/>
+									</a>
+								</Button>
+							</motion.div>
+							<motion.div variants={linkVariants}>
+								<Button
+									size="icon"
+									className="glass glass-hover h-12 w-12 rounded-full border border-white/20 hover:border-white/40"
+									asChild
 								>
-									<Image
-										src="/icons/instagram.svg"
-										alt="Instagram"
-										width={20}
-										height={20}
-									/>
-								</a>
-							</Button>
-						</div>
-					</div>
+									<a
+										href="https://github.com/johnnywrightiv"
+										target="_blank"
+										rel="noopener noreferrer"
+										aria-label="Follw me on GitHub"
+									>
+										<Image
+											src="/icons/github.svg"
+											alt="Medium"
+											width={20}
+											height={20}
+										/>
+									</a>
+								</Button>
+							</motion.div>
+							<motion.div variants={linkVariants}>
+								<Button
+									size="icon"
+									className="glass glass-hover h-12 w-12 rounded-full border border-white/20 hover:border-white/40"
+									asChild
+								>
+									<a
+										href="https://www.instagram.com/johnnywrightiv/"
+										target="_blank"
+										rel="noopener noreferrer"
+										aria-label="Follow me on Instagram"
+									>
+										<Image
+											src="/icons/instagram.svg"
+											alt="Instagram"
+											width={20}
+											height={20}
+										/>
+									</a>
+								</Button>
+							</motion.div>
+						</motion.div>
+					</motion.div>
 
 					{/* Quick Links */}
-					<div className="min-w-[140px] lg:col-span-2">
-						<h3 className="mb-5 text-xl font-bold text-white">Quick Links</h3>
-						<div className="space-y-3">
-							<button
-								onClick={() => scrollToSection('about')}
+					<motion.div
+						className="md:col-span-3 lg:col-span-2"
+						variants={fadeInUp}
+					>
+						<motion.h3
+							className="mb-5 whitespace-nowrap text-xl font-bold text-white"
+							variants={fadeInUp}
+						>
+							Quick Links
+						</motion.h3>
+						<motion.div className="space-y-3" variants={staggerContainer}>
+							<motion.button
+								onClick={() => handleScrollToSection('about')}
 								className="block whitespace-nowrap text-base text-white/75 transition-colors hover:text-white"
+								variants={linkVariants}
 							>
 								About
-							</button>
-							<button
-								onClick={() => scrollToSection('portfolio')}
+							</motion.button>
+							<motion.button
+								onClick={() => handleScrollToSection('contact')}
 								className="block whitespace-nowrap text-base text-white/75 transition-colors hover:text-white"
+								variants={linkVariants}
 							>
-								Projects
-							</button>
-							<button
-								onClick={() => scrollToSection('talks')}
+								Contact
+							</motion.button>
+							<motion.div variants={linkVariants}>
+								<Link
+									href="/projects"
+									className="block whitespace-nowrap text-base text-white/75 transition-colors hover:text-white"
+								>
+									All Projects
+								</Link>
+							</motion.div>
+							<motion.button
+								onClick={() => handleScrollToSection('featured-projects')}
 								className="block whitespace-nowrap text-base text-white/75 transition-colors hover:text-white"
+								variants={linkVariants}
 							>
-								Talks
-							</button>
-							<Link
-								href="/blog"
-								className="block whitespace-nowrap text-base text-white/75 transition-colors hover:text-white"
-							>
-								Blog
-							</Link>
-						</div>
-					</div>
+								Featured Work
+							</motion.button>
+						</motion.div>
+					</motion.div>
 
-					{/* Resources */}
-					<div className="pr-12 lg:col-span-2">
-						<h3 className="mb-5 text-xl font-bold text-white">Resources</h3>
-						<div className="space-y-3">
-							<button
-								onClick={() => scrollToSection('testimonials')}
-								className="block whitespace-nowrap text-base text-white/75 transition-colors hover:text-white"
-							>
-								Testimonials
-							</button>
-							<button
-								onClick={() => scrollToSection('faq')}
-								className="block whitespace-nowrap text-base text-white/75 transition-colors hover:text-white"
-							>
-								FAQ
-							</button>
-							<Link
-								href="/music"
-								className="block whitespace-nowrap text-base text-white/75 transition-colors hover:text-white"
-							>
-								Music
-							</Link>
-						</div>
-					</div>
-				</div>
+					{/* More Info */}
+					<motion.div
+						className="pr-0 md:col-span-3 lg:col-span-2 lg:pr-12"
+						variants={fadeInUp}
+					>
+						<motion.h3
+							className="mb-5 whitespace-nowrap text-xl font-bold text-white"
+							variants={fadeInUp}
+						>
+							More Info
+						</motion.h3>
+						<motion.div className="space-y-3" variants={staggerContainer}>
+							<motion.div variants={linkVariants}>
+								<Link
+									href="/faq"
+									className="block whitespace-nowrap text-base text-white/75 transition-colors hover:text-white"
+								>
+									FAQ
+								</Link>
+							</motion.div>
+							<motion.div variants={linkVariants}>
+								<Link
+									href="/testimonials"
+									className="block whitespace-nowrap text-base text-white/75 transition-colors hover:text-white"
+								>
+									Testimonials
+								</Link>
+							</motion.div>
+							<motion.div variants={linkVariants}>
+								<Link
+									href="/career-Journey"
+									className="block whitespace-nowrap text-base text-white/75 transition-colors hover:text-white"
+								>
+									Career Journey
+								</Link>
+							</motion.div>
+						</motion.div>
+					</motion.div>
+				</motion.div>
 
 				{/* Copyright */}
-				<div className="border-t border-white/10 pt-8">
-					<div className="text-center text-sm text-white/60">
+				<motion.div
+					className="border-t border-white/10 pt-8"
+					initial={{ opacity: 0, y: 20 }}
+					whileInView={{ opacity: 1, y: 0 }}
+					transition={{ duration: 0.5, delay: 0.3 }}
+					viewport={{ once: true, amount: 0.1 }}
+				>
+					<motion.div
+						className="text-center text-sm text-white/60"
+						initial={{ opacity: 0 }}
+						whileInView={{ opacity: 1 }}
+						transition={{ duration: 0.5, delay: 0.5 }}
+						viewport={{ once: true, amount: 0.1 }}
+					>
 						<span>
 							Made with <span className="text-red-500">♥</span> by John Wright
 						</span>
@@ -181,9 +291,9 @@ export default function Footer() {
 							Copyright <sup>&copy;</sup> {new Date().getFullYear()} All Rights
 							Reserved.
 						</span>
-					</div>
-				</div>
+					</motion.div>
+				</motion.div>
 			</div>
-		</motion.footer>
+		</footer>
 	);
 }

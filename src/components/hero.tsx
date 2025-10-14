@@ -3,6 +3,49 @@ import Image from 'next/image';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { ChevronDown } from 'lucide-react';
+import FloatingTechIcons from './FloatingTechIcons';
+import { motion } from 'framer-motion';
+
+// Animation variants
+const fadeInUp = {
+	hidden: { opacity: 0, y: 30 },
+	visible: {
+		opacity: 1,
+		y: 0,
+		transition: { duration: 0.8, ease: 'easeOut' as const },
+	},
+};
+
+const staggerContainer = {
+	hidden: { opacity: 0 },
+	visible: {
+		opacity: 1,
+		transition: {
+			staggerChildren: 0.2,
+			delayChildren: 0.3,
+		},
+	},
+};
+
+const cardVariants = {
+	hidden: { opacity: 0, y: 20, scale: 0.9 },
+	visible: {
+		opacity: 1,
+		y: 0,
+		scale: 1,
+		transition: { duration: 0.6, ease: 'easeOut' as const },
+	},
+};
+
+const bounceVariants = {
+	hidden: { opacity: 0, y: 20 },
+	visible: {
+		opacity: 1,
+		y: 0,
+		transition: { duration: 0.8, ease: 'easeOut' as const, delay: 1.2 },
+	},
+};
+
 export default function HeroSection() {
 	const scrollToAbout = () => {
 		document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
@@ -13,10 +56,11 @@ export default function HeroSection() {
 			id="home"
 			className="relative flex min-h-screen items-center justify-center overflow-hidden pt-16 md:pt-0"
 		>
+			<FloatingTechIcons />
 			<div
-				className="absolute inset-0 opacity-10"
+				className="absolute inset-0 opacity-15"
 				style={{
-					backgroundImage: 'url(/images/background.jpg)',
+					backgroundImage: 'url(/images/hero-background1.jpg)',
 					backgroundSize: 'cover',
 					backgroundPosition: 'center',
 				}}
@@ -25,142 +69,121 @@ export default function HeroSection() {
 			<div className="relative z-10 mx-auto max-w-6xl px-4 text-center sm:px-6">
 				<div>
 					{/* Profile Introduction */}
-					<div className="mb-4 flex items-center justify-center sm:mb-8">
+					<motion.div
+						className="mb-4 flex items-center justify-center sm:mb-8"
+						initial={{ opacity: 0, y: 20 }}
+						animate={{ opacity: 1, y: 0 }}
+						transition={{ duration: 0.8, ease: 'easeOut', delay: 0.2 }}
+					>
 						<div className="glass mr-3 rounded-full p-1 sm:mr-4">
 							<Image
-								src="/images/profile.jpg"
-								alt="Artu Grande - Vibecoder & Growth Strategist profile photo"
+								src="/images/profile-picture.jpg"
+								alt="John Wright Full-Stack Developer Headshot"
 								width={40}
 								height={40}
 								className="rounded-full sm:h-[60px] sm:w-[60px]"
 							/>
 						</div>
 						<div className="text-center">
-							<p className="text-sm text-white/75 sm:text-lg">
-								Welcome to my <strong>personal portfolio</strong> 👋
-							</p>
+							<h1 className="text-sm text-white/75 sm:text-xl">
+								Welcome to my personal portfolio{' '}
+								<span className="animate-wave inline-block">👋</span>
+							</h1>
 						</div>
-					</div>
+					</motion.div>
 
-					<div className="relative mb-6 sm:mb-12">
+					<motion.div
+						className="relative mb-6 sm:mb-12"
+						initial={{ opacity: 0, y: 30 }}
+						animate={{ opacity: 1, y: 0 }}
+						transition={{ duration: 0.8, ease: 'easeOut', delay: 0.4 }}
+					>
 						<h1 className="mb-4 px-2 text-xl font-bold leading-tight text-white sm:text-3xl md:text-4xl lg:text-5xl">
-							Vibecoder & Growth Strategist <br />
+							Full-Stack Developer <br />
 							<span className="mt-4 block text-sm font-normal text-white/90 sm:text-lg md:text-xl lg:text-2xl">
-								I scale digital products people love, blending UX, Web3, and AI
+								Creating impactful digital solutions with a focus on user
+								experience, innovation, and results.
 							</span>
 						</h1>
-
-						{/* Figma icon - moved to top left, away from text */}
-						<div className="animate-float-1 absolute -left-4 -top-8 rotate-12 transform sm:-left-8 sm:-top-12">
-							<div className="glass glass-hover flex h-10 w-10 items-center justify-center rounded-xl p-2 sm:h-16 sm:w-16 sm:rounded-2xl sm:p-4 md:h-20 md:w-20">
-								<Image
-									src="/images/figma.png"
-									alt="Figma design tool - Artu Grande UX expertise"
-									width={20}
-									height={20}
-									className="sm:h-[32px] sm:w-[32px] md:h-[40px] md:w-[40px]"
-								/>
-							</div>
-						</div>
-
-						<div className="animate-float-2 absolute -left-4 top-12 -rotate-6 transform sm:-left-8 sm:top-16">
-							<div className="glass glass-hover flex h-10 w-10 items-center justify-center rounded-xl p-2 sm:h-16 sm:w-16 sm:rounded-2xl sm:p-4 md:h-20 md:w-20">
-								<Image
-									src="/icons/v0logo.svg"
-									alt="v0 AI development tool - Vibecoder expertise"
-									width={20}
-									height={20}
-									className="sm:h-[32px] sm:w-[32px] md:h-[40px] md:w-[40px]"
-								/>
-							</div>
-						</div>
-
-						{/* Growth icon */}
-						<div className="animate-float-3 absolute -right-4 -top-8 rotate-6 transform sm:-right-8 sm:-top-12">
-							<div className="glass glass-hover flex h-10 w-10 items-center justify-center rounded-xl p-2 sm:h-16 sm:w-16 sm:rounded-2xl sm:p-4 md:h-20 md:w-20">
-								<Image
-									src="/images/growth.png"
-									alt="Growth strategy - Digital product scaling expertise"
-									width={20}
-									height={20}
-									className="sm:h-[32px] sm:w-[32px] md:h-[40px] md:w-[40px]"
-								/>
-							</div>
-						</div>
-
-						{/* Vibecoding icon - moved below text, centered */}
-						<div className="animate-float-1 absolute -bottom-12 left-1/2 -translate-x-1/2 rotate-3 transform sm:-bottom-16"></div>
-					</div>
+					</motion.div>
 
 					{/* Stats Cards */}
-					<div className="mb-6 grid grid-cols-1 gap-3 px-2 sm:mb-12 sm:grid-cols-2 sm:gap-6 lg:grid-cols-4">
-						<Card className="glass glass-hover group p-3 text-center sm:p-6">
-							<div className="flex items-start justify-center space-x-2 sm:space-x-3">
-								<div className="text-lg transition-all duration-300 group-hover:rotate-12 group-hover:scale-110 sm:text-2xl">
-									📱
+					<motion.div
+						className="mb-6 grid grid-cols-2 gap-3 px-2 sm:mb-12 sm:grid-cols-2 lg:grid-cols-4"
+						initial="hidden"
+						animate="visible"
+						variants={staggerContainer}
+					>
+						<motion.div variants={cardVariants}>
+							<Card className="glass glass-hover group relative overflow-hidden rounded-md border border-white/20 p-2 text-center transition-all duration-300 hover:scale-105 hover:shadow-xl sm:p-3">
+								<div className="flex items-center justify-center space-x-2">
+									<div className="text-base transition-all duration-300 group-hover:rotate-12 group-hover:scale-110 sm:text-lg">
+										💻
+									</div>
+									<p className="text-xs font-medium text-white sm:text-sm">
+										Web Dev
+									</p>
 								</div>
-								<div>
-									<p className="text-xs font-semibold text-white sm:text-base">
+							</Card>
+						</motion.div>
+
+						<motion.div variants={cardVariants}>
+							<Card className="glass glass-hover group relative overflow-hidden rounded-md border border-white/20 p-2 text-center transition-all duration-300 hover:scale-105 hover:shadow-xl sm:p-3">
+								<div className="flex items-center justify-center space-x-2">
+									<div className="text-base transition-all duration-300 group-hover:rotate-12 group-hover:scale-110 sm:text-lg">
+										📱
+									</div>
+									<p className="text-xs font-medium text-white sm:text-sm">
 										Mobile Apps
 									</p>
 								</div>
-							</div>
-						</Card>
+							</Card>
+						</motion.div>
 
-						<Card className="glass glass-hover group p-3 text-center sm:p-6">
-							<div className="flex items-start justify-center space-x-2 sm:space-x-3">
-								<div className="text-lg transition-all duration-300 group-hover:rotate-12 group-hover:scale-110 sm:text-2xl">
-									🤖
-								</div>
-								<div>
-									<p className="text-xs font-semibold text-white sm:text-base">
+						<motion.div variants={cardVariants}>
+							<Card className="glass glass-hover group relative overflow-hidden rounded-md border border-white/20 p-2 text-center transition-all duration-300 hover:scale-105 hover:shadow-xl sm:p-3">
+								<div className="flex items-center justify-center space-x-2">
+									<div className="text-base transition-all duration-300 group-hover:rotate-12 group-hover:scale-110 sm:text-lg">
+										🤖
+									</div>
+									<p className="text-xs font-medium text-white sm:text-sm">
 										AI Integration
 									</p>
 								</div>
-							</div>
-						</Card>
+							</Card>
+						</motion.div>
 
-						<Card className="glass glass-hover group p-3 text-center sm:p-6">
-							<div className="flex items-start justify-center space-x-2 sm:space-x-3">
-								<div className="text-lg transition-all duration-300 group-hover:rotate-12 group-hover:scale-110 sm:text-2xl">
-									🌍
-								</div>
-								<div>
-									<p className="text-xs font-semibold text-white sm:text-base">
-										Web3 Solutions
+						<motion.div variants={cardVariants}>
+							<Card className="glass glass-hover group relative overflow-hidden rounded-md border border-white/20 p-2 text-center transition-all duration-300 hover:scale-105 hover:shadow-xl sm:p-3">
+								<div className="flex items-center justify-center space-x-2">
+									<div className="text-base transition-all duration-300 group-hover:rotate-12 group-hover:scale-110 sm:text-lg">
+										🚀
+									</div>
+									<p className="text-xs font-medium text-white sm:text-sm">
+										Process Optimization
 									</p>
 								</div>
-							</div>
-						</Card>
-
-						<Card className="glass glass-hover group p-3 text-center sm:p-6">
-							<div className="flex items-start justify-center space-x-2 sm:space-x-3">
-								<div className="text-lg transition-all duration-300 group-hover:rotate-12 group-hover:scale-110 sm:text-2xl">
-									🚀
-								</div>
-								<div>
-									<p className="text-xs font-semibold text-white sm:text-base">
-										Growth Strategy
-									</p>
-								</div>
-							</div>
-						</Card>
-					</div>
-
-					{/* Scroll Button */}
-					<div className="flex justify-center">
-						<Button
-							variant="ghost"
-							onClick={scrollToAbout}
-							className="animate-gentle-bounce group transition-all duration-500 hover:scale-105"
-						>
-							<div className="glass glass-hover flex h-10 w-10 items-center justify-center rounded-full p-2 sm:h-16 sm:w-16 sm:p-4">
-								<ChevronDown className="h-5 w-5 text-white transition-colors duration-300 group-hover:text-white/80 sm:h-8 sm:w-8" />
-							</div>
-						</Button>
-					</div>
+							</Card>
+						</motion.div>
+					</motion.div>
 				</div>
 			</div>
+
+			{/* Skip Link */}
+			<motion.div
+				className="absolute bottom-8 flex -translate-x-1/2 items-center justify-center sm:bottom-12"
+				initial="hidden"
+				animate="visible"
+				variants={bounceVariants}
+			>
+				<button
+					onClick={scrollToAbout}
+					className="animate-smooth-bounce glass glass-hover group relative flex h-10 w-10 items-center justify-center overflow-hidden rounded-full border border-white/20 p-2 text-center transition-all duration-300 hover:scale-105 hover:shadow-xl sm:h-12 sm:w-12 sm:p-3"
+					aria-label="Skip to about section"
+				>
+					<ChevronDown className="h-4 w-4 text-white/90 transition-all duration-300 group-hover:text-white sm:h-5 sm:w-5" />
+				</button>
+			</motion.div>
 		</section>
 	);
 }

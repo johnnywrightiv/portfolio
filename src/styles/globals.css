@@ -359,6 +359,7 @@
 @layer base {
 	html {
 		scroll-behavior: smooth;
+		overscroll-behavior: none; /* Prevent overscroll bounce */
 	}
 
 	* {
@@ -377,6 +378,8 @@
 		transition:
 			background-color var(--transition-duration) ease,
 			color var(--transition-duration) ease;
+		overscroll-behavior: none; /* Prevent overscroll bounce */
+		overflow-x: hidden; /* Prevent horizontal scroll */
 	}
 
 	h1,
@@ -684,6 +687,51 @@
 
 	.floating-icon {
 		filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.2));
+	}
+
+	/* Smooth continuous bounce animation for scroll button */
+	@keyframes smooth-bounce {
+		0%,
+		100% {
+			transform: translateY(0);
+		}
+		50% {
+			transform: translateY(-8px);
+		}
+	}
+
+	.animate-smooth-bounce {
+		animation: smooth-bounce 2.5s ease-in-out infinite;
+	}
+
+	/* Wave animation for hand emoji */
+	@keyframes wave {
+		0%,
+		100% {
+			transform: rotate(0deg);
+		}
+		10%,
+		30%,
+		50%,
+		70%,
+		90% {
+			transform: rotate(14deg);
+		}
+		20%,
+		40%,
+		60%,
+		80% {
+			transform: rotate(-8deg);
+		}
+	}
+
+	.animate-wave {
+		transform-origin: 70% 70%;
+		display: inline-block;
+	}
+
+	.animate-wave:hover {
+		animation: wave 2.5s ease-in-out infinite;
 	}
 }
 

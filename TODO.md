@@ -1,23 +1,31 @@
-## 🧭 TODOs and Dev Tickets
+## TODOs
 
-- [ ] update /public/images/ & /icons/ with my examples
-- [ ] re-write content to match
-- [ ] global search and replace Arturo Grande with John Wright
-- [ ] global styling and spacing
+- [ ] fix FloatingTechIcons loading on Hero
 - [ ] color themes (tweakcn)
 - [ ] smooth scroll
-- [ ] navbar fixes
-- [ ] mobile nav menu fixes
-- [ ]
+- [ ] check for / clean up global optimizations (useEffects useMemos etc.)
+- [ ] modal styling/layout (dynamic sections? contributions/features/highlights? keep as is?)
+- [ ] double close X on modal
+- [ ] make everything (global/container horizontal spacing & project cards) wider on xxl viewport widths (flex grow?)
+- [ ] accessibility and semantics
+- [ ] generally optimize site speed loading performance etc.
 
-============================================
+## CONTENT
 
-#### Extra Finalization Notes
+- [ ] Globally check for accurate content
+- [ ] Hero content
+- [ ] About content
+- [ ] FAQ content
+- [ ] Testimonials content
+- [ ] Career Journey content
+- [ ] Projects (add new, refine tone/details for old)
+- [ ] Consider light SEO & marketing refinement once everything else done
 
-- [ ] **MAIN TASK:** clearly define a marketing strategry so i can optimize for the following sub-sections.
-  - [ ] **SEO:** optimize layout.tsx meta description, keywords, anything else other than content (target dev, PM, and music focus)
-  - [ ] **Data:** add projects, career experience, reviews, skills/tech stack, FAQs
-  - [ ] **Content:** update data and other page/section/component content for a new tone and approach (still target dev and PM, but now from a more Senior pespective and incorporate my music background/interests)
-  - [ ] **Content:** high res SVGs and Images
-  - [ ] **Misc:** sitemap, robots, accesibility, SEO, other general site optimizations
-  - [ ] **Favicon:** new logo/icon to match new brand theme?
+## FINALIZATIONS
+
+- [ ] **Strategy:** define marketing strategy to optimize content and SEO approach
+- [ ] **SEO:** optimize layout.tsx meta description, keywords for dev/PM/music focus
+- [ ] **Data:** add projects, career experience, reviews, skills/tech stack, FAQs
+- [ ] **Content:** update tone/approach for senior perspective + music background
+- [ ] **Assets:** high res SVGs and images, new favicon/logo to match brand theme
+- [ ] **Optimizations:** sitemap, robots, accessibility, performance, general site optimizations

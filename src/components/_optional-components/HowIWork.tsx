@@ -1,3 +1,5 @@
+// NOTE: no longer as cool without old theme styling. not worth updating this to incorporate, but keeping on hand for reference
+
 import { Lightbulb, Code2, Rocket } from 'lucide-react';
 import { motion } from 'framer-motion';
 

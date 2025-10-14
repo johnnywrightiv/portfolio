@@ -1,26 +1,42 @@
 [
-  {
-    "id": 1,
-    "name": "Sarah Johnson",
-    "position": "Product Manager at TechCorp",
-    "content": "Working with this developer was an absolute pleasure. They delivered our project on time and exceeded our expectations in terms of quality and functionality.",
-    "rating": 5,
-    "image": "/placeholder.svg?height=100&width=100"
-  },
-  {
-    "id": 2,
-    "name": "Michael Chen",
-    "position": "CTO at StartupX",
-    "content": "Exceptional technical expertise and ability to understand our business needs resulted in a product that has significantly improved our user engagement.",
-    "rating": 5,
-    "image": "/placeholder.svg?height=100&width=100"
-  },
-  {
-    "id": 3,
-    "name": "Emily Rodriguez",
-    "position": "Founder of DesignHub",
-    "content": "Impressed by the ability to translate our design vision into a fully functional website. Responsive, professional, and provided valuable suggestions.",
-    "rating": 4.5,
-    "image": "/placeholder.svg?height=100&width=100"
-  }
+	{
+		"id": 1,
+		"name": "Sarah Johnson",
+		"position": "Product Manager at TechCorp",
+		"content": "Working with this developer was an absolute pleasure. They delivered our project on time and exceeded our expectations in terms of quality and functionality.",
+		"rating": 5,
+		"image": "/placeholder.svg?height=100&width=100"
+	},
+	{
+		"id": 2,
+		"name": "Michael Chen",
+		"position": "CTO at StartupX",
+		"content": "Exceptional technical expertise and ability to understand our business needs resulted in a product that has significantly improved our user engagement.",
+		"rating": 5,
+		"image": "/placeholder.svg?height=100&width=100"
+	},
+	{
+		"id": 3,
+		"name": "Emily Rodriguez",
+		"position": "Founder of DesignHub",
+		"content": "Impressed by the ability to translate our design vision into a fully functional website. Responsive, professional, and provided valuable suggestions.",
+		"rating": 4.5,
+		"image": "/placeholder.svg?height=100&width=100"
+	},
+	{
+		"id": 4,
+		"name": "David Kim",
+		"position": "CEO of TechSolutions",
+		"content": "Highly recommended! The developer was able to deliver a complex project on time and within budget.",
+		"rating": 5,
+		"image": "/placeholder.svg?height=100&width=100"
+	},
+	{
+		"id": 5,
+		"name": "Emma Lee",
+		"position": "Project Manager at SoftwareCompany",
+		"content": "A true professional who delivered a high-quality product on time and within budget.",
+		"rating": 5,
+		"image": "/placeholder.svg?height=100&width=100"
+	}
 ]

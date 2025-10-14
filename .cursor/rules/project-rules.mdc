@@ -15,7 +15,7 @@ alwaysApply: true
 
 ## Data Management
 
-- Store content data (projects, timeline, testimonials) in `/src/data/*.json` files
+- Store content data (projects, Journey, testimonials) in `/src/data/*.json` files
 - Use TypeScript interfaces for type safety
 - Separate data from presentation logic for easier updates
 

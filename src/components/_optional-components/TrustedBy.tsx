@@ -2,6 +2,7 @@
 
 import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
+import { motion } from 'framer-motion';
 
 // List of Client/Employer Examples (get logos, etc.)
 // Ravinia
@@ -20,37 +21,58 @@ import { useEffect, useRef, useState } from 'react';
 // White Couch Productions
 // Wire
 // Happy Belly Vending
+// The Araca Group
 // Superfly
 // Concord Music Hall
 // Ravenswood Event Services
-// At The Drive Inn / Lakeshore Drive In
+// At The Drive Inn
+// Lakeshore Drive In
 // etc...
 
 const clients = [
-	{ name: 'Bestem', logo: '/images/clients/bestem.png' },
-	{ name: 'Betrusty', logo: '/images/clients/betrusty.png' },
-	{ name: 'C2T', logo: '/images/clients/c2t.png' },
-	{ name: 'Eluter', logo: '/images/clients/eluter.png' },
-	{ name: 'Glocal', logo: '/images/clients/glocal.png' },
-	{ name: 'Knoly', logo: '/images/clients/knoly.png' },
-	{ name: 'MultiversX', logo: '/images/clients/multiversx.png' },
-	{ name: 'Omnilane', logo: '/images/clients/omnilane.png' },
-	{ name: 'Ownomad', logo: '/images/clients/ownomad.png' },
-	{ name: 'PetFundMe', logo: '/images/clients/petfundme.png' },
-	{ name: 'Provacy', logo: '/images/clients/provacy.png' },
-	{ name: 'Prutopia', logo: '/images/clients/prutopia.png' },
-	{ name: 'Rather', logo: '/images/clients/rather.png' },
-	{ name: 'Refillit', logo: '/images/clients/refillit.png' },
-	{ name: 'SAIA', logo: '/images/clients/saia.png' },
-	{ name: 'SNet', logo: '/images/clients/snet.png' },
-	{ name: 'Spacewars', logo: '/images/clients/spacewars.png' },
-	{ name: 'Trebly', logo: '/images/clients/trebly.png' },
-	{ name: 'WodPay', logo: '/images/clients/wodpay.png' },
-	{ name: 'YellowCash', logo: '/images/clients/yellowcash.png' },
+	{ name: 'Frey Design', logo: '/images/clients/frey-design.png' },
+	{ name: 'Live Nation', logo: '/images/clients/live-nation.png' },
+	{ name: 'House of Blues', logo: '/images/clients/house-of-blues.png' },
+	{ name: 'Music Dealers', logo: '/images/clients/music-dealers.png' },
+	{ name: 'Digital Tour Bus', logo: '/images/clients/digital-tour-bus.png' },
+	{
+		name: 'Chicago Music Exchange',
+		logo: '/images/clients/chicago-music-exchange.png',
+	},
+	{
+		name: 'Chicago International Film Festival',
+		logo: '/images/clients/chicago-international-film-festival.png',
+	},
+	{
+		name: 'UK Tech Metal Fest',
+		logo: '/images/clients/uk-tech-metal-fest.png',
+	},
 ];
+
+// Animation variants
+const fadeInUp = {
+	hidden: { opacity: 0, y: 30 },
+	visible: {
+		opacity: 1,
+		y: 0,
+		transition: { duration: 0.8, ease: 'easeOut' as const },
+	},
+};
+
+const staggerContainer = {
+	hidden: { opacity: 0 },
+	visible: {
+		opacity: 1,
+		transition: {
+			staggerChildren: 0.1,
+			delayChildren: 0.3,
+		},
+	},
+};
 
 export default function TrustedBySection() {
 	const [translateX, setTranslateX] = useState(0);
+	const [isPaused, setIsPaused] = useState(false);
 	const containerRef = useRef<HTMLDivElement>(null);
 	const [itemWidth, setItemWidth] = useState(0);
 
@@ -78,36 +100,65 @@ export default function TrustedBySection() {
 		if (itemWidth === 0) return;
 
 		const animate = () => {
-			setTranslateX((prev) => {
-				const newTranslateX = prev - 1; // Move 1px per frame
-				const resetPoint = -(itemWidth * clients.length); // Reset when first set is completely hidden
+			if (!isPaused) {
+				setTranslateX((prev) => {
+					const newTranslateX = prev - 1; // Move 1px per frame
+					const totalWidth = itemWidth * clients.length; // Width of one complete set
 
-				if (newTranslateX <= resetPoint) {
-					return 0; // Reset to start position
-				}
-				return newTranslateX;
-			});
+					// Reset to 0 when we've moved exactly one complete set width
+					// This creates a seamless loop since we have duplicate content
+					if (newTranslateX <= -totalWidth) {
+						return 0;
+					}
+					return newTranslateX;
+				});
+			}
 		};
 
 		const intervalId = setInterval(animate, 16); // ~60fps
 
 		return () => clearInterval(intervalId);
-	}, [itemWidth]);
+	}, [itemWidth, isPaused]);
 
 	return (
-		<section id="trusted-by" className="overflow-hidden bg-black py-16">
-			<div className="container mx-auto px-4">
-				<div className="mb-12 text-center">
-					<h2 className="mb-4 text-3xl font-bold text-white md:text-4xl">
-						Trusted by Amazing Companies
-					</h2>
-					<p className="mx-auto max-w-2xl text-lg text-white/75">
+		<section
+			id="trusted-by"
+			className="overflow-hidden bg-gradient-to-b from-background via-card to-background py-16"
+		>
+			<div className="container-section">
+				<motion.div
+					className="mb-12 text-center"
+					initial="hidden"
+					whileInView="visible"
+					viewport={{ once: true, amount: 0.2 }}
+					variants={fadeInUp}
+				>
+					<motion.h2
+						className="mb-4 text-3xl font-bold text-white md:text-4xl"
+						variants={fadeInUp}
+					>
+						Trusted by These Amazing Companies
+					</motion.h2>
+					<motion.p
+						className="mx-auto max-w-2xl text-lg text-white/75"
+						variants={fadeInUp}
+					>
 						I&apos;ve had the privilege of working with innovative teams and
 						cutting-edge projects across various industries.
-					</p>
-				</div>
+					</motion.p>
+				</motion.div>
 
-				<div className="relative overflow-hidden">
+				<div
+					className="relative overflow-hidden"
+					onMouseEnter={() => setIsPaused(true)}
+					onMouseLeave={() => setIsPaused(false)}
+					style={{
+						maskImage:
+							'linear-gradient(to right, transparent 0%, black 20%, black 80%, transparent 100%)',
+						WebkitMaskImage:
+							'linear-gradient(to right, transparent 0%, black 20%, black 80%, transparent 100%)',
+					}}
+				>
 					<div
 						ref={containerRef}
 						className="flex transition-none"
@@ -120,13 +171,21 @@ export default function TrustedBySection() {
 								className="logo-item mx-6 flex flex-shrink-0 items-center justify-center"
 							>
 								<div className="relative h-28 w-28 opacity-70 transition-all duration-300 hover:scale-110 hover:opacity-100 md:h-36 md:w-36 lg:h-40 lg:w-40">
-									<Image
-										src={client.logo || '/placeholder.svg'}
-										alt={`${client.name} client logo - Artu Grande UX design Web3 fintech project portfolio`}
-										fill
-										className="object-contain grayscale filter transition-all duration-300 hover:grayscale-0"
-										loading="lazy"
-									/>
+									{client.logo && client.logo !== '/placeholder.svg' ? (
+										<Image
+											src={client.logo}
+											alt={`${client.name} client logo - John Wright Full-Stack Developer project portfolio`}
+											fill
+											className="object-contain grayscale filter transition-all duration-300 hover:grayscale-0"
+											loading="lazy"
+										/>
+									) : (
+										<div className="flex h-full w-full items-center justify-center rounded-lg border-2 border-dashed border-white/30 bg-white/5">
+											<span className="text-xs font-medium text-white/60">
+												{client.name}
+											</span>
+										</div>
+									)}
 								</div>
 							</div>
 						))}
@@ -138,20 +197,51 @@ export default function TrustedBySection() {
 								className="logo-item mx-6 flex flex-shrink-0 items-center justify-center"
 							>
 								<div className="relative h-28 w-28 opacity-70 transition-all duration-300 hover:scale-110 hover:opacity-100 md:h-36 md:w-36 lg:h-40 lg:w-40">
-									<Image
-										src={client.logo || '/placeholder.svg'}
-										alt={`${client.name} client logo - Artu Grande UX design Web3 fintech project portfolio`}
-										fill
-										className="object-contain grayscale filter transition-all duration-300 hover:grayscale-0"
-										loading="lazy"
-									/>
+									{client.logo && client.logo !== '/placeholder.svg' ? (
+										<Image
+											src={client.logo}
+											alt={`${client.name} client logo - John Wright Full-Stack Developer project portfolio`}
+											fill
+											className="object-contain grayscale filter transition-all duration-300 hover:grayscale-0"
+											loading="lazy"
+										/>
+									) : (
+										<div className="flex h-full w-full items-center justify-center rounded-lg border-2 border-dashed border-white/30 bg-white/5">
+											<span className="text-xs font-medium text-white/60">
+												{client.name}
+											</span>
+										</div>
+									)}
+								</div>
+							</div>
+						))}
+
+						{/* Third set for extra seamless loop */}
+						{clients.map((client, index) => (
+							<div
+								key={`third-${index}`}
+								className="logo-item mx-6 flex flex-shrink-0 items-center justify-center"
+							>
+								<div className="relative h-28 w-28 opacity-70 transition-all duration-300 hover:scale-110 hover:opacity-100 md:h-36 md:w-36 lg:h-40 lg:w-40">
+									{client.logo && client.logo !== '/placeholder.svg' ? (
+										<Image
+											src={client.logo}
+											alt={`${client.name} client logo - John Wright Full-Stack Developer project portfolio`}
+											fill
+											className="object-contain grayscale filter transition-all duration-300 hover:grayscale-0"
+											loading="lazy"
+										/>
+									) : (
+										<div className="flex h-full w-full items-center justify-center rounded-lg border-2 border-dashed border-white/30 bg-white/5">
+											<span className="text-xs font-medium text-white/60">
+												{client.name}
+											</span>
+										</div>
+									)}
 								</div>
 							</div>
 						))}
 					</div>
-
-					<div className="pointer-events-none absolute bottom-0 left-0 top-0 z-10 w-16 bg-gradient-to-r from-black via-black/80 to-transparent md:w-24" />
-					<div className="pointer-events-none absolute bottom-0 right-0 top-0 z-10 w-16 bg-gradient-to-l from-black via-black/80 to-transparent md:w-24" />
 				</div>
 			</div>
 		</section>

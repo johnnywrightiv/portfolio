@@ -32,7 +32,7 @@ Final production code lives in `/src/` and must follow the unified design system
 - `/src/components/ui/` - shadcn/ui components
 - `/src/components/layout/` - Layout components (Header, Footer, etc.)
 - `/src/components/sections/` - Page sections (Hero, About, etc.)
-- `/src/data/` - Content data (projects, timeline, testimonials)
+- `/src/data/` - Content data (projects, Journey, testimonials)
 - `/src/lib/` - Utilities and shared logic
 - `/src/hooks/` - Custom React hooks
 

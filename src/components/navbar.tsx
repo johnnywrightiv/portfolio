@@ -3,23 +3,55 @@
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
 import { useScrollPosition } from '@/hooks/useScrollPosition';
+import { motion, AnimatePresence } from 'framer-motion';
+
+// Animation variants
+const navVariants = {
+	hidden: { opacity: 0, y: -20 },
+	visible: {
+		opacity: 1,
+		y: 0,
+		transition: { duration: 0.6, ease: 'easeOut' as const },
+	},
+};
+
+const mobileMenuVariants = {
+	hidden: { opacity: 0, x: '100%' },
+	visible: {
+		opacity: 1,
+		x: 0,
+		transition: { duration: 0.3, ease: 'easeOut' as const },
+	},
+	exit: {
+		opacity: 0,
+		x: '100%',
+		transition: { duration: 0.3, ease: 'easeIn' as const },
+	},
+};
+
+const linkVariants = {
+	hidden: { opacity: 0, y: 20 },
+	visible: {
+		opacity: 1,
+		y: 0,
+		transition: { duration: 0.3 },
+	},
+};
 
 export default function Navbar() {
 	const [isOpen, setIsOpen] = useState(false);
 	const [isInitialized, setIsInitialized] = useState(false);
-	const pathname = usePathname();
 	const hasScrolled = useScrollPosition();
 
-	const isHomePage = pathname === '/';
-
 	const scrollToSection = (id: string) => {
-		if (!isHomePage) {
+		// Check if we're on the homepage
+		if (window.location.pathname === '/') {
+			document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+		} else {
+			// Navigate to homepage with hash
 			window.location.href = `/#${id}`;
-			return;
 		}
-		document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
 		setIsOpen(false);
 	};
 
@@ -61,187 +93,187 @@ export default function Navbar() {
 	}, [isOpen]);
 
 	return (
-		<nav
-			className="fixed left-0 right-0 top-0 z-50 transition-all duration-300"
+		<motion.nav
+			className="fixed left-0 right-0 top-0 z-50 transition-all duration-500 ease-out"
 			role="navigation"
 			aria-label="Main navigation"
+			initial="hidden"
+			animate="visible"
+			variants={navVariants}
 		>
 			<div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 				<div
-					className={`transition-all duration-300 ${
+					className={`transition-all duration-500 ease-out ${
 						hasScrolled
-							? 'mt-2 rounded-2xl border border-white/20 bg-white/5 px-5 py-3 shadow-lg backdrop-blur-md'
-							: 'border border-transparent px-4 py-4'
+							? 'mt-2 rounded-2xl border border-white/20 bg-white/5 px-4 py-3 shadow-lg backdrop-blur-md'
+							: 'border border-transparent px-2 py-4'
 					}`}
 				>
 					<div className="flex items-center justify-between">
-						<Link
-							href="/"
-							className="whitespace-nowrap text-xl font-bold text-white"
+						<motion.div
+							initial={{ opacity: 0, x: -20 }}
+							animate={{ opacity: 1, x: 0 }}
+							transition={{ duration: 0.5, delay: 0.2 }}
 						>
-							Arturo Grande
-						</Link>
+							<Link
+								href="/"
+								className="-ml-1 whitespace-nowrap text-xl font-bold text-white"
+							>
+								John Wright
+							</Link>
+						</motion.div>
 
 						{/* Desktop Navigation */}
-						<div className="hidden items-center space-x-8 lg:flex">
-							{isHomePage ? (
-								<>
-									<button
-										onClick={() => scrollToSection('home')}
-										className="text-white/75 transition-colors hover:text-white"
-									>
-										Home
-									</button>
-									<button
-										onClick={() => scrollToSection('about')}
-										className="text-white/75 transition-colors hover:text-white"
-									>
-										About
-									</button>
-									<button
-										onClick={() => scrollToSection('portfolio')}
-										className="text-white/75 transition-colors hover:text-white"
-									>
-										Projects
-									</button>
-									<button
-										onClick={() => scrollToSection('talks')}
-										className="text-white/75 transition-colors hover:text-white"
-									>
-										Talks
-									</button>
-								</>
-							) : (
-								<Link
-									href="/"
-									className="text-white/75 transition-colors hover:text-white"
-								>
-									Home
-								</Link>
-							)}
+						<motion.div
+							className="hidden items-center space-x-8 lg:flex"
+							initial={{ opacity: 0, x: 20 }}
+							animate={{ opacity: 1, x: 0 }}
+							transition={{ duration: 0.5, delay: 0.3 }}
+						>
 							<Link
-								href="/blog"
+								href="/"
 								className="text-white/75 transition-colors hover:text-white"
 							>
-								Blog
+								Home
 							</Link>
-							<Link
-								href="/music"
+							<button
+								onClick={() => scrollToSection('about')}
 								className="text-white/75 transition-colors hover:text-white"
 							>
-								Music
+								About
+							</button>
+							<Link
+								href="/projects"
+								className="text-white/75 transition-colors hover:text-white"
+							>
+								Projects
 							</Link>
-							{isHomePage && (
-								<button
-									onClick={() => scrollToSection('contact')}
-									className="text-white/75 transition-colors hover:text-white"
-								>
-									Contact
-								</button>
-							)}
-						</div>
+							<button
+								onClick={() => scrollToSection('contact')}
+								className="text-white/75 transition-colors hover:text-white"
+							>
+								Contact
+							</button>
+						</motion.div>
 
 						{/* Mobile Menu Button */}
-						<button
+						<motion.button
 							onClick={() => setIsOpen(true)}
 							className="rounded p-2 text-white hover:bg-white/10 lg:hidden"
 							aria-label="Open menu"
+							initial={{ opacity: 0, scale: 0.8 }}
+							animate={{ opacity: 1, scale: 1 }}
+							transition={{ duration: 0.3, delay: 0.4 }}
+							whileTap={{ scale: 0.95 }}
 						>
 							<Menu size={24} />
-						</button>
+						</motion.button>
 					</div>
 				</div>
 			</div>
 
 			{/* Mobile Navigation Sheet */}
-			{isOpen && isInitialized && (
-				<div className="fixed inset-0 z-50 lg:hidden">
-					{/* Backdrop */}
-					<div
-						className="absolute inset-0 bg-black/50 backdrop-blur-sm"
-						onClick={() => setIsOpen(false)}
-					/>
+			<AnimatePresence>
+				{isOpen && isInitialized && (
+					<div className="fixed inset-0 z-50 lg:hidden">
+						{/* Backdrop */}
+						<motion.div
+							className="absolute inset-0 bg-black/50 backdrop-blur-sm"
+							onClick={() => setIsOpen(false)}
+							initial={{ opacity: 0 }}
+							animate={{ opacity: 1 }}
+							exit={{ opacity: 0 }}
+							transition={{ duration: 0.3 }}
+						/>
 
-					{/* Sheet */}
-					<div className="absolute right-0 top-0 h-full w-full bg-black/95 backdrop-blur-xl">
-						<div className="flex h-full flex-col">
-							{/* Header with close button */}
-							<div className="flex items-center justify-between border-b border-white/10 p-6">
-								<h2 className="text-lg font-semibold text-white">Menu</h2>
-								<button
-									onClick={() => setIsOpen(false)}
-									className="p-2 text-white transition-colors hover:text-primary"
-									aria-label="Close menu"
+						{/* Sheet */}
+						<motion.div
+							className="absolute right-0 top-0 h-full w-full bg-black/95 backdrop-blur-xl"
+							variants={mobileMenuVariants}
+							initial="hidden"
+							animate="visible"
+							exit="exit"
+						>
+							<div className="flex h-full flex-col">
+								{/* Close button positioned at top right */}
+								<motion.div
+									className="flex justify-end p-6"
+									initial={{ opacity: 0, y: -20 }}
+									animate={{ opacity: 1, y: 0 }}
+									transition={{ duration: 0.3, delay: 0.2 }}
 								>
-									<X size={24} />
-								</button>
-							</div>
+									<button
+										onClick={() => setIsOpen(false)}
+										className="p-3 text-white transition-colors hover:text-primary"
+										aria-label="Close menu"
+									>
+										<X size={32} />
+									</button>
+								</motion.div>
 
-							{/* Navigation links */}
-							<div className="flex flex-1 flex-col items-center justify-center space-y-8">
-								{isHomePage ? (
-									<>
-										<button
-											onClick={() => scrollToSection('home')}
-											className="text-2xl text-white transition-colors hover:text-primary"
+								{/* Navigation links with larger fonts and spacing */}
+								<motion.div
+									className="flex flex-1 flex-col items-center justify-start space-y-12 pt-24"
+									initial={{ opacity: 0 }}
+									animate={{ opacity: 1 }}
+									transition={{ duration: 0.3, delay: 0.3 }}
+								>
+									<motion.div
+										variants={linkVariants}
+										initial="hidden"
+										animate="visible"
+									>
+										<Link
+											href="/"
+											className="text-3xl font-medium text-white transition-colors hover:text-primary"
+											onClick={() => setIsOpen(false)}
 										>
 											Home
-										</button>
+										</Link>
+									</motion.div>
+									<motion.div
+										variants={linkVariants}
+										initial="hidden"
+										animate="visible"
+									>
 										<button
 											onClick={() => scrollToSection('about')}
-											className="text-2xl text-white transition-colors hover:text-primary"
+											className="text-3xl font-medium text-white transition-colors hover:text-primary"
 										>
 											About
 										</button>
-										<button
-											onClick={() => scrollToSection('portfolio')}
-											className="text-2xl text-white transition-colors hover:text-primary"
+									</motion.div>
+									<motion.div
+										variants={linkVariants}
+										initial="hidden"
+										animate="visible"
+									>
+										<Link
+											href="/projects"
+											className="text-3xl font-medium text-white transition-colors hover:text-primary"
+											onClick={() => setIsOpen(false)}
 										>
 											Projects
-										</button>
+										</Link>
+									</motion.div>
+									<motion.div
+										variants={linkVariants}
+										initial="hidden"
+										animate="visible"
+									>
 										<button
-											onClick={() => scrollToSection('talks')}
-											className="text-2xl text-white transition-colors hover:text-primary"
+											onClick={() => scrollToSection('contact')}
+											className="text-3xl font-medium text-white transition-colors hover:text-primary"
 										>
-											Talks
+											Contact
 										</button>
-									</>
-								) : (
-									<Link
-										href="/"
-										className="text-2xl text-white transition-colors hover:text-primary"
-										onClick={() => setIsOpen(false)}
-									>
-										Home
-									</Link>
-								)}
-								<Link
-									href="/blog"
-									className="text-2xl text-white transition-colors hover:text-primary"
-									onClick={() => setIsOpen(false)}
-								>
-									Blog
-								</Link>
-								<Link
-									href="/music"
-									className="text-2xl text-white transition-colors hover:text-primary"
-									onClick={() => setIsOpen(false)}
-								>
-									Music
-								</Link>
-								{isHomePage && (
-									<button
-										onClick={() => scrollToSection('contact')}
-										className="text-2xl text-white transition-colors hover:text-primary"
-									>
-										Contact
-									</button>
-								)}
+									</motion.div>
+								</motion.div>
 							</div>
-						</div>
+						</motion.div>
 					</div>
-				</div>
-			)}
-		</nav>
+				)}
+			</AnimatePresence>
+		</motion.nav>
 	);
 }
