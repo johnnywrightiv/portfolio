@@ -188,7 +188,7 @@ export default function Navbar() {
 
 						{/* Sheet */}
 						<motion.div
-							className="absolute right-0 top-0 h-full w-full bg-black/95 backdrop-blur-xl"
+							className="absolute right-0 top-0 h-full w-full bg-gradient-to-br from-zinc-900 via-slate-900 to-black backdrop-blur-xl"
 							variants={mobileMenuVariants}
 							initial="hidden"
 							animate="visible"

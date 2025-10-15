@@ -49,7 +49,17 @@ export default function AboutSection() {
 
 	return (
 		<section id="about" className="py-section relative">
-			<div className="absolute inset-0 bg-gradient-to-b from-black to-gray-900"></div>
+			<div className="absolute inset-0 bg-gradient-to-b from-black to-gray-900/95"></div>
+
+			{/* Subtle dot pattern overlay for transition to next section */}
+			<div
+				className="absolute inset-0 opacity-20"
+				style={{
+					backgroundImage:
+						'radial-gradient(circle at 1px 1px, rgba(255,255,255,0.08) 1px, transparent 0)',
+					backgroundSize: '20px 20px',
+				}}
+			/>
 
 			<div className="container-section relative z-10">
 				<motion.div

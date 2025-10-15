@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import { Poppins } from 'next/font/google';
 import { Quicksand } from 'next/font/google';
 import { ThemeProvider } from '@/components/ThemeProvider';
+import { LoadingProvider } from '@/contexts/LoadingContext';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 
@@ -67,8 +68,10 @@ export default function RootLayout({
 					enableSystem={false}
 					disableTransitionOnChange
 				>
-					<Navbar />
-					<main>{children}</main>
+					<LoadingProvider>
+						<Navbar />
+						<main>{children}</main>
+					</LoadingProvider>
 				</ThemeProvider>
 				<Footer />
 			</body>

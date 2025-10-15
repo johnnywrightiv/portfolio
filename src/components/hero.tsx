@@ -21,19 +21,18 @@ const staggerContainer = {
 	visible: {
 		opacity: 1,
 		transition: {
-			staggerChildren: 0.2,
-			delayChildren: 0.3,
+			staggerChildren: 0.1,
+			delayChildren: 0.1,
 		},
 	},
 };
 
 const cardVariants = {
-	hidden: { opacity: 0, y: 20, scale: 0.9 },
+	hidden: { opacity: 0, y: 10 },
 	visible: {
 		opacity: 1,
 		y: 0,
-		scale: 1,
-		transition: { duration: 0.6, ease: 'easeOut' as const },
+		transition: { duration: 0.4, ease: 'easeOut' as const },
 	},
 };
 
@@ -46,9 +45,17 @@ const bounceVariants = {
 	},
 };
 
-export default function HeroSection() {
+interface HeroSectionProps {
+	onIconsReady?: () => void;
+}
+
+export default function HeroSection({ onIconsReady }: HeroSectionProps) {
 	const scrollToAbout = () => {
 		document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
+	};
+
+	const handleIconsReady = () => {
+		onIconsReady?.();
 	};
 
 	return (
@@ -56,7 +63,7 @@ export default function HeroSection() {
 			id="home"
 			className="relative flex min-h-screen items-center justify-center overflow-hidden pt-16 md:pt-0"
 		>
-			<FloatingTechIcons />
+			<FloatingTechIcons onReady={handleIconsReady} />
 			<div
 				className="absolute inset-0 opacity-15"
 				style={{
@@ -115,52 +122,52 @@ export default function HeroSection() {
 						variants={staggerContainer}
 					>
 						<motion.div variants={cardVariants}>
-							<Card className="glass glass-hover group relative overflow-hidden rounded-md border border-white/20 p-2 text-center transition-all duration-300 hover:scale-105 hover:shadow-xl sm:p-3">
+							<Card className="glass glass-hover group relative overflow-hidden rounded-md border border-white/20 p-2 text-center transition-all duration-200 hover:scale-105 hover:shadow-xl sm:p-3">
 								<div className="flex items-center justify-center space-x-2">
-									<div className="text-base transition-all duration-300 group-hover:rotate-12 group-hover:scale-110 sm:text-lg">
+									<div className="text-base transition-transform duration-200 group-hover:scale-110 sm:text-lg">
 										💻
 									</div>
 									<p className="text-xs font-medium text-white sm:text-sm">
-										Web Dev
+										Web Development
 									</p>
 								</div>
 							</Card>
 						</motion.div>
 
 						<motion.div variants={cardVariants}>
-							<Card className="glass glass-hover group relative overflow-hidden rounded-md border border-white/20 p-2 text-center transition-all duration-300 hover:scale-105 hover:shadow-xl sm:p-3">
+							<Card className="glass glass-hover group relative overflow-hidden rounded-md border border-white/20 p-2 text-center transition-all duration-200 hover:scale-105 hover:shadow-xl sm:p-3">
 								<div className="flex items-center justify-center space-x-2">
-									<div className="text-base transition-all duration-300 group-hover:rotate-12 group-hover:scale-110 sm:text-lg">
+									<div className="text-base transition-transform duration-200 group-hover:scale-110 sm:text-lg">
 										📱
 									</div>
 									<p className="text-xs font-medium text-white sm:text-sm">
-										Mobile Apps
+										Mobile Applications
 									</p>
 								</div>
 							</Card>
 						</motion.div>
 
 						<motion.div variants={cardVariants}>
-							<Card className="glass glass-hover group relative overflow-hidden rounded-md border border-white/20 p-2 text-center transition-all duration-300 hover:scale-105 hover:shadow-xl sm:p-3">
+							<Card className="glass glass-hover group relative overflow-hidden rounded-md border border-white/20 p-2 text-center transition-all duration-200 hover:scale-105 hover:shadow-xl sm:p-3">
 								<div className="flex items-center justify-center space-x-2">
-									<div className="text-base transition-all duration-300 group-hover:rotate-12 group-hover:scale-110 sm:text-lg">
+									<div className="text-base transition-transform duration-200 group-hover:scale-110 sm:text-lg">
 										🤖
 									</div>
 									<p className="text-xs font-medium text-white sm:text-sm">
-										AI Integration
+										AI Integrations
 									</p>
 								</div>
 							</Card>
 						</motion.div>
 
 						<motion.div variants={cardVariants}>
-							<Card className="glass glass-hover group relative overflow-hidden rounded-md border border-white/20 p-2 text-center transition-all duration-300 hover:scale-105 hover:shadow-xl sm:p-3">
+							<Card className="glass glass-hover group relative overflow-hidden rounded-md border border-white/20 p-2 text-center transition-all duration-200 hover:scale-105 hover:shadow-xl sm:p-3">
 								<div className="flex items-center justify-center space-x-2">
-									<div className="text-base transition-all duration-300 group-hover:rotate-12 group-hover:scale-110 sm:text-lg">
+									<div className="text-base transition-transform duration-200 group-hover:scale-110 sm:text-lg">
 										🚀
 									</div>
 									<p className="text-xs font-medium text-white sm:text-sm">
-										Process Optimization
+										Process Improvement
 									</p>
 								</div>
 							</Card>

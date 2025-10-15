@@ -66,9 +66,19 @@ export default function Footer() {
 	return (
 		<footer
 			id="contact"
-			className="py-section relative bg-gradient-to-t from-black to-gray-900"
+			className="py-section relative bg-gradient-to-t from-black via-gray-900 to-gray-900"
 		>
-			<div className="container-section">
+			{/* Very subtle dot pattern overlay for seamless transition */}
+			<div
+				className="absolute inset-0 opacity-15"
+				style={{
+					backgroundImage:
+						'radial-gradient(circle at 1px 1px, rgba(255,255,255,0.08) 1px, transparent 0)',
+					backgroundSize: '20px 20px',
+				}}
+			/>
+
+			<div className="container-section relative z-10">
 				<motion.div
 					className="mb-16 grid grid-cols-1 gap-12 md:grid-cols-12 md:gap-8 lg:gap-16"
 					initial="hidden"
@@ -258,7 +268,7 @@ export default function Footer() {
 							</motion.div>
 							<motion.div variants={linkVariants}>
 								<Link
-									href="/career-Journey"
+									href="/career-journey"
 									className="block whitespace-nowrap text-base text-white/75 transition-colors hover:text-white"
 								>
 									Career Journey

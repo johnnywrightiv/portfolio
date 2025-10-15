@@ -105,14 +105,14 @@ export default function FeaturedProjects() {
 
 	return (
 		<section id="featured-projects" className="py-section relative">
-			<div className="absolute inset-0 bg-gradient-to-b from-gray-900 via-black to-gray-900"></div>
+			<div className="absolute inset-0 bg-gradient-to-b from-gray-900/95 via-black to-gray-900"></div>
 
-			{/* Subtle pattern overlay for visual interest */}
+			{/* Enhanced pattern overlay for smoother transition */}
 			<div
-				className="absolute inset-0 opacity-30"
+				className="absolute inset-0 opacity-25"
 				style={{
 					backgroundImage:
-						'radial-gradient(circle at 1px 1px, rgba(255,255,255,0.15) 1px, transparent 0)',
+						'radial-gradient(circle at 1px 1px, rgba(255,255,255,0.12) 1px, transparent 0)',
 					backgroundSize: '20px 20px',
 				}}
 			/>
@@ -237,7 +237,7 @@ export default function FeaturedProjects() {
 								))}
 							</CarouselContent>
 							<CarouselPrevious className="absolute left-0 top-1/2 z-20 hidden -translate-x-4 -translate-y-1/2 rounded-full border border-white/20 bg-black/90 p-3 shadow-lg backdrop-blur-sm transition-all duration-300 hover:scale-110 hover:bg-black/95 hover:shadow-xl md:flex" />
-							<CarouselNext className="absolute right-0 top-1/2 z-20 hidden -translate-x-4 -translate-y-1/2 translate-x-4 rounded-full border border-white/20 bg-black/90 p-3 shadow-lg backdrop-blur-sm transition-all duration-300 hover:scale-110 hover:bg-black/95 hover:shadow-xl md:flex" />
+							<CarouselNext className="absolute right-0 top-1/2 z-20 hidden -translate-y-1/2 translate-x-4 rounded-full border border-white/20 bg-black/90 p-3 shadow-lg backdrop-blur-sm transition-all duration-300 hover:scale-110 hover:bg-black/95 hover:shadow-xl md:flex" />
 						</Carousel>
 					</motion.div>
 

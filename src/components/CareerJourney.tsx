@@ -46,7 +46,7 @@ export default function CareerJourney() {
 								<div className="glass glass-hover rounded-xl border border-white/20 p-4">
 									<div className="flex items-start gap-3">
 										{/* Icon as part of the card */}
-										<div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-primary text-lg">
+										<div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-primary text-lg text-white shadow-md">
 											{experience.icon || '•'}
 										</div>
 										<div className="flex-1">
@@ -92,7 +92,7 @@ export default function CareerJourney() {
 
 								<div className="absolute left-1/2 flex -translate-x-1/2 items-center justify-center">
 									<motion.div
-										className="z-10 flex h-12 w-12 items-center justify-center rounded-full bg-primary text-xl shadow-lg"
+										className="z-10 flex h-12 w-12 items-center justify-center rounded-full bg-primary text-xl text-white shadow-lg"
 										initial={{ scale: 0 }}
 										whileInView={{ scale: 1 }}
 										transition={{ duration: 0.3 }}
