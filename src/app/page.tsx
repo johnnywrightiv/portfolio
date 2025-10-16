@@ -20,28 +20,17 @@ export default function Page() {
 		}
 	}, [isInitialLoad]);
 
-	// Add a minimum loading time to ensure smooth experience (only on initial load)
+	// Pre-load icons in the background while splash screen runs
 	useEffect(() => {
 		if (!isInitialLoad) return;
 
-		const minLoadTime = 2000; // 2 seconds minimum
-		const startTime = Date.now();
+		// Just set icons as ready, don't control the splash timing
+		const timer = setTimeout(() => {
+			setIconsReady(true);
+		}, 100);
 
-		const checkLoadingComplete = () => {
-			const elapsed = Date.now() - startTime;
-			if (iconsReady && elapsed >= minLoadTime) {
-				setIsLoading(false);
-				setHasSplashRun(true);
-			} else if (elapsed >= minLoadTime * 2) {
-				// Fallback: stop loading after 4 seconds max
-				setIsLoading(false);
-				setHasSplashRun(true);
-			}
-		};
-
-		const interval = setInterval(checkLoadingComplete, 100);
-		return () => clearInterval(interval);
-	}, [iconsReady, isInitialLoad, setHasSplashRun]);
+		return () => clearTimeout(timer);
+	}, [isInitialLoad]);
 
 	const handleIconsReady = () => {
 		setIconsReady(true);

@@ -45,12 +45,45 @@ export default function Navbar() {
 	const hasScrolled = useScrollPosition();
 
 	const scrollToSection = (id: string) => {
-		// Check if we're on the homepage
-		if (window.location.pathname === '/') {
-			document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+		if (id === 'home') {
+			// Check if we're on the homepage for home section
+			if (window.location.pathname === '/') {
+				document.getElementById('home')?.scrollIntoView({ behavior: 'smooth' });
+			} else {
+				// Navigate to homepage
+				window.location.href = '/';
+			}
+		} else if (id === 'contact') {
+			// Always scroll to footer for contact with navbar offset
+			const footer = document.querySelector('footer');
+			if (footer) {
+				const navbar = document.querySelector('nav');
+				const navbarHeight = navbar ? navbar.offsetHeight : 80; // fallback to 80px
+				const footerPosition = footer.offsetTop - navbarHeight - 20; // extra 20px padding
+
+				window.scrollTo({
+					top: footerPosition,
+					behavior: 'smooth',
+				});
+			}
+		} else if (id === 'projects') {
+			// Check if we're on the homepage for projects section
+			if (window.location.pathname === '/') {
+				document
+					.getElementById('featured-projects')
+					?.scrollIntoView({ behavior: 'smooth' });
+			} else {
+				// Navigate to projects page
+				window.location.href = '/projects';
+			}
 		} else {
-			// Navigate to homepage with hash
-			window.location.href = `/#${id}`;
+			// Check if we're on the homepage for other sections
+			if (window.location.pathname === '/') {
+				document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+			} else {
+				// Navigate to homepage with hash
+				window.location.href = `/#${id}`;
+			}
 		}
 		setIsOpen(false);
 	};
@@ -130,24 +163,24 @@ export default function Navbar() {
 							animate={{ opacity: 1, x: 0 }}
 							transition={{ duration: 0.5, delay: 0.3 }}
 						>
-							<Link
-								href="/"
+							<button
+								onClick={() => scrollToSection('home')}
 								className="text-white/75 transition-colors hover:text-white"
 							>
 								Home
-							</Link>
+							</button>
 							<button
 								onClick={() => scrollToSection('about')}
 								className="text-white/75 transition-colors hover:text-white"
 							>
 								About
 							</button>
-							<Link
-								href="/projects"
+							<button
+								onClick={() => scrollToSection('projects')}
 								className="text-white/75 transition-colors hover:text-white"
 							>
 								Projects
-							</Link>
+							</button>
 							<button
 								onClick={() => scrollToSection('contact')}
 								className="text-white/75 transition-colors hover:text-white"
@@ -223,13 +256,12 @@ export default function Navbar() {
 										initial="hidden"
 										animate="visible"
 									>
-										<Link
-											href="/"
+										<button
+											onClick={() => scrollToSection('home')}
 											className="text-3xl font-medium text-white transition-colors hover:text-primary"
-											onClick={() => setIsOpen(false)}
 										>
 											Home
-										</Link>
+										</button>
 									</motion.div>
 									<motion.div
 										variants={linkVariants}
@@ -248,13 +280,12 @@ export default function Navbar() {
 										initial="hidden"
 										animate="visible"
 									>
-										<Link
-											href="/projects"
+										<button
+											onClick={() => scrollToSection('projects')}
 											className="text-3xl font-medium text-white transition-colors hover:text-primary"
-											onClick={() => setIsOpen(false)}
 										>
 											Projects
-										</Link>
+										</button>
 									</motion.div>
 									<motion.div
 										variants={linkVariants}

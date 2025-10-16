@@ -48,18 +48,11 @@ export default function AboutSection() {
 	};
 
 	return (
-		<section id="about" className="py-section relative">
+		<section
+			id="about"
+			className="py-section relative flex min-h-screen items-center justify-center"
+		>
 			<div className="absolute inset-0 bg-gradient-to-b from-black to-gray-900/95"></div>
-
-			{/* Subtle dot pattern overlay for transition to next section */}
-			<div
-				className="absolute inset-0 opacity-20"
-				style={{
-					backgroundImage:
-						'radial-gradient(circle at 1px 1px, rgba(255,255,255,0.08) 1px, transparent 0)',
-					backgroundSize: '20px 20px',
-				}}
-			/>
 
 			<div className="container-section relative z-10">
 				<motion.div
@@ -68,14 +61,14 @@ export default function AboutSection() {
 					transition={{ duration: 0.8, ease: 'easeOut' }}
 					viewport={{ once: true, amount: 0.2 }}
 				>
-					<div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2">
+					<div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-2 lg:gap-12">
 						{/* Profile Image */}
 						<div className="flex justify-center lg:justify-start">
 							<div className="group relative">
-								<div className="glass absolute -inset-4 rounded-full opacity-30 transition-opacity group-hover:opacity-50"></div>
+								<div className="glass absolute -inset-2 rounded-full opacity-30 transition-opacity group-hover:opacity-50 sm:-inset-4"></div>
 								{/* Base Image - Always visible */}
 								<Image
-									src="/images/profile-picture.jpg"
+									src="/images/headshot2.jpg"
 									alt="John Wright Developer Headshot"
 									width={400}
 									height={400}
@@ -119,12 +112,12 @@ export default function AboutSection() {
 								</p>
 								<p>
 									With a passion for creating intuitive user experiences and
-									optimizing development workflows, I bring a unique blend of
-									technical expertise and creative problem-solving to every
-									project. My goal is to build applications that not only meet
-									requirements but exceed expectations.
+									optimizing workflows, I bring a unique blend of technical
+									expertise and creative problem-solving to every project. My
+									goal is to build applications that not only meet requirements
+									but exceed expectations.
 								</p>
-								<p className="mt-6 text-white/90">
+								<p className="mt-6 text-white/75">
 									When I&apos;m not coding, you can find me hanging out with my{' '}
 									<span
 										className="cursor-pointer font-semibold text-blue-300 transition-colors duration-200 hover:text-blue-200"

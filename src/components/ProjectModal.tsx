@@ -94,7 +94,7 @@ export default function ProjectModal({
 
 	return (
 		<Dialog open={open} onOpenChange={onOpenChange}>
-			<DialogContent className="max-h-[90vh] max-w-6xl overflow-hidden border border-border bg-gradient-to-b from-slate-900 to-black p-0">
+			<DialogContent className="max-h-[90vh] max-w-6xl overflow-hidden border border-white/40 bg-gradient-to-b from-slate-900 to-black p-0">
 				{/* Navigation arrows - bigger and better positioned */}
 				{projects.length > 1 && (
 					<>
@@ -162,7 +162,7 @@ export default function ProjectModal({
 										<h3 className="text-foreground sr-only text-xl font-semibold">
 											Description
 										</h3>
-										<p className="text-muted-foreground">
+										<p className="text-white/75">
 											{currentProject.description}
 										</p>
 									</div>
@@ -180,7 +180,7 @@ export default function ProjectModal({
 										<h3 className="text-foreground text-xl font-semibold">
 											Key Features
 										</h3>
-										<ul className="list-inside list-disc space-y-1 text-muted-foreground">
+										<ul className="list-inside list-disc space-y-1 text-white/75">
 											{currentProject.keyFeatures.map((feature, index) => (
 												<li key={index}>{feature}</li>
 											))}
@@ -195,7 +195,7 @@ export default function ProjectModal({
 											<h3 className="text-foreground text-xl font-semibold">
 												Technical Highlights
 											</h3>
-											<ul className="list-inside list-disc space-y-1 text-muted-foreground">
+											<ul className="list-inside list-disc space-y-1 text-white/75">
 												{currentProject.technicalHighlights.map(
 													(highlight, index) => (
 														<li key={index}>{highlight}</li>
@@ -218,7 +218,7 @@ export default function ProjectModal({
 									{currentProject.technologies?.map((tech) => (
 										<span
 											key={tech}
-											className="text-foreground rounded-full border border-border bg-muted px-3 py-1 text-sm"
+											className="text-foreground rounded-full border border-white/40 bg-muted px-3 py-1 text-sm"
 										>
 											{tech}
 										</span>

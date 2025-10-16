@@ -2,9 +2,29 @@
 import Image from 'next/image';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { ChevronDown } from 'lucide-react';
+import { ChevronDown, Code, Smartphone, Bot, Rocket } from 'lucide-react';
 import FloatingTechIcons from './FloatingTechIcons';
 import { motion } from 'framer-motion';
+
+// Vibrant yet subtle palettes (aligned with theme tokens)
+const heroGradientPalettes: string[][] = [
+	['#ff9b26', '#ff6b6b', '#6b21ef'],
+	['#34d399', '#06b6d4', '#3b82f6'],
+	['#f59e0b', '#ef4444', '#8b5cf6'],
+	['#10b981', '#3b82f6', '#8b5cf6'],
+];
+
+// Mouse tracking handler for hero cards
+const handleHeroMouseMove = (
+	e: React.MouseEvent<HTMLDivElement, MouseEvent>
+) => {
+	const target = e.currentTarget as HTMLDivElement;
+	const rect = target.getBoundingClientRect();
+	const x = e.clientX - rect.left;
+	const y = e.clientY - rect.top;
+	target.style.setProperty('--mouse-x', `${x}px`);
+	target.style.setProperty('--mouse-y', `${y}px`);
+};
 
 // Animation variants
 const fadeInUp = {
@@ -21,18 +41,17 @@ const staggerContainer = {
 	visible: {
 		opacity: 1,
 		transition: {
-			staggerChildren: 0.1,
-			delayChildren: 0.1,
+			staggerChildren: 0.2,
+			delayChildren: 0.3,
 		},
 	},
 };
 
 const cardVariants = {
-	hidden: { opacity: 0, y: 10 },
+	hidden: { y: 20 },
 	visible: {
-		opacity: 1,
 		y: 0,
-		transition: { duration: 0.4, ease: 'easeOut' as const },
+		transition: { duration: 0.6, ease: 'easeOut' as const },
 	},
 };
 
@@ -42,6 +61,17 @@ const bounceVariants = {
 		opacity: 1,
 		y: 0,
 		transition: { duration: 0.8, ease: 'easeOut' as const, delay: 1.2 },
+	},
+};
+
+const continuousBounce = {
+	animate: {
+		y: [0, -8, 0],
+		transition: {
+			duration: 2,
+			repeat: Infinity,
+			ease: 'easeInOut' as const,
+		},
 	},
 };
 
@@ -61,73 +91,121 @@ export default function HeroSection({ onIconsReady }: HeroSectionProps) {
 	return (
 		<section
 			id="home"
-			className="relative flex min-h-screen items-center justify-center overflow-hidden pt-16 md:pt-0"
+			className="bg-gradient-hero-enhanced relative flex min-h-screen items-center justify-center overflow-hidden pt-16 md:pt-0"
 		>
 			<FloatingTechIcons onReady={handleIconsReady} />
+
+			{/* Background Image Overlay */}
 			<div
-				className="absolute inset-0 opacity-15"
+				className="absolute inset-0 opacity-5"
 				style={{
-					backgroundImage: 'url(/images/hero-background1.jpg)',
+					backgroundImage: 'url(/images/hero-background3.jpg)',
 					backgroundSize: 'cover',
 					backgroundPosition: 'center',
 				}}
 			></div>
 
-			<div className="relative z-10 mx-auto max-w-6xl px-4 text-center sm:px-6">
-				<div>
-					{/* Profile Introduction */}
-					<motion.div
-						className="mb-4 flex items-center justify-center sm:mb-8"
-						initial={{ opacity: 0, y: 20 }}
-						animate={{ opacity: 1, y: 0 }}
+			{/* Gradient Overlay */}
+			<div className="bg-gradient-hero-overlay absolute inset-0"></div>
+
+			<div className="relative z-10 mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
+				<div className="flex flex-col items-center text-center">
+					{/* Profile Image - Now on top */}
+					{/* <motion.div
+						className="mb-6 sm:mb-8"
+						initial={{ opacity: 0, y: 20, scale: 0.9 }}
+						animate={{ opacity: 1, y: 0, scale: 1 }}
 						transition={{ duration: 0.8, ease: 'easeOut', delay: 0.2 }}
 					>
-						<div className="glass mr-3 rounded-full p-1 sm:mr-4">
+						<div className="glass rounded-full p-2 shadow-2xl">
 							<Image
 								src="/images/profile-picture.jpg"
 								alt="John Wright Full-Stack Developer Headshot"
-								width={40}
-								height={40}
-								className="rounded-full sm:h-[60px] sm:w-[60px]"
+								width={120}
+								height={120}
+								className="rounded-full"
+								priority
 							/>
 						</div>
-						<div className="text-center">
-							<h1 className="text-sm text-white/75 sm:text-xl">
-								Welcome to my personal portfolio{' '}
-								<span className="animate-wave inline-block">👋</span>
-							</h1>
-						</div>
-					</motion.div>
+					</motion.div> */}
 
-					<motion.div
-						className="relative mb-6 sm:mb-12"
-						initial={{ opacity: 0, y: 30 }}
+					{/* Welcome Message */}
+					{/* <motion.div
+						className="mb-4"
+						initial={{ opacity: 0, y: 20 }}
 						animate={{ opacity: 1, y: 0 }}
 						transition={{ duration: 0.8, ease: 'easeOut', delay: 0.4 }}
 					>
-						<h1 className="mb-4 px-2 text-xl font-bold leading-tight text-white sm:text-3xl md:text-4xl lg:text-5xl">
-							Full-Stack Developer <br />
-							<span className="mt-4 block text-sm font-normal text-white/90 sm:text-lg md:text-xl lg:text-2xl">
-								Creating impactful digital solutions with a focus on user
-								experience, innovation, and results.
+						<p
+							className="text-white/75"
+							style={{ fontSize: 'clamp(1rem, 2vw, 1.4rem)' }}
+						>
+							Welcome to my portfolio!{' '}
+							<span className="animate-wave inline-block">👋</span>
+						</p>
+					</motion.div> */}
+
+					{/* Main Heading with Name for SEO */}
+					<motion.div
+						className="mb-6 max-w-4xl"
+						initial={{ opacity: 0, y: 30 }}
+						animate={{ opacity: 1, y: 0 }}
+						transition={{ duration: 0.8, ease: 'easeOut', delay: 0.6 }}
+					>
+						<h1
+							className="text-foreground mb-4 font-bold leading-tight"
+							style={{ fontSize: 'clamp(3rem, 6vw, 4rem)' }}
+						>
+							Hi, I'm{' '}
+							<span className="bg-gradient-to-r from-[#ff9b26] via-[#6b21ef] to-[#34d399] bg-clip-text text-transparent">
+								John Wright
 							</span>
 						</h1>
+						<h2
+							className="mb-4 text-white/75"
+							style={{ fontSize: 'clamp(1.4rem, 2vw, 1.5rem)' }}
+						>
+							Full-Stack Developer with a passion for user experience,
+							innovation, and results.
+						</h2>
 					</motion.div>
 
-					{/* Stats Cards */}
+					{/* Skills Cards - Mobile Optimized */}
 					<motion.div
-						className="mb-6 grid grid-cols-2 gap-3 px-2 sm:mb-12 sm:grid-cols-2 lg:grid-cols-4"
+						className="mb-6 grid w-full max-w-4xl grid-cols-2 gap-3 sm:grid-cols-2 sm:gap-4 lg:grid-cols-4"
 						initial="hidden"
 						animate="visible"
 						variants={staggerContainer}
 					>
 						<motion.div variants={cardVariants}>
-							<Card className="glass glass-hover group relative overflow-hidden rounded-md border border-white/20 p-2 text-center transition-all duration-200 hover:scale-105 hover:shadow-xl sm:p-3">
-								<div className="flex items-center justify-center space-x-2">
-									<div className="text-base transition-transform duration-200 group-hover:scale-110 sm:text-lg">
-										💻
+							<Card
+								className="glass glass-hover group relative overflow-hidden rounded-lg border border-white/20 bg-gradient-to-br from-primary/10 to-primary/5 p-2 text-center shadow-md transition-all duration-300 hover:scale-105 hover:border-primary/40 hover:shadow-xl sm:p-3"
+								onMouseMove={handleHeroMouseMove}
+								style={
+									{
+										'--grad-start': heroGradientPalettes[0][0],
+										'--grad-mid': heroGradientPalettes[0][1],
+										'--grad-end': heroGradientPalettes[0][2],
+										background: `linear-gradient(135deg, ${heroGradientPalettes[0][0]}14 0%, ${heroGradientPalettes[0][2]}0f 100%)`,
+									} as React.CSSProperties
+								}
+							>
+								{/* Body-only radial overlay (avoids icon area) */}
+								<div
+									className="pointer-events-none absolute inset-0 z-0 rounded-lg opacity-0 mix-blend-soft-light transition-opacity duration-300 group-hover:opacity-40"
+									style={{
+										background:
+											'radial-gradient(260px circle at var(--mouse-x) var(--mouse-y), var(--grad-start) 0%, var(--grad-mid) 35%, var(--grad-end) 60%, transparent 85%)',
+									}}
+								/>
+								<div className="flex flex-col items-center space-y-1 sm:space-y-2">
+									<div className="rounded-full bg-primary/20 p-2 transition-all duration-300 group-hover:rotate-12 group-hover:scale-110 sm:p-3">
+										<Code className="h-4 w-4 text-primary sm:h-5 sm:w-5" />
 									</div>
-									<p className="text-xs font-medium text-white sm:text-sm">
+									<p
+										className="text-foreground text-xs font-medium sm:text-sm"
+										style={{ fontSize: 'clamp(0.65rem, 1.5vw, 0.875rem)' }}
+									>
 										Web Development
 									</p>
 								</div>
@@ -135,12 +213,33 @@ export default function HeroSection({ onIconsReady }: HeroSectionProps) {
 						</motion.div>
 
 						<motion.div variants={cardVariants}>
-							<Card className="glass glass-hover group relative overflow-hidden rounded-md border border-white/20 p-2 text-center transition-all duration-200 hover:scale-105 hover:shadow-xl sm:p-3">
-								<div className="flex items-center justify-center space-x-2">
-									<div className="text-base transition-transform duration-200 group-hover:scale-110 sm:text-lg">
-										📱
+							<Card
+								className="glass glass-hover group relative overflow-hidden rounded-lg border border-white/20 bg-gradient-to-br from-primary/10 to-primary/5 p-2 text-center shadow-md transition-all duration-300 hover:scale-105 hover:border-primary/40 hover:shadow-xl sm:p-3"
+								onMouseMove={handleHeroMouseMove}
+								style={
+									{
+										'--grad-start': heroGradientPalettes[1][0],
+										'--grad-mid': heroGradientPalettes[1][1],
+										'--grad-end': heroGradientPalettes[1][2],
+										background: `linear-gradient(135deg, ${heroGradientPalettes[1][0]}14 0%, ${heroGradientPalettes[1][2]}0f 100%)`,
+									} as React.CSSProperties
+								}
+							>
+								<div
+									className="pointer-events-none absolute inset-0 z-0 rounded-lg opacity-0 mix-blend-soft-light transition-opacity duration-300 group-hover:opacity-40"
+									style={{
+										background:
+											'radial-gradient(260px circle at var(--mouse-x) var(--mouse-y), var(--grad-start) 0%, var(--grad-mid) 35%, var(--grad-end) 60%, transparent 85%)',
+									}}
+								/>
+								<div className="flex flex-col items-center space-y-1 sm:space-y-2">
+									<div className="rounded-full bg-secondary/20 p-2 transition-all duration-300 group-hover:rotate-12 group-hover:scale-110 sm:p-3">
+										<Smartphone className="h-4 w-4 text-secondary sm:h-5 sm:w-5" />
 									</div>
-									<p className="text-xs font-medium text-white sm:text-sm">
+									<p
+										className="text-foreground text-xs font-medium sm:text-sm"
+										style={{ fontSize: 'clamp(0.65rem, 1.5vw, 0.875rem)' }}
+									>
 										Mobile Applications
 									</p>
 								</div>
@@ -148,12 +247,33 @@ export default function HeroSection({ onIconsReady }: HeroSectionProps) {
 						</motion.div>
 
 						<motion.div variants={cardVariants}>
-							<Card className="glass glass-hover group relative overflow-hidden rounded-md border border-white/20 p-2 text-center transition-all duration-200 hover:scale-105 hover:shadow-xl sm:p-3">
-								<div className="flex items-center justify-center space-x-2">
-									<div className="text-base transition-transform duration-200 group-hover:scale-110 sm:text-lg">
-										🤖
+							<Card
+								className="glass glass-hover group relative overflow-hidden rounded-lg border border-white/20 bg-gradient-to-br from-primary/10 to-primary/5 p-2 text-center shadow-md transition-all duration-300 hover:scale-105 hover:border-primary/40 hover:shadow-xl sm:p-3"
+								onMouseMove={handleHeroMouseMove}
+								style={
+									{
+										'--grad-start': heroGradientPalettes[2][0],
+										'--grad-mid': heroGradientPalettes[2][1],
+										'--grad-end': heroGradientPalettes[2][2],
+										background: `linear-gradient(135deg, ${heroGradientPalettes[2][0]}14 0%, ${heroGradientPalettes[2][2]}0f 100%)`,
+									} as React.CSSProperties
+								}
+							>
+								<div
+									className="pointer-events-none absolute inset-0 z-0 rounded-lg opacity-0 mix-blend-soft-light transition-opacity duration-300 group-hover:opacity-40"
+									style={{
+										background:
+											'radial-gradient(260px circle at var(--mouse-x) var(--mouse-y), var(--grad-start) 0%, var(--grad-mid) 35%, var(--grad-end) 60%, transparent 85%)',
+									}}
+								/>
+								<div className="flex flex-col items-center space-y-1 sm:space-y-2">
+									<div className="rounded-full bg-accent/20 p-2 transition-all duration-300 group-hover:rotate-12 group-hover:scale-110 sm:p-3">
+										<Bot className="h-4 w-4 text-accent sm:h-5 sm:w-5" />
 									</div>
-									<p className="text-xs font-medium text-white sm:text-sm">
+									<p
+										className="text-foreground text-xs font-medium sm:text-sm"
+										style={{ fontSize: 'clamp(0.65rem, 1.5vw, 0.875rem)' }}
+									>
 										AI Integrations
 									</p>
 								</div>
@@ -161,12 +281,33 @@ export default function HeroSection({ onIconsReady }: HeroSectionProps) {
 						</motion.div>
 
 						<motion.div variants={cardVariants}>
-							<Card className="glass glass-hover group relative overflow-hidden rounded-md border border-white/20 p-2 text-center transition-all duration-200 hover:scale-105 hover:shadow-xl sm:p-3">
-								<div className="flex items-center justify-center space-x-2">
-									<div className="text-base transition-transform duration-200 group-hover:scale-110 sm:text-lg">
-										🚀
+							<Card
+								className="glass glass-hover group relative overflow-hidden rounded-lg border border-white/20 bg-gradient-to-br from-primary/10 to-primary/5 p-2 text-center shadow-md transition-all duration-300 hover:scale-105 hover:border-primary/40 hover:shadow-xl sm:p-3"
+								onMouseMove={handleHeroMouseMove}
+								style={
+									{
+										'--grad-start': heroGradientPalettes[3][0],
+										'--grad-mid': heroGradientPalettes[3][1],
+										'--grad-end': heroGradientPalettes[3][2],
+										background: `linear-gradient(135deg, ${heroGradientPalettes[3][0]}14 0%, ${heroGradientPalettes[3][2]}0f 100%)`,
+									} as React.CSSProperties
+								}
+							>
+								<div
+									className="pointer-events-none absolute inset-0 z-0 rounded-lg opacity-0 mix-blend-soft-light transition-opacity duration-300 group-hover:opacity-40"
+									style={{
+										background:
+											'radial-gradient(260px circle at var(--mouse-x) var(--mouse-y), var(--grad-start) 0%, var(--grad-mid) 35%, var(--grad-end) 60%, transparent 85%)',
+									}}
+								/>
+								<div className="flex flex-col items-center space-y-1 sm:space-y-2">
+									<div className="rounded-full bg-chart-1/20 p-2 transition-all duration-300 group-hover:rotate-12 group-hover:scale-110 sm:p-3">
+										<Rocket className="h-4 w-4 text-chart-1 sm:h-5 sm:w-5" />
 									</div>
-									<p className="text-xs font-medium text-white sm:text-sm">
+									<p
+										className="text-foreground text-xs font-medium sm:text-sm"
+										style={{ fontSize: 'clamp(0.65rem, 1.5vw, 0.875rem)' }}
+									>
 										Process Improvement
 									</p>
 								</div>
@@ -176,20 +317,22 @@ export default function HeroSection({ onIconsReady }: HeroSectionProps) {
 				</div>
 			</div>
 
-			{/* Skip Link */}
+			{/* Scroll Indicator - Centered */}
 			<motion.div
-				className="absolute bottom-8 flex -translate-x-1/2 items-center justify-center sm:bottom-12"
+				className="absolute bottom-8 flex -translate-x-1/2 items-center justify-center"
 				initial="hidden"
-				animate="visible"
+				animate={['visible', 'animate']}
 				variants={bounceVariants}
 			>
-				<button
+				<motion.button
 					onClick={scrollToAbout}
-					className="animate-smooth-bounce glass glass-hover group relative flex h-10 w-10 items-center justify-center overflow-hidden rounded-full border border-white/20 p-2 text-center transition-all duration-300 hover:scale-105 hover:shadow-xl sm:h-12 sm:w-12 sm:p-3"
+					className="glass glass-hover group relative flex h-12 w-12 items-center justify-center overflow-hidden rounded-full border border-white/20 p-3 text-center transition-all duration-300 hover:scale-105 hover:shadow-xl"
 					aria-label="Skip to about section"
+					variants={continuousBounce}
+					animate="animate"
 				>
-					<ChevronDown className="h-4 w-4 text-white/90 transition-all duration-300 group-hover:text-white sm:h-5 sm:w-5" />
-				</button>
+					<ChevronDown className="group-hover:text-primary-foreground h-5 w-5 text-primary transition-all duration-300" />
+				</motion.button>
 			</motion.div>
 		</section>
 	);

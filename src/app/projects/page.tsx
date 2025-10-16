@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useState, useMemo, useCallback } from 'react';
+import { useState, useMemo, useCallback, useEffect } from 'react';
 import { Search, X, Filter } from 'lucide-react';
 import projectsData from '@/data/dev-projects.json';
 import React from 'react';
@@ -50,8 +50,8 @@ const staggerContainer = {
 	visible: {
 		opacity: 1,
 		transition: {
-			staggerChildren: 0.15,
-			delayChildren: 0.1,
+			staggerChildren: 0.1,
+			delayChildren: 0.05,
 		},
 	},
 };
@@ -72,6 +72,24 @@ const cardVariants = {
 		},
 	},
 } as const;
+
+// Vibrant gradient palettes for variety
+const gradientPalettes: string[][] = [
+	['#ff9b26', '#ff6b6b', '#6b21ef'],
+	['#34d399', '#06b6d4', '#3b82f6'],
+	['#f59e0b', '#ef4444', '#8b5cf6'],
+	['#10b981', '#3b82f6', '#8b5cf6'],
+];
+
+// Mouse tracking handler for radial gradient
+const handleMouseMove = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+	const target = e.currentTarget as HTMLDivElement;
+	const rect = target.getBoundingClientRect();
+	const x = e.clientX - rect.left;
+	const y = e.clientY - rect.top;
+	target.style.setProperty('--mouse-x', `${x}px`);
+	target.style.setProperty('--mouse-y', `${y}px`);
+};
 
 const filterButtonVariants = {
 	hidden: { opacity: 0, scale: 0.8 },
@@ -99,9 +117,18 @@ export default function AllProjects() {
 	const [showFilters, setShowFilters] = useState(false);
 	const [isDialogOpen, setIsDialogOpen] = React.useState(false);
 	const [currentProjectIndex, setCurrentProjectIndex] = React.useState(0);
+	const [forceAnimation, setForceAnimation] = useState(false);
 
 	// Get all projects (not just featured for filtering)
 	const allProjects = projectsData;
+
+	// Force animation on mount for mobile devices
+	useEffect(() => {
+		const timer = setTimeout(() => {
+			setForceAnimation(true);
+		}, 100);
+		return () => clearTimeout(timer);
+	}, []);
 
 	// Extract unique technologies and project types
 	const allTechnologies = useMemo(() => {
@@ -200,14 +227,14 @@ export default function AllProjects() {
 
 			<div className="container-section relative z-10">
 				<motion.div
-					className="mb-12 flex flex-col items-center justify-between gap-6 md:flex-row"
+					className="mb-8 flex flex-row items-center justify-between gap-2 sm:mb-12"
 					initial="hidden"
 					whileInView="visible"
 					viewport={{ once: true, amount: 0.2 }}
 					variants={fadeIn}
 				>
 					<motion.h2
-						className="text-4xl font-bold text-white md:text-5xl"
+						className="text-3xl font-bold text-white sm:text-4xl md:text-5xl"
 						variants={fadeIn}
 					>
 						All Projects
@@ -215,8 +242,8 @@ export default function AllProjects() {
 					<motion.div variants={fadeIn}>
 						<Link href="/">
 							<Button
-								size="lg"
-								className="glass glass-hover rounded-xl border border-white/20 px-8 py-4 font-semibold text-white hover:border-white/40"
+								size="sm"
+								className="glass glass-hover sm:size-lg rounded-xl border border-white/20 px-4 py-2 font-semibold text-white hover:border-white/40 sm:px-8 sm:py-4"
 							>
 								Back Home
 							</Button>
@@ -254,10 +281,10 @@ export default function AllProjects() {
 								id="project-search"
 								name="project-search"
 								type="text"
-								placeholder="Search projects by title, description, or highlights..."
+								placeholder="Search projects..."
 								value={searchTerm}
 								onChange={(e) => setSearchTerm(e.target.value)}
-								className="border border-white/20 bg-black/50 py-8 pl-10 pr-10 text-xl text-white backdrop-blur-sm placeholder:text-white/70 focus:border-white/40"
+								className="border border-white/20 bg-black/50 py-4 pl-10 pr-10 text-base text-white backdrop-blur-sm placeholder:text-white/70 focus:border-white/40 sm:py-6 sm:text-lg lg:py-8 lg:text-xl"
 							/>
 							{searchTerm && (
 								<Button
@@ -271,38 +298,40 @@ export default function AllProjects() {
 							)}
 						</div>
 
-						<div className="flex items-center gap-2">
-							<Button
-								variant="outline"
-								size="sm"
-								onClick={() => setShowFilters(!showFilters)}
-								className="glass glass-hover border border-white/20 text-white hover:border-white/40"
-							>
-								<Filter className="mr-2 h-4 w-4" />
-								Filters
-								{hasActiveFilters && (
-									<Badge
-										variant="default"
-										className="text-md ml-4 h-6 w-6 pl-1.5"
-									>
-										{selectedTechnologies.length +
-											selectedProjectTypes.length +
-											(searchTerm ? 1 : 0)}
-									</Badge>
-								)}
-							</Button>
-
-							{hasActiveFilters && (
+						<div className="flex flex-col items-start gap-3 sm:flex-row sm:items-center sm:gap-2">
+							<div className="flex items-center gap-2">
 								<Button
 									variant="outline"
 									size="sm"
-									onClick={clearAllFilters}
+									onClick={() => setShowFilters(!showFilters)}
 									className="glass glass-hover border border-white/20 text-white hover:border-white/40"
 								>
-									Clear All
-									<X className="h-4 w-4" />
+									<Filter className="mr-2 h-4 w-4" />
+									Filters
+									{hasActiveFilters && (
+										<Badge
+											variant="default"
+											className="text-md ml-4 h-6 w-6 pl-1.5"
+										>
+											{selectedTechnologies.length +
+												selectedProjectTypes.length +
+												(searchTerm ? 1 : 0)}
+										</Badge>
+									)}
 								</Button>
-							)}
+
+								{hasActiveFilters && (
+									<Button
+										variant="outline"
+										size="sm"
+										onClick={clearAllFilters}
+										className="glass glass-hover border border-white/20 text-white hover:border-white/40"
+									>
+										Clear All
+										<X className="h-4 w-4" />
+									</Button>
+								)}
+							</div>
 
 							{/* Results Count */}
 							<motion.div
@@ -390,15 +419,16 @@ export default function AllProjects() {
 				<motion.div
 					className="relative w-full"
 					initial="hidden"
+					animate={forceAnimation ? 'visible' : 'hidden'}
 					whileInView="visible"
-					viewport={{ once: true, amount: 0.2 }}
+					viewport={{ once: true, amount: 0.1 }}
 					variants={staggerContainer}
 				>
 					<AnimatePresence mode="wait">
 						{filteredProjects.length > 0 ? (
 							<motion.div
 								key="projects-grid"
-								className="grid grid-cols-1 gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4"
+								className="grid grid-cols-1 gap-4 sm:grid-cols-1 sm:gap-6 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4"
 								variants={staggerContainer}
 								initial="hidden"
 								animate="visible"
@@ -409,14 +439,35 @@ export default function AllProjects() {
 										key={`${project.title}-${index}`}
 										variants={cardVariants}
 										layout
-										className="group relative flex h-[580px] cursor-pointer flex-col overflow-hidden rounded-2xl border border-white/20 bg-black/50 shadow-lg backdrop-blur-sm transition-all duration-500 ease-out hover:border-white/40 hover:shadow-2xl"
+										className="group relative flex h-[520px] cursor-pointer flex-col overflow-hidden rounded-2xl border border-white/20 bg-black/40 shadow-lg backdrop-blur-sm transition-all duration-500 ease-out hover:border-white/40 hover:shadow-2xl sm:h-[580px]"
+										onMouseMove={handleMouseMove}
+										style={
+											{
+												'--grad-start':
+													gradientPalettes[index % gradientPalettes.length][0],
+												'--grad-mid':
+													gradientPalettes[index % gradientPalettes.length][1],
+												'--grad-end':
+													gradientPalettes[index % gradientPalettes.length][2],
+												// Resting subtle tint
+												background: `linear-gradient(135deg, ${gradientPalettes[index % gradientPalettes.length][0]}14 0%, ${gradientPalettes[index % gradientPalettes.length][2]}0f 100%)`,
+											} as React.CSSProperties
+										}
 										onClick={() => {
 											setCurrentProjectIndex(index);
 											setIsDialogOpen(true);
 										}}
 									>
-										{/* Hover gradient overlay */}
-										<div className="absolute inset-0 z-10 bg-gradient-to-br from-white/5 to-white/5 opacity-0 transition-opacity duration-500 group-hover:opacity-10" />
+										{/* Softer, mouse-tracking radial gradient (body only) */}
+										<div
+											className="pointer-events-none absolute bottom-0 left-0 right-0 top-48 z-10 rounded-b-2xl opacity-0 mix-blend-soft-light transition-opacity duration-300 group-hover:opacity-40"
+											style={{
+												background:
+													'radial-gradient(380px circle at var(--mouse-x) var(--mouse-y), var(--grad-start) 0%, var(--grad-mid) 35%, var(--grad-end) 60%, transparent 85%)',
+											}}
+										/>
+										{/* Reduced glass overlay */}
+										<div className="absolute inset-0 z-0 bg-gradient-to-br from-white/5 to-white/5 opacity-0 transition-opacity duration-300 group-hover:opacity-10" />
 
 										{/* Image container with fixed aspect ratio */}
 										<div className="relative h-48 w-full flex-shrink-0 overflow-hidden rounded-t-2xl bg-gray-800">

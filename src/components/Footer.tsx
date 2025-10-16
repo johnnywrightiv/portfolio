@@ -11,11 +11,18 @@ export default function Footer() {
 	const router = useRouter();
 
 	const handleScrollToSection = (sectionId: string) => {
-		// Contact section exists on all pages (footer), so always scroll directly
+		// Contact section exists on all pages (footer), so always scroll directly with navbar offset
 		if (sectionId === 'contact') {
 			const element = document.getElementById(sectionId);
 			if (element) {
-				element.scrollIntoView({ behavior: 'smooth' });
+				const navbar = document.querySelector('nav');
+				const navbarHeight = navbar ? navbar.offsetHeight : 80; // fallback to 80px
+				const elementPosition = element.offsetTop - navbarHeight - 20; // extra 20px padding
+
+				window.scrollTo({
+					top: elementPosition,
+					behavior: 'smooth',
+				});
 			}
 			return;
 		}
@@ -152,7 +159,7 @@ export default function Footer() {
 							<motion.div variants={linkVariants}>
 								<Button
 									size="icon"
-									className="glass glass-hover h-12 w-12 rounded-full border border-white/20 hover:border-white/40"
+									className="glass glass-hover h-12 w-12 rounded-full border border-white/20 transition-all duration-300 hover:scale-105 hover:border-white/40"
 									asChild
 								>
 									<a

@@ -2,11 +2,7 @@
 
 ## Functionality
 
-- [ ] **FloatingTechIcons:** fix loading on Hero
-
 - [ ] **Color Themes:** tweak (tweakcn)
-
-- [ ] **Card Hover Effect:** try this after styling
 
 - [ ] **Global Optimizations:** review/clean up useEffects, useMemos, etc.
 - [ ] **Accessibility:** improve semantic structure and usability

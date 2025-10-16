@@ -63,7 +63,6 @@ export default function FloatingTechIcons({ onReady }: FloatingTechIconsProps) {
 	const dimensionsRef = useRef({ width: 0, height: 0 });
 	const [ready, setReady] = useState(false);
 	const [isInitialized, setIsInitialized] = useState(false);
-	const [showIcons, setShowIcons] = useState(false);
 
 	const techIcons = useMemo(() => {
 		// Development Tools
@@ -221,7 +220,7 @@ export default function FloatingTechIcons({ onReady }: FloatingTechIconsProps) {
 		};
 	}, [techIcons, onReady]);
 
-	// Optimized mouse tracking
+	// Optimized mouse tracking with container offset
 	useEffect(() => {
 		let rafId: number;
 
@@ -229,7 +228,17 @@ export default function FloatingTechIcons({ onReady }: FloatingTechIconsProps) {
 			if (rafId) return;
 
 			rafId = requestAnimationFrame(() => {
-				mouseRef.current = { x: e.clientX, y: e.clientY };
+				// Calculate mouse position relative to the container
+				const container = containerRef.current;
+				if (container) {
+					const rect = container.getBoundingClientRect();
+					mouseRef.current = {
+						x: e.clientX - rect.left,
+						y: e.clientY - rect.top,
+					};
+				} else {
+					mouseRef.current = { x: e.clientX, y: e.clientY };
+				}
 				rafId = 0;
 			});
 		};
@@ -288,30 +297,15 @@ export default function FloatingTechIcons({ onReady }: FloatingTechIconsProps) {
 		}
 	};
 
-	// High-performance animation loop with delay to avoid clashing with Hero animations
+	// High-performance animation loop
 	useEffect(() => {
 		if (!iconsRef.current.length) return;
 
-		// Delay animation start to avoid clashing with Hero animations
-		const startDelay = 1500; // 1.5 seconds delay
-		let animationStarted = false;
 		let lastTime = performance.now();
 		let mouseHasMovedSignificantly = false;
 		let lastMousePos = { x: 0, y: 0 };
 
 		const animate = (currentTime: number) => {
-			// Don't start physics animations until delay has passed
-			if (!animationStarted && currentTime < startDelay) {
-				animationRef.current = requestAnimationFrame(animate);
-				return;
-			}
-
-			if (!animationStarted) {
-				animationStarted = true;
-				lastTime = currentTime;
-				// Trigger icons to show after delay
-				setShowIcons(true);
-			}
 			const deltaTime = Math.min(currentTime - lastTime, 32); // Cap delta time to prevent huge jumps
 			lastTime = currentTime;
 
@@ -495,12 +489,12 @@ export default function FloatingTechIcons({ onReady }: FloatingTechIconsProps) {
 							ref={(el) => {
 								if (el) elementsRef.current[index] = el;
 							}}
-							className="absolute transition-opacity duration-1000 will-change-transform"
+							className="absolute transition-opacity duration-500 will-change-transform"
 							style={{
 								left: 0,
 								top: 0,
 								transform: `translate3d(${icon.x}px, ${icon.y}px, 0) scale(${icon.scale}) rotate(${icon.rotation}deg)`,
-								opacity: isInitialized && showIcons ? icon.opacity : 0,
+								opacity: isInitialized ? icon.opacity : 0,
 							}}
 						>
 							<div
