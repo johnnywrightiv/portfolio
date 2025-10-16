@@ -321,7 +321,7 @@ export default function HeroSection({ onIconsReady }: HeroSectionProps) {
 					variants={continuousBounce}
 					animate="animate"
 				>
-					<ChevronDown className="group-hover:text-primary-foreground h-5 w-5 text-primary transition-all duration-300" />
+					<ChevronDown className="h-5 w-5 text-primary transition-all duration-300 group-hover:text-primary" />
 				</motion.button>
 			</motion.div>
 		</section>
