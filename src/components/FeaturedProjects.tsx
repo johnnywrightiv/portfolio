@@ -9,7 +9,7 @@ import {
 	CarouselPrevious,
 } from '@/components/ui/carousel';
 import { motion } from 'framer-motion';
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import projectsData from '@/data/dev-projects.json';
 import ProjectModal from './ProjectModal';
 
@@ -98,30 +98,47 @@ export default function FeaturedProjects() {
 		return colorMap[colorClass] || '#ffffff';
 	};
 
-	// Navigation functions
-	const goToPrevious = () => {
+	// Navigation functions wrapped in useCallback for stable references
+	const goToPrevious = useCallback(() => {
 		setCurrentProjectIndex((prev) =>
 			prev === 0 ? featuredProjects.length - 1 : prev - 1
 		);
-	};
+	}, [featuredProjects.length]);
 
-	const goToNext = () => {
+	const goToNext = useCallback(() => {
 		setCurrentProjectIndex((prev) =>
 			prev === featuredProjects.length - 1 ? 0 : prev + 1
 		);
-	};
+	}, [featuredProjects.length]);
 
-	// Mouse-tracking gradient handler for cards
-	const handleMouseMove = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-		const target = e.currentTarget as HTMLDivElement;
-		const rect = target.getBoundingClientRect();
-		const x = e.clientX - rect.left;
-		const y = e.clientY - rect.top;
+	// Mouse-tracking gradient handler for cards with RAF throttling
+	const handleMouseMove = useCallback(
+		(e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+			const target = e.currentTarget as HTMLDivElement;
+			const rect = target.getBoundingClientRect();
+			const x = e.clientX - rect.left;
+			const y = e.clientY - rect.top;
 
-		// Update CSS variables used by the radial-gradient
-		target.style.setProperty('--mouse-x', `${x}px`);
-		target.style.setProperty('--mouse-y', `${y}px`);
-	};
+			// Use RAF to throttle updates for better performance
+			requestAnimationFrame(() => {
+				target.style.setProperty('--mouse-x', `${x}px`);
+				target.style.setProperty('--mouse-y', `${y}px`);
+			});
+		},
+		[]
+	);
+
+	// Handle keyboard navigation for project cards
+	const handleCardKeyDown = useCallback(
+		(e: React.KeyboardEvent, index: number) => {
+			if (e.key === 'Enter' || e.key === ' ') {
+				e.preventDefault();
+				setCurrentProjectIndex(index);
+				setIsModalOpen(true);
+			}
+		},
+		[]
+	);
 
 	return (
 		<section
@@ -192,7 +209,10 @@ export default function FeaturedProjects() {
 										>
 											<motion.div variants={cardVariants}>
 												<div
-													className="group relative mx-auto flex h-[420px] max-w-[440px] cursor-pointer flex-col overflow-hidden rounded-2xl border border-white/20 bg-black/40 shadow-lg backdrop-blur-sm transition-all duration-500 ease-out hover:border-white/40 hover:shadow-2xl min-[900px]:mx-0 min-[900px]:h-[450px] min-[900px]:max-w-none lg:h-[500px]"
+													role="button"
+													tabIndex={0}
+													aria-label={`View details for ${project.title}`}
+													className="group relative mx-auto flex h-[420px] max-w-[440px] cursor-pointer flex-col overflow-hidden rounded-2xl border border-white/20 bg-black/40 shadow-lg backdrop-blur-sm transition-all duration-500 ease-out hover:border-white/40 hover:shadow-2xl focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-black min-[900px]:mx-0 min-[900px]:h-[450px] min-[900px]:max-w-none lg:h-[500px]"
 													onMouseMove={handleMouseMove}
 													style={
 														{
@@ -208,6 +228,7 @@ export default function FeaturedProjects() {
 														setCurrentProjectIndex(index);
 														setIsModalOpen(true);
 													}}
+													onKeyDown={(e) => handleCardKeyDown(e, index)}
 												>
 													{/* Dynamic multi-color radial gradient hover overlay (body only) */}
 													<div

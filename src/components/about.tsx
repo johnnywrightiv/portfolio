@@ -68,10 +68,11 @@ export default function AboutSection() {
 								<div className="glass absolute -inset-2 rounded-full opacity-30 transition-opacity group-hover:opacity-50 sm:-inset-4"></div>
 								{/* Base Image - Always visible */}
 								<Image
-									src="/images/headshot2.jpg"
+									src="/images/profile-picture2.jpg"
 									alt="John Wright Developer Headshot"
 									width={400}
 									height={400}
+									priority
 									className="relative rounded-full border-4 border-white/10 transition-all duration-300 hover:scale-105 hover:border-white/20"
 								/>
 								{/* Overlay Image - Only visible on hover */}

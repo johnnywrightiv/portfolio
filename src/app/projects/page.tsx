@@ -81,14 +81,18 @@ const gradientPalettes: string[][] = [
 	['#10b981', '#3b82f6', '#8b5cf6'],
 ];
 
-// Mouse tracking handler for radial gradient
+// Mouse tracking handler for radial gradient with RAF throttling for performance
 const handleMouseMove = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
 	const target = e.currentTarget as HTMLDivElement;
 	const rect = target.getBoundingClientRect();
 	const x = e.clientX - rect.left;
 	const y = e.clientY - rect.top;
-	target.style.setProperty('--mouse-x', `${x}px`);
-	target.style.setProperty('--mouse-y', `${y}px`);
+
+	// Use RAF to throttle updates for better performance
+	requestAnimationFrame(() => {
+		target.style.setProperty('--mouse-x', `${x}px`);
+		target.style.setProperty('--mouse-y', `${y}px`);
+	});
 };
 
 const filterButtonVariants = {
@@ -203,6 +207,18 @@ export default function AllProjects() {
 		setSelectedTechnologies([]);
 		setSelectedProjectTypes([]);
 	}, []);
+
+	// Handle keyboard navigation for project cards
+	const handleCardKeyDown = useCallback(
+		(e: React.KeyboardEvent, index: number) => {
+			if (e.key === 'Enter' || e.key === ' ') {
+				e.preventDefault();
+				setCurrentProjectIndex(index);
+				setIsDialogOpen(true);
+			}
+		},
+		[]
+	);
 
 	// Check if any filters are active
 	const hasActiveFilters =
@@ -370,6 +386,8 @@ export default function AllProjects() {
 														animate="visible"
 														exit="exit"
 														onClick={() => toggleProjectType(type)}
+														aria-pressed={selectedProjectTypes.includes(type)}
+														aria-label={`Filter by ${type}`}
 														className={`rounded-full px-3 py-1.5 text-xs font-medium transition-all duration-200 ${
 															selectedProjectTypes.includes(type)
 																? 'border border-white/30 bg-white/20 text-white shadow-md'
@@ -398,6 +416,8 @@ export default function AllProjects() {
 														animate="visible"
 														exit="exit"
 														onClick={() => toggleTechnology(tech)}
+														aria-pressed={selectedTechnologies.includes(tech)}
+														aria-label={`Filter by ${tech} technology`}
 														className={`rounded-full px-3 py-1.5 text-xs font-medium transition-all duration-200 ${
 															selectedTechnologies.includes(tech)
 																? 'border border-white/30 bg-white/20 text-white shadow-md'
@@ -439,7 +459,10 @@ export default function AllProjects() {
 										key={`${project.title}-${index}`}
 										variants={cardVariants}
 										layout
-										className="group relative flex h-[520px] cursor-pointer flex-col overflow-hidden rounded-2xl border border-white/20 bg-black/40 shadow-lg backdrop-blur-sm transition-all duration-500 ease-out hover:border-white/40 hover:shadow-2xl sm:h-[580px]"
+										role="button"
+										tabIndex={0}
+										aria-label={`View details for ${project.title}`}
+										className="group relative flex h-[520px] cursor-pointer flex-col overflow-hidden rounded-2xl border border-white/20 bg-black/40 shadow-lg backdrop-blur-sm transition-all duration-500 ease-out hover:border-white/40 hover:shadow-2xl focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-black sm:h-[580px]"
 										onMouseMove={handleMouseMove}
 										style={
 											{
@@ -457,6 +480,7 @@ export default function AllProjects() {
 											setCurrentProjectIndex(index);
 											setIsDialogOpen(true);
 										}}
+										onKeyDown={(e) => handleCardKeyDown(e, index)}
 									>
 										{/* Softer, mouse-tracking radial gradient (body only) */}
 										<div

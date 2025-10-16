@@ -61,6 +61,7 @@ export default function FloatingTechIcons({ onReady }: FloatingTechIconsProps) {
 	const elementsRef = useRef<HTMLDivElement[]>([]);
 	const mouseRef = useRef({ x: 0, y: 0 });
 	const dimensionsRef = useRef({ width: 0, height: 0 });
+	const isMobileRef = useRef(false);
 	const [ready, setReady] = useState(false);
 	const [isInitialized, setIsInitialized] = useState(false);
 
@@ -149,11 +150,16 @@ export default function FloatingTechIcons({ onReady }: FloatingTechIconsProps) {
 			height: typeof window !== 'undefined' ? window.innerHeight : 1080,
 		};
 
+		// Detect mobile for performance optimizations
+		isMobileRef.current =
+			typeof window !== 'undefined' && window.innerWidth < 768;
+
 		const updateDimensions = () => {
 			dimensionsRef.current = {
 				width: window.innerWidth || 1920,
 				height: window.innerHeight || 1080,
 			};
+			isMobileRef.current = window.innerWidth < 768;
 		};
 
 		const initIcons = () => {
@@ -208,8 +214,10 @@ export default function FloatingTechIcons({ onReady }: FloatingTechIconsProps) {
 		setReady(true);
 
 		// Defer onReady callback to next tick for better performance
-		if (onReady) {
-			requestAnimationFrame(() => onReady());
+		// Using ref to avoid adding onReady to dependencies (it's a callback from parent)
+		const readyCallback = onReady;
+		if (readyCallback) {
+			requestAnimationFrame(() => readyCallback());
 		}
 
 		// Add resize listener
@@ -218,7 +226,8 @@ export default function FloatingTechIcons({ onReady }: FloatingTechIconsProps) {
 		return () => {
 			window.removeEventListener('resize', updateDimensions);
 		};
-	}, [techIcons, onReady]);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [techIcons]); // onReady intentionally excluded - parent callback doesn't change
 
 	// Optimized mouse tracking with container offset
 	useEffect(() => {
@@ -431,7 +440,8 @@ export default function FloatingTechIcons({ onReady }: FloatingTechIconsProps) {
 			}
 
 			// Handle collisions when icons are active or when there's significant movement
-			if (mouseHasMovedSignificantly) {
+			// Skip expensive collision detection on mobile for better performance
+			if (mouseHasMovedSignificantly && !isMobileRef.current) {
 				handleCollisions(icons);
 			}
 

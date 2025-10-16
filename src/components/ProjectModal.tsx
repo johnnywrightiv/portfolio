@@ -159,9 +159,6 @@ export default function ProjectModal({
 								{/* Description */}
 								{currentProject.description && (
 									<div className="space-y-2">
-										<h3 className="text-foreground sr-only text-xl font-semibold">
-											Description
-										</h3>
 										<p className="text-white/75">
 											{currentProject.description}
 										</p>

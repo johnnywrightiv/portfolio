@@ -2,11 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
-/* IMPORTANT: we have 3 different theme stylings all with diff classes and values in here.... what we can do is maybe normalize them a bit, because i want to get the actual elements and functions and global things like layout/spacing etc figured out before we start working on color themes. playing with colors and themes will be it's own seperate task later once the project is a bit more stable and put together. I'd like to just be able to switch between colors/themes and play with them on their own at that point. */
+/* Accessibility: Visible focus indicators for keyboard navigation */
+@layer base {
+	*:focus-visible {
+		@apply outline-none ring-2 ring-primary ring-offset-2 ring-offset-background;
+	}
 
-/* ALSO let's normalize how we handle different fonts being applied globally (we have it in layout.tsx, in here, etc. i want ONE place to manage these that makes sense) */
-
-/* START styles from example portfolio, this is what the majority of our base starter code in /src/ will be using... for now I'd like to keep this theme/styling and just make sure light/dark mode works with it.... later we will refine the styling into ONE system, but right now we're between my old project styling AND the example styling AND the new tweakcn theme styling we will likely be using... */
+	button:focus-visible,
+	a:focus-visible,
+	[role='button']:focus-visible {
+		@apply outline-none ring-2 ring-primary ring-offset-2 ring-offset-background;
+	}
+}
 
 :root {
 	--background: oklch(1 0 0);
@@ -15,9 +22,9 @@
 	--card-foreground: oklch(0.145 0 0);
 	--popover: oklch(1 0 0);
 	--popover-foreground: oklch(0.145 0 0);
-	--primary: oklch(0.205 0 0);
+	--primary: oklch(0.4341 0.0392 41.9938);
 	--primary-foreground: oklch(0.985 0 0);
-	--secondary: oklch(0.97 0 0);
+	--secondary: oklch(0.92 0.0651 74.3695);
 	--secondary-foreground: oklch(0.205 0 0);
 	--muted: oklch(0.97 0 0);
 	--muted-foreground: oklch(0.556 0 0);
@@ -51,9 +58,9 @@
 	--card-foreground: oklch(0.985 0 0);
 	--popover: oklch(0.145 0 0);
 	--popover-foreground: oklch(0.985 0 0);
-	--primary: oklch(0.985 0 0);
+	--primary: oklch(0.9247 0.0524 66.1732);
 	--primary-foreground: oklch(0.205 0 0);
-	--secondary: oklch(0.269 0 0);
+	--secondary: oklch(0.3163 0.019 63.6992);
 	--secondary-foreground: oklch(0.985 0 0);
 	--muted: oklch(0.269 0 0);
 	--muted-foreground: oklch(0.708 0 0);
@@ -121,240 +128,6 @@
 }
 
 /* END styles from example portfolio */
-
-/* START new tweakcn theme colors to use to update our design system/theme */
-/* :root {
-	--background: oklch(0.9821 0 0);
-	--foreground: oklch(0.2435 0 0);
-	--card: oklch(0.9911 0 0);
-	--card-foreground: oklch(0.2435 0 0);
-	--popover: oklch(0.9911 0 0);
-	--popover-foreground: oklch(0.2435 0 0);
-	--primary: oklch(0.4341 0.0392 41.9938);
-	--primary-foreground: oklch(1 0 0);
-	--secondary: oklch(0.92 0.0651 74.3695);
-	--secondary-foreground: oklch(0.3499 0.0685 40.8288);
-	--muted: oklch(0.9521 0 0);
-	--muted-foreground: oklch(0.5032 0 0);
-	--accent: oklch(0.931 0 0);
-	--accent-foreground: oklch(0.2435 0 0);
-	--destructive: oklch(0.6271 0.1936 33.339);
-	--destructive-foreground: oklch(1 0 0);
-	--border: oklch(0.8822 0 0);
-	--input: oklch(0.8822 0 0);
-	--ring: oklch(0.4341 0.0392 41.9938);
-	--chart-1: oklch(0.4341 0.0392 41.9938);
-	--chart-2: oklch(0.92 0.0651 74.3695);
-	--chart-3: oklch(0.931 0 0);
-	--chart-4: oklch(0.9367 0.0523 75.5009);
-	--chart-5: oklch(0.4338 0.0437 41.6746);
-	--sidebar: oklch(0.9881 0 0);
-	--sidebar-foreground: oklch(0.2645 0 0);
-	--sidebar-primary: oklch(0.325 0 0);
-	--sidebar-primary-foreground: oklch(0.9881 0 0);
-	--sidebar-accent: oklch(0.9761 0 0);
-	--sidebar-accent-foreground: oklch(0.325 0 0);
-	--sidebar-border: oklch(0.9401 0 0);
-	--sidebar-ring: oklch(0.7731 0 0);
-	--font-sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
-		'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif,
-		'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-	--font-serif: ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif;
-	--font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
-		'Liberation Mono', 'Courier New', monospace;
-	--radius: 0.5rem;
-	--shadow-x: 0;
-	--shadow-y: 1px;
-	--shadow-blur: 3px;
-	--shadow-spread: 0px;
-	--shadow-opacity: 0.1;
-	--shadow-color: oklch(0 0 0);
-	--shadow-2xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
-	--shadow-xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
-	--shadow-sm: 0 1px 3px 0px hsl(0 0% 0% / 0.1),
-		0 1px 2px -1px hsl(0 0% 0% / 0.1);
-	--shadow: 0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 1px 2px -1px hsl(0 0% 0% / 0.1);
-	--shadow-md: 0 1px 3px 0px hsl(0 0% 0% / 0.1),
-		0 2px 4px -1px hsl(0 0% 0% / 0.1);
-	--shadow-lg: 0 1px 3px 0px hsl(0 0% 0% / 0.1),
-		0 4px 6px -1px hsl(0 0% 0% / 0.1);
-	--shadow-xl: 0 1px 3px 0px hsl(0 0% 0% / 0.1),
-		0 8px 10px -1px hsl(0 0% 0% / 0.1);
-	--shadow-2xl: 0 1px 3px 0px hsl(0 0% 0% / 0.25);
-	--tracking-normal: 0em;
-	--spacing: 0.25rem;
-} */
-
-/* .dark {
-	--background: oklch(0.1776 0 0);
-	--foreground: oklch(0.9491 0 0);
-	--card: oklch(0.2134 0 0);
-	--card-foreground: oklch(0.9491 0 0);
-	--popover: oklch(0.2134 0 0);
-	--popover-foreground: oklch(0.9491 0 0);
-	--primary: oklch(0.9247 0.0524 66.1732);
-	--primary-foreground: oklch(0.2029 0.024 200.1962);
-	--secondary: oklch(0.3163 0.019 63.6992);
-	--secondary-foreground: oklch(0.9247 0.0524 66.1732);
-	--muted: oklch(0.252 0 0);
-	--muted-foreground: oklch(0.7699 0 0);
-	--accent: oklch(0.285 0 0);
-	--accent-foreground: oklch(0.9491 0 0);
-	--destructive: oklch(0.6271 0.1936 33.339);
-	--destructive-foreground: oklch(1 0 0);
-	--border: oklch(0.2351 0.0115 91.7467);
-	--input: oklch(0.4017 0 0);
-	--ring: oklch(0.9247 0.0524 66.1732);
-	--chart-1: oklch(0.9247 0.0524 66.1732);
-	--chart-2: oklch(0.3163 0.019 63.6992);
-	--chart-3: oklch(0.285 0 0);
-	--chart-4: oklch(0.3481 0.0219 67.0001);
-	--chart-5: oklch(0.9245 0.0533 67.0855);
-	--sidebar: oklch(0.2103 0.0059 285.8852);
-	--sidebar-foreground: oklch(0.9674 0.0013 286.3752);
-	--sidebar-primary: oklch(0.4882 0.2172 264.3763);
-	--sidebar-primary-foreground: oklch(1 0 0);
-	--sidebar-accent: oklch(0.2739 0.0055 286.0326);
-	--sidebar-accent-foreground: oklch(0.9674 0.0013 286.3752);
-	--sidebar-border: oklch(0.2739 0.0055 286.0326);
-	--sidebar-ring: oklch(0.8711 0.0055 286.286);
-	--font-sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
-		'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif,
-		'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-	--font-serif: ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif;
-	--font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
-		'Liberation Mono', 'Courier New', monospace;
-	--radius: 0.5rem;
-	--shadow-x: 0;
-	--shadow-y: 1px;
-	--shadow-blur: 3px;
-	--shadow-spread: 0px;
-	--shadow-opacity: 0.1;
-	--shadow-color: oklch(0 0 0);
-	--shadow-2xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
-	--shadow-xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
-	--shadow-sm: 0 1px 3px 0px hsl(0 0% 0% / 0.1),
-		0 1px 2px -1px hsl(0 0% 0% / 0.1);
-	--shadow: 0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 1px 2px -1px hsl(0 0% 0% / 0.1);
-	--shadow-md: 0 1px 3px 0px hsl(0 0% 0% / 0.1),
-		0 2px 4px -1px hsl(0 0% 0% / 0.1);
-	--shadow-lg: 0 1px 3px 0px hsl(0 0% 0% / 0.1),
-		0 4px 6px -1px hsl(0 0% 0% / 0.1);
-	--shadow-xl: 0 1px 3px 0px hsl(0 0% 0% / 0.1),
-		0 8px 10px -1px hsl(0 0% 0% / 0.1);
-	--shadow-2xl: 0 1px 3px 0px hsl(0 0% 0% / 0.25);
-} */
-
-/* @theme inline {
-	--color-background: var(--background);
-	--color-foreground: var(--foreground);
-	--color-card: var(--card);
-	--color-card-foreground: var(--card-foreground);
-	--color-popover: var(--popover);
-	--color-popover-foreground: var(--popover-foreground);
-	--color-primary: var(--primary);
-	--color-primary-foreground: var(--primary-foreground);
-	--color-secondary: var(--secondary);
-	--color-secondary-foreground: var(--secondary-foreground);
-	--color-muted: var(--muted);
-	--color-muted-foreground: var(--muted-foreground);
-	--color-accent: var(--accent);
-	--color-accent-foreground: var(--accent-foreground);
-	--color-destructive: var(--destructive);
-	--color-destructive-foreground: var(--destructive-foreground);
-	--color-border: var(--border);
-	--color-input: var(--input);
-	--color-ring: var(--ring);
-	--color-chart-1: var(--chart-1);
-	--color-chart-2: var(--chart-2);
-	--color-chart-3: var(--chart-3);
-	--color-chart-4: var(--chart-4);
-	--color-chart-5: var(--chart-5);
-	--color-sidebar: var(--sidebar);
-	--color-sidebar-foreground: var(--sidebar-foreground);
-	--color-sidebar-primary: var(--sidebar-primary);
-	--color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-	--color-sidebar-accent: var(--sidebar-accent);
-	--color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-	--color-sidebar-border: var(--sidebar-border);
-	--color-sidebar-ring: var(--sidebar-ring);
-
-	--font-sans: var(--font-sans);
-	--font-mono: var(--font-mono);
-	--font-serif: var(--font-serif);
-
-	--radius-sm: calc(var(--radius) - 4px);
-	--radius-md: calc(var(--radius) - 2px);
-	--radius-lg: var(--radius);
-	--radius-xl: calc(var(--radius) + 4px);
-
-	--shadow-2xs: var(--shadow-2xs);
-	--shadow-xs: var(--shadow-xs);
-	--shadow-sm: var(--shadow-sm);
-	--shadow: var(--shadow);
-	--shadow-md: var(--shadow-md);
-	--shadow-lg: var(--shadow-lg);
-	--shadow-xl: var(--shadow-xl);
-	--shadow-2xl: var(--shadow-2xl);
-} */
-/* END new tweakcn theme colors to use to update our design system/theme */
-
-/* START old theme colors to keep for reference */
-/* :root {
-	--primary: 243 94% 66%;
-	--secondary: 292 84% 60%;
-	--background: 195 30% 5%;
-	--surface: 195 30% 8%;
-	--border: 207 89% 20%;
-	--card: var(--surface);
-	--card-foreground: 195 40% 98%;
-	--popover: var(--surface);
-	--popover-foreground: 195 40% 98%;
-	--text-primary: 195 40% 98%;
-	--text-secondary: 195 30% 70%;
-	--text-accent: 260 31% 45%;
-	--accent: 260 31% 45%;
-	--muted: 195 20% 20%;
-	--muted-foreground: 195 30% 70%;
-	--destructive: 0 84% 60%;
-	--destructive-foreground: 195 40% 98%;
-	--input: var(--border);
-	--ring: var(--primary);
-	--radius: 0.75rem;
-	--chart-1: #e63946;
-	--chart-2: #f1faee;
-	--chart-3: #a8dadc;
-	--chart-4: #457b9d;
-	--chart-5: #1d3557;
-	--font-heading: 'Fraunces', serif;
-	--font-body: 'Inter', sans-serif;
-	--transition-duration: 200ms;
-} */
-
-/* Light theme for future use */
-/* .light {	 */
-/* --primary: 243 94% 66%; /* Keep same primary color */
-/* --secondary: 292 84% 60%; /* Keep same secondary color */
-/* --background: 0 0% 100%; /* #ffffff pure white */
-/* --surface: 0 0% 98%; /* #fafafa light surface */
-/* --border: 240 6% 90%; /* #e4e4e7 light border */
-/* --card: var(--surface); */
-/* --card-foreground: 240 10% 4%; */
-/* --popover: var(--surface); */
-/* --popover-foreground: 240 10% 4%; */
-/* --text-primary: 240 10% 4%; /* #0a0a0a dark text */
-/* --text-secondary: 240 6% 45%; /* #71717a medium gray */
-/* --accent: 260 31% 65%; */
-/* --muted: 240 5% 96%; */
-/* --muted-foreground: 240 6% 45%; */
-/* --destructive: 0 84% 60%; */
-/* --destructive-foreground: 0 0% 100%; */
-/* --input: var(--border); */
-/* --ring: var(--primary); */
-/* --radius: 0.75rem; */
-/* } */
-
-/* END old theme colors to keep for reference */
 
 @layer base {
 	html {
@@ -445,7 +218,7 @@
 	}
 
 	/* Section-specific gradient backgrounds */
-	.bg-gradient-hero {
+	.bg-gradient-hero-enhanced {
 		background: linear-gradient(
 			135deg,
 			hsl(var(--background)) 0%,
@@ -466,35 +239,6 @@
 		);
 	}
 
-	.bg-gradient-featured-work {
-		background: linear-gradient(
-			-45deg,
-			hsl(var(--surface)) 0%,
-			hsl(var(--primary) / 0.08) 12%,
-			hsl(var(--background)) 25%,
-			hsl(var(--secondary) / 0.06) 37%,
-			hsl(var(--surface)) 50%,
-			hsl(var(--primary) / 0.04) 62%,
-			hsl(var(--background)) 75%,
-			hsl(var(--secondary) / 0.03) 87%,
-			hsl(var(--surface)) 100%
-		);
-	}
-
-	.bg-gradient-about-contact {
-		background: linear-gradient(
-			90deg,
-			hsl(var(--background)) 0%,
-			hsl(var(--secondary) / 0.05) 15%,
-			hsl(var(--surface)) 30%,
-			hsl(var(--primary) / 0.07) 45%,
-			hsl(var(--background)) 60%,
-			hsl(var(--secondary) / 0.03) 75%,
-			hsl(var(--surface)) 85%,
-			hsl(var(--background)) 100%
-		);
-	}
-
 	/* Diagonal gradient overlay for hero */
 	.bg-gradient-hero-overlay {
 		background: linear-gradient(
@@ -511,53 +255,6 @@
 			45deg,
 			hsl(var(--primary) / 0.03) 0%,
 			hsl(var(--secondary) / 0.02) 100%
-		);
-	}
-
-	.bg-accent-gradient-2 {
-		background: linear-gradient(
-			-45deg,
-			hsl(var(--secondary) / 0.04) 0%,
-			hsl(var(--primary) / 0.02) 50%,
-			hsl(var(--accent) / 0.03) 100%
-		);
-	}
-
-	.bg-accent-gradient-3 {
-		background: linear-gradient(
-			90deg,
-			hsl(var(--accent) / 0.04) 0%,
-			hsl(var(--primary) / 0.02) 30%,
-			hsl(var(--secondary) / 0.03) 60%,
-			hsl(var(--primary) / 0.01) 100%
-		);
-	}
-
-	/* Additional pattern overlays for more visual interest */
-	.bg-pattern-dots {
-		background-image: radial-gradient(
-			hsl(var(--primary) / 0.03) 1px,
-			transparent 1px
-		);
-		background-size: 20px 20px;
-	}
-
-	.bg-pattern-grid {
-		background-image: linear-gradient(
-				hsl(var(--secondary) / 0.02) 1px,
-				transparent 1px
-			),
-			linear-gradient(90deg, hsl(var(--secondary) / 0.02) 1px, transparent 1px);
-		background-size: 30px 30px;
-	}
-
-	.bg-pattern-waves {
-		background-image: repeating-linear-gradient(
-			45deg,
-			transparent,
-			transparent 10px,
-			hsl(var(--primary) / 0.02) 10px,
-			hsl(var(--primary) / 0.02) 20px
 		);
 	}
 

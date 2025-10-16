@@ -16,7 +16,7 @@
 			"React and Next.js frontend with custom styling to match the company brand",
 			"MongoDB backend optimized for handling large datasets and quick queries"
 		],
-		"image": "/Audiotree.png",
+		"image": "/images/projects/Audiotree.png",
 		"blurb": "An embedded video repository search tool that helps users explore thousands of live-recorded performances. With advanced search features, filters and sorts, and metadata tagging, the app makes it easy for users to browse videos, discover new artists, and enjoy one of a kind performances.",
 		"description": "Designed for seamless integration and built to scale, this iframe-based widget is embedded directly into the clients existing website, providing a curated video discovery experience. The frontend was meticulously customized to match the existing branding while maintaining smooth performance and usability. A backend admin portal allows content managers to handle large-scale video libraries through CRUD operations and CSV imports. The system is optimized to efficiently supports tens of thousands of videos and advanced search features.",
 		"technologies": [
@@ -51,7 +51,7 @@
 			"Built with a modular design for seamless feature expansion",
 			"Highly responsive UI with accessibility in mind"
 		],
-		"image": "/Harmony-App.png",
+		"image": "/images/projects/Harmony-App.png",
 		"blurb": "A tool for improvising musicians, Harmony Companion helps users create harmonic accompaniment and practice theory concepts in real-time. With features like interactive visual and audio aids and progress tracking, this app empowers musicians to explore and improve their skills.",
 		"description": "This project was born out of a frustration in my own improvisation practice, constantly needing to find or create different harmonic backing tracks to practice varied styles of music or theory concepts. I wanted to build an interactive app that was highly customizable and could update theory parameters on the fly to update the harmonic accompaniment.",
 		"technologies": [
@@ -88,7 +88,7 @@
 			"MongoDB for storing users, workouts, and templates",
 			"shadcn for UI library"
 		],
-		"image": "/Workout-App.png",
+		"image": "/images/projects/Workout-App.png",
 		"blurb": "A minimal viable product for tracking workouts, featuring exercise logs, template creation, progress tracking, custom color themes, and a sleek, mobile-friendly design.",
 		"description": "This project highlights my ability to deliver impactful real-world tools for web and mobile. I implemented secure authentication, responsive designs, and Next.js API endpoints to create a seamless user experience. By using Next.js for the frontend and backend, I ensured efficient data handling, while Tailwind and Shadcn UI gave the app a clean and modern look.",
 		"technologies": [
@@ -128,7 +128,7 @@
 			"MongoDB for database",
 			"Tailwind for styling"
 		],
-		"image": "/U2CanQue.png",
+		"image": "/images/projects/U2CanQue.png",
 		"blurb": "Full-stack order management app for a BBQ restaurant, featuring a responsive front-end with checkout integration, a robust back-end with API, and an admin dashboard",
 		"description": "This project showcases my ability to turn static systems into dynamic, scalable solutions. I built new frontend functionality that makes editing the clients menu easy and convenient. On the backend I created new data models and API endpoints and restructured the existing database. Throughout the process I solved UI and data related bugs and integrated updates into a live application.",
 		"technologies": [
@@ -176,7 +176,7 @@
 			"Prisma ORM with SQLite database",
 			"SSR with serverless actions"
 		],
-		"image": "/QuickTix.png",
+		"image": "/images/projects/QuickTix.png",
 		"blurb": "Event ticketing platform with secure payment processing, comprehensive admin controls, and automated ticket delivery system for seamless event management.",
 		"description": "Simple event ticketing platform focusing on seamless experiences for both organizers and attendees. The admin dashboard enables event creation, sales tracking, and customer management, while the public interface handles secure payments through Stripe integration and ticket download along with email delivery.",
 		"technologies": [
@@ -214,7 +214,7 @@
 			"Node/Express server with websocket connections",
 			"MongoDB to store users, organizations, and boards"
 		],
-		"image": "/TreHej.png",
+		"image": "/images/projects/TreHej.png",
 		"blurb": "Full-stack Trello clone featuring Kanban boards with user authentication, seamless drag-and-drop functionality, and real-time team updates.",
 		"description": "I designed and developed a fully functional Trello clone as part of an Agile development team. Acting as Product Owner, I led daily standups, researched requirements, created user journeys, defined scopes, and planned the overall system design. Throughout the process I led our team in making critical decisions, solving issues, and prioritizing features to ensure timely delivery.",
 		"technologies": [
@@ -250,7 +250,7 @@
 			"Built UI elements from scratch",
 			"Uses context provider for dark mode and dynamic color theme"
 		],
-		"image": "/Portfolio.png",
+		"image": "/images/projects/Portfolio.png",
 		"blurb": "Explore my development journey through an interactive portfolio website, highlighting my skills in responsive design, front-end development, and animation.",
 		"description": "Designing this portfolio website was an opportunity to focus on what I am passionate about; creating interactive user-focused web applications. This project allowed me to dive deep into front-end technologies and design principles while gaining valuable experience in animation.",
 		"technologies": ["React", "Tailwind", "Custom CSS", "Animations", "Vercel"],
@@ -284,7 +284,7 @@
 			"Redux for state management",
 			"Axios for calls to API endpoints"
 		],
-		"image": "/Recipe-App.png",
+		"image": "/images/projects/Recipe-App.png",
 		"blurb": "Front-end recipe app. Users can discover recipes based on their available ingredients, search by category, or generate random recipe suggestions.",
 		"description": "This project was developed during my first hackathon in collaboration with two fellow developers. Our team focused on utilizing the Spoonacular API to get recipe data from various endpoints. We aimed to create a useful application with simple user functionalities based on the available data.",
 		"technologies": ["React", "Redux", "Bootstrap", "Spoonacular API"],

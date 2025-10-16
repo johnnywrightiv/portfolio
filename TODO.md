@@ -1,13 +1,5 @@
 # TODOs
 
-## Functionality
-
-- [ ] **Color Themes:** tweak (tweakcn)
-
-- [ ] **Global Optimizations:** review/clean up useEffects, useMemos, etc.
-- [ ] **Accessibility:** improve semantic structure and usability
-- [ ] **Performance:** optimize site speed and overall performance
-
 ## Content
 
 - [ ] **Strategy & Tone:** define marketing strategy for content & SEO -- update for senior perspective + music background
