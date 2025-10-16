@@ -81,7 +81,7 @@ export default function HeroSection({ onIconsReady }: HeroSectionProps) {
 	return (
 		<section
 			id="home"
-			className="bg-gradient-hero-enhanced relative flex min-h-screen items-center justify-center overflow-hidden pt-16 md:pt-0"
+			className="relative flex min-h-screen items-center justify-center overflow-hidden bg-gradient-to-br from-background via-surface to-background pt-16 md:pt-0"
 		>
 			<FloatingTechIcons onReady={handleIconsReady} />
 
@@ -96,7 +96,7 @@ export default function HeroSection({ onIconsReady }: HeroSectionProps) {
 			></div>
 
 			{/* Gradient Overlay */}
-			<div className="bg-gradient-hero-overlay absolute inset-0"></div>
+			<div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-secondary/5 to-primary/10"></div>
 
 			<div className="relative z-10 mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
 				<div className="flex flex-col items-center text-center">
@@ -143,7 +143,7 @@ export default function HeroSection({ onIconsReady }: HeroSectionProps) {
 						transition={{ duration: 0.8, ease: 'easeOut', delay: 0.6 }}
 					>
 						<h1
-							className="text-foreground mb-4 font-bold leading-tight"
+							className="mb-4 font-bold leading-tight text-white"
 							style={{ fontSize: 'clamp(3rem, 6vw, 4rem)' }}
 						>
 							Hi, I&apos;m{' '}
@@ -193,7 +193,7 @@ export default function HeroSection({ onIconsReady }: HeroSectionProps) {
 										<Code className="h-4 w-4 text-primary sm:h-5 sm:w-5" />
 									</div>
 									<p
-										className="text-foreground text-xs font-medium sm:text-sm"
+										className="text-xs font-medium text-white sm:text-sm"
 										style={{ fontSize: 'clamp(0.65rem, 1.5vw, 0.875rem)' }}
 									>
 										Web Development
@@ -227,7 +227,7 @@ export default function HeroSection({ onIconsReady }: HeroSectionProps) {
 										<Smartphone className="h-4 w-4 text-secondary sm:h-5 sm:w-5" />
 									</div>
 									<p
-										className="text-foreground text-xs font-medium sm:text-sm"
+										className="text-xs font-medium text-white sm:text-sm"
 										style={{ fontSize: 'clamp(0.65rem, 1.5vw, 0.875rem)' }}
 									>
 										Mobile Applications
@@ -261,7 +261,7 @@ export default function HeroSection({ onIconsReady }: HeroSectionProps) {
 										<Bot className="h-4 w-4 text-accent sm:h-5 sm:w-5" />
 									</div>
 									<p
-										className="text-foreground text-xs font-medium sm:text-sm"
+										className="text-xs font-medium text-white sm:text-sm"
 										style={{ fontSize: 'clamp(0.65rem, 1.5vw, 0.875rem)' }}
 									>
 										AI Integrations
@@ -295,7 +295,7 @@ export default function HeroSection({ onIconsReady }: HeroSectionProps) {
 										<Rocket className="h-4 w-4 text-chart-1 sm:h-5 sm:w-5" />
 									</div>
 									<p
-										className="text-foreground text-xs font-medium sm:text-sm"
+										className="text-xs font-medium text-white sm:text-sm"
 										style={{ fontSize: 'clamp(0.65rem, 1.5vw, 0.875rem)' }}
 									>
 										Process Improvement
