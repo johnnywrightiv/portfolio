@@ -1,8 +1,8 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import Hero from '@/components/Hero';
-import About from '@/components/About';
+import Hero from '@/components/hero';
+import About from '@/components/about';
 import FeaturedProjects from '@/components/FeaturedProjects';
 import SplashScreen from '@/components/SplashScreen';
 import { useLoading } from '@/contexts/LoadingContext';

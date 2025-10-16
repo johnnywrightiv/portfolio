@@ -4,7 +4,7 @@ import { Poppins } from 'next/font/google';
 import { Quicksand } from 'next/font/google';
 import { ThemeProvider } from '@/components/ThemeProvider';
 import { LoadingProvider } from '@/contexts/LoadingContext';
-import Navbar from '@/components/Navbar';
+import Navbar from '@/components/navbar';
 import Footer from '@/components/Footer';
 
 const poppins = Poppins({
