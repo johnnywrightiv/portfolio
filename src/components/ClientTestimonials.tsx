@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { Card, CardContent } from '@/components/ui/card';
-import { Star, StarHalf } from 'lucide-react';
+import { Star } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 import Image from 'next/image';
@@ -56,26 +56,6 @@ export default function ClientTestimonials() {
 			}
 		}
 	}, [currentIndex, isDragging, totalItems]);
-
-	const renderStars = (rating: number) => {
-		const stars = [];
-		const fullStars = Math.floor(rating);
-		const hasHalfStar = rating % 1 !== 0;
-
-		for (let i = 0; i < fullStars; i++) {
-			stars.push(
-				<Star key={i} className="h-5 w-5 fill-primary text-primary" />
-			);
-		}
-
-		if (hasHalfStar) {
-			stars.push(
-				<StarHalf key="half" className="h-5 w-5 fill-primary text-primary" />
-			);
-		}
-
-		return <div className="flex gap-1">{stars}</div>;
-	};
 
 	const nextSlide = useCallback(() => {
 		setCurrentIndex((prev) => {

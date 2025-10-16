@@ -4,13 +4,11 @@ import React from 'react';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent } from '@/components/ui/dialog';
-import { motion } from 'framer-motion';
 import {
 	ExternalLink,
 	Github,
 	ArrowLeftCircle,
 	ArrowRightCircle,
-	X,
 } from 'lucide-react';
 
 // TypeScript interfaces
@@ -45,8 +43,6 @@ interface ProjectModalProps {
 	onOpenChange: (open: boolean) => void;
 	onPrev: () => void;
 	onNext: () => void;
-	disablePrev: boolean;
-	disableNext: boolean;
 	projects: Project[];
 	currentIndex: number;
 }
@@ -72,8 +68,6 @@ export default function ProjectModal({
 	onOpenChange,
 	onPrev,
 	onNext,
-	disablePrev,
-	disableNext,
 	projects,
 	currentIndex,
 }: ProjectModalProps) {

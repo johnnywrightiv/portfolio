@@ -10,7 +10,7 @@ import { useLoading } from '@/contexts/LoadingContext';
 export default function Page() {
 	const { isInitialLoad, setHasSplashRun } = useLoading();
 	const [isLoading, setIsLoading] = useState(isInitialLoad);
-	const [iconsReady, setIconsReady] = useState(false);
+	const [, setIconsReady] = useState(false);
 
 	// Only show splash screen on initial load
 	useEffect(() => {

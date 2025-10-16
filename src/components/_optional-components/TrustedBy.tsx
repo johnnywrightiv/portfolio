@@ -59,17 +59,6 @@ const fadeInUp = {
 	},
 };
 
-const staggerContainer = {
-	hidden: { opacity: 0 },
-	visible: {
-		opacity: 1,
-		transition: {
-			staggerChildren: 0.1,
-			delayChildren: 0.3,
-		},
-	},
-};
-
 export default function TrustedBySection() {
 	const [translateX, setTranslateX] = useState(0);
 	const [isPaused, setIsPaused] = useState(false);

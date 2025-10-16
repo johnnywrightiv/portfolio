@@ -4,9 +4,9 @@ import React, { createContext, useContext, useState, useEffect } from 'react';
 
 interface LoadingContextType {
 	hasSplashRun: boolean;
-	setHasSplashRun: (value: boolean) => void;
+	setHasSplashRun: (_value: boolean) => void;
 	isInitialLoad: boolean;
-	setIsInitialLoad: (value: boolean) => void;
+	setIsInitialLoad: (_value: boolean) => void;
 }
 
 const LoadingContext = createContext<LoadingContextType | undefined>(undefined);
@@ -23,9 +23,9 @@ export function LoadingProvider({ children }: { children: React.ReactNode }) {
 	}, []);
 
 	// Update sessionStorage when splash runs
-	const handleSetHasSplashRun = (value: boolean) => {
-		setHasSplashRun(value);
-		if (value) {
+	const handleSetHasSplashRun = (_value: boolean) => {
+		setHasSplashRun(_value);
+		if (_value) {
 			sessionStorage.setItem('splash-has-run', 'true');
 		}
 	};

@@ -323,8 +323,6 @@ export default function FeaturedProjects() {
 					onOpenChange={setIsModalOpen}
 					onPrev={goToPrevious}
 					onNext={goToNext}
-					disablePrev={currentProjectIndex === 0}
-					disableNext={currentProjectIndex === featuredProjects.length - 1}
 					projects={featuredProjects}
 					currentIndex={currentProjectIndex}
 				/>

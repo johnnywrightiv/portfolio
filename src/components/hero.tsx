@@ -1,7 +1,5 @@
 'use client';
-import Image from 'next/image';
 import { Card } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
 import { ChevronDown, Code, Smartphone, Bot, Rocket } from 'lucide-react';
 import FloatingTechIcons from './FloatingTechIcons';
 import { motion } from 'framer-motion';
@@ -27,14 +25,6 @@ const handleHeroMouseMove = (
 };
 
 // Animation variants
-const fadeInUp = {
-	hidden: { opacity: 0, y: 30 },
-	visible: {
-		opacity: 1,
-		y: 0,
-		transition: { duration: 0.8, ease: 'easeOut' as const },
-	},
-};
 
 const staggerContainer = {
 	hidden: { opacity: 0 },
@@ -156,7 +146,7 @@ export default function HeroSection({ onIconsReady }: HeroSectionProps) {
 							className="text-foreground mb-4 font-bold leading-tight"
 							style={{ fontSize: 'clamp(3rem, 6vw, 4rem)' }}
 						>
-							Hi, I'm{' '}
+							Hi, I&apos;m{' '}
 							<span className="bg-gradient-to-r from-[#ff9b26] via-[#6b21ef] to-[#34d399] bg-clip-text text-transparent">
 								John Wright
 							</span>

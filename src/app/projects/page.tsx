@@ -7,35 +7,12 @@ import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState, useMemo, useCallback, useEffect } from 'react';
-import { Search, X, Filter } from 'lucide-react';
+import { X, Filter } from 'lucide-react';
 import projectsData from '@/data/dev-projects.json';
 import React from 'react';
 import ProjectModal from '@/components/ProjectModal';
 
 // Type definitions
-interface ProjectType {
-	label: string;
-	color: string;
-}
-
-interface ProjectLink {
-	name: string;
-	url: string;
-}
-
-interface Project {
-	title: string;
-	featured: boolean;
-	projectType?: ProjectType;
-	keyFeatures?: string[];
-	technicalHighlights?: string[];
-	image?: string;
-	blurb: string;
-	description?: string;
-	technologies?: string[];
-	links?: ProjectLink[];
-}
-
 const fadeIn = {
 	hidden: { opacity: 0, y: 20 },
 	visible: {
@@ -588,8 +565,6 @@ export default function AllProjects() {
 									Math.min(filteredProjects.length - 1, prev + 1)
 								)
 							}
-							disablePrev={currentProjectIndex === 0}
-							disableNext={currentProjectIndex === filteredProjects.length - 1}
 							projects={filteredProjects}
 							currentIndex={currentProjectIndex}
 						/>
