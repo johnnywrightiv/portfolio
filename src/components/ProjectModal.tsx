@@ -44,22 +44,11 @@ interface ProjectModalProps {
 }
 
 // Animation variants for smooth transitions
-const modalVariants = {
-	hidden: { opacity: 0, scale: 0.95, y: 20 },
-	visible: { opacity: 1, scale: 1, y: 0 },
-	exit: { opacity: 0, scale: 0.95, y: 20 },
-};
 
 const contentVariants = {
 	hidden: { opacity: 0, x: 20 },
 	visible: { opacity: 1, x: 0 },
 	exit: { opacity: 0, x: -20 },
-};
-
-const swipeIndicatorVariants = {
-	hidden: { opacity: 0, scale: 0.8 },
-	visible: { opacity: 1, scale: 1 },
-	exit: { opacity: 0, scale: 0.8 },
 };
 
 // Color mapping utility
@@ -87,9 +76,6 @@ export default function ProjectModal({
 	currentIndex,
 }: ProjectModalProps) {
 	// Enhanced swipe state for mobile navigation
-	const [swipeDirection, setSwipeDirection] = React.useState<
-		'left' | 'right' | null
-	>(null);
 	const [isTransitioning, setIsTransitioning] = React.useState(false);
 
 	// Keyboard navigation inside modal
@@ -122,19 +108,16 @@ export default function ProjectModal({
 		if (isSwipe) {
 			if (offset.x > 0 || velocity.x > 0) {
 				// Swipe right = previous
-				setSwipeDirection('right');
 				setIsTransitioning(true);
 				onPrev();
 			} else {
 				// Swipe left = next
-				setSwipeDirection('left');
 				setIsTransitioning(true);
 				onNext();
 			}
 
 			// Reset transition state after animation
 			setTimeout(() => {
-				setSwipeDirection(null);
 				setIsTransitioning(false);
 			}, 400);
 		}

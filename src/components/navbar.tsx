@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
-import Link from 'next/link';
 import { useScrollPosition } from '@/hooks/useScrollPosition';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -148,12 +147,12 @@ export default function Navbar() {
 							animate={{ opacity: 1, x: 0 }}
 							transition={{ duration: 0.5, delay: 0.2 }}
 						>
-							<Link
-								href="/"
-								className="-ml-1 whitespace-nowrap text-xl font-bold text-white"
+							<button
+								onClick={() => scrollToSection('home')}
+								className="-ml-1 whitespace-nowrap text-xl font-bold text-white transition-colors hover:text-white/80"
 							>
 								John Wright
-							</Link>
+							</button>
 						</motion.div>
 
 						{/* Desktop Navigation */}
