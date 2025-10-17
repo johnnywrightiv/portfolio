@@ -4,9 +4,9 @@ import React, { createContext, useContext, useState, useEffect } from 'react';
 
 interface LoadingContextType {
 	hasSplashRun: boolean;
-	setHasSplashRun: () => void;
+	setHasSplashRun: (_value: boolean) => void;
 	isInitialLoad: boolean;
-	setIsInitialLoad: () => void;
+	setIsInitialLoad: (_value: boolean) => void;
 }
 
 const LoadingContext = createContext<LoadingContextType | undefined>(undefined);

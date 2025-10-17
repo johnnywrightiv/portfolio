@@ -35,7 +35,7 @@ interface Project {
 interface ProjectModalProps {
 	project: Project | undefined;
 	open: boolean;
-	onOpenChange: () => void;
+	onOpenChange: (open: boolean) => void;
 	onPrev: () => void;
 	onNext: () => void;
 	projects: Project[];
