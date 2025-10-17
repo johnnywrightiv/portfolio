@@ -18,7 +18,7 @@ export default function CareerJourney() {
 
 	return (
 		<section id="career" className="py-section">
-			<div className="container-section">
+			<div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-12">
 				<div className="mb-12 text-center">
 					<h2 className="mb-4 text-3xl font-bold text-white md:text-4xl">
 						Career Journey

@@ -15,5 +15,3 @@
 - [ ] **SEO & Marketing:** lightly optimize meta description, keywords in layout.tsx
 - [ ] **Assets:** SVGs/images, reduce size to speed up load time, update favicon/logo to match brand
 - [ ] **Optimizations:** sitemap, robots, accessibility, performance, general tweaks
-- [ ] **Light Mode...?:** or keep it dark and just publish... forget about ThemeProvider in THIS codebase?
-- [ ] **Trusted By...?:** build & use this in about or skip?

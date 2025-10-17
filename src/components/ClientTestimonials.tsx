@@ -149,7 +149,7 @@ export default function ClientTestimonials() {
 
 	return (
 		<section id="testimonials" className="py-section">
-			<div className="container-section">
+			<div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-12">
 				<motion.div
 					className="mb-8 text-center sm:mb-12"
 					initial={{ opacity: 0, y: 20 }}
@@ -170,7 +170,6 @@ export default function ClientTestimonials() {
 					whileInView={{ opacity: 1, y: 0 }}
 					transition={{ duration: 0.6, delay: 0.2 }}
 					viewport={{ once: true, amount: 0.2 }}
-					className="px-2 md:px-0"
 				>
 					<div className="mx-auto w-full max-w-5xl">
 						<div className="relative flex items-center gap-1 md:gap-3">

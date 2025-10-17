@@ -173,6 +173,7 @@
 			color var(--transition-duration) ease;
 		overscroll-behavior: none; /* Prevent overscroll bounce */
 		overflow-x: hidden; /* Prevent horizontal scroll */
+		touch-action: manipulation; /* Improve touch responsiveness */
 	}
 
 	h1,
@@ -449,6 +450,22 @@
 
 	.animate-wave:hover {
 		animation: wave 2.5s ease-in-out infinite;
+	}
+
+	/* Mobile touch improvements */
+	@media (hover: none) and (pointer: coarse) {
+		/* Improve touch targets on mobile */
+		button,
+		[role='button'] {
+			min-height: 44px;
+			min-width: 44px;
+		}
+
+		/* Ensure scroll button is easily tappable on mobile */
+		.touch-manipulation {
+			touch-action: manipulation;
+			-webkit-tap-highlight-color: transparent;
+		}
 	}
 }
 

@@ -72,7 +72,21 @@ interface HeroSectionProps {
 
 export default function HeroSection({ onIconsReady }: HeroSectionProps) {
 	const scrollToAbout = () => {
-		document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
+		const aboutSection = document.getElementById('about');
+		if (aboutSection) {
+			// Get navbar height for proper offset
+			const navbar = document.querySelector('nav');
+			const navbarHeight = navbar ? navbar.offsetHeight : 80;
+
+			// Calculate target position with navbar offset
+			const targetPosition = aboutSection.offsetTop - navbarHeight - 20;
+
+			// Use smooth scroll with proper positioning
+			window.scrollTo({
+				top: targetPosition,
+				behavior: 'smooth',
+			});
+		}
 	};
 
 	const handleIconsReady = () => {
@@ -100,7 +114,7 @@ export default function HeroSection({ onIconsReady }: HeroSectionProps) {
 			<div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-secondary/5 to-primary/10"></div>
 
 			<div className="relative z-10 mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
-				<div className="flex flex-col items-center pb-40 text-center sm:pb-0">
+				<div className="flex flex-col items-center pb-20 pt-16 text-center sm:pb-0 sm:pt-0">
 					{/* Profile Image - Now on top */}
 					{/* <motion.div
 						className="mb-6 sm:mb-8"
@@ -163,39 +177,45 @@ export default function HeroSection({ onIconsReady }: HeroSectionProps) {
 
 					{/* Skills - Minimal Mobile Pills */}
 					<motion.div
-						className="mb-8 flex w-full max-w-sm flex-wrap items-center justify-center gap-2 sm:hidden"
+						className="mb-8 grid w-full grid-cols-1 gap-3 min-[375px]:grid-cols-2 min-[375px]:justify-items-start min-[375px]:gap-x-4 min-[375px]:gap-y-2 sm:hidden"
 						initial="hidden"
 						animate="visible"
 						variants={staggerContainer}
 					>
 						{/* AI first on mobile */}
-						<motion.div variants={cardVariants}>
-							<Badge className="border-white/10 bg-background/50 px-4 py-2 font-medium text-white/80 backdrop-blur-sm">
+						<motion.div
+							variants={cardVariants}
+							className="min-[375px]:justify-self-end"
+						>
+							<Badge className="whitespace-nowrap border-white/10 bg-background/50 px-3 py-2 font-medium text-white/80 backdrop-blur-sm">
 								<Bot className="mr-1.5 h-4 w-4 text-accent" />
 								AI Integrations
 							</Badge>
 						</motion.div>
 						<motion.div variants={cardVariants}>
-							<Badge className="border-white/10 bg-background/50 px-4 py-2 font-medium text-white/80 backdrop-blur-sm">
+							<Badge className="whitespace-nowrap border-white/10 bg-background/50 px-3 py-2 font-medium text-white/80 backdrop-blur-sm">
 								<Code className="mr-1.5 h-4 w-4 text-primary" />
 								Web Development
 							</Badge>
 						</motion.div>
-						<motion.div variants={cardVariants}>
-							<Badge className="border-white/10 bg-background/50 px-4 py-2 font-medium text-white/80 backdrop-blur-sm">
+						<motion.div
+							variants={cardVariants}
+							className="min-[375px]:justify-self-end"
+						>
+							<Badge className="whitespace-nowrap border-white/10 bg-background/50 px-3 py-2 font-medium text-white/80 backdrop-blur-sm">
 								<Smartphone className="mr-1.5 h-4 w-4 text-secondary" />
 								Mobile Applications
 							</Badge>
 						</motion.div>
 						<motion.div variants={cardVariants}>
-							<Badge className="border-white/10 bg-background/50 px-4 py-2 font-medium text-white/80 backdrop-blur-sm">
+							<Badge className="whitespace-nowrap border-white/10 bg-background/50 px-3 py-2 font-medium text-white/80 backdrop-blur-sm">
 								<Rocket className="mr-1.5 h-4 w-4 text-chart-1" />
 								Process Improvement
 							</Badge>
 						</motion.div>
 					</motion.div>
 
-					{/* Skills Cards - Mobile Optimized */}
+					{/* Skills Cards - Responsive */}
 					<motion.div
 						className="mb-6 hidden w-full max-w-4xl grid-cols-2 gap-3 sm:grid sm:grid-cols-2 sm:gap-4 lg:grid-cols-4"
 						initial="hidden"
@@ -356,14 +376,14 @@ export default function HeroSection({ onIconsReady }: HeroSectionProps) {
 
 			{/* Scroll Indicator - Centered */}
 			<motion.div
-				className="absolute bottom-24 flex -translate-x-1/2 items-center justify-center sm:bottom-8"
+				className="absolute hidden -translate-x-1/2 items-center justify-center sm:bottom-8 sm:flex"
 				initial="hidden"
 				animate={['visible', 'animate']}
 				variants={bounceVariants}
 			>
 				<motion.button
 					onClick={scrollToAbout}
-					className="glass glass-hover group relative flex h-12 w-12 items-center justify-center overflow-hidden rounded-full border border-white/20 p-3 text-center transition-all duration-300 hover:scale-105 hover:shadow-xl"
+					className="glass glass-hover group relative flex h-12 w-12 touch-manipulation items-center justify-center overflow-hidden rounded-full border border-white/20 p-3 text-center transition-all duration-300 hover:scale-105 hover:shadow-xl"
 					aria-label="Skip to about section"
 					variants={continuousBounce}
 					animate="animate"
