@@ -22,10 +22,10 @@ export default function SplashScreen({
 		// Cheeky loading messages based on progress - better timing and messages
 		const loadingMessages = [
 			{ text: 'Brewing coffee...', threshold: 0 },
-			{ text: 'Polishing the pixels...', threshold: 30 },
+			{ text: 'Polishing pixels...', threshold: 30 },
 			{ text: 'Debugging reality...', threshold: 60 },
 			{
-				text: `Connection lost \n Please wait - attempting to reestablish`,
+				text: 'Compiling good vibes...',
 				threshold: 90,
 			},
 		];
