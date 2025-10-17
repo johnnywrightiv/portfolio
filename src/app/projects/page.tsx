@@ -304,7 +304,8 @@ export default function AllProjects() {
 									{hasActiveFilters && (
 										<Badge
 											variant="default"
-											className="text-md ml-4 h-6 w-6 pl-1.5"
+											className="relative ml-4 h-6 min-w-6 bg-purple-500/90 px-2 text-sm"
+											style={{ right: '4px' }}
 										>
 											{selectedTechnologies.length +
 												selectedProjectTypes.length +
@@ -367,7 +368,7 @@ export default function AllProjects() {
 														aria-label={`Filter by ${type}`}
 														className={`rounded-full px-3 py-1.5 text-xs font-medium transition-all duration-200 ${
 															selectedProjectTypes.includes(type)
-																? 'border border-white/30 bg-white/20 text-white shadow-md'
+																? 'border border-purple-400/50 bg-purple-500/90 text-white shadow-md'
 																: 'border border-white/20 bg-white/10 text-white hover:bg-white/20'
 														}`}
 													>
@@ -397,7 +398,7 @@ export default function AllProjects() {
 														aria-label={`Filter by ${tech} technology`}
 														className={`rounded-full px-3 py-1.5 text-xs font-medium transition-all duration-200 ${
 															selectedTechnologies.includes(tech)
-																? 'border border-white/30 bg-white/20 text-white shadow-md'
+																? 'border border-purple-400/50 bg-purple-500/90 text-white shadow-md'
 																: 'border border-white/20 bg-white/10 text-white hover:bg-white/20'
 														}`}
 													>
@@ -467,8 +468,6 @@ export default function AllProjects() {
 													'radial-gradient(380px circle at var(--mouse-x) var(--mouse-y), var(--grad-start) 0%, var(--grad-mid) 35%, var(--grad-end) 60%, transparent 85%)',
 											}}
 										/>
-										{/* Reduced glass overlay */}
-										<div className="absolute inset-0 z-0 bg-gradient-to-br from-white/5 to-white/5 opacity-0 transition-opacity duration-300 group-hover:opacity-10" />
 
 										{/* Image container with fixed aspect ratio */}
 										<div className="relative h-48 w-full flex-shrink-0 overflow-hidden rounded-t-2xl bg-gray-800">
@@ -522,9 +521,6 @@ export default function AllProjects() {
 												</div>
 											</div>
 										</div>
-
-										{/* Subtle glow effect on hover */}
-										<div className="absolute -inset-0.5 -z-10 rounded-2xl bg-gradient-to-r from-white/20 to-white/20 opacity-0 blur-sm transition-opacity duration-500 group-hover:opacity-100" />
 									</motion.div>
 								))}
 							</motion.div>

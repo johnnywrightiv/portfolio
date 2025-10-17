@@ -29,7 +29,7 @@ export default function FAQSection() {
 				</motion.div>
 
 				<motion.div
-					className="mx-auto max-w-3xl"
+					className="mx-auto max-w-4xl"
 					initial={{ opacity: 0, y: 30 }}
 					whileInView={{ opacity: 1, y: 0 }}
 					transition={{ duration: 0.6, delay: 0.2 }}

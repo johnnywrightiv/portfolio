@@ -1,5 +1,6 @@
 'use client';
 import { Card } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
 import { ChevronDown, Code, Smartphone, Bot, Rocket } from 'lucide-react';
 import FloatingTechIcons from './FloatingTechIcons';
 import { motion } from 'framer-motion';
@@ -99,7 +100,7 @@ export default function HeroSection({ onIconsReady }: HeroSectionProps) {
 			<div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-secondary/5 to-primary/10"></div>
 
 			<div className="relative z-10 mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
-				<div className="flex flex-col items-center text-center">
+				<div className="flex flex-col items-center pb-40 text-center sm:pb-0">
 					{/* Profile Image - Now on top */}
 					{/* <motion.div
 						className="mb-6 sm:mb-8"
@@ -137,37 +138,74 @@ export default function HeroSection({ onIconsReady }: HeroSectionProps) {
 
 					{/* Main Heading with Name for SEO */}
 					<motion.div
-						className="mb-6 max-w-4xl"
+						className="mb-6 max-w-4xl rounded-2xl bg-black/40 p-6 backdrop-blur-sm sm:bg-black/20 sm:p-8"
 						initial={{ opacity: 0, y: 30 }}
 						animate={{ opacity: 1, y: 0 }}
 						transition={{ duration: 0.8, ease: 'easeOut', delay: 0.6 }}
 					>
 						<h1
 							className="mb-4 font-bold leading-tight text-white"
-							style={{ fontSize: 'clamp(3rem, 6vw, 4rem)' }}
+							style={{ fontSize: 'clamp(2.5rem, 6vw, 4rem)' }}
 						>
-							Hi, I&apos;m{' '}
-							<span className="bg-gradient-to-r from-[#ff9b26] via-[#6b21ef] to-[#34d399] bg-clip-text text-transparent">
+							<span className="block sm:inline">Hi, I&apos;m </span>
+							<span className="block bg-gradient-to-r from-[#ff9b26] via-[#6b21ef] to-[#34d399] bg-clip-text text-transparent sm:inline">
 								John Wright
 							</span>
 						</h1>
 						<h2
 							className="mb-4 text-white/75"
-							style={{ fontSize: 'clamp(1.4rem, 2vw, 1.5rem)' }}
+							style={{ fontSize: 'clamp(1.25rem, 2vw, 1.35rem)' }}
 						>
-							Full-Stack Developer with a passion for user experience,
+							Full-Stack Developer with a passion for user-experience,
 							innovation, and results.
 						</h2>
 					</motion.div>
 
-					{/* Skills Cards - Mobile Optimized */}
+					{/* Skills - Minimal Mobile Pills */}
 					<motion.div
-						className="mb-6 grid w-full max-w-4xl grid-cols-2 gap-3 sm:grid-cols-2 sm:gap-4 lg:grid-cols-4"
+						className="mb-8 flex w-full max-w-sm flex-wrap items-center justify-center gap-2 sm:hidden"
 						initial="hidden"
 						animate="visible"
 						variants={staggerContainer}
 					>
+						{/* AI first on mobile */}
 						<motion.div variants={cardVariants}>
+							<Badge className="border-white/10 bg-background/50 px-4 py-2 font-medium text-white/80 backdrop-blur-sm">
+								<Bot className="mr-1.5 h-4 w-4 text-accent" />
+								AI Integrations
+							</Badge>
+						</motion.div>
+						<motion.div variants={cardVariants}>
+							<Badge className="border-white/10 bg-background/50 px-4 py-2 font-medium text-white/80 backdrop-blur-sm">
+								<Code className="mr-1.5 h-4 w-4 text-primary" />
+								Web Development
+							</Badge>
+						</motion.div>
+						<motion.div variants={cardVariants}>
+							<Badge className="border-white/10 bg-background/50 px-4 py-2 font-medium text-white/80 backdrop-blur-sm">
+								<Smartphone className="mr-1.5 h-4 w-4 text-secondary" />
+								Mobile Applications
+							</Badge>
+						</motion.div>
+						<motion.div variants={cardVariants}>
+							<Badge className="border-white/10 bg-background/50 px-4 py-2 font-medium text-white/80 backdrop-blur-sm">
+								<Rocket className="mr-1.5 h-4 w-4 text-chart-1" />
+								Process Improvement
+							</Badge>
+						</motion.div>
+					</motion.div>
+
+					{/* Skills Cards - Mobile Optimized */}
+					<motion.div
+						className="mb-6 hidden w-full max-w-4xl grid-cols-2 gap-3 sm:grid sm:grid-cols-2 sm:gap-4 lg:grid-cols-4"
+						initial="hidden"
+						animate="visible"
+						variants={staggerContainer}
+					>
+						<motion.div
+							variants={cardVariants}
+							className="sm:order-1 lg:order-1"
+						>
 							<Card
 								className="glass glass-hover group relative overflow-hidden rounded-lg border border-white/20 bg-gradient-to-br from-primary/10 to-primary/5 p-2 text-center shadow-md transition-all duration-300 hover:scale-105 hover:border-primary/40 hover:shadow-xl sm:p-3"
 								onMouseMove={handleHeroMouseMove}
@@ -202,7 +240,10 @@ export default function HeroSection({ onIconsReady }: HeroSectionProps) {
 							</Card>
 						</motion.div>
 
-						<motion.div variants={cardVariants}>
+						<motion.div
+							variants={cardVariants}
+							className="sm:order-3 lg:order-2"
+						>
 							<Card
 								className="glass glass-hover group relative overflow-hidden rounded-lg border border-white/20 bg-gradient-to-br from-primary/10 to-primary/5 p-2 text-center shadow-md transition-all duration-300 hover:scale-105 hover:border-primary/40 hover:shadow-xl sm:p-3"
 								onMouseMove={handleHeroMouseMove}
@@ -236,7 +277,10 @@ export default function HeroSection({ onIconsReady }: HeroSectionProps) {
 							</Card>
 						</motion.div>
 
-						<motion.div variants={cardVariants}>
+						<motion.div
+							variants={cardVariants}
+							className="sm:order-2 lg:order-3"
+						>
 							<Card
 								className="glass glass-hover group relative overflow-hidden rounded-lg border border-white/20 bg-gradient-to-br from-primary/10 to-primary/5 p-2 text-center shadow-md transition-all duration-300 hover:scale-105 hover:border-primary/40 hover:shadow-xl sm:p-3"
 								onMouseMove={handleHeroMouseMove}
@@ -270,7 +314,10 @@ export default function HeroSection({ onIconsReady }: HeroSectionProps) {
 							</Card>
 						</motion.div>
 
-						<motion.div variants={cardVariants}>
+						<motion.div
+							variants={cardVariants}
+							className="sm:order-4 lg:order-4"
+						>
 							<Card
 								className="glass glass-hover group relative overflow-hidden rounded-lg border border-white/20 bg-gradient-to-br from-primary/10 to-primary/5 p-2 text-center shadow-md transition-all duration-300 hover:scale-105 hover:border-primary/40 hover:shadow-xl sm:p-3"
 								onMouseMove={handleHeroMouseMove}
@@ -309,7 +356,7 @@ export default function HeroSection({ onIconsReady }: HeroSectionProps) {
 
 			{/* Scroll Indicator - Centered */}
 			<motion.div
-				className="absolute bottom-8 flex -translate-x-1/2 items-center justify-center"
+				className="absolute bottom-24 flex -translate-x-1/2 items-center justify-center sm:bottom-8"
 				initial="hidden"
 				animate={['visible', 'animate']}
 				variants={bounceVariants}

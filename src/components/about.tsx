@@ -159,7 +159,15 @@ export default function AboutSection() {
 											e.preventDefault();
 											const target = document.getElementById('contact');
 											if (target) {
-												target.scrollIntoView({ behavior: 'smooth' });
+												const navbar = document.querySelector('nav');
+												const navbarHeight = navbar ? navbar.offsetHeight : 80;
+												const targetPosition =
+													target.offsetTop - navbarHeight - 20;
+
+												window.scrollTo({
+													top: targetPosition,
+													behavior: 'smooth',
+												});
 											}
 										}}
 									>

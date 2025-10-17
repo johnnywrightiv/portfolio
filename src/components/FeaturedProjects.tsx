@@ -212,7 +212,7 @@ export default function FeaturedProjects() {
 													role="button"
 													tabIndex={0}
 													aria-label={`View details for ${project.title}`}
-													className="group relative mx-auto flex h-[420px] max-w-[440px] cursor-pointer flex-col overflow-hidden rounded-2xl border border-white/20 bg-black/40 shadow-lg backdrop-blur-sm transition-all duration-500 ease-out hover:border-white/40 hover:shadow-2xl focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-black min-[900px]:mx-0 min-[900px]:h-[450px] min-[900px]:max-w-none lg:h-[500px]"
+													className="group relative mx-auto flex h-[480px] max-w-[360px] cursor-pointer flex-col overflow-hidden rounded-2xl border border-white/20 bg-black/40 shadow-lg backdrop-blur-sm transition-all duration-500 ease-out hover:border-white/40 hover:shadow-2xl focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-black min-[900px]:mx-0 min-[900px]:h-[450px] min-[900px]:max-w-none lg:h-[500px]"
 													onMouseMove={handleMouseMove}
 													style={
 														{
@@ -300,8 +300,8 @@ export default function FeaturedProjects() {
 									);
 								})}
 							</CarouselContent>
-							<CarouselPrevious className="absolute left-[calc(50%-220px-20px)] top-1/2 z-20 flex h-10 w-10 -translate-y-1/2 rounded-full border border-white/20 bg-black/90 shadow-lg backdrop-blur-sm transition-all duration-300 hover:scale-110 hover:bg-black/95 hover:shadow-xl min-[900px]:left-0 min-[900px]:-translate-x-5" />
-							<CarouselNext className="absolute right-[calc(50%-220px-20px)] top-1/2 z-20 flex h-10 w-10 -translate-y-1/2 rounded-full border border-white/20 bg-black/90 shadow-lg backdrop-blur-sm transition-all duration-300 hover:scale-110 hover:bg-black/95 hover:shadow-xl min-[900px]:right-0 min-[900px]:translate-x-5" />
+							<CarouselPrevious className="absolute left-[calc(50%-180px-20px)] top-1/2 z-20 flex h-10 w-10 -translate-y-1/2 rounded-full border border-white/20 bg-black/90 shadow-lg backdrop-blur-sm transition-all duration-300 hover:scale-110 hover:bg-black/95 hover:shadow-xl min-[900px]:left-0 min-[900px]:-translate-x-5" />
+							<CarouselNext className="absolute right-[calc(50%-180px-20px)] top-1/2 z-20 flex h-10 w-10 -translate-y-1/2 rounded-full border border-white/20 bg-black/90 shadow-lg backdrop-blur-sm transition-all duration-300 hover:scale-110 hover:bg-black/95 hover:shadow-xl min-[900px]:right-0 min-[900px]:translate-x-5" />
 						</Carousel>
 					</motion.div>
 

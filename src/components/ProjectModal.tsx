@@ -4,12 +4,7 @@ import React from 'react';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent } from '@/components/ui/dialog';
-import {
-	ExternalLink,
-	Github,
-	ArrowLeftCircle,
-	ArrowRightCircle,
-} from 'lucide-react';
+import { ExternalLink, Github, ChevronLeft, ChevronRight } from 'lucide-react';
 
 // TypeScript interfaces
 interface ProjectType {
@@ -71,6 +66,10 @@ export default function ProjectModal({
 	projects,
 	currentIndex,
 }: ProjectModalProps) {
+	// Swipe/drag state for mobile navigation
+	const [startX, setStartX] = React.useState(0);
+	const [isDragging, setIsDragging] = React.useState(false);
+
 	// Keyboard navigation inside modal
 	React.useEffect(() => {
 		if (!open) return;
@@ -82,31 +81,59 @@ export default function ProjectModal({
 		return () => window.removeEventListener('keydown', handleKeyDown);
 	}, [open, onPrev, onNext]);
 
+	// Touch/swipe handlers for mobile
+	const handleTouchStart = (e: React.TouchEvent) => {
+		setStartX(e.touches[0].clientX);
+		setIsDragging(true);
+	};
+
+	const handleTouchEnd = (e: React.TouchEvent) => {
+		if (!isDragging) return;
+		const endX = e.changedTouches[0].clientX;
+		const diffX = endX - startX;
+		const threshold = 50; // Minimum swipe distance
+
+		if (Math.abs(diffX) > threshold) {
+			if (diffX > 0) {
+				onPrev(); // Swipe right = previous
+			} else {
+				onNext(); // Swipe left = next
+			}
+		}
+		setIsDragging(false);
+	};
+
 	if (!project) return null;
 
 	const currentProject = projects[currentIndex];
 
 	return (
 		<Dialog open={open} onOpenChange={onOpenChange}>
-			<DialogContent className="max-h-[90vh] max-w-6xl overflow-hidden border border-white/40 bg-gradient-to-b from-slate-900 to-black p-0">
-				{/* Navigation arrows - bigger and better positioned */}
+			<DialogContent
+				className="max-h-[90vh] max-w-6xl overflow-hidden border border-white/40 bg-gradient-to-b from-slate-900 to-black p-0"
+				onTouchStart={handleTouchStart}
+				onTouchEnd={handleTouchEnd}
+			>
+				{/* Navigation arrows - carousel style */}
 				{projects.length > 1 && (
 					<>
 						<Button
 							variant="ghost"
 							size="icon"
-							className="hover:text-foreground absolute left-0 top-1/2 z-50 -translate-y-1/2 text-muted-foreground lg:left-1 [&_svg]:h-6 [&_svg]:w-6 [&_svg]:stroke-[1.5]"
+							className="absolute left-1 top-1/2 z-50 flex h-10 w-10 -translate-y-1/2 rounded-full border border-white/20 bg-black/90 shadow-lg backdrop-blur-sm transition-all duration-300 hover:scale-110 hover:bg-black/95 hover:shadow-xl lg:left-4"
 							onClick={onPrev}
 						>
-							<ArrowLeftCircle />
+							<ChevronLeft className="h-5 w-5" />
+							<span className="sr-only">Previous project</span>
 						</Button>
 						<Button
 							variant="ghost"
 							size="icon"
-							className="hover:text-foreground absolute right-2 top-1/2 z-50 -translate-y-1/2 text-muted-foreground lg:right-4 [&_svg]:h-6 [&_svg]:w-6 [&_svg]:stroke-[1.5]"
+							className="absolute right-1 top-1/2 z-50 flex h-10 w-10 -translate-y-1/2 rounded-full border border-white/20 bg-black/90 shadow-lg backdrop-blur-sm transition-all duration-300 hover:scale-110 hover:bg-black/95 hover:shadow-xl lg:right-4"
 							onClick={onNext}
 						>
-							<ArrowRightCircle />
+							<ChevronRight className="h-5 w-5" />
+							<span className="sr-only">Next project</span>
 						</Button>
 					</>
 				)}
@@ -229,8 +256,7 @@ export default function ProjectModal({
 										{currentProject.liveUrl && (
 											<Button
 												asChild
-												variant="outline"
-												className="flex items-center gap-2"
+												className="glass glass-hover flex items-center gap-2 border border-white/20 hover:border-white/40"
 											>
 												<a
 													href={currentProject.liveUrl}
@@ -245,8 +271,7 @@ export default function ProjectModal({
 										{currentProject.githubUrl && (
 											<Button
 												asChild
-												variant="outline"
-												className="flex items-center gap-2"
+												className="glass glass-hover flex items-center gap-2 border border-white/20 hover:border-white/40"
 											>
 												<a
 													href={currentProject.githubUrl}
@@ -262,8 +287,7 @@ export default function ProjectModal({
 											<Button
 												key={link.name}
 												asChild
-												variant="outline"
-												className="flex items-center gap-2"
+												className="glass glass-hover flex items-center gap-2 border border-white/20 hover:border-white/40"
 											>
 												<a
 													href={link.url}

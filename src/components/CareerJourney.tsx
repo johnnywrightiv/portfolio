@@ -46,9 +46,18 @@ export default function CareerJourney() {
 								<div className="glass glass-hover rounded-xl border border-white/20 p-4">
 									<div className="flex items-start gap-3">
 										{/* Icon as part of the card */}
-										<div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-primary text-lg text-white shadow-md">
-											{experience.icon || '•'}
-										</div>
+										<motion.div
+											className="relative flex h-10 w-10 flex-shrink-0 items-center justify-center"
+											initial={{ scale: 0 }}
+											whileInView={{ scale: 1 }}
+											transition={{ duration: 0.3, delay: index * 0.1 + 0.1 }}
+											viewport={{ once: true, amount: 0.3 }}
+										>
+											<div className="absolute inset-0 -z-10 h-11 w-11 -translate-x-0.5 -translate-y-0.5 rounded-full bg-amber-200 shadow-sm ring-1 ring-amber-300/70"></div>
+											<div className="relative z-10 flex h-9 w-9 items-center justify-center rounded-full bg-primary text-base text-white transition-all duration-300 hover:rotate-12 hover:scale-110">
+												{experience.icon || '•'}
+											</div>
+										</motion.div>
 										<div className="flex-1">
 											<h3 className="text-lg font-bold text-white">
 												{experience.title}
@@ -92,13 +101,16 @@ export default function CareerJourney() {
 
 								<div className="absolute left-1/2 flex -translate-x-1/2 items-center justify-center">
 									<motion.div
-										className="z-10 flex h-12 w-12 items-center justify-center rounded-full bg-primary text-xl text-white shadow-lg"
+										className="relative z-10 flex items-center justify-center"
 										initial={{ scale: 0 }}
 										whileInView={{ scale: 1 }}
-										transition={{ duration: 0.3 }}
+										transition={{ duration: 0.3, delay: index * 0.1 + 0.1 }}
 										viewport={{ once: true, amount: 0.3 }}
 									>
-										{experience.icon || '•'}
+										<div className="absolute h-11 w-11 rounded-full bg-amber-200 shadow-sm ring-1 ring-amber-300/70"></div>
+										<div className="relative z-10 flex h-9 w-9 items-center justify-center rounded-full bg-primary text-lg text-white transition-all duration-300 hover:rotate-12 hover:scale-110">
+											{experience.icon || '•'}
+										</div>
 									</motion.div>
 								</div>
 							</div>

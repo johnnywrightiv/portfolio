@@ -60,6 +60,8 @@ const config: Config = {
 					DEFAULT: 'hsl(var(--success))',
 					foreground: 'hsl(var(--success-foreground))',
 				},
+				'accent-warm': 'hsl(var(--accent-warm))',
+				'accent-cool': 'hsl(var(--accent-cool))',
 				chart: {
 					'1': 'hsl(var(--chart-1))',
 					'2': 'hsl(var(--chart-2))',

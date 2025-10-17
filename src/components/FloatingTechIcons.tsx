@@ -229,8 +229,18 @@ export default function FloatingTechIcons({ onReady }: FloatingTechIconsProps) {
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [techIcons]); // onReady intentionally excluded - parent callback doesn't change
 
-	// Optimized mouse tracking with container offset
+	// Optimized mouse tracking with container offset - disabled on touch devices
 	useEffect(() => {
+		// Check if device has hover capability (not a touch device)
+		const hasHoverCapability =
+			window.matchMedia('(hover: hover)').matches &&
+			window.matchMedia('(pointer: fine)').matches;
+
+		if (!hasHoverCapability) {
+			// On touch devices, disable mouse tracking completely
+			return;
+		}
+
 		let rafId: number;
 
 		const handleMouseMove = (e: MouseEvent) => {

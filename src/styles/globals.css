@@ -57,6 +57,8 @@
 	--warning-foreground: oklch(0.985 0 0);
 	--success: oklch(0.646 0.222 41.116);
 	--success-foreground: oklch(0.985 0 0);
+	--accent-warm: oklch(0.75 0.15 75);
+	--accent-cool: oklch(0.65 0.19 250);
 }
 
 .dark {
@@ -100,6 +102,8 @@
 	--warning-foreground: oklch(0.145 0 0);
 	--success: oklch(0.488 0.243 264.376);
 	--success-foreground: oklch(0.985 0 0);
+	--accent-warm: oklch(0.75 0.15 75);
+	--accent-cool: oklch(0.65 0.19 250);
 }
 
 @theme inline {
