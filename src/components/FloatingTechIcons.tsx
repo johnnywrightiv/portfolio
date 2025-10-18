@@ -66,76 +66,112 @@ export default function FloatingTechIcons({ onReady }: FloatingTechIconsProps) {
 	const [ready, setReady] = useState(false);
 	const [isInitialized, setIsInitialized] = useState(false);
 
+	// Detect if actual mobile device (not just window size)
+	const isMobileDevice = useMemo(() => {
+		if (typeof window === 'undefined') return false;
+
+		// Check for touch capability and mobile user agent
+		const hasTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+		const mobileUA =
+			/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+				navigator.userAgent
+			);
+		const isSmallScreen = window.innerWidth < 768;
+
+		// Consider it mobile only if it has touch AND (mobile UA OR small screen)
+		return hasTouch && (mobileUA || isSmallScreen);
+	}, []);
+
 	const techIcons = useMemo(() => {
 		// Development Tools
 		const developmentTools = [
-			{ name: 'React', icon: FaReact, color: '#61DAFB' },
-			{ name: 'Next.js', icon: SiNextdotjs, color: '#000000' },
-			{ name: 'TypeScript', icon: SiTypescript, color: '#3178C6' },
-			{ name: 'JavaScript', icon: FaJs, color: '#F7DF1E' },
-			{ name: 'Node.js', icon: FaNodeJs, color: '#339933' },
-			{ name: 'Express', icon: SiExpress, color: '#000000' },
-			{ name: 'Python', icon: FaPython, color: '#3776AB' },
-			{ name: 'PHP', icon: SiPhp, color: '#777BB4' },
-			{ name: 'HTML5', icon: SiHtml5, color: '#E34F26' },
-			{ name: 'CSS3', icon: SiCss3, color: '#1572B6' },
-			{ name: 'Sass', icon: FaSass, color: '#CC6699' },
-			{ name: 'Tailwind CSS', icon: SiTailwindcss, color: '#06B6D4' },
-			{ name: 'Bootstrap', icon: FaBootstrap, color: '#7952B3' },
-			{ name: 'Redux', icon: SiRedux, color: '#764ABC' },
-			{ name: 'Framer Motion', icon: SiFramer, color: '#888888' },
-			{ name: 'ShadCN/UI', icon: SiRadixui, color: '456456' },
-			{ name: 'OpenAI', icon: RiOpenaiFill, color: '#999999' },
-			{ name: 'Claude', icon: RiClaudeLine, color: '#C15F3C' },
+			{ name: 'React', icon: FaReact, color: '#61DAFB', priority: 1 },
+			{ name: 'Next.js', icon: SiNextdotjs, color: '#000000', priority: 1 },
+			{ name: 'TypeScript', icon: SiTypescript, color: '#3178C6', priority: 1 },
+			{ name: 'JavaScript', icon: FaJs, color: '#F7DF1E', priority: 2 },
+			{ name: 'Node.js', icon: FaNodeJs, color: '#339933', priority: 1 },
+			{ name: 'Express', icon: SiExpress, color: '#000000', priority: 3 },
+			{ name: 'Python', icon: FaPython, color: '#3776AB', priority: 2 },
+			{ name: 'PHP', icon: SiPhp, color: '#777BB4', priority: 4 },
+			{ name: 'HTML5', icon: SiHtml5, color: '#E34F26', priority: 3 },
+			{ name: 'CSS3', icon: SiCss3, color: '#1572B6', priority: 3 },
+			{ name: 'Sass', icon: FaSass, color: '#CC6699', priority: 4 },
+			{
+				name: 'Tailwind CSS',
+				icon: SiTailwindcss,
+				color: '#06B6D4',
+				priority: 1,
+			},
+			{ name: 'Bootstrap', icon: FaBootstrap, color: '#7952B3', priority: 4 },
+			{ name: 'Redux', icon: SiRedux, color: '#764ABC', priority: 4 },
+			{ name: 'Framer Motion', icon: SiFramer, color: '#888888', priority: 3 },
+			{ name: 'ShadCN/UI', icon: SiRadixui, color: '456456', priority: 3 },
+			{ name: 'OpenAI', icon: RiOpenaiFill, color: '#999999', priority: 2 },
+			{ name: 'Claude', icon: RiClaudeLine, color: '#C15F3C', priority: 2 },
 		];
 
 		// Database & Backend Tools
 		const databaseTools = [
-			{ name: 'MongoDB', icon: SiMongodb, color: '#47A248' },
-			{ name: 'PostgreSQL', icon: SiPostgresql, color: '#336791' },
-			{ name: 'Database', icon: FaDatabase, color: '#336791' },
-			{ name: 'Prisma', icon: SiPrisma, color: '#2D3748' },
-			{ name: 'Zod', icon: SiZod, color: '#3E72F1' },
+			{ name: 'MongoDB', icon: SiMongodb, color: '#47A248', priority: 2 },
+			{ name: 'PostgreSQL', icon: SiPostgresql, color: '#336791', priority: 2 },
+			{ name: 'Database', icon: FaDatabase, color: '#336791', priority: 4 },
+			{ name: 'Prisma', icon: SiPrisma, color: '#2D3748', priority: 3 },
+			{ name: 'Zod', icon: SiZod, color: '#3E72F1', priority: 4 },
 		];
 
 		// Development Environment & Tools
 		const devEnvironmentTools = [
-			{ name: 'Git', icon: FaGitAlt, color: '#F05032' },
-			{ name: 'GitHub', icon: FaGithub, color: '#999999' },
-			{ name: 'VSCode', icon: VscVscode, color: '#0085D0' },
-			{ name: 'Vercel', icon: SiVercel, color: '#333333' },
-			{ name: 'ESLint', icon: SiEslint, color: '#4B32C3' },
-			{ name: 'Prettier', icon: SiPrettier, color: '#F7B93E' },
-			{ name: 'Gulp', icon: SiGulp, color: '#CF4647' },
-			{ name: 'Webpack', icon: SiWebpack, color: '#8DD6F9' },
-			{ name: 'Postman', icon: SiPostman, color: '#FF6C37' },
+			{ name: 'Git', icon: FaGitAlt, color: '#F05032', priority: 2 },
+			{ name: 'GitHub', icon: FaGithub, color: '#999999', priority: 2 },
+			{ name: 'VSCode', icon: VscVscode, color: '#0085D0', priority: 3 },
+			{ name: 'Vercel', icon: SiVercel, color: '#333333', priority: 3 },
+			{ name: 'ESLint', icon: SiEslint, color: '#4B32C3', priority: 4 },
+			{ name: 'Prettier', icon: SiPrettier, color: '#F7B93E', priority: 4 },
+			{ name: 'Gulp', icon: SiGulp, color: '#CF4647', priority: 4 },
+			{ name: 'Webpack', icon: SiWebpack, color: '#8DD6F9', priority: 4 },
+			{ name: 'Postman', icon: SiPostman, color: '#FF6C37', priority: 4 },
 		];
 
 		// Design Tools
 		const designTools = [
-			{ name: 'Figma', icon: FaFigma, color: '#F24E1E' },
-			{ name: 'Adobe Photoshop', icon: SiAdobephotoshop, color: '#31A8FF' },
-			{ name: 'Adobe Illustrator', icon: SiAdobeillustrator, color: '#FF9A00' },
-			{ name: 'Canva', icon: SiCanva, color: '#00C4CC' },
+			{ name: 'Figma', icon: FaFigma, color: '#F24E1E', priority: 2 },
+			{
+				name: 'Adobe Photoshop',
+				icon: SiAdobephotoshop,
+				color: '#31A8FF',
+				priority: 3,
+			},
+			{
+				name: 'Adobe Illustrator',
+				icon: SiAdobeillustrator,
+				color: '#FF9A00',
+				priority: 4,
+			},
+			{ name: 'Canva', icon: SiCanva, color: '#00C4CC', priority: 4 },
 		];
 
 		// Misc Tools & Platforms
 		const miscTools = [
-			{ name: 'WordPress', icon: SiWordpress, color: '#21759B' },
-			{ name: 'Apple', icon: FaApple, color: '#999999' },
-			{ name: 'Windows', icon: FaWindows, color: '#0078D4' },
+			{ name: 'WordPress', icon: SiWordpress, color: '#21759B', priority: 4 },
+			{ name: 'Apple', icon: FaApple, color: '#999999', priority: 4 },
+			{ name: 'Windows', icon: FaWindows, color: '#0078D4', priority: 4 },
 		];
 
 		// Personal Interests
 		const interests = [
-			{ name: 'Basketball', icon: FaBasketballBall, color: '#F48024' },
-			{ name: 'Dumbbell', icon: FaDumbbell, color: '#555555' },
-			{ name: 'Guitar', icon: FaGuitar, color: '#C1440E' },
-			{ name: 'Music', icon: FaMusic, color: '#888888' },
-			{ name: 'Paw', icon: FaPaw, color: '#663300' },
+			{
+				name: 'Basketball',
+				icon: FaBasketballBall,
+				color: '#F48024',
+				priority: 4,
+			},
+			{ name: 'Dumbbell', icon: FaDumbbell, color: '#555555', priority: 4 },
+			{ name: 'Guitar', icon: FaGuitar, color: '#C1440E', priority: 4 },
+			{ name: 'Music', icon: FaMusic, color: '#888888', priority: 4 },
+			{ name: 'Paw', icon: FaPaw, color: '#663300', priority: 4 },
 		];
 
-		return [
+		const allIcons = [
 			...developmentTools,
 			...databaseTools,
 			...devEnvironmentTools,
@@ -143,7 +179,14 @@ export default function FloatingTechIcons({ onReady }: FloatingTechIconsProps) {
 			...miscTools,
 			...interests,
 		];
-	}, []);
+
+		// On mobile devices, only show priority 1 and 2 icons (core tech stack)
+		if (isMobileDevice) {
+			return allIcons.filter((icon) => icon.priority <= 2);
+		}
+
+		return allIcons;
+	}, [isMobileDevice]);
 
 	// Initialize icons with physics properties - optimized for immediate display
 	useEffect(() => {
@@ -153,24 +196,23 @@ export default function FloatingTechIcons({ onReady }: FloatingTechIconsProps) {
 			height: typeof window !== 'undefined' ? window.innerHeight : 1080,
 		};
 
-		// Detect mobile for performance optimizations
-		isMobileRef.current =
-			typeof window !== 'undefined' && window.innerWidth < 768;
+		// Set mobile state based on device detection (won't change on resize)
+		isMobileRef.current = isMobileDevice;
 
 		const updateDimensions = () => {
 			dimensionsRef.current = {
 				width: window.innerWidth || 1920,
 				height: window.innerHeight || 1080,
 			};
-			isMobileRef.current = window.innerWidth < 768;
 		};
 
 		const initIcons = () => {
 			const { width, height } = dimensionsRef.current;
 			const iconSize = 64;
 			const margin = 100;
+			const minDistance = iconSize * 2.5; // Minimum distance between icons to prevent overlap
 
-			return techIcons.map((icon, index) => {
+			const icons = techIcons.map((icon, index) => {
 				const cols = Math.ceil(Math.sqrt(techIcons.length));
 				const rows = Math.ceil(techIcons.length / cols);
 				const col = index % cols;
@@ -181,8 +223,9 @@ export default function FloatingTechIcons({ onReady }: FloatingTechIconsProps) {
 				const baseY =
 					(row / (rows - 1)) * (height - iconSize - margin * 2) + margin;
 
-				const x = baseX + (Math.random() - 0.5) * 100;
-				const y = baseY + (Math.random() - 0.5) * 100;
+				// Reduced randomness to prevent overlap
+				const x = baseX + (Math.random() - 0.5) * 60;
+				const y = baseY + (Math.random() - 0.5) * 60;
 
 				// Better initial floating speed - not too slow, not too fast
 				const speed = 0.8 + Math.random() * 0.6;
@@ -209,6 +252,39 @@ export default function FloatingTechIcons({ onReady }: FloatingTechIconsProps) {
 					isActive: false,
 				};
 			});
+
+			// Separate overlapping icons on initialization
+			for (let iteration = 0; iteration < 10; iteration++) {
+				for (let i = 0; i < icons.length; i++) {
+					const a = icons[i];
+					for (let j = i + 1; j < icons.length; j++) {
+						const b = icons[j];
+						const dx = b.x - a.x;
+						const dy = b.y - a.y;
+						const distance = Math.sqrt(dx * dx + dy * dy);
+
+						if (distance < minDistance && distance > 0) {
+							// Push icons apart
+							const nx = dx / distance;
+							const ny = dy / distance;
+							const separation = (minDistance - distance) / 2;
+
+							a.x -= nx * separation;
+							a.y -= ny * separation;
+							b.x += nx * separation;
+							b.y += ny * separation;
+
+							// Keep within bounds
+							a.x = Math.max(margin, Math.min(width - iconSize - margin, a.x));
+							a.y = Math.max(margin, Math.min(height - iconSize - margin, a.y));
+							b.x = Math.max(margin, Math.min(width - iconSize - margin, b.x));
+							b.y = Math.max(margin, Math.min(height - iconSize - margin, b.y));
+						}
+					}
+				}
+			}
+
+			return icons;
 		};
 
 		// Initialize immediately with default dimensions
@@ -326,10 +402,23 @@ export default function FloatingTechIcons({ onReady }: FloatingTechIconsProps) {
 		let lastTime = performance.now();
 		let mouseHasMovedSignificantly = false;
 		let lastMousePos = { x: 0, y: 0 };
+		let frameCount = 0;
+		let collisionFrameCount = 0;
 
 		const animate = (currentTime: number) => {
 			const deltaTime = Math.min(currentTime - lastTime, 32); // Cap delta time to prevent huge jumps
+
+			// On mobile, run physics at 30fps instead of 60fps for better performance
+			if (isMobileRef.current) {
+				frameCount++;
+				if (frameCount % 2 !== 0) {
+					animationRef.current = requestAnimationFrame(animate);
+					return;
+				}
+			}
+
 			lastTime = currentTime;
+			collisionFrameCount++;
 
 			// Check if mouse has moved significantly to activate icons
 			const mouse = mouseRef.current;
@@ -346,38 +435,48 @@ export default function FloatingTechIcons({ onReady }: FloatingTechIconsProps) {
 			const icons = iconsRef.current;
 			const { width, height } = dimensionsRef.current;
 
+			// Mouse interaction only on non-mobile devices
+			if (!isMobileRef.current) {
+				// Check mouse interaction for all icons
+				for (let i = 0; i < icons.length; i++) {
+					const icon = icons[i];
+
+					// Improved mouse interaction - more precise and follows trajectory
+					const mouseDx = icon.x + icon.radius - mouse.x;
+					const mouseDy = icon.y + icon.radius - mouse.y;
+					const mouseDistance = Math.sqrt(
+						mouseDx * mouseDx + mouseDy * mouseDy
+					);
+					const repelRadius = 100; // Larger detection radius for more responsive interaction
+
+					if (mouseDistance < repelRadius && mouseDistance > 0) {
+						// Activate this icon when mouse gets close
+						icon.isActive = true;
+
+						// More precise repulsion that follows mouse trajectory
+						const normalizedDx = mouseDx / mouseDistance;
+						const normalizedDy = mouseDy / mouseDistance;
+
+						// Calculate force based on distance (stronger when closer)
+						const forceStrength =
+							Math.pow((repelRadius - mouseDistance) / repelRadius, 2) * 0.8;
+
+						// Apply force in the direction away from mouse, following trajectory
+						const repelX = normalizedDx * forceStrength;
+						const repelY = normalizedDy * forceStrength;
+
+						icon.vx += repelX;
+						icon.vy += repelY;
+					} else {
+						// Deactivate icon when mouse moves away
+						icon.isActive = false;
+					}
+				}
+			}
+
 			// Update physics
 			for (let i = 0; i < icons.length; i++) {
 				const icon = icons[i];
-
-				// Improved mouse interaction - more precise and follows trajectory
-				const mouseDx = icon.x + icon.radius - mouse.x;
-				const mouseDy = icon.y + icon.radius - mouse.y;
-				const mouseDistance = Math.sqrt(mouseDx * mouseDx + mouseDy * mouseDy);
-				const repelRadius = 100; // Larger detection radius for more responsive interaction
-
-				if (mouseDistance < repelRadius && mouseDistance > 0) {
-					// Activate this icon when mouse gets close
-					icon.isActive = true;
-
-					// More precise repulsion that follows mouse trajectory
-					const normalizedDx = mouseDx / mouseDistance;
-					const normalizedDy = mouseDy / mouseDistance;
-
-					// Calculate force based on distance (stronger when closer)
-					const forceStrength =
-						Math.pow((repelRadius - mouseDistance) / repelRadius, 2) * 0.8;
-
-					// Apply force in the direction away from mouse, following trajectory
-					const repelX = normalizedDx * forceStrength;
-					const repelY = normalizedDy * forceStrength;
-
-					icon.vx += repelX;
-					icon.vy += repelY;
-				} else {
-					// Deactivate icon when mouse moves away
-					icon.isActive = false;
-				}
 
 				// Always apply floating motion - icons never stop moving
 				const timeScale = deltaTime / 16.67;
@@ -394,7 +493,7 @@ export default function FloatingTechIcons({ onReady }: FloatingTechIconsProps) {
 				}
 
 				// Ensure minimum floating velocity - icons never stop moving
-				const minVelocity = 0.4; // Minimum speed for continuous floating
+				const minVelocity = isMobileRef.current ? 0.3 : 0.4; // Slower on mobile
 				const currentSpeed = Math.sqrt(icon.vx * icon.vx + icon.vy * icon.vy);
 
 				if (currentSpeed < minVelocity) {
@@ -405,13 +504,41 @@ export default function FloatingTechIcons({ onReady }: FloatingTechIconsProps) {
 					icon.vy += Math.sin(pushAngle) * pushStrength;
 				}
 
-				// Add gentle random floating motion for organic feel
-				if (!icon.isActive && Math.random() < 0.02) {
-					// 2% chance per frame
+				// Add gentle random floating motion for organic feel (less on mobile)
+				if (
+					!icon.isActive &&
+					Math.random() < (isMobileRef.current ? 0.01 : 0.02)
+				) {
 					const floatAngle = Math.random() * Math.PI * 2;
 					const floatStrength = 0.1;
 					icon.vx += Math.cos(floatAngle) * floatStrength;
 					icon.vy += Math.sin(floatAngle) * floatStrength;
+				}
+
+				// On mobile, add force to push icons away from center zone
+				if (isMobileRef.current) {
+					const { height } = dimensionsRef.current;
+					const centerY = height / 2;
+					const centerZoneHeight = height * 0.5; // 50% of screen height is the "avoid" zone
+					const centerZoneTop = centerY - centerZoneHeight / 2;
+					const centerZoneBottom = centerY + centerZoneHeight / 2;
+
+					// Apply force when icon is in the center zone
+					if (icon.y > centerZoneTop && icon.y < centerZoneBottom) {
+						const distanceFromCenter = Math.abs(icon.y - centerY);
+						const maxDistance = centerZoneHeight / 2;
+						const forceStrength =
+							((maxDistance - distanceFromCenter) / maxDistance) * 0.15; // Stronger force in zone
+
+						// Push toward top or bottom based on which is closer
+						if (icon.y < centerY) {
+							// Push toward top
+							icon.vy -= forceStrength * timeScale;
+						} else {
+							// Push toward bottom
+							icon.vy += forceStrength * timeScale;
+						}
+					}
 				}
 
 				// Always update position with floating motion
@@ -440,22 +567,45 @@ export default function FloatingTechIcons({ onReady }: FloatingTechIconsProps) {
 				icon.scale += icon.scaleDirection * icon.scaleSpeed * timeScale;
 
 				// Strict scale bounds to prevent growing/shrinking too much
-				if (icon.scale > 1.2) {
-					icon.scale = 1.2;
-					icon.scaleDirection = -1;
-				} else if (icon.scale < 0.7) {
-					icon.scale = 0.7;
-					icon.scaleDirection = 1;
+				if (isMobileRef.current) {
+					// Mobile: more limited scale range for better performance
+					if (icon.scale > 1.1) {
+						icon.scale = 1.1;
+						icon.scaleDirection = -1;
+					} else if (icon.scale < 0.85) {
+						icon.scale = 0.85;
+						icon.scaleDirection = 1;
+					}
+				} else {
+					// Desktop: full scale range
+					if (icon.scale > 1.2) {
+						icon.scale = 1.2;
+						icon.scaleDirection = -1;
+					} else if (icon.scale < 0.7) {
+						icon.scale = 0.7;
+						icon.scaleDirection = 1;
+					}
 				}
 
-				// Update rotation
-				icon.rotation += icon.rotationSpeed * timeScale;
+				// Update rotation - slower on mobile for performance
+				if (isMobileRef.current) {
+					icon.rotation += icon.rotationSpeed * 0.5 * timeScale; // 50% slower rotation on mobile
+				} else {
+					icon.rotation += icon.rotationSpeed * timeScale;
+				}
 			}
 
-			// Handle collisions when icons are active or when there's significant movement
-			// Skip expensive collision detection on mobile for better performance
-			if (mouseHasMovedSignificantly && !isMobileRef.current) {
-				handleCollisions(icons);
+			// Handle collisions - less frequent on mobile for better performance
+			if (isMobileRef.current) {
+				// On mobile: run collisions every 4 frames to prevent overlap while maintaining performance
+				if (collisionFrameCount % 4 === 0) {
+					handleCollisions(icons);
+				}
+			} else {
+				// On desktop: run collisions when mouse has moved
+				if (mouseHasMovedSignificantly) {
+					handleCollisions(icons);
+				}
 			}
 
 			// DOM updates
@@ -520,19 +670,28 @@ export default function FloatingTechIcons({ onReady }: FloatingTechIconsProps) {
 								opacity: isInitialized ? icon.opacity : 0,
 							}}
 						>
-							<div
-								className="pointer-events-none absolute inset-0 rounded-full opacity-30 blur-xl"
-								style={{
-									background: `radial-gradient(circle, ${icon.color}60, transparent 70%)`,
-									transform: 'scale(1.8)',
-								}}
-							/>
+							{/* Only show glow on desktop for better mobile performance */}
+							{!isMobileRef.current && (
+								<div
+									className="pointer-events-none absolute inset-0 rounded-full opacity-30 blur-xl"
+									style={{
+										background: `radial-gradient(circle, ${icon.color}60, transparent 70%)`,
+										transform: 'scale(1.8)',
+									}}
+								/>
+							)}
 
 							<div
-								className="relative flex h-16 w-16 items-center justify-center rounded-2xl border border-white/20 shadow-2xl backdrop-blur-md"
+								className={`relative flex h-16 w-16 items-center justify-center rounded-2xl border border-white/20 ${
+									isMobileRef.current
+										? 'shadow-lg'
+										: 'shadow-2xl backdrop-blur-md'
+								}`}
 								style={{
 									background: `linear-gradient(135deg, ${icon.color}20, ${icon.color}35)`,
-									boxShadow: `0 8px 32px ${icon.color}25`,
+									boxShadow: isMobileRef.current
+										? `0 4px 16px ${icon.color}15`
+										: `0 8px 32px ${icon.color}25`,
 								}}
 							>
 								<IconComponent
