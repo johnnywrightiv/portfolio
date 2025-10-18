@@ -6,6 +6,7 @@ import { ThemeProvider } from '@/components/ThemeProvider';
 import { LoadingProvider } from '@/contexts/LoadingContext';
 import Navbar from '@/components/navbar';
 import Footer from '@/components/Footer';
+import { Analytics } from '@vercel/analytics/next';
 
 const poppins = Poppins({
 	weight: '400',
@@ -62,6 +63,7 @@ export default function RootLayout({
 			<body
 				className={`${poppins.variable} ${quicksand.variable} font-body antialiased`}
 			>
+				<Analytics />
 				<ThemeProvider
 					attribute="class"
 					defaultTheme="dark"
