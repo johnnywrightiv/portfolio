@@ -63,6 +63,7 @@ export default function FloatingTechIcons({ onReady }: FloatingTechIconsProps) {
 	const mouseRef = useRef({ x: 0, y: 0 });
 	const dimensionsRef = useRef({ width: 0, height: 0 });
 	const isMobileRef = useRef(false);
+	const isSafariRef = useRef(false);
 	const [ready, setReady] = useState(false);
 	const [isInitialized, setIsInitialized] = useState(false);
 
@@ -198,6 +199,13 @@ export default function FloatingTechIcons({ onReady }: FloatingTechIconsProps) {
 
 		// Set mobile state based on device detection (won't change on resize)
 		isMobileRef.current = isMobileDevice;
+
+		// Detect Safari for optimizations
+		if (typeof window !== 'undefined') {
+			isSafariRef.current =
+				/^((?!chrome|android).)*safari/i.test(navigator.userAgent) ||
+				/iPad|iPhone|iPod/.test(navigator.userAgent);
+		}
 
 		const updateDimensions = () => {
 			dimensionsRef.current = {
@@ -404,6 +412,7 @@ export default function FloatingTechIcons({ onReady }: FloatingTechIconsProps) {
 		let lastMousePos = { x: 0, y: 0 };
 		let frameCount = 0;
 		let collisionFrameCount = 0;
+		let initialFrames = 0; // Track initial frames for startup collision detection
 
 		const animate = (currentTime: number) => {
 			const deltaTime = Math.min(currentTime - lastTime, 32); // Cap delta time to prevent huge jumps
@@ -419,6 +428,7 @@ export default function FloatingTechIcons({ onReady }: FloatingTechIconsProps) {
 
 			lastTime = currentTime;
 			collisionFrameCount++;
+			initialFrames++;
 
 			// Check if mouse has moved significantly to activate icons
 			const mouse = mouseRef.current;
@@ -602,8 +612,10 @@ export default function FloatingTechIcons({ onReady }: FloatingTechIconsProps) {
 					handleCollisions(icons);
 				}
 			} else {
-				// On desktop: run collisions when mouse has moved
-				if (mouseHasMovedSignificantly) {
+				// On desktop: run collisions during initial frames OR when mouse has moved
+				// This fixes Safari overlap issue on initial render
+				const isInInitialPhase = initialFrames < 120; // Run for first 2 seconds (60fps * 2)
+				if (isInInitialPhase || mouseHasMovedSignificantly) {
 					handleCollisions(icons);
 				}
 			}
@@ -656,22 +668,26 @@ export default function FloatingTechIcons({ onReady }: FloatingTechIconsProps) {
 			{ready &&
 				iconsRef.current.map((icon, index) => {
 					const IconComponent = icon.icon;
+					// Staggered fade-in to prevent Safari lag spike
+					const fadeInDelay = isSafariRef.current ? index * 15 : 0; // 15ms stagger on Safari
 					return (
 						<div
 							key={`${icon.name}-${icon.id}`}
 							ref={(el) => {
 								if (el) elementsRef.current[index] = el;
 							}}
-							className="absolute transition-opacity duration-500 will-change-transform"
+							className="absolute transition-opacity duration-500"
 							style={{
 								left: 0,
 								top: 0,
 								transform: `translate3d(${icon.x}px, ${icon.y}px, 0) scale(${icon.scale}) rotate(${icon.rotation}deg)`,
 								opacity: isInitialized ? icon.opacity : 0,
+								transitionDelay: `${fadeInDelay}ms`,
+								willChange: isSafariRef.current ? 'auto' : 'transform', // Disable will-change on Safari
 							}}
 						>
 							{/* Only show glow on desktop for better mobile performance */}
-							{!isMobileRef.current && (
+							{!isMobileRef.current && !isSafariRef.current && (
 								<div
 									className="pointer-events-none absolute inset-0 rounded-full opacity-30 blur-xl"
 									style={{
@@ -683,15 +699,16 @@ export default function FloatingTechIcons({ onReady }: FloatingTechIconsProps) {
 
 							<div
 								className={`relative flex h-16 w-16 items-center justify-center rounded-2xl border border-white/20 ${
-									isMobileRef.current
+									isMobileRef.current || isSafariRef.current
 										? 'shadow-lg'
 										: 'shadow-2xl backdrop-blur-md'
 								}`}
 								style={{
 									background: `linear-gradient(135deg, ${icon.color}20, ${icon.color}35)`,
-									boxShadow: isMobileRef.current
-										? `0 4px 16px ${icon.color}15`
-										: `0 8px 32px ${icon.color}25`,
+									boxShadow:
+										isMobileRef.current || isSafariRef.current
+											? `0 4px 16px ${icon.color}15`
+											: `0 8px 32px ${icon.color}25`,
 								}}
 							>
 								<IconComponent
