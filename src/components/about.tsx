@@ -162,7 +162,7 @@ export default function AboutSection() {
 												const navbar = document.querySelector('nav');
 												const navbarHeight = navbar ? navbar.offsetHeight : 80;
 												const targetPosition =
-													target.offsetTop - navbarHeight - 20;
+													target.offsetTop - navbarHeight - 5;
 
 												window.scrollTo({
 													top: targetPosition,
@@ -187,15 +187,7 @@ export default function AboutSection() {
 											const target =
 												document.getElementById('featured-projects');
 											if (target) {
-												const navbar = document.querySelector('nav');
-												const navbarHeight = navbar ? navbar.offsetHeight : 80;
-												const targetPosition =
-													target.offsetTop - navbarHeight - 20;
-
-												window.scrollTo({
-													top: targetPosition,
-													behavior: 'smooth',
-												});
+												target.scrollIntoView({ behavior: 'smooth' });
 											}
 										}}
 									>

@@ -58,7 +58,7 @@ export default function Navbar() {
 			if (footer) {
 				const navbar = document.querySelector('nav');
 				const navbarHeight = navbar ? navbar.offsetHeight : 80; // fallback to 80px
-				const footerPosition = footer.offsetTop - navbarHeight - 20; // extra 20px padding
+				const footerPosition = footer.offsetTop - navbarHeight - 5; // minimal padding
 
 				window.scrollTo({
 					top: footerPosition,

@@ -354,7 +354,7 @@ export default function FloatingTechIcons({ onReady }: FloatingTechIconsProps) {
 				const mouseDx = icon.x + icon.radius - mouse.x;
 				const mouseDy = icon.y + icon.radius - mouse.y;
 				const mouseDistance = Math.sqrt(mouseDx * mouseDx + mouseDy * mouseDy);
-				const repelRadius = 120; // Larger detection radius for more responsive interaction
+				const repelRadius = 100; // Larger detection radius for more responsive interaction
 
 				if (mouseDistance < repelRadius && mouseDistance > 0) {
 					// Activate this icon when mouse gets close
@@ -366,7 +366,7 @@ export default function FloatingTechIcons({ onReady }: FloatingTechIconsProps) {
 
 					// Calculate force based on distance (stronger when closer)
 					const forceStrength =
-						Math.pow((repelRadius - mouseDistance) / repelRadius, 2) * 0.9;
+						Math.pow((repelRadius - mouseDistance) / repelRadius, 2) * 0.8;
 
 					// Apply force in the direction away from mouse, following trajectory
 					const repelX = normalizedDx * forceStrength;
@@ -529,10 +529,10 @@ export default function FloatingTechIcons({ onReady }: FloatingTechIconsProps) {
 							/>
 
 							<div
-								className="relative flex h-16 w-16 items-center justify-center rounded-2xl border border-white/20 shadow-2xl backdrop-blur-sm"
+								className="relative flex h-16 w-16 items-center justify-center rounded-2xl border border-white/20 shadow-2xl backdrop-blur-md"
 								style={{
-									background: `linear-gradient(135deg, ${icon.color}25, ${icon.color}45)`,
-									boxShadow: `0 8px 32px ${icon.color}30`,
+									background: `linear-gradient(135deg, ${icon.color}20, ${icon.color}35)`,
+									boxShadow: `0 8px 32px ${icon.color}25`,
 								}}
 							>
 								<IconComponent

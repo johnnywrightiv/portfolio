@@ -142,7 +142,7 @@ export default function HeroSection({ onIconsReady }: HeroSectionProps) {
 
 					{/* Main Heading with Name for SEO */}
 					<motion.div
-						className="mb-6 max-w-4xl rounded-2xl bg-black/40 p-6 backdrop-blur-sm sm:bg-black/20 sm:p-8"
+						className="mb-6 max-w-4xl rounded-2xl border border-white/20 bg-black/30 p-6 shadow-2xl backdrop-blur-md sm:bg-black/20 sm:p-8"
 						initial={{ opacity: 0, y: 30 }}
 						animate={{ opacity: 1, y: 0 }}
 						transition={{ duration: 0.8, ease: 'easeOut', delay: 0.6 }}

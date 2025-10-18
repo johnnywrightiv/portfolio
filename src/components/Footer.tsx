@@ -1,3 +1,6 @@
+/* eslint-disable @next/next/no-html-link-for-pages */
+// semantically this is a valid pattern, but linting will complain about the links
+
 'use client';
 
 import { motion } from 'framer-motion';
@@ -17,7 +20,7 @@ export default function Footer() {
 			if (element) {
 				const navbar = document.querySelector('nav');
 				const navbarHeight = navbar ? navbar.offsetHeight : 80; // fallback to 80px
-				const elementPosition = element.offsetTop - navbarHeight - 20; // extra 20px padding
+				const elementPosition = element.offsetTop - navbarHeight - 5; // minimal padding
 
 				window.scrollTo({
 					top: elementPosition,
@@ -214,20 +217,30 @@ export default function Footer() {
 							Quick Links
 						</motion.h3>
 						<motion.div className="space-y-3" variants={staggerContainer}>
-							<motion.button
-								onClick={() => handleScrollToSection('about')}
-								className="block whitespace-nowrap text-base text-white/75 transition-colors hover:text-white"
-								variants={linkVariants}
-							>
-								About
-							</motion.button>
-							<motion.button
-								onClick={() => handleScrollToSection('contact')}
-								className="block whitespace-nowrap text-base text-white/75 transition-colors hover:text-white"
-								variants={linkVariants}
-							>
-								Contact
-							</motion.button>
+							<motion.div variants={linkVariants}>
+								<a
+									href="/#about"
+									onClick={(e) => {
+										e.preventDefault();
+										handleScrollToSection('about');
+									}}
+									className="block whitespace-nowrap text-base text-white/75 transition-colors hover:text-white"
+								>
+									About
+								</a>
+							</motion.div>
+							<motion.div variants={linkVariants}>
+								<a
+									href="/#contact"
+									onClick={(e) => {
+										e.preventDefault();
+										handleScrollToSection('contact');
+									}}
+									className="block whitespace-nowrap text-base text-white/75 transition-colors hover:text-white"
+								>
+									Contact
+								</a>
+							</motion.div>
 							<motion.div variants={linkVariants}>
 								<Link
 									href="/projects"
@@ -236,13 +249,18 @@ export default function Footer() {
 									All Projects
 								</Link>
 							</motion.div>
-							<motion.button
-								onClick={() => handleScrollToSection('featured-projects')}
-								className="block whitespace-nowrap text-base text-white/75 transition-colors hover:text-white"
-								variants={linkVariants}
-							>
-								Featured Work
-							</motion.button>
+							<motion.div variants={linkVariants}>
+								<a
+									href="/#featured-projects"
+									onClick={(e) => {
+										e.preventDefault();
+										handleScrollToSection('featured-projects');
+									}}
+									className="block whitespace-nowrap text-base text-white/75 transition-colors hover:text-white"
+								>
+									Featured Work
+								</a>
+							</motion.div>
 						</motion.div>
 					</motion.div>
 

@@ -10,5 +10,5 @@
 ## Finalization
 
 - [ ] **SEO & Marketing:** lightly optimize meta description, keywords in layout.tsx
-- [ ] **Assets:** SVGs/images, reduce size to speed up load time, update favicon/logo to match brand
-- [ ] **Optimizations:** sitemap, robots, accessibility, performance, general tweaks
+- [ ] **Assets:** reduce image sizes where needed to speed up load time & performance
+- [ ] **Optimizations:** sitemap & robots, last minute general improvements
