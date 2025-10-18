@@ -88,7 +88,10 @@ export default function AboutSection() {
 									}`}
 								>
 									<Image
-										src={getOverlayImageSrc() || '/images/optimized/profile-picture2.jpg'}
+										src={
+											getOverlayImageSrc() ||
+											'/images/optimized/profile-picture2.jpg'
+										}
 										alt={`John Wright ${displayedImage || 'profile'}`}
 										width={400}
 										height={400}
