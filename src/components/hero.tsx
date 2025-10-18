@@ -74,18 +74,8 @@ export default function HeroSection({ onIconsReady }: HeroSectionProps) {
 	const scrollToAbout = () => {
 		const aboutSection = document.getElementById('about');
 		if (aboutSection) {
-			// Get navbar height for proper offset
-			const navbar = document.querySelector('nav');
-			const navbarHeight = navbar ? navbar.offsetHeight : 80;
-
-			// Calculate target position with navbar offset
-			const targetPosition = aboutSection.offsetTop - navbarHeight - 20;
-
-			// Use smooth scroll with proper positioning
-			window.scrollTo({
-				top: targetPosition,
-				behavior: 'smooth',
-			});
+			// Match navbar behavior - simple scrollIntoView without offset
+			aboutSection.scrollIntoView({ behavior: 'smooth' });
 		}
 	};
 

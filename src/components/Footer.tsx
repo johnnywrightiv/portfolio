@@ -102,13 +102,14 @@ export default function Footer() {
 							className="mb-5 text-2xl font-bold text-white lg:text-3xl"
 							variants={fadeInUp}
 						>
-							Let&apos;s Connect
+							Contact Me
 						</motion.h3>
 						<motion.p
-							className="mb-4 text-base text-white/75 lg:text-lg"
+							className="mb-4 max-w-sm text-base text-white/75 lg:text-lg"
 							variants={fadeInUp}
 						>
-							Have a project in mind or want to collaborate?
+							Have a project in mind or want to collaborate? I&apos;d love to
+							chat!
 						</motion.p>
 						<motion.p
 							className="mb-6 text-base text-white/75"

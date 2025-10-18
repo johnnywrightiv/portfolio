@@ -1,42 +1,42 @@
 [
 	{
 		"id": 1,
-		"name": "Sarah Johnson",
-		"position": "Product Manager at TechCorp",
-		"content": "Working with this developer was an absolute pleasure. They delivered our project on time and exceeded our expectations in terms of quality and functionality.",
+		"name": "Brian Nova",
+		"position": "Product Lead at Quantum Groove Systems",
+		"content": "Turned a chaotic backlog into a clear, reliable roadmap. Features shipped on time, bugs stayed quiet, and somehow we all felt like we knew what we were doing.",
 		"rating": 5,
-		"image": "/placeholder.svg?height=100&width=100"
+		"image": "https://api.dicebear.com/9.x/personas/svg?seed=BrianNova"
 	},
 	{
 		"id": 2,
-		"name": "Michael Chen",
-		"position": "CTO at StartupX",
-		"content": "Exceptional technical expertise and ability to understand our business needs resulted in a product that has significantly improved our user engagement.",
+		"name": "Jordan Vega",
+		"position": "CTO at Neon Tape Labs",
+		"content": "We asked for a bug fix; he upgraded the whole system instead. Smooth, fast, and somehow less stressful than it has any right to be.",
 		"rating": 5,
-		"image": "/placeholder.svg?height=100&width=100"
+		"image": "https://api.dicebear.com/9.x/bottts/svg?seed=JordanVega"
 	},
 	{
 		"id": 3,
-		"name": "Emily Rodriguez",
-		"position": "Founder of DesignHub",
-		"content": "Impressed by the ability to translate our design vision into a fully functional website. Responsive, professional, and provided valuable suggestions.",
+		"name": "Casey Monroe",
+		"position": "Creative Director at PixelTone Studio",
+		"content": "I gave him scattered ideas and vague goals—he returned something coherent, usable, and actually enjoyable. Not sure if it’s skill or sorcery.",
 		"rating": 4.5,
-		"image": "/placeholder.svg?height=100&width=100"
+		"image": "/images/placeholder.png"
 	},
 	{
 		"id": 4,
-		"name": "David Kim",
-		"position": "CEO of TechSolutions",
-		"content": "Highly recommended! The developer was able to deliver a complex project on time and within budget.",
+		"name": "Samantha Cruz",
+		"position": "Founder at Lo-Fi Logic",
+		"content": "Hired for a prototype, got a production-ready app. Organized, efficient, and just the right amount of creative flair.",
 		"rating": 5,
-		"image": "/placeholder.svg?height=100&width=100"
+		"image": "https://api.dicebear.com/9.x/pixel-art/svg?seed=SamanthaCruz"
 	},
 	{
 		"id": 5,
-		"name": "Emma Lee",
-		"position": "Project Manager at SoftwareCompany",
-		"content": "A true professional who delivered a high-quality product on time and within budget.",
+		"name": "Drew Kimura",
+		"position": "Operations Manager at Binary Vinyl",
+		"content": "Steady under pressure, clear communicator, and somehow predicts blockers before they happen. Makes everyone else look like they’re improvising.",
 		"rating": 5,
-		"image": "/placeholder.svg?height=100&width=100"
+		"image": "/images/placeholder.png"
 	}
 ]

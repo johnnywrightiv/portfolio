@@ -1,30 +1,44 @@
 [
 	{
-		"title": "Senior Frontend Engineer",
-		"company": "Tech Innovations Inc.",
-		"period": "2021 - Present",
-		"description": "Lead the frontend development team in building a SaaS platform. Implemented new features, improved performance, and mentored junior developers.",
-		"icon": "💼"
+		"title": "Creative Foundations",
+		"company": "Musician & Audio Engineer",
+		"period": "Est. 2007",
+		"description": "Began a lifelong creative and technical journey through music and audio engineering. Developed a hands-on understanding of sound, production, and media technology—skills that later shaped an intuitive grasp of systems, design, and user experience.",
+		"icon": "🎹"
 	},
 	{
-		"title": "Frontend Developer",
-		"company": "Digital Solutions Co.",
-		"period": "2019 - 2021",
-		"description": "Developed responsive web applications using React and TypeScript. Collaborated with designers and backend engineers to deliver high-quality products.",
-		"icon": "⚛️"
+		"title": "Music Industry & Production Management",
+		"company": "Various Venues, Tours, & Production Ops",
+		"period": "2014 – 2023",
+		"description": "Worked across high-stakes live event, music startups, and Fortune 500 entertainment companies. Whether touring, supporting major production teams, managing crews and logistics, or slinging merchandise 🤘🏼👕🎤. Coordinated with vendors and artists while honing leadership and problem-solving skills in fast-moving environments.",
+		"icon": "🎟️"
 	},
 	{
-		"title": "Web Developer",
-		"company": "Creative Agency",
-		"period": "2017 - 2019",
-		"description": "Built websites and web applications for various clients. Worked with HTML, CSS, JavaScript, and WordPress.",
-		"icon": "🎨"
+		"title": "Operations & Leadership",
+		"company": "Ravinia Festival",
+		"period": "2018 – 2024",
+		"description": "Grew into an Assistant Production Manager role overseeing 100+ live shows annually. Led teams, optimized logistics systems, and introduced new technologies and SOPs that improved efficiency and reduced losses by over 80%. Developed strong stakeholder, vendor, and leadership experience.",
+		"icon": "📈"
 	},
 	{
-		"title": "Intern",
-		"company": "Startup Hub",
-		"period": "2016 - 2017",
-		"description": "Assisted in developing web applications and learned modern web development practices.",
+		"title": "Product & Data Operations",
+		"company": "Chicago Music Exchange",
+		"period": "2021 – 2022",
+		"description": "Served as Associate Product Manager overseeing data pipelines, product integrity, and cross-team communication. Supported web and sales platforms through data cleaning, dashboard creation, and process automation—bridging product, operations, and tech.",
+		"icon": "📊"
+	},
+	{
+		"title": "Transition to Technology",
+		"company": "Freelance Development Consultant",
+		"period": "Est. 2022",
+		"description": "Self-directed transition into software development, followed by an intensive bootcamp focused on modern web technologies and full-stack projects. Consulted for multiple clients to design and build websites and applications, combining creative problem-solving with analytical thinking to guide them through the development lifecycle and deliver effective, goal-driven solutions.",
+		"icon": "💻"
+	},
+	{
+		"title": "Software Development & Engineering",
+		"company": "Frey Design Group",
+		"period": "2025 – Present",
+		"description": "Full-stack developer focused on scalable, maintainable, and visually refined websites and apps. Experienced with React, Next.js, Node.js, AI Integration, and Automation Workflows. Currently working with Wordpress, PHP, SCSS, Vanilla JS/CSS and more. Integrating design awareness, production discipline, and leadership maturity.",
 		"icon": "🚀"
 	}
 ]

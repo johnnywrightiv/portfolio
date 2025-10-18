@@ -48,6 +48,7 @@ import {
 	SiRedux,
 } from 'react-icons/si';
 import { VscVscode } from 'react-icons/vsc';
+import { RiClaudeLine, RiOpenaiFill } from 'react-icons/ri';
 
 interface FloatingTechIconsProps {
 	onReady?: () => void;
@@ -82,8 +83,10 @@ export default function FloatingTechIcons({ onReady }: FloatingTechIconsProps) {
 			{ name: 'Tailwind CSS', icon: SiTailwindcss, color: '#06B6D4' },
 			{ name: 'Bootstrap', icon: FaBootstrap, color: '#7952B3' },
 			{ name: 'Redux', icon: SiRedux, color: '#764ABC' },
-			{ name: 'Framer Motion', icon: SiFramer, color: '#0055FF' },
-			{ name: 'ShadCN/UI', icon: SiRadixui, color: '#000000' },
+			{ name: 'Framer Motion', icon: SiFramer, color: '#888888' },
+			{ name: 'ShadCN/UI', icon: SiRadixui, color: '456456' },
+			{ name: 'OpenAI', icon: RiOpenaiFill, color: '#999999' },
+			{ name: 'Claude', icon: RiClaudeLine, color: '#C15F3C' },
 		];
 
 		// Database & Backend Tools
@@ -98,9 +101,9 @@ export default function FloatingTechIcons({ onReady }: FloatingTechIconsProps) {
 		// Development Environment & Tools
 		const devEnvironmentTools = [
 			{ name: 'Git', icon: FaGitAlt, color: '#F05032' },
-			{ name: 'GitHub', icon: FaGithub, color: '#181717' },
-			{ name: 'VSCode', icon: VscVscode, color: '#000000' },
-			{ name: 'Vercel', icon: SiVercel, color: '#000000' },
+			{ name: 'GitHub', icon: FaGithub, color: '#999999' },
+			{ name: 'VSCode', icon: VscVscode, color: '#0085D0' },
+			{ name: 'Vercel', icon: SiVercel, color: '#333333' },
 			{ name: 'ESLint', icon: SiEslint, color: '#4B32C3' },
 			{ name: 'Prettier', icon: SiPrettier, color: '#F7B93E' },
 			{ name: 'Gulp', icon: SiGulp, color: '#CF4647' },
@@ -119,7 +122,7 @@ export default function FloatingTechIcons({ onReady }: FloatingTechIconsProps) {
 		// Misc Tools & Platforms
 		const miscTools = [
 			{ name: 'WordPress', icon: SiWordpress, color: '#21759B' },
-			{ name: 'Apple', icon: FaApple, color: '#A2AAAD' },
+			{ name: 'Apple', icon: FaApple, color: '#999999' },
 			{ name: 'Windows', icon: FaWindows, color: '#0078D4' },
 		];
 
@@ -334,7 +337,7 @@ export default function FloatingTechIcons({ onReady }: FloatingTechIconsProps) {
 			const mouseDy = mouse.y - lastMousePos.y;
 			const mouseMovement = Math.sqrt(mouseDx * mouseDx + mouseDy * mouseDy);
 
-			if (mouseMovement > 8) {
+			if (mouseMovement > 3) {
 				// Lower threshold for more responsive activation
 				mouseHasMovedSignificantly = true;
 				lastMousePos = { ...mouse };
@@ -351,7 +354,7 @@ export default function FloatingTechIcons({ onReady }: FloatingTechIconsProps) {
 				const mouseDx = icon.x + icon.radius - mouse.x;
 				const mouseDy = icon.y + icon.radius - mouse.y;
 				const mouseDistance = Math.sqrt(mouseDx * mouseDx + mouseDy * mouseDy);
-				const repelRadius = 120; // Slightly larger detection radius
+				const repelRadius = 120; // Larger detection radius for more responsive interaction
 
 				if (mouseDistance < repelRadius && mouseDistance > 0) {
 					// Activate this icon when mouse gets close
@@ -363,7 +366,7 @@ export default function FloatingTechIcons({ onReady }: FloatingTechIconsProps) {
 
 					// Calculate force based on distance (stronger when closer)
 					const forceStrength =
-						Math.pow((repelRadius - mouseDistance) / repelRadius, 2) * 0.6;
+						Math.pow((repelRadius - mouseDistance) / repelRadius, 2) * 0.9;
 
 					// Apply force in the direction away from mouse, following trajectory
 					const repelX = normalizedDx * forceStrength;
@@ -381,9 +384,9 @@ export default function FloatingTechIcons({ onReady }: FloatingTechIconsProps) {
 
 				// Apply different friction based on activation state
 				if (mouseHasMovedSignificantly || icon.isActive) {
-					// Lighter friction when active for more dynamic movement
-					icon.vx *= 0.999;
-					icon.vy *= 0.999;
+					// Very light friction when active for highly dynamic movement
+					icon.vx *= 0.9985;
+					icon.vy *= 0.9985;
 				} else {
 					// Slightly more friction when inactive but still floating
 					icon.vx *= 0.9995;

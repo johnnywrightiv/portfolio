@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { useState, useRef } from 'react';
 import { Button } from '@/components/ui/button';
-import { MessageCircle } from 'lucide-react';
+import { MessageCircle, FolderKanban } from 'lucide-react';
 
 export default function AboutSection() {
 	const [hoveredImage, setHoveredImage] = useState<string | null>(null);
@@ -147,10 +147,10 @@ export default function AboutSection() {
 								</p>
 							</div>
 
-							<div className="flex justify-center lg:justify-start">
+							<div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row lg:justify-start">
 								<Button
 									asChild
-									className="glass glass-hover group mt-8 border border-white/20 px-8 py-4 font-semibold text-white transition-all duration-300 hover:scale-105 hover:border-white/40 hover:shadow-lg hover:shadow-white/10"
+									className="glass glass-hover group w-full border border-white/20 px-8 py-4 font-semibold text-white transition-all duration-300 hover:scale-105 hover:border-white/40 hover:shadow-lg hover:shadow-white/10 sm:w-auto"
 								>
 									<a
 										href="#contact"
@@ -173,6 +173,34 @@ export default function AboutSection() {
 									>
 										<MessageCircle className="mr-2 h-5 w-5 transition-transform duration-300 group-hover:rotate-12" />
 										Let&apos;s Connect
+									</a>
+								</Button>
+								<Button
+									asChild
+									className="glass glass-hover group w-full border border-white/20 px-8 py-4 font-semibold text-white transition-all duration-300 hover:scale-105 hover:border-white/40 hover:shadow-lg hover:shadow-white/10 sm:w-auto"
+								>
+									<a
+										href="#projects"
+										aria-label="Scroll to projects section"
+										onClick={(e) => {
+											e.preventDefault();
+											const target =
+												document.getElementById('featured-projects');
+											if (target) {
+												const navbar = document.querySelector('nav');
+												const navbarHeight = navbar ? navbar.offsetHeight : 80;
+												const targetPosition =
+													target.offsetTop - navbarHeight - 20;
+
+												window.scrollTo({
+													top: targetPosition,
+													behavior: 'smooth',
+												});
+											}
+										}}
+									>
+										<FolderKanban className="mr-2 h-5 w-5 transition-transform duration-300 group-hover:rotate-12" />
+										Explore Projects
 									</a>
 								</Button>
 							</div>

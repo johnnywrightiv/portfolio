@@ -2,12 +2,9 @@
 
 ## Content
 
-- [ ] **Strategy & Tone:** define marketing strategy for content & SEO -- update for senior perspective + music background
-- [ ] **Hero Section:** update content
-- [ ] **About Section:** update content
-- [ ] **FAQ Section:** update content (help?)
-- [ ] **Testimonials:** review/update (actual)
-- [ ] **Career Journey:** review/update (resume)
+- [ ] **Strategy & Tone:** define marketing strategy for content
+- [ ] **About Section:** update content?
+- [ ] **FAQ Section:** add when linkedin endorsements come back on?
 - [ ] **Projects:** add new, refine existing tone/details
 
 ## Finalization

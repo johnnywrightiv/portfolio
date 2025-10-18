@@ -43,18 +43,18 @@ export default function CareerJourney() {
 								viewport={{ once: true, amount: 0.3 }}
 							>
 								{/* Full-width content card with icon integrated */}
-								<div className="glass glass-hover rounded-xl border border-white/20 p-4">
+								<div className="glass glass-hover group rounded-xl border border-white/20 p-4">
 									<div className="flex items-start gap-3">
 										{/* Icon as part of the card */}
 										<motion.div
 											className="relative flex h-10 w-10 flex-shrink-0 items-center justify-center"
 											initial={{ scale: 0 }}
 											whileInView={{ scale: 1 }}
-											transition={{ duration: 0.3, delay: index * 0.1 + 0.1 }}
+											transition={{ duration: 0.5, delay: index * 0.1 }}
 											viewport={{ once: true, amount: 0.3 }}
 										>
-											<div className="absolute inset-0 -z-10 h-11 w-11 -translate-x-0.5 -translate-y-0.5 rounded-full bg-amber-200 shadow-sm ring-1 ring-amber-300/70"></div>
-											<div className="relative z-10 flex h-9 w-9 items-center justify-center rounded-full bg-primary text-base text-white transition-all duration-300 hover:rotate-12 hover:scale-110">
+											<div className="absolute inset-0 -z-10 h-12 w-12 -translate-x-1 -translate-y-1 rounded-full bg-amber-200 shadow-md ring-1 ring-amber-300/70"></div>
+											<div className="relative z-10 flex h-10 w-10 items-center justify-center rounded-full bg-primary text-xl text-white shadow-lg transition-all duration-300 group-hover:rotate-12 group-hover:scale-110">
 												{experience.icon || '•'}
 											</div>
 										</motion.div>
@@ -82,7 +82,7 @@ export default function CareerJourney() {
 								className={`relative z-10 flex items-center ${index % 2 === 0 ? 'md:flex-row-reverse' : 'md:flex-row'}`}
 							>
 								<motion.div
-									className={`w-full md:w-1/2 ${index % 2 === 0 ? 'md:pl-10' : 'md:pr-10'}`}
+									className={`group w-full md:w-1/2 ${index % 2 === 0 ? 'md:pl-10' : 'md:pr-10'}`}
 									initial={{ opacity: 0, x: index % 2 === 0 ? 50 : -50 }}
 									whileInView={{ opacity: 1, x: 0 }}
 									transition={{ duration: 0.5 }}
@@ -104,11 +104,11 @@ export default function CareerJourney() {
 										className="relative z-10 flex items-center justify-center"
 										initial={{ scale: 0 }}
 										whileInView={{ scale: 1 }}
-										transition={{ duration: 0.3, delay: index * 0.1 + 0.1 }}
+										transition={{ duration: 0.5 }}
 										viewport={{ once: true, amount: 0.3 }}
 									>
-										<div className="absolute h-11 w-11 rounded-full bg-amber-200 shadow-sm ring-1 ring-amber-300/70"></div>
-										<div className="relative z-10 flex h-9 w-9 items-center justify-center rounded-full bg-primary text-lg text-white transition-all duration-300 hover:rotate-12 hover:scale-110">
+										<div className="absolute h-14 w-14 rounded-full bg-amber-200 shadow-md ring-1 ring-amber-300/70"></div>
+										<div className="relative z-10 flex h-11 w-11 items-center justify-center rounded-full bg-primary text-2xl text-white shadow-lg transition-all duration-300 group-hover:rotate-12 group-hover:scale-110">
 											{experience.icon || '•'}
 										</div>
 									</motion.div>

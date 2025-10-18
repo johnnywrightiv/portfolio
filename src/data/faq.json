@@ -1,18 +1,26 @@
 [
-  {
-    "question": "What services do you offer?",
-    "answer": "I specialize in UX/UI design, Web3 integration, AI implementation, and growth strategy for digital products. I help scale products through thoughtful design and strategic implementation."
-  },
-  {
-    "question": "How long does a typical project take?",
-    "answer": "Project timelines vary based on scope and complexity. A typical UX design project takes 4-8 weeks, while full product development can range from 2-6 months. I'll provide a detailed timeline during our initial consultation."
-  },
-  {
-    "question": "Do you work with startups?",
-    "answer": "I have extensive experience working with startups and understand the unique challenges of building products with limited resources. I can help you prioritize features and create an MVP that resonates with users."
-  },
-  {
-    "question": "What is your design process?",
-    "answer": "My process includes discovery and research, user persona development, wireframing and prototyping, visual design, user testing, and iterative refinement. I believe in data-driven design decisions and continuous improvement."
-  }
+	{
+		"question": "What kind of work do you do?",
+		"answer": "I build and maintain modern web applications—everything from small business sites to full-stack platforms. My focus is clean, scalable code and thoughtful user experience. I also consult on workflow automation and AI integration for teams looking to modernize their processes."
+	},
+	{
+		"question": "Who do you typically work with?",
+		"answer": "I’ve worked with everyone from independent creators and startups to established agencies and Fortune 500 companies. My background in live production taught me how to thrive under pressure and adapt quickly—skills that translate directly into engineering, leadership, and collaboration."
+	},
+	{
+		"question": "What makes you different as a developer?",
+		"answer": "I bring cross-functional experience—production management, product operations, and engineering—so I naturally think about the whole system: people, tools, and outcomes. I lead by aligning technical work with creative vision and business goals."
+	},
+	{
+		"question": "How does your creative background influence your tech work?",
+		"answer": "Coming from music, I approach development like composing; structure, flow, and attention to rhythm matter. My background in production helps me communicate well with clients, understand creative intent, and translate abstract ideas into functional, elegant solutions."
+	},
+	{
+		"question": "Do you take on freelance or collaborative projects?",
+		"answer": "Yes. I'm always open to hearing about opportunities to connet with like-minded individuals or teams for the right creative or technical collaboration. I value projects where the mission and creative vision are clear, and the team is aligned."
+	},
+	{
+		"question": "How do you approach new challenges or technologies?",
+		"answer": "I’ve always learned by doing. From hacking together my first websites to automating my first MIDI devices, curiosity drives everything I do. I pick up new tools fast and apply them in practical, results-driven ways without losing sight of the the bigger picture. I am a lifelong learner who is always looking for new and exciting technologies to explore and opportunities to learn."
+	}
 ]
