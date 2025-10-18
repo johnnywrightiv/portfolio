@@ -87,10 +87,12 @@ export default function ClientTestimonials() {
 													<div className="relative h-10 w-10 flex-shrink-0 overflow-hidden rounded-full md:h-12 md:w-12">
 														<Image
 															src={
-																testimonial.image || '/images/placeholder.png'
+																testimonial.image ||
+																'/images/optimized/placeholder.webp'
 															}
 															alt={testimonial.name}
 															fill
+															loading="lazy"
 															className="object-cover"
 														/>
 													</div>

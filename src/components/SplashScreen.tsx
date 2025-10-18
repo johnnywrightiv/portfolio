@@ -91,7 +91,7 @@ export default function SplashScreen({
 						>
 							<div className="relative overflow-hidden rounded-full ring-2 ring-blue-400/30">
 								<Image
-									src="/images/profile-picture.jpg"
+									src="/images/optimized/profile-picture.jpg"
 									alt="John Wright"
 									width={120}
 									height={120}

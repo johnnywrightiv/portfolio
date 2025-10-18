@@ -1,4 +1,15 @@
+import type { Metadata } from 'next';
 import CareerJourney from '@/components/CareerJourney';
+
+export const metadata: Metadata = {
+	title: 'Career Journey | John Wright',
+	description:
+		'From audio engineer to full-stack developer. My path through music production, UX research, and web development.',
+	openGraph: {
+		title: 'Career Journey | John Wright',
+		description: 'From audio engineer to full-stack developer.',
+	},
+};
 
 export default function MusicPage() {
 	return (

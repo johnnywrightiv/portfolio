@@ -4,6 +4,10 @@ import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { useScrollPosition } from '@/hooks/useScrollPosition';
 import { motion, AnimatePresence } from 'framer-motion';
+import {
+	smoothScrollToElementWithNav,
+	smoothScrollToElement,
+} from '@/lib/smooth-scroll';
 
 // Animation variants
 const navVariants = {
@@ -47,7 +51,7 @@ export default function Navbar() {
 		if (id === 'home') {
 			// Check if we're on the homepage for home section
 			if (window.location.pathname === '/') {
-				document.getElementById('home')?.scrollIntoView({ behavior: 'smooth' });
+				smoothScrollToElement('home');
 			} else {
 				// Navigate to homepage
 				window.location.href = '/';
@@ -56,21 +60,12 @@ export default function Navbar() {
 			// Always scroll to footer for contact with navbar offset
 			const footer = document.querySelector('footer');
 			if (footer) {
-				const navbar = document.querySelector('nav');
-				const navbarHeight = navbar ? navbar.offsetHeight : 80; // fallback to 80px
-				const footerPosition = footer.offsetTop - navbarHeight - 5; // minimal padding
-
-				window.scrollTo({
-					top: footerPosition,
-					behavior: 'smooth',
-				});
+				smoothScrollToElementWithNav('contact');
 			}
 		} else if (id === 'projects') {
 			// Check if we're on the homepage for projects section
 			if (window.location.pathname === '/') {
-				document
-					.getElementById('featured-projects')
-					?.scrollIntoView({ behavior: 'smooth' });
+				smoothScrollToElement('featured-projects');
 			} else {
 				// Navigate to projects page
 				window.location.href = '/projects';
@@ -78,7 +73,7 @@ export default function Navbar() {
 		} else {
 			// Check if we're on the homepage for other sections
 			if (window.location.pathname === '/') {
-				document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+				smoothScrollToElement(id);
 			} else {
 				// Navigate to homepage with hash
 				window.location.href = `/#${id}`;

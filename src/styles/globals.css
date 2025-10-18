@@ -151,7 +151,7 @@
 
 @layer base {
 	html {
-		scroll-behavior: smooth;
+		/* Using custom JS smooth scroll for cross-browser consistency */
 		overscroll-behavior: none; /* Prevent overscroll bounce */
 	}
 

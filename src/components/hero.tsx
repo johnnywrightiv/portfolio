@@ -4,6 +4,7 @@ import { Badge } from '@/components/ui/badge';
 import { ChevronDown, Code, Smartphone, Bot, Rocket } from 'lucide-react';
 import FloatingTechIcons from './FloatingTechIcons';
 import { motion } from 'framer-motion';
+import { smoothScrollToElement } from '@/lib/smooth-scroll';
 
 // Vibrant yet subtle palettes (aligned with theme tokens)
 const heroGradientPalettes: string[][] = [
@@ -72,11 +73,7 @@ interface HeroSectionProps {
 
 export default function HeroSection({ onIconsReady }: HeroSectionProps) {
 	const scrollToAbout = () => {
-		const aboutSection = document.getElementById('about');
-		if (aboutSection) {
-			// Match navbar behavior - simple scrollIntoView without offset
-			aboutSection.scrollIntoView({ behavior: 'smooth' });
-		}
+		smoothScrollToElement('about');
 	};
 
 	const handleIconsReady = () => {
@@ -94,7 +91,7 @@ export default function HeroSection({ onIconsReady }: HeroSectionProps) {
 			<div
 				className="absolute inset-0 opacity-5"
 				style={{
-					backgroundImage: 'url(/images/hero-background3.jpg)',
+					backgroundImage: 'url(/images/optimized/hero-background3.jpg)',
 					backgroundSize: 'cover',
 					backgroundPosition: 'center',
 				}}
@@ -113,13 +110,13 @@ export default function HeroSection({ onIconsReady }: HeroSectionProps) {
 						transition={{ duration: 0.8, ease: 'easeOut', delay: 0.2 }}
 					>
 						<div className="glass rounded-full p-2 shadow-2xl">
-							<Image
-								src="/images/profile-picture.jpg"
-								alt="John Wright Full-Stack Developer Headshot"
-								width={120}
-								height={120}
-								className="rounded-full"
-								priority
+					<Image
+						src="/images/optimized/profile-picture.jpg"
+						alt="John Wright Full-Stack Developer Headshot"
+						width={120}
+						height={120}
+						className="rounded-full"
+						priority
 							/>
 						</div>
 					</motion.div> */}

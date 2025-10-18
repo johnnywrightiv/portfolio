@@ -248,6 +248,7 @@ export default function FeaturedProjects() {
 																src={project.image}
 																alt={project.title}
 																fill
+																loading="lazy"
 																className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
 																sizes="(max-width: 990px) 100vw, (max-width: 1200px) 50vw, (max-width: 1600px) 33vw, 25vw"
 															/>

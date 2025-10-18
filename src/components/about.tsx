@@ -5,6 +5,10 @@ import Image from 'next/image';
 import { useState, useRef } from 'react';
 import { Button } from '@/components/ui/button';
 import { MessageCircle, FolderKanban } from 'lucide-react';
+import {
+	smoothScrollToElementWithNav,
+	smoothScrollToElement,
+} from '@/lib/smooth-scroll';
 
 export default function AboutSection() {
 	const [hoveredImage, setHoveredImage] = useState<string | null>(null);
@@ -14,11 +18,11 @@ export default function AboutSection() {
 	const getOverlayImageSrc = () => {
 		switch (displayedImage) {
 			case 'cats':
-				return '/images/cats-image.jpeg';
+				return '/images/optimized/cats-image.jpeg';
 			case 'music':
-				return '/images/music-image.jpeg';
+				return '/images/optimized/music-image.jpeg';
 			case 'outdoors':
-				return '/images/outdoors-image.jpeg';
+				return '/images/optimized/outdoors-image.jpeg';
 			default:
 				return null;
 		}
@@ -68,11 +72,11 @@ export default function AboutSection() {
 								<div className="glass absolute -inset-2 rounded-full opacity-30 transition-opacity group-hover:opacity-50 sm:-inset-4"></div>
 								{/* Base Image - Always visible */}
 								<Image
-									src="/images/profile-picture2.jpg"
+									src="/images/optimized/profile-picture2.jpg"
 									alt="John Wright Developer Headshot"
 									width={400}
 									height={400}
-									priority
+									loading="lazy"
 									className="relative rounded-full border-4 border-white/10 transition-all duration-300 hover:scale-105 hover:border-white/20"
 								/>
 								{/* Overlay Image - Only visible on hover */}
@@ -84,10 +88,11 @@ export default function AboutSection() {
 									}`}
 								>
 									<Image
-										src={getOverlayImageSrc() || '/images/profile-picture2.jpg'}
+										src={getOverlayImageSrc() || '/images/optimized/profile-picture2.jpg'}
 										alt={`John Wright ${displayedImage || 'profile'}`}
 										width={400}
 										height={400}
+										loading="lazy"
 										className="h-full w-full object-cover"
 									/>
 								</div>
@@ -157,18 +162,7 @@ export default function AboutSection() {
 										aria-label="Scroll to contact section"
 										onClick={(e) => {
 											e.preventDefault();
-											const target = document.getElementById('contact');
-											if (target) {
-												const navbar = document.querySelector('nav');
-												const navbarHeight = navbar ? navbar.offsetHeight : 80;
-												const targetPosition =
-													target.offsetTop - navbarHeight - 5;
-
-												window.scrollTo({
-													top: targetPosition,
-													behavior: 'smooth',
-												});
-											}
+											smoothScrollToElementWithNav('contact');
 										}}
 									>
 										<MessageCircle className="mr-2 h-5 w-5 transition-transform duration-300 group-hover:rotate-12" />
@@ -184,11 +178,7 @@ export default function AboutSection() {
 										aria-label="Scroll to projects section"
 										onClick={(e) => {
 											e.preventDefault();
-											const target =
-												document.getElementById('featured-projects');
-											if (target) {
-												target.scrollIntoView({ behavior: 'smooth' });
-											}
+											smoothScrollToElement('featured-projects');
 										}}
 									>
 										<FolderKanban className="mr-2 h-5 w-5 transition-transform duration-300 group-hover:rotate-12" />

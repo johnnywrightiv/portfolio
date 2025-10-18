@@ -21,7 +21,7 @@
 		"position": "Creative Director at PixelTone Studio",
 		"content": "I gave him scattered ideas and vague goals—he returned something coherent, usable, and actually enjoyable. Not sure if it’s skill or sorcery.",
 		"rating": 4.5,
-		"image": "/images/placeholder.png"
+		"image": "/images/optimized/placeholder.webp"
 	},
 	{
 		"id": 4,
@@ -37,6 +37,6 @@
 		"position": "Operations Manager at Binary Vinyl",
 		"content": "Steady under pressure, clear communicator, and somehow predicts blockers before they happen. Makes everyone else look like they’re improvising.",
 		"rating": 5,
-		"image": "/images/placeholder.png"
+		"image": "/images/optimized/placeholder.webp"
 	}
 ]

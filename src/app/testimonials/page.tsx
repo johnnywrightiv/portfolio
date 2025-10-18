@@ -1,4 +1,15 @@
+import type { Metadata } from 'next';
 import ClientTestimonials from '@/components/ClientTestimonials';
+
+export const metadata: Metadata = {
+	title: 'Testimonials | John Wright',
+	description:
+		'Client reviews and recommendations for full-stack development work, AI integrations, and web application projects.',
+	openGraph: {
+		title: 'Testimonials | John Wright',
+		description: 'Client reviews and recommendations for development work.',
+	},
+};
 
 export default function MusicPage() {
 	return (

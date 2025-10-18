@@ -9,6 +9,10 @@ import Image from 'next/image';
 import { Mail } from 'lucide-react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import {
+	smoothScrollToElementWithNav,
+	smoothScrollToElement,
+} from '@/lib/smooth-scroll';
 
 export default function Footer() {
 	const router = useRouter();
@@ -16,27 +20,14 @@ export default function Footer() {
 	const handleScrollToSection = (sectionId: string) => {
 		// Contact section exists on all pages (footer), so always scroll directly with navbar offset
 		if (sectionId === 'contact') {
-			const element = document.getElementById(sectionId);
-			if (element) {
-				const navbar = document.querySelector('nav');
-				const navbarHeight = navbar ? navbar.offsetHeight : 80; // fallback to 80px
-				const elementPosition = element.offsetTop - navbarHeight - 5; // minimal padding
-
-				window.scrollTo({
-					top: elementPosition,
-					behavior: 'smooth',
-				});
-			}
+			smoothScrollToElementWithNav(sectionId);
 			return;
 		}
 
 		// For other sections, check if we're on the homepage
 		if (window.location.pathname === '/') {
 			// If on homepage, just scroll to section
-			const element = document.getElementById(sectionId);
-			if (element) {
-				element.scrollIntoView({ behavior: 'smooth' });
-			}
+			smoothScrollToElement(sectionId);
 		} else {
 			// If not on homepage, navigate to homepage with hash
 			router.push(`/#${sectionId}`);

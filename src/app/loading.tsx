@@ -10,7 +10,7 @@ export default function Loading() {
 				<div
 					className="h-full w-full"
 					style={{
-						backgroundImage: 'url(/images/hero-background1.jpg)',
+						backgroundImage: 'url(/images/optimized/hero-background1.jpg)',
 						backgroundSize: 'cover',
 						backgroundPosition: 'center',
 						filter: 'blur(2px)',
@@ -22,7 +22,7 @@ export default function Loading() {
 				{/* Profile image */}
 				<div className="glass rounded-full p-2">
 					<Image
-						src="/images/profile-picture.jpg"
+						src="/images/optimized/profile-picture.jpg"
 						alt="John Wright"
 						width={60}
 						height={60}

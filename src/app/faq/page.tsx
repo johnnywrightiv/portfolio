@@ -1,4 +1,15 @@
+import type { Metadata } from 'next';
 import FAQSection from '@/components/FAQs';
+
+export const metadata: Metadata = {
+	title: 'FAQ | John Wright',
+	description:
+		'Frequently asked questions about hiring, collaboration, tech stack, and working with a full-stack developer.',
+	openGraph: {
+		title: 'FAQ | John Wright',
+		description: 'Questions about hiring and collaboration.',
+	},
+};
 
 export default function MusicPage() {
 	return (
