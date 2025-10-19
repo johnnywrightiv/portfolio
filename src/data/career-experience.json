@@ -10,15 +10,21 @@
 		"title": "Music Industry & Production Management",
 		"company": "Various Venues, Tours, & Production Ops",
 		"period": "2014 – 2023",
-		"description": "Worked across high-stakes live events, music startups, and Fortune 500 entertainment companies. From touring and supporting major productions to managing crews and logistics, or slinging merchandise (🤘🏼👕🎤), I coordinated with vendors and artists while developing strong leadership and problem-solving skills in fast-paced environments.",
+		"description": "Worked across high-stakes live events, music startups, and Fortune 500 entertainment companies. From touring and supporting major productions, to managing crews and logistics, and of course slinging merchandise (🤘🏼👕🎤), I coordinated with vendors and artists while developing strong leadership and problem-solving skills in fast-paced environments.",
 		"icon": "🎟️"
 	},
-
+	{
+		"title": "Operations & Leadership",
+		"company": "Ravinia Festival",
+		"period": "2018 – 2024",
+		"description": "Grew into an Assistant Production Manager role overseeing 100+ live shows annually. Led teams, optimized logistics systems, and introduced new technologies and SOPs that improved efficiency and reduced losses by over 80%. Developed strong stakeholder, vendor, and leadership experience.",
+		"icon": "📈"
+	},
 	{
 		"title": "Product & Data Operations",
 		"company": "Chicago Music Exchange",
 		"period": "2021 – 2022",
-		"description": "Served as Associate Product Manager overseeing data pipelines, product integrity, and cross-team communication. Supported web and sales platforms through data cleaning, dashboard creation, and process automation—bridging product, operations, and tech.",
+		"description": "Served as Associate Product Manager overseeing data pipelines, product integrity, and cross-team communication. Supported web and sales platforms through data cleaning, dashboard management, and process automation—bridging product, operations, and tech.",
 		"icon": "📊"
 	},
 	{
@@ -32,7 +38,7 @@
 		"title": "Software Development & Engineering",
 		"company": "Frey Design Group",
 		"period": "2025 – Present",
-		"description": "Full-stack developer focused on scalable, maintainable, and visually refined websites and apps. Experienced with React, Next.js, Node.js, AI Integration, and Automation Workflows. Currently working with Wordpress, PHP, SCSS, Vanilla JS/CSS and more. Integrating design awareness, production discipline, and leadership maturity.",
+		"description": "Full-stack developer focused on scalable, maintainable, and visually refined websites and apps. Experienced with React, Next.js, Node.js, AI Integration, and Automation Workflows. Currently working with Wordpress, PHP, SCSS, Vanilla JS/CSS and more. Combining design sensibility, disciplined engineering, and collaborative leadership to drive projects from concept to launch.",
 		"icon": "🚀"
 	}
 ]
