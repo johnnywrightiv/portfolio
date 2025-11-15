@@ -1,4 +1,31 @@
 import type { Config } from 'tailwindcss';
+import plugin from 'tailwindcss/plugin';
+
+const hoverCapabilityVariants = plugin(({ addVariant, e }) => {
+	addVariant('hover', ({ modifySelectors, separator }) => {
+		modifySelectors(({ className }) => {
+			return `.can-hover .${e(
+				`hover${separator}${className}`
+			)}:hover`;
+		});
+	});
+
+	addVariant('group-hover', ({ modifySelectors, separator }) => {
+		modifySelectors(({ className }) => {
+			return `.can-hover .group:hover .${e(
+				`group-hover${separator}${className}`
+			)}`;
+		});
+	});
+
+	addVariant('peer-hover', ({ modifySelectors, separator }) => {
+		modifySelectors(({ className }) => {
+			return `.can-hover .peer:hover ~ .${e(
+				`peer-hover${separator}${className}`
+			)}`;
+		});
+	});
+});
 
 const config: Config = {
 	darkMode: ['class'],
@@ -100,6 +127,6 @@ const config: Config = {
 			},
 		},
 	},
-	plugins: [],
+	plugins: [hoverCapabilityVariants],
 };
 export default config;

@@ -19,6 +19,11 @@ const nextConfig = {
 				hostname: 'api.dicebear.com',
 				pathname: '/**',
 			},
+			{
+				protocol: 'https',
+				hostname: 'media.licdn.com',
+				pathname: '/**',
+			},
 		],
 	},
 	// Experimental features for better performance

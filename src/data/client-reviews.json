@@ -1,42 +1,26 @@
 [
 	{
 		"id": 1,
-		"name": "Brian Nova",
-		"position": "Product Lead at Quantum Groove Systems",
-		"content": "Turned a chaotic backlog into a clear, reliable roadmap. Features shipped on time, bugs stayed quiet, and somehow we all felt like we knew what we were doing.",
+		"name": "Austin Peters",
+		"position": "Director of Operations at Audiotree",
+		"content": "Working with Johnny was so easy. He understood our project quickly and was even sending drafts and tests before we'd begun, which made the choice to work with him very clear. He works fast and efficiently, has a good sense of design, and listened to all of our minor requests as we neared completion. All in all, he's a great person to hire for web dev or design work.",
 		"rating": 5,
-		"image": "https://api.dicebear.com/9.x/personas/svg?seed=BrianNova"
+		"image": "https://media.licdn.com/dms/image/v2/D5603AQFoEoo4CfqA0A/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1721847349841?e=1764806400&v=beta&t=A_WkGR0p2UalptsG-lETr-yOJTokIIi1h067RJ55svI"
 	},
 	{
 		"id": 2,
-		"name": "Jordan Vega",
-		"position": "CTO at Neon Tape Labs",
-		"content": "We asked for a bug fix; he upgraded the whole system instead. Smooth, fast, and somehow less stressful than it has any right to be.",
+		"name": "Maybe You?",
+		"position": "Product Lead at Your Next Launch",
+		"content": "Needed cleaner flows and less chaos—got polished interfaces, predictable sprints, and a build everyone feels confident shipping.",
 		"rating": 5,
-		"image": "https://api.dicebear.com/9.x/bottts/svg?seed=JordanVega"
+		"image": "https://api.dicebear.com/9.x/personas/svg?seed=MaybeYou"
 	},
 	{
 		"id": 3,
-		"name": "Casey Monroe",
-		"position": "Creative Director at PixelTone Studio",
-		"content": "I gave him scattered ideas and vague goals—he returned something coherent, usable, and actually enjoyable. Not sure if it’s skill or sorcery.",
-		"rating": 4.5,
-		"image": "/images/optimized/placeholder.webp"
-	},
-	{
-		"id": 4,
-		"name": "Samantha Cruz",
-		"position": "Founder at Lo-Fi Logic",
-		"content": "Hired for a prototype, got a production-ready app. Organized, efficient, and just the right amount of creative flair.",
+		"name": "Satisfied Customer!",
+		"position": "Founder at The Next Big Thing",
+		"content": "Clean design, smooth systems, and a rollout that felt effortless. We asked for order and got a workflow we’re proud to show off.",
 		"rating": 5,
-		"image": "https://api.dicebear.com/9.x/pixel-art/svg?seed=SamanthaCruz"
-	},
-	{
-		"id": 5,
-		"name": "Drew Kimura",
-		"position": "Operations Manager at Binary Vinyl",
-		"content": "Steady under pressure, clear communicator, and somehow predicts blockers before they happen. Makes everyone else look like they’re improvising.",
-		"rating": 5,
-		"image": "/images/optimized/placeholder.webp"
+		"image": "https://api.dicebear.com/9.x/personas/svg?seed=AlsoYou"
 	}
 ]
