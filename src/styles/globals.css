@@ -479,7 +479,7 @@
 
 /* Global layout utilities */
 .container-section {
-	@apply mx-auto max-w-7xl px-6 sm:px-8 lg:px-12;
+	@apply mx-auto max-w-7xl px-6 sm:px-8 lg:px-12 xl:max-w-[1600px] 2xl:max-w-[1800px];
 }
 
 .py-section {

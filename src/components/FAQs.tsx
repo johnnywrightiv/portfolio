@@ -12,7 +12,7 @@ import faqData from '@/data/faq.json';
 export default function FAQSection() {
 	return (
 		<section id="faq" className="py-section">
-			<div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-12">
+			<div className="container-section">
 				<motion.div
 					className="mb-12 text-center"
 					initial={{ opacity: 0, y: 20 }}

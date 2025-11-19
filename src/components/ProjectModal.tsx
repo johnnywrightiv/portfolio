@@ -6,13 +6,13 @@ import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent } from '@/components/ui/dialog';
 import { ExternalLink, Github, ChevronLeft, ChevronRight } from 'lucide-react';
 import { motion, AnimatePresence, PanInfo } from 'framer-motion';
+import {
+	getProjectOriginClass,
+	getProjectTypeClass,
+	type ProjectSection,
+} from '@/lib/project-types';
 
 // TypeScript interfaces
-interface ProjectType {
-	label: string;
-	color: string;
-}
-
 interface ProjectLink {
 	name: string;
 	url: string;
@@ -21,12 +21,11 @@ interface ProjectLink {
 interface Project {
 	title: string;
 	featured: boolean;
-	projectType?: ProjectType;
-	keyFeatures?: string[];
-	technicalHighlights?: string[];
+	origin?: string;
+	type?: string;
+	highlightSections?: ProjectSection[];
 	image?: string;
-	blurb: string;
-	description?: string;
+	description: string;
 	technologies?: string[];
 	links?: ProjectLink[];
 	liveUrl?: string;
@@ -49,21 +48,6 @@ const contentVariants = {
 	hidden: { opacity: 0, x: 20 },
 	visible: { opacity: 1, x: 0 },
 	exit: { opacity: 0, x: -20 },
-};
-
-// Color mapping utility
-const getProjectTypeColor = (colorClass: string) => {
-	const colorMap: { [key: string]: string } = {
-		'text-blue-500': '#3b82f6',
-		'text-green-500': '#10b981',
-		'text-orange-500': '#f97316',
-		'text-purple-500': '#8b5cf6',
-		'text-red-500': '#ef4444',
-		'text-yellow-500': '#eab308',
-		'text-primary': 'var(--primary)',
-		'text-secondary': 'var(--secondary)',
-	};
-	return colorMap[colorClass] || '#ffffff';
 };
 
 export default function ProjectModal({
@@ -178,7 +162,7 @@ export default function ProjectModal({
 							transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
 						>
 							{/* Row 1: Image and Header */}
-							<div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
+							<div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-2">
 								{/* Left column - Image */}
 								<motion.div
 									className="space-y-6"
@@ -187,13 +171,13 @@ export default function ProjectModal({
 									transition={{ duration: 0.4, delay: 0.1 }}
 								>
 									{currentProject.image && (
-										<div className="relative aspect-video w-full overflow-hidden rounded-xl bg-muted">
+										<div className="relative aspect-video w-full rounded-xl bg-muted">
 											<Image
 												src={currentProject.image}
 												alt={currentProject.title}
 												fill
 												loading="lazy"
-												className="object-cover"
+												className="object-contain"
 												sizes="(max-width: 1024px) 100vw, 50vw"
 											/>
 										</div>
@@ -209,19 +193,30 @@ export default function ProjectModal({
 								>
 									{/* Header */}
 									<div className="space-y-4">
-										<div
-											className="text-sm font-bold uppercase tracking-wider"
-											style={{
-												color: getProjectTypeColor(
-													currentProject.projectType?.color || 'text-primary'
-												),
-											}}
-										>
-											{currentProject.projectType?.label || 'Project'}
-										</div>
+										{/* Title first for better hierarchy */}
 										<h2 className="text-foreground text-3xl font-semibold">
 											{currentProject.title}
 										</h2>
+										{/* Type and Origin tags side-by-side with wrapping */}
+										<div className="flex flex-wrap items-center gap-2">
+											{currentProject.type && (
+												<span
+													className={`text-sm font-bold uppercase tracking-wider ${getProjectTypeClass(currentProject.type)}`}
+												>
+													{currentProject.type}
+												</span>
+											)}
+											{currentProject.type && currentProject.origin && (
+												<span className="text-white/30">•</span>
+											)}
+											{currentProject.origin && (
+												<div
+													className={`text-sm font-normal uppercase tracking-wider ${getProjectOriginClass()}`}
+												>
+													{currentProject.origin}
+												</div>
+											)}
+										</div>
 									</div>
 
 									{/* Description */}
@@ -235,47 +230,33 @@ export default function ProjectModal({
 								</motion.div>
 							</div>
 
-							{/* Row 2: Key Features and Technical Highlights */}
-							{(currentProject.keyFeatures ||
-								currentProject.technicalHighlights) && (
-								<motion.div
-									className="grid grid-cols-1 gap-8 lg:grid-cols-2"
-									initial={{ opacity: 0, y: 20 }}
-									animate={{ opacity: 1, y: 0 }}
-									transition={{ duration: 0.4, delay: 0.3 }}
-								>
-									{/* Key Features */}
-									{currentProject.keyFeatures && (
-										<div className="space-y-2">
-											<h3 className="text-foreground text-xl font-semibold">
-												Key Features
-											</h3>
-											<ul className="list-inside list-disc space-y-1 text-white/75">
-												{currentProject.keyFeatures.map((feature, index) => (
-													<li key={index}>{feature}</li>
-												))}
-											</ul>
-										</div>
-									)}
-
-									{/* Technical Highlights */}
-									{currentProject.technicalHighlights &&
-										currentProject.technicalHighlights.length > 0 && (
-											<div className="space-y-2">
+							{/* Row 2: Highlight Sections */}
+							{currentProject.highlightSections &&
+								currentProject.highlightSections.length > 0 && (
+									<motion.div
+										className={`grid gap-8 ${
+											currentProject.highlightSections.length === 1
+												? 'grid-cols-1'
+												: 'grid-cols-1 lg:grid-cols-2'
+										}`}
+										initial={{ opacity: 0, y: 20 }}
+										animate={{ opacity: 1, y: 0 }}
+										transition={{ duration: 0.4, delay: 0.3 }}
+									>
+										{currentProject.highlightSections.map((section, index) => (
+											<div key={index} className="space-y-2">
 												<h3 className="text-foreground text-xl font-semibold">
-													Technical Highlights
+													{section.title}
 												</h3>
 												<ul className="list-inside list-disc space-y-1 text-white/75">
-													{currentProject.technicalHighlights.map(
-														(highlight, index) => (
-															<li key={index}>{highlight}</li>
-														)
-													)}
+													{section.items.map((item, itemIndex) => (
+														<li key={itemIndex}>{item}</li>
+													))}
 												</ul>
 											</div>
-										)}
-								</motion.div>
-							)}
+										))}
+									</motion.div>
+								)}
 
 							{/* Row 3: Technologies and Links */}
 							<motion.div
@@ -302,68 +283,105 @@ export default function ProjectModal({
 								</div>
 
 								{/* Links */}
-								{(currentProject.liveUrl ||
-									currentProject.githubUrl ||
-									currentProject.links) && (
-									<div className="space-y-2">
-										<h3 className="text-foreground text-xl font-semibold">
-											Links
-										</h3>
-										<div className="flex flex-wrap gap-4">
-											{currentProject.liveUrl && (
-												<Button
-													asChild
-													className="glass glass-hover flex items-center gap-2 border border-white/20 hover:border-white/40"
-												>
-													<a
-														href={currentProject.liveUrl}
-														target="_blank"
-														rel="noopener noreferrer"
+								{(() => {
+									const hasLiveUrl =
+										currentProject.liveUrl &&
+										typeof currentProject.liveUrl === 'string' &&
+										currentProject.liveUrl.trim() !== '';
+									const hasGithubUrl =
+										currentProject.githubUrl &&
+										typeof currentProject.githubUrl === 'string' &&
+										currentProject.githubUrl.trim() !== '';
+									const hasValidLinks =
+										currentProject.links &&
+										Array.isArray(currentProject.links) &&
+										currentProject.links.length > 0 &&
+										currentProject.links.some(
+											(link) =>
+												link &&
+												link.url &&
+												typeof link.url === 'string' &&
+												link.url.trim() !== ''
+										);
+
+									const hasAnyLinks =
+										hasLiveUrl || hasGithubUrl || hasValidLinks;
+
+									if (!hasAnyLinks) return null;
+
+									return (
+										<div className="space-y-2">
+											<h3 className="text-foreground text-xl font-semibold">
+												Links
+											</h3>
+											<div className="flex flex-wrap gap-4">
+												{hasLiveUrl && (
+													<Button
+														asChild
+														className="glass glass-hover flex items-center gap-2 border border-white/20 hover:border-white/40"
 													>
-														<ExternalLink className="h-4 w-4" />
-														View Live
-													</a>
-												</Button>
-											)}
-											{currentProject.githubUrl && (
-												<Button
-													asChild
-													className="glass glass-hover flex items-center gap-2 border border-white/20 hover:border-white/40"
-												>
-													<a
-														href={currentProject.githubUrl}
-														target="_blank"
-														rel="noopener noreferrer"
-													>
-														<Github className="h-4 w-4" />
-														View Code
-													</a>
-												</Button>
-											)}
-											{currentProject.links?.map((link) => (
-												<Button
-													key={link.name}
-													asChild
-													className="glass glass-hover flex items-center gap-2 border border-white/20 hover:border-white/40"
-												>
-													<a
-														href={link.url}
-														target="_blank"
-														rel="noopener noreferrer"
-													>
-														{link.name.includes('GitHub') ||
-														link.name.includes('Code') ? (
-															<Github className="h-4 w-4" />
-														) : (
+														<a
+															href={currentProject.liveUrl!}
+															target="_blank"
+															rel="noopener noreferrer"
+														>
 															<ExternalLink className="h-4 w-4" />
-														)}
-														{link.name}
-													</a>
-												</Button>
-											))}
+															View Live
+														</a>
+													</Button>
+												)}
+												{hasGithubUrl && (
+													<Button
+														asChild
+														className="glass glass-hover flex items-center gap-2 border border-white/20 hover:border-white/40"
+													>
+														<a
+															href={currentProject.githubUrl!}
+															target="_blank"
+															rel="noopener noreferrer"
+														>
+															<Github className="h-4 w-4" />
+															View Code
+														</a>
+													</Button>
+												)}
+												{hasValidLinks &&
+													currentProject.links
+														?.filter(
+															(link) =>
+																link &&
+																link.url &&
+																typeof link.url === 'string' &&
+																link.url.trim() !== '' &&
+																link.name &&
+																typeof link.name === 'string' &&
+																link.name.trim() !== ''
+														)
+														.map((link) => (
+															<Button
+																key={link.name}
+																asChild
+																className="glass glass-hover flex items-center gap-2 border border-white/20 hover:border-white/40"
+															>
+																<a
+																	href={link.url}
+																	target="_blank"
+																	rel="noopener noreferrer"
+																>
+																	{link.name.includes('GitHub') ||
+																	link.name.includes('Code') ? (
+																		<Github className="h-4 w-4" />
+																	) : (
+																		<ExternalLink className="h-4 w-4" />
+																	)}
+																	{link.name}
+																</a>
+															</Button>
+														))}
+											</div>
 										</div>
-									</div>
-								)}
+									);
+								})()}
 							</motion.div>
 						</motion.div>
 					</AnimatePresence>

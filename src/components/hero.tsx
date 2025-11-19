@@ -100,7 +100,7 @@ export default function HeroSection({ onIconsReady }: HeroSectionProps) {
 			{/* Gradient Overlay */}
 			<div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-secondary/5 to-primary/10"></div>
 
-			<div className="relative z-10 mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
+			<div className="container-section relative z-10 px-4 sm:px-6 lg:px-8">
 				<div className="flex flex-col items-center pb-20 pt-16 text-center sm:pb-0 sm:pt-0">
 					{/* Profile Image - Now on top */}
 					{/* <motion.div

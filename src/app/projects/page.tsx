@@ -11,6 +11,19 @@ import { X, Filter } from 'lucide-react';
 import projectsData from '@/data/dev-projects.json';
 import React from 'react';
 import ProjectModal from '@/components/ProjectModal';
+import {
+	getProjectOriginClass,
+	getProjectTypeClass,
+	type ProjectSection,
+} from '@/lib/project-types';
+
+// Helper function to extract all items from highlight sections
+function getHighlightSectionItems(
+	sections: ProjectSection[] | undefined
+): string[] {
+	if (!sections) return [];
+	return sections.flatMap((section) => section.items);
+}
 
 // Type definitions
 const fadeIn = {
@@ -92,9 +105,8 @@ export default function AllProjects() {
 	const [selectedTechnologies, setSelectedTechnologies] = useState<string[]>(
 		[]
 	);
-	const [selectedProjectTypes, setSelectedProjectTypes] = useState<string[]>(
-		[]
-	);
+	const [selectedOrigins, setSelectedOrigins] = useState<string[]>([]);
+	const [selectedTypes, setSelectedTypes] = useState<string[]>([]);
 	const [showFilters, setShowFilters] = useState(false);
 	const [isDialogOpen, setIsDialogOpen] = React.useState(false);
 	const [currentProjectIndex, setCurrentProjectIndex] = React.useState(0);
@@ -120,26 +132,34 @@ export default function AllProjects() {
 		return Array.from(techs).sort();
 	}, [allProjects]);
 
-	const allProjectTypes = useMemo(() => {
+	const allOrigins = useMemo(() => {
+		const origins = new Set<string>();
+		allProjects.forEach((project) => {
+			if (project.origin) {
+				origins.add(project.origin);
+			}
+		});
+		return Array.from(origins).sort();
+	}, [allProjects]);
+
+	const allTypes = useMemo(() => {
 		const types = new Set<string>();
 		allProjects.forEach((project) => {
-			if (project.projectType?.label) {
-				types.add(project.projectType.label);
+			if (project.type) {
+				types.add(project.type);
 			}
 		});
 		return Array.from(types).sort();
 	}, [allProjects]);
 
-	// Filter projects based on search term, technologies, and project types
+	// Filter projects based on search term, technologies, origins, and types
 	const filteredProjects = useMemo(() => {
 		return allProjects.filter((project) => {
 			// Text search across multiple fields
 			const searchFields = [
 				project.title,
-				project.blurb,
 				project.description,
-				project.keyFeatures,
-				...(project.technicalHighlights || []),
+				...getHighlightSectionItems(project.highlightSections),
 			]
 				.filter(Boolean)
 				.join(' ')
@@ -155,14 +175,25 @@ export default function AllProjects() {
 					project.technologies?.includes(tech)
 				);
 
-			// Project type filter
-			const matchesProjectType =
-				selectedProjectTypes.length === 0 ||
-				selectedProjectTypes.includes(project.projectType?.label || '');
+			// Origin filter
+			const matchesOrigin =
+				selectedOrigins.length === 0 ||
+				selectedOrigins.includes(project.origin || '');
 
-			return matchesSearch && matchesTechnology && matchesProjectType;
+			// Type filter
+			const matchesType =
+				selectedTypes.length === 0 ||
+				selectedTypes.includes(project.type || '');
+
+			return matchesSearch && matchesTechnology && matchesOrigin && matchesType;
 		});
-	}, [allProjects, searchTerm, selectedTechnologies, selectedProjectTypes]);
+	}, [
+		allProjects,
+		searchTerm,
+		selectedTechnologies,
+		selectedOrigins,
+		selectedTypes,
+	]);
 
 	// Toggle technology filter
 	const toggleTechnology = useCallback((tech: string) => {
@@ -171,9 +202,18 @@ export default function AllProjects() {
 		);
 	}, []);
 
-	// Toggle project type filter
-	const toggleProjectType = useCallback((type: string) => {
-		setSelectedProjectTypes((prev) =>
+	// Toggle origin filter
+	const toggleOrigin = useCallback((origin: string) => {
+		setSelectedOrigins((prev) =>
+			prev.includes(origin)
+				? prev.filter((o) => o !== origin)
+				: [...prev, origin]
+		);
+	}, []);
+
+	// Toggle type filter
+	const toggleType = useCallback((type: string) => {
+		setSelectedTypes((prev) =>
 			prev.includes(type) ? prev.filter((t) => t !== type) : [...prev, type]
 		);
 	}, []);
@@ -182,7 +222,8 @@ export default function AllProjects() {
 	const clearAllFilters = useCallback(() => {
 		setSearchTerm('');
 		setSelectedTechnologies([]);
-		setSelectedProjectTypes([]);
+		setSelectedOrigins([]);
+		setSelectedTypes([]);
 	}, []);
 
 	// Handle keyboard navigation for project cards
@@ -201,7 +242,8 @@ export default function AllProjects() {
 	const hasActiveFilters =
 		searchTerm !== '' ||
 		selectedTechnologies.length > 0 ||
-		selectedProjectTypes.length > 0;
+		selectedOrigins.length > 0 ||
+		selectedTypes.length > 0;
 
 	return (
 		<section
@@ -308,7 +350,8 @@ export default function AllProjects() {
 											style={{ right: '4px' }}
 										>
 											{selectedTechnologies.length +
-												selectedProjectTypes.length +
+												selectedOrigins.length +
+												selectedTypes.length +
 												(searchTerm ? 1 : 0)}
 										</Badge>
 									)}
@@ -349,35 +392,67 @@ export default function AllProjects() {
 								className="overflow-hidden"
 							>
 								<div className="space-y-6 rounded-xl border border-white/20 bg-black/50 p-6 backdrop-blur-sm">
-									{/* Project Types */}
+									{/* Project Origins */}
 									<div>
 										<h3 className="mb-3 text-sm font-semibold uppercase tracking-wider text-white">
-											Project Types
+											Origin
 										</h3>
 										<div className="flex flex-wrap gap-2">
 											<AnimatePresence>
-												{allProjectTypes.map((type) => (
+												{allOrigins.map((origin) => (
 													<motion.button
-														key={type}
+														key={origin}
 														variants={filterButtonVariants}
 														initial="hidden"
 														animate="visible"
 														exit="exit"
-														onClick={() => toggleProjectType(type)}
-														aria-pressed={selectedProjectTypes.includes(type)}
-														aria-label={`Filter by ${type}`}
+														onClick={() => toggleOrigin(origin)}
+														aria-pressed={selectedOrigins.includes(origin)}
+														aria-label={`Filter by ${origin}`}
 														className={`rounded-full px-3 py-1.5 text-xs font-medium transition-all duration-200 ${
-															selectedProjectTypes.includes(type)
+															selectedOrigins.includes(origin)
 																? 'border border-purple-400/50 bg-purple-500/90 text-white shadow-md'
 																: 'border border-white/20 bg-white/10 text-white hover:bg-white/20'
 														}`}
 													>
-														{type}
+														{origin}
 													</motion.button>
 												))}
 											</AnimatePresence>
 										</div>
 									</div>
+
+									{/* Project Types */}
+									{allTypes.length > 0 && (
+										<div>
+											<h3 className="mb-3 text-sm font-semibold uppercase tracking-wider text-white">
+												Type
+											</h3>
+											<div className="flex flex-wrap gap-2">
+												<AnimatePresence>
+													{allTypes.map((type) => (
+														<motion.button
+															key={type}
+															variants={filterButtonVariants}
+															initial="hidden"
+															animate="visible"
+															exit="exit"
+															onClick={() => toggleType(type)}
+															aria-pressed={selectedTypes.includes(type)}
+															aria-label={`Filter by ${type}`}
+															className={`rounded-full px-3 py-1.5 text-xs font-medium transition-all duration-200 ${
+																selectedTypes.includes(type)
+																	? 'border border-purple-400/50 bg-purple-500/90 text-white shadow-md'
+																	: 'border border-white/20 bg-white/10 text-white hover:bg-white/20'
+															}`}
+														>
+															{type}
+														</motion.button>
+													))}
+												</AnimatePresence>
+											</div>
+										</div>
+									)}
 
 									{/* Technologies */}
 									<div>
@@ -490,16 +565,32 @@ export default function AllProjects() {
 										{/* Content container with consistent spacing */}
 										<div className="relative z-20 flex flex-1 flex-col justify-between p-6">
 											<div className="flex-1">
-												<div
-													className={`mb-3 text-sm font-bold uppercase tracking-wider transition-colors duration-300 ${project.projectType?.color || 'text-primary'} group-hover:opacity-80`}
-												>
-													{project.projectType?.label || 'Project'}
-												</div>
-												<h3 className="mb-4 line-clamp-2 text-xl font-semibold text-white transition-colors duration-300 group-hover:text-white/90">
+												{/* Title first for better hierarchy */}
+												<h3 className="mb-3 line-clamp-2 text-xl font-semibold text-white transition-colors duration-300 group-hover:text-white/90">
 													{project.title}
 												</h3>
-												<p className="mb-6 line-clamp-3 text-white/75 transition-colors duration-300 group-hover:text-white/90">
-													{project.blurb}
+												{/* Type and Origin tags side-by-side with wrapping */}
+												<div className="mb-4 flex flex-wrap items-center gap-2">
+													{project.type && (
+														<span
+															className={`text-sm font-bold uppercase tracking-wider transition-colors duration-300 ${getProjectTypeClass(project.type)} group-hover:opacity-80`}
+														>
+															{project.type}
+														</span>
+													)}
+													{project.type && project.origin && (
+														<span className="text-white/30">•</span>
+													)}
+													{project.origin && (
+														<div
+															className={`text-sm font-normal uppercase tracking-wider transition-colors duration-300 ${getProjectOriginClass()} group-hover:opacity-80`}
+														>
+															{project.origin}
+														</div>
+													)}
+												</div>
+												<p className="mb-2 line-clamp-5 text-white/75 transition-colors duration-300 group-hover:text-white/90">
+													{project.description}
 												</p>
 											</div>
 

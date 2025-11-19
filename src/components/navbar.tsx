@@ -128,7 +128,7 @@ export default function Navbar() {
 			animate="visible"
 			variants={navVariants}
 		>
-			<div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+			<div className="container-section px-4 sm:px-6 lg:px-8">
 				<div
 					className={`transition-all duration-500 ease-out ${
 						hasScrolled

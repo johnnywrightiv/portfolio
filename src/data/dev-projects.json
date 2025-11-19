@@ -1,24 +1,151 @@
 [
 	{
+		"title": "AI-Powered SEO Optimization Workflow",
+		"featured": true,
+		"origin": "Agency Work",
+		"type": "AI Integration",
+		"highlightSections": [
+			{
+				"title": "Key Features",
+				"items": [
+					"Automated SEO enhancement for sites and media",
+					"Flexible prompting for multi-industry use cases",
+					"Client reporting with CSV exports"
+				]
+			},
+			{
+				"title": "Technical Highlights",
+				"items": [
+					"OpenAI API integration",
+					"Playwright automation with error recovery",
+					"Batch processing with rate limit handling"
+				]
+			}
+		],
+		"image": "/images/projects/SEO-AI.png",
+		"description": "AI-powered automation workflow that transforms manual SEO content management into a streamlined background process. Conceived and built an end-to-end system that eliminates hours of repetitive work by automatically generating SEO-optimized content across pages, posts, and media libraries. Leverages OpenAI's vision and text generation capabilities to create alt text, meta descriptions, and optimized filenames at scale. Designed with flexible prompting architecture to adapt across diverse industries and use cases, freeing teams to focus on strategic work.",
+		"technologies": [
+			"OpenAI API",
+			"Playwright",
+			"Next.js",
+			"TypeScript",
+			"Vercel"
+		],
+		"links": [
+			{
+				"name": "",
+				"url": ""
+			}
+		]
+	},
+	{
+		"title": "Dynamic Blog Content Generator & Scheduler Workflow",
+		"featured": true,
+		"origin": "Agency Work",
+		"type": "Automation",
+		"highlightSections": [
+			{
+				"title": "Key Features",
+				"items": [
+					"Automated blog generation and scheduling",
+					"Dynamic content for property-specific variables",
+					"Google Docs to RentCafe content transformation"
+				]
+			},
+			{
+				"title": "Technical Highlights",
+				"items": [
+					"Playwright automation for unreliable platforms",
+					"MongoDB property data persistence",
+					"Automated quarterly reporting"
+				]
+			}
+		],
+		"image": "/images/projects/BlogGenerator.png",
+		"description": "Content automation system that transforms manual blog production workflows into scalable, error-free processes. Conceived and built a dynamic content generation platform that creates property-specific blog variants from templates and handles automated scheduling across multiple sites. Replaces time-consuming manual processes like find-and-replace, formatting cleanup, and scheduling with intelligent automation. Built robust Playwright automation to reliably navigate challenging third-party platforms, enabling seamless content deployment at scale.",
+		"technologies": [
+			"Playwright",
+			"Next.js",
+			"MongoDB",
+			"TypeScript",
+			"Tailwind",
+			"CSS"
+		],
+		"links": [
+			{
+				"name": "",
+				"url": ""
+			}
+		]
+	},
+	{
+		"title": "Navy Pier",
+		"featured": true,
+		"origin": "Agency Work",
+		"type": "Website",
+		"highlightSections": [
+			{
+				"title": "Contributions",
+				"items": [
+					"Assisted in migration from Events Calendar Wordpress plugins to custom post types",
+					"Frontend implementation from design comps",
+					"Favorites and trip planning features",
+					"Ongoing maintenance for 9M annual visitors"
+				]
+			},
+			{
+				"title": "Technical Highlights",
+				"items": [
+					"Custom events and locations post types",
+					"SEO optimization strategies",
+					"WordPress best practices",
+					"Maintainable codebase architecture"
+				]
+			}
+		],
+		"image": "/images/projects/NavyPier1.png",
+		"description": "Refactored Navy Pier's website to replace their Events Calendar plugin with custom post types for events and locations. Built the frontend from design comps and added features like favorites and trip planning. The site serves nearly 9 million annual visitors, and I continue to handle maintenance and SEO improvements.",
+		"technologies": [
+			"PHP",
+			"WordPress",
+			"SCSS",
+			"JavaScript",
+			"HTML",
+			"Gulp",
+			"ACF"
+		],
+		"links": [
+			{
+				"name": "Visit Website",
+				"url": "https://navypier.org/"
+			}
+		]
+	},
+	{
 		"title": "Audiotree Discovery",
 		"featured": true,
-		"projectType": {
-			"label": "CLIENT WORK",
-			"color": "text-blue-500"
-		},
-		"keyFeatures": [
-			"Embedded video discovery widget with backend content management portal ",
-			"Advanced search and filtering with metadata tagging",
-			"Supports bulk CSV imports"
-		],
-		"technicalHighlights": [
-			"Built to scale up to tens of thousands of videos",
-			"React and Next.js frontend with custom styling to match the company brand",
-			"MongoDB backend optimized for handling large datasets and quick queries"
+		"origin": "Client Work",
+		"type": "Embedded Web App",
+		"highlightSections": [
+			{
+				"title": "Key Features",
+				"items": [
+					"Video discovery widget with content management portal",
+					"Advanced search and filtering with metadata",
+					"Bulk CSV imports for large video libraries"
+				]
+			},
+			{
+				"title": "Technical Highlights",
+				"items": [
+					"Scales to tens of thousands of videos",
+					"Custom iframe widget for seamless integration",
+					"MongoDB optimized for large datasets and fast queries"
+				]
+			}
 		],
 		"image": "/images/projects/Audiotree.webp",
-		"blurb": "An embedded video repository search tool that helps users explore thousands of live-recorded performances. With advanced search features, filters and sorts, and metadata tagging, the app makes it easy for users to browse videos, discover new artists, and enjoy one of a kind performances.",
-		"description": "Designed for seamless integration and built to scale, this iframe-based widget is embedded directly into the clients existing website, providing a curated video discovery experience. The frontend was meticulously customized to match the existing branding while maintaining smooth performance and usability. A backend admin portal allows content managers to handle large-scale video libraries through CRUD operations and CSV imports. The system is optimized to efficiently supports tens of thousands of videos and advanced search features.",
+		"description": "An embedded video repository search tool that helps users explore thousands of live-recorded performances. Built to house and showcase all of Audiotree's video content outside of YouTube, giving them ownership of their video database. The iframe-based widget embeds seamlessly into their existing website with branding-matched styling. A backend admin portal enables content managers to handle large-scale video libraries through CSV imports and advanced search capabilities, scaling to tens of thousands of videos.",
 		"technologies": [
 			"React",
 			"Next.js",
@@ -29,68 +156,36 @@
 		],
 		"links": [
 			{
-				"name": "Live Site",
+				"name": "Visit Website",
 				"url": "https://audiotree.tv"
 			}
 		]
 	},
-
-	{
-		"title": "Harmony Companion (WIP)",
-		"featured": true,
-		"projectType": {
-			"label": "SIDE PROJECT",
-			"color": "text-green-500"
-		},
-		"keyFeatures": [
-			"Aids musicians in creating harmonic accompaniment",
-			"Interactive visual and audio tools for scale and chord visualization",
-			"Practice logs with reviews and visual progress tracking statistics"
-		],
-		"technicalHighlights": [
-			"Built with a modular design for seamless feature expansion",
-			"Highly responsive UI with accessibility in mind"
-		],
-		"image": "/images/projects/Harmony-App.webp",
-		"blurb": "A tool for improvising musicians, Harmony Companion helps users create harmonic accompaniment and practice theory concepts in real-time. With features like interactive visual and audio aids and progress tracking, this app empowers musicians to explore and improve their skills.",
-		"description": "This project was born out of a frustration in my own improvisation practice, constantly needing to find or create different harmonic backing tracks to practice varied styles of music or theory concepts. I wanted to build an interactive app that was highly customizable and could update theory parameters on the fly to update the harmonic accompaniment.",
-		"technologies": [
-			"Typescript",
-			"Next.js",
-			"React",
-			"Tailwind",
-			"shadcn UI",
-			"Custom CSS"
-		],
-		"links": [
-			{
-				"name": "GitHub",
-				"url": "https://github.com/johnnywrightiv/improv-harmony-companion"
-			}
-		]
-	},
-
 	{
 		"title": "Workout Tracker Mobile App",
 		"featured": true,
-		"projectType": {
-			"label": "MVP",
-			"color": "text-orange-500"
-		},
-		"keyFeatures": [
-			"Create custom templates",
-			"Log workouts and exercises",
-			"Mobile-friendly UI design for improved on-the-go tracking"
+		"origin": "Side Project",
+		"type": "Mobile First App",
+		"highlightSections": [
+			{
+				"title": "Key Features",
+				"items": [
+					"Custom workout templates",
+					"Exercise logging and tracking",
+					"Simple, mobile-first interface"
+				]
+			},
+			{
+				"title": "Technical Highlights",
+				"items": [
+					"Secure authentication with NextAuth",
+					"Redux state management",
+					"MongoDB data persistence"
+				]
+			}
 		],
-		"technicalHighlights": [
-			"Secured using NextAuth/Auth.js",
-			"Redux for state management",
-			"MongoDB for storing users, workouts, and templates",
-			"shadcn for UI library"
-		],
-		"image": "/images/projects/Workout-App.webp",
-		"blurb": "A minimal viable product for tracking workouts, featuring exercise logs, template creation, progress tracking, custom color themes, and a sleek, mobile-friendly design.",
-		"description": "This project highlights my ability to deliver impactful real-world tools for web and mobile. I implemented secure authentication, responsive designs, and Next.js API endpoints to create a seamless user experience. By using Next.js for the frontend and backend, I ensured efficient data handling, while Tailwind and Shadcn UI gave the app a clean and modern look.",
+		"image": "/images/projects/Workout-App.png",
+		"description": "A minimal viable product for tracking workouts, featuring exercise logs, template creation, and progress tracking with a sleek, mobile-friendly design. Focused on simplicity and ease of use, built around custom templates that make logging exercises straightforward. The mobile-first design prioritizes an uncomplicated UI that works well on-the-go. Built with Next.js for unified frontend and backend, with secure authentication and a clean, modern interface.",
 		"technologies": [
 			"Next.js",
 			"Typescript",
@@ -110,27 +205,31 @@
 			}
 		]
 	},
-
 	{
 		"title": "Order Management App",
 		"featured": true,
-		"projectType": {
-			"label": "CLIENT WORK",
-			"color": "text-blue-500"
-		},
-		"keyFeatures": [
-			"Key contributor to a major data system design restructuring",
-			"Restaurant website with menu and order management portal",
-			"Payment integration with Clover"
-		],
-		"technicalHighlights": [
-			"Next.js with Node/Express server",
-			"MongoDB for database",
-			"Tailwind for styling"
+		"origin": "Client Work",
+		"type": "Ecommerce Platform",
+		"highlightSections": [
+			{
+				"title": "Contributions",
+				"items": [
+					"Major database restructuring and redesign",
+					"Menu and order management portal",
+					"Payment integration with Clover"
+				]
+			},
+			{
+				"title": "Technical Highlights",
+				"items": [
+					"Next.js with Node/Express backend",
+					"MongoDB data models and API endpoints",
+					"Live site bug fixes and updates"
+				]
+			}
 		],
 		"image": "/images/projects/U2CanQue.webp",
-		"blurb": "Full-stack order management app for a BBQ restaurant, featuring a responsive front-end with checkout integration, a robust back-end with API, and an admin dashboard",
-		"description": "This project showcases my ability to turn static systems into dynamic, scalable solutions. I built new frontend functionality that makes editing the clients menu easy and convenient. On the backend I created new data models and API endpoints and restructured the existing database. Throughout the process I solved UI and data related bugs and integrated updates into a live application.",
+		"description": "Full-stack order management app for a BBQ restaurant, featuring a responsive front-end with checkout integration, a robust back-end with API, and an admin dashboard. Transformed a static restaurant system into a dynamic platform. Restructured the database and built new data models and API endpoints. Created frontend functionality for easy menu editing and order management, integrated payment processing, and handled bug fixes and updates on the live site throughout development.",
 		"technologies": [
 			"Next.js",
 			"React",
@@ -141,7 +240,7 @@
 		],
 		"links": [
 			{
-				"name": "Live Website",
+				"name": "Visit Website",
 				"url": "https://www.u2canque-takeout.com"
 			},
 			{
@@ -158,27 +257,192 @@
 			}
 		]
 	},
-
+	{
+		"title": "JADA",
+		"featured": false,
+		"origin": "Agency Work",
+		"type": "Website",
+		"highlightSections": [
+			{
+				"title": "Development Scope",
+				"items": [
+					"Full website build from design to launch",
+					"Custom WordPress theme with ACF",
+					"Responsive design with animations",
+					"Post-launch bug fixes and QA"
+				]
+			},
+			{
+				"title": "Technical Highlights",
+				"items": [
+					"Custom SCSS architecture",
+					"Webpack build optimization",
+					"ACF for flexible content management",
+					"JavaScript animations and interactions"
+				]
+			}
+		],
+		"image": "/images/projects/JADA.png",
+		"description": "Built the complete website for the Joliet Arsenal Development Authority from design comps to launch. Developed a custom WordPress theme, implemented responsive design with animations. Created a modern platform to showcase the transformation of the Joliet Arsenal into an economic powerhouse for Will County.",
+		"technologies": [
+			"PHP",
+			"WordPress",
+			"SCSS",
+			"JavaScript",
+			"HTML",
+			"ACF",
+			"Animations",
+			"Webpack"
+		],
+		"links": [
+			{
+				"name": "Visit Website",
+				"url": "https://www.jada.org/"
+			}
+		]
+	},
+	{
+		"title": "Link Parks",
+		"featured": false,
+		"origin": "Agency Work",
+		"type": "Website",
+		"highlightSections": [
+			{
+				"title": "Contributions",
+				"items": [
+					"Global interactive map system refactor",
+					"Redesigned property and market pages",
+					"Custom search with Google Places API",
+					"Site-wide UX improvements"
+				]
+			},
+			{
+				"title": "Technical Highlights",
+				"items": [
+					"Google Places API integration",
+					"Advanced property filtering system",
+					"Map performance optimization",
+					"Gulp build workflow"
+				]
+			}
+		],
+		"image": "/images/projects/LinkParks.png",
+		"description": "Refactored Link Parks' commercial real estate platform to improve how users search and explore properties. Rebuilt the interactive map system, redesigned property and market pages, and built a custom search with Google Places API integration.",
+		"technologies": [
+			"PHP",
+			"WordPress",
+			"SCSS",
+			"JavaScript",
+			"HTML",
+			"Gulp",
+			"Google Places API"
+		],
+		"links": [
+			{
+				"name": "Visit Website",
+				"url": "https://www.linkparks.com/"
+			}
+		]
+	},
+	{
+		"title": "Digital Diagnostics",
+		"featured": false,
+		"origin": "Agency Work",
+		"type": "Website",
+		"highlightSections": [
+			{
+				"title": "Contributions",
+				"items": [
+					"Extended Resources for Customer Case Studies",
+					"Integrated new content types seamlessly",
+					"Ongoing maintenance and support",
+					"Improved content organization"
+				]
+			},
+			{
+				"title": "Technical Highlights",
+				"items": [
+					"Backwards-compatible post type extensions",
+					"Healthcare industry standards",
+					"Scalable content architecture",
+					"Clean integration with existing structure"
+				]
+			}
+		],
+		"image": "/images/projects/DigitalDiagnostics.png",
+		"description": "Expanded Digital Diagnostics' Resources section to add Customer Case Studies alongside Papers and Trials, streamlining access for healthcare clients. Upgraded key front-end and content systems to improve organization and scalability, while providing ongoing maintenance for their AI platform.",
+		"technologies": ["PHP", "WordPress", "SCSS", "JavaScript", "HTML", "ACF"],
+		"links": [
+			{
+				"name": "Visit Website",
+				"url": "https://www.digitaldiagnostics.com/"
+			}
+		]
+	},
+	{
+		"title": "Harmony Companion",
+		"featured": false,
+		"origin": "Side Project",
+		"type": "Web Application",
+		"highlightSections": [
+			{
+				"title": "Key Features",
+				"items": [
+					"Real-time harmonic accompaniment creation",
+					"Interactive visual and audio theory tools",
+					"Practice logs with progress tracking"
+				]
+			},
+			{
+				"title": "Technical Highlights",
+				"items": [
+					"Modular architecture for feature expansion",
+					"Responsive UI with accessibility focus"
+				]
+			}
+		],
+		"image": "/images/projects/Harmony-App.png",
+		"description": "A tool for improvising musicians to create harmonic accompaniment and practice theory concepts in real-time. Built to solve the frustration of constantly needing different backing tracks for practice. The app generates harmonic accompaniment with customizable theory parameters, allowing musicians to practice varied styles and concepts on the fly. Includes interactive visual and audio tools for scale and chord visualization, plus progress tracking for practice sessions.",
+		"technologies": [
+			"Typescript",
+			"Next.js",
+			"React",
+			"Tailwind",
+			"shadcn UI",
+			"Custom CSS"
+		],
+		"links": [
+			{
+				"name": "GitHub",
+				"url": "https://github.com/johnnywrightiv/improv-harmony-companion"
+			}
+		]
+	},
 	{
 		"title": "Ticketing Platform",
 		"featured": true,
-		"projectType": {
-			"label": "SIDE PROJECT",
-			"color": "text-green-500"
-		},
-		"keyFeatures": [
-			"Event management dashboard",
-			"Ticketing email delivery system",
-			"Secure payment processing with Stripe integrartion"
-		],
-		"technicalHighlights": [
-			"Full optimized Next.js app with TypeScript for type safety",
-			"Prisma ORM with SQLite database",
-			"SSR with serverless actions"
+		"origin": "Side Project",
+		"type": "Web Application",
+		"highlightSections": [
+			{
+				"title": "Key Features",
+				"items": [
+					"Event management dashboard",
+					"Automated ticket email delivery",
+					"Stripe payment integration"
+				]
+			},
+			{
+				"title": "Technical Highlights",
+				"items": [
+					"Next.js with TypeScript",
+					"Prisma ORM with SQLite",
+					"Serverless actions for SSR"
+				]
+			}
 		],
 		"image": "/images/projects/QuickTix.webp",
-		"blurb": "Event ticketing platform with secure payment processing, comprehensive admin controls, and automated ticket delivery system for seamless event management.",
-		"description": "Simple event ticketing platform focusing on seamless experiences for both organizers and attendees. The admin dashboard enables event creation, sales tracking, and customer management, while the public interface handles secure payments through Stripe integration and ticket download along with email delivery.",
+		"description": "Event ticketing platform with secure payment processing, comprehensive admin controls, and automated ticket delivery system for seamless event management. The admin dashboard enables event creation, sales tracking, and customer management, while the public interface handles secure payments through Stripe integration and ticket download along with email delivery.",
 		"technologies": [
 			"SQLite",
 			"Prisma",
@@ -195,28 +459,31 @@
 			}
 		]
 	},
-
 	{
 		"title": "Project Management App",
 		"featured": false,
-		"projectType": {
-			"label": "SIDE PROJECT",
-			"color": "text-green-500"
-		},
-		"keyFeatures": [
-			"Fully functional Kanban boards",
-			"Drag-and-drop user interface",
-			"Live updates between users in the same organization"
-		],
-		"technicalHighlights": [
-			"User authentication in database",
-			"Redux for state management",
-			"Node/Express server with websocket connections",
-			"MongoDB to store users, organizations, and boards"
+		"origin": "Side Project",
+		"type": "Web Application",
+		"highlightSections": [
+			{
+				"title": "Key Features",
+				"items": [
+					"Kanban boards with drag-and-drop",
+					"Real-time team collaboration",
+					"Organization-based user management"
+				]
+			},
+			{
+				"title": "Technical Highlights",
+				"items": [
+					"WebSocket connections for live updates",
+					"Full-stack architecture with Node/Express",
+					"Led product development lifecycle"
+				]
+			}
 		],
 		"image": "/images/projects/TreHej.webp",
-		"blurb": "Full-stack Trello clone featuring Kanban boards with user authentication, seamless drag-and-drop functionality, and real-time team updates.",
-		"description": "I designed and developed a fully functional Trello clone as part of an Agile development team. Acting as Product Owner, I led daily standups, researched requirements, created user journeys, defined scopes, and planned the overall system design. Throughout the process I led our team in making critical decisions, solving issues, and prioritizing features to ensure timely delivery.",
+		"description": "Full-stack Trello clone featuring Kanban boards with user authentication, seamless drag-and-drop functionality, and real-time team updates. Led a team of three developers over several weeks, serving as Product Owner through the full development lifecycle. Managed requirements research, user journeys, system design, and feature prioritization. Built real-time collaboration features using WebSockets, gaining experience in API design, security, and project management.",
 		"technologies": [
 			"React",
 			"Redux",
@@ -236,27 +503,31 @@
 			}
 		]
 	},
-
 	{
 		"title": "Interactive Animated Portfolio",
 		"featured": false,
-		"projectType": {
-			"label": "SIDE PROJECT",
-			"color": "text-green-500"
-		},
-		"keyFeatures": ["Dynamic color themes", "Custom CSS animations"],
-		"technicalHighlights": [
-			"Tailwind and CSS variables",
-			"Built UI elements from scratch",
-			"Uses context provider for dark mode and dynamic color theme"
+		"origin": "Side Project",
+		"type": "Website",
+		"highlightSections": [
+			{
+				"title": "Key Features",
+				"items": ["Dynamic color themes", "Custom CSS animations"]
+			},
+			{
+				"title": "Technical Highlights",
+				"items": [
+					"Dynamic theme system with CSS variables",
+					"Context provider for dark mode",
+					"Custom animations and interactions"
+				]
+			}
 		],
 		"image": "/images/projects/Portfolio.webp",
-		"blurb": "Explore my development journey through an interactive portfolio website, highlighting my skills in responsive design, front-end development, and animation.",
-		"description": "Designing this portfolio website was an opportunity to focus on what I am passionate about; creating interactive user-focused web applications. This project allowed me to dive deep into front-end technologies and design principles while gaining valuable experience in animation.",
+		"description": "Explore my development journey through an interactive portfolio website, highlighting my skills in responsive design, front-end development, and animation. This project allowed me to dive deep into front-end technologies and design principles while gaining valuable experience creating engaging, user-focused web applications.",
 		"technologies": ["React", "Tailwind", "Custom CSS", "Animations", "Vercel"],
 		"links": [
 			{
-				"name": "Live Site",
+				"name": "Visit Website",
 				"url": "https://portfolio-git-v1-johnnys-projects-2201ec05.vercel.app?_vercel_share=cKbv9VKL3Zk5NCgPiSxYqn9KQxJYs4D0"
 			},
 			{
@@ -265,28 +536,31 @@
 			}
 		]
 	},
-
 	{
 		"title": "Recipe Generator App",
 		"featured": false,
-		"projectType": {
-			"label": "SIDE PROJECT",
-			"color": "text-green-500"
-		},
-		"keyFeatures": [
-			"Get randomized recipes ",
-			"Search recipes by categories",
-			"Discover recipes from list of available ingredients",
-			"Calculates and renders ingredient/recipe details"
-		],
-		"technicalHighlights": [
-			"UI built with Bootstrap",
-			"Redux for state management",
-			"Axios for calls to API endpoints"
+		"origin": "Side Project",
+		"type": "Web Application",
+		"highlightSections": [
+			{
+				"title": "Key Features",
+				"items": [
+					"Recipe discovery by ingredients",
+					"Category search and random suggestions",
+					"Recipe and ingredient details"
+				]
+			},
+			{
+				"title": "Technical Highlights",
+				"items": [
+					"Spoonacular API integration",
+					"Redux state management",
+					"Collaborative hackathon project"
+				]
+			}
 		],
 		"image": "/images/projects/Recipe-App.webp",
-		"blurb": "Front-end recipe app. Users can discover recipes based on their available ingredients, search by category, or generate random recipe suggestions.",
-		"description": "This project was developed during my first hackathon in collaboration with two fellow developers. Our team focused on utilizing the Spoonacular API to get recipe data from various endpoints. We aimed to create a useful application with simple user functionalities based on the available data.",
+		"description": "Front-end recipe app where users can discover recipes based on their available ingredients, search by category, or generate random recipe suggestions. Built during my first hackathon in collaboration with two fellow developers. Our team focused on utilizing the Spoonacular API to get recipe data from various endpoints, creating a useful application with simple user functionalities.",
 		"technologies": ["React", "Redux", "Bootstrap", "Spoonacular API"],
 		"links": [
 			{

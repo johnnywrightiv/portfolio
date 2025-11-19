@@ -65,9 +65,9 @@ export default function AboutSection() {
 					transition={{ duration: 0.8, ease: 'easeOut' }}
 					viewport={{ once: true, amount: 0.2 }}
 				>
-					<div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-2 lg:gap-12">
+					<div className="flex flex-col items-center gap-8 lg:flex-row lg:justify-center lg:gap-12">
 						{/* Profile Image */}
-						<div className="flex justify-center lg:justify-start">
+						<div className="flex shrink-0 justify-center lg:justify-end">
 							<div className="group relative">
 								<div className="glass absolute -inset-2 rounded-full opacity-30 transition-opacity group-hover:opacity-50 sm:-inset-4"></div>
 								{/* Base Image - Always visible */}
@@ -77,7 +77,7 @@ export default function AboutSection() {
 									width={400}
 									height={400}
 									loading="lazy"
-									className="relative rounded-full border-4 border-white/10 transition-all duration-300 hover:scale-105 hover:border-white/20"
+									className="relative rounded-full border-4 border-white/10 transition-all duration-300 hover:border-white/20"
 								/>
 								{/* Overlay Image - Only visible on hover */}
 								<div
@@ -103,7 +103,7 @@ export default function AboutSection() {
 						</div>
 
 						{/* About Content */}
-						<div className="space-y-6 text-center lg:text-left">
+						<div className="min-w-0 space-y-6 text-center lg:max-w-2xl lg:flex-1 lg:text-left">
 							<h2 className="mb-8 text-4xl font-bold text-white md:text-5xl">
 								About Me
 							</h2>
@@ -114,20 +114,25 @@ export default function AboutSection() {
 									<strong className="font-semibold text-white">
 										John Wright
 									</strong>
-									, a Full-Stack Developer with a focus on process improvement
-									and user experience. I specialize in building scalable and
-									efficient applications for web and mobile using React,
-									Next.js, Tailwind CSS, TypeScript, and AI integrations.
+									, a Full-Stack Developer focused on process improvement and
+									user experience. I specialize in building scalable
+									applications for web and mobile using React, Next.js, Tailwind
+									CSS, and TypeScript. I also build and maintain WordPress
+									websites, and design AI integrations and workflow automations
+									for businesses and teams.
 								</p>
 								<p>
-									With a passion for creating intuitive user experiences and
-									optimizing workflows, I bring a unique blend of technical
-									expertise and creative problem-solving to every project. My
-									goal is to build applications that not only meet requirements
-									but exceed expectations.
+									My backgrounds in product and production management provide me
+									with a unique perspective on the full development lifecycle.
+									I&apos;ve led teams, managed complex projects, and bridged
+									communication between stakeholders and technical teams -
+									experiences that help me deliver solutions that align with
+									strategic goals while maintaining high standards for code
+									quality and user experience.
 								</p>
 								<p className="mt-6 text-white/75">
-									When I&apos;m not coding, you can find me hanging out with my{' '}
+									When I&apos;m not coding, you can typically find me practicing
+									my jumpshot, hanging out with my{' '}
 									<span
 										className="cursor-pointer font-semibold text-blue-300 transition-colors duration-200 hover:text-blue-200"
 										onMouseEnter={() => handleMouseEnter('cats')}
@@ -155,7 +160,7 @@ export default function AboutSection() {
 								</p>
 							</div>
 
-							<div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row lg:justify-start">
+							<div className="mt-8 flex flex-col flex-wrap items-center justify-center gap-4 sm:flex-row lg:justify-start">
 								<Button
 									asChild
 									className="glass glass-hover group w-full border border-white/20 px-8 py-4 font-semibold text-white transition-all duration-300 hover:scale-105 hover:border-white/40 hover:shadow-lg hover:shadow-white/10 sm:w-auto"

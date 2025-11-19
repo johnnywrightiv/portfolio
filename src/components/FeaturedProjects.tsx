@@ -12,22 +12,21 @@ import { motion } from 'framer-motion';
 import React, { useState, useCallback } from 'react';
 import projectsData from '@/data/dev-projects.json';
 import ProjectModal from './ProjectModal';
+import {
+	getProjectOriginClass,
+	getProjectTypeClass,
+	type ProjectSection,
+} from '@/lib/project-types';
 
 // TypeScript interfaces
-interface ProjectType {
-	label: string;
-	color: string;
-}
-
 interface Project {
 	title: string;
 	featured: boolean;
-	projectType: ProjectType;
-	keyFeatures?: string[];
-	technicalHighlights?: string[];
+	origin: string;
+	type: string;
+	highlightSections?: ProjectSection[];
 	image?: string;
-	blurb: string;
-	description?: string;
+	description: string;
 	technologies: string[];
 	links?: Array<{ name: string; url: string }>;
 	liveUrl?: string;
@@ -82,21 +81,6 @@ export default function FeaturedProjects() {
 	// State for modal navigation
 	const [currentProjectIndex, setCurrentProjectIndex] = useState(0);
 	const [isModalOpen, setIsModalOpen] = useState(false);
-
-	// Color mapping utility
-	const getProjectTypeColor = (colorClass: string) => {
-		const colorMap: { [key: string]: string } = {
-			'text-blue-500': '#3b82f6',
-			'text-green-500': '#10b981',
-			'text-orange-500': '#f97316',
-			'text-purple-500': '#8b5cf6',
-			'text-red-500': '#ef4444',
-			'text-yellow-500': '#eab308',
-			'text-primary': 'var(--primary)',
-			'text-secondary': 'var(--secondary)',
-		};
-		return colorMap[colorClass] || '#ffffff';
-	};
 
 	// Navigation functions wrapped in useCallback for stable references
 	const goToPrevious = useCallback(() => {
@@ -212,7 +196,7 @@ export default function FeaturedProjects() {
 													role="button"
 													tabIndex={0}
 													aria-label={`View details for ${project.title}`}
-													className="group relative mx-auto flex h-[480px] max-w-[360px] cursor-pointer flex-col overflow-hidden rounded-2xl border border-white/20 bg-black/40 shadow-lg backdrop-blur-sm transition-all duration-500 ease-out hover:border-white/40 hover:shadow-2xl focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-black min-[900px]:mx-0 min-[900px]:h-[450px] min-[900px]:max-w-none lg:h-[500px]"
+													className="group relative mx-auto flex h-[520px] max-w-[380px] cursor-pointer flex-col overflow-hidden rounded-2xl border border-white/20 bg-black/40 shadow-lg backdrop-blur-sm transition-all duration-500 ease-out hover:border-white/40 hover:shadow-2xl focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-black sm:h-[580px] min-[900px]:mx-0 min-[900px]:max-w-none"
 													onMouseMove={handleMouseMove}
 													style={
 														{
@@ -263,25 +247,36 @@ export default function FeaturedProjects() {
 													{/* Content container with consistent spacing */}
 													<div className="relative z-20 flex flex-1 flex-col justify-between p-5 min-[900px]:p-6">
 														<div className="flex-1">
-															<div
-																className="mb-3 text-sm font-bold uppercase tracking-wider transition-colors duration-300 group-hover:opacity-80"
-																style={{
-																	color: getProjectTypeColor(
-																		project.projectType.color
-																	),
-																}}
-															>
-																{project.projectType.label}
-															</div>
+															{/* Title first for better hierarchy */}
 															<h3 className="mb-3 line-clamp-2 text-xl font-semibold text-white transition-colors duration-300 group-hover:text-white/90 min-[900px]:mb-4">
 																{project.title}
 															</h3>
-															<p className="mb-4 line-clamp-3 text-sm leading-relaxed text-white/75 transition-colors duration-300 group-hover:text-white/90 min-[900px]:text-base">
-																{project.blurb}
+															{/* Type and Origin tags side-by-side with wrapping */}
+															<div className="mb-4 flex flex-wrap items-center gap-2">
+																{project.type && (
+																	<span
+																		className={`text-sm font-bold uppercase tracking-wider transition-colors duration-300 ${getProjectTypeClass(project.type)} group-hover:opacity-80`}
+																	>
+																		{project.type}
+																	</span>
+																)}
+																{project.type && project.origin && (
+																	<span className="text-white/30">•</span>
+																)}
+																{project.origin && (
+																	<div
+																		className={`text-sm font-normal uppercase tracking-wider transition-colors duration-300 ${getProjectOriginClass()} group-hover:opacity-80`}
+																	>
+																		{project.origin}
+																	</div>
+																)}
+															</div>
+															<p className="mb-2 line-clamp-5 text-sm leading-relaxed text-white/75 transition-colors duration-300 group-hover:text-white/90 min-[900px]:text-base">
+																{project.description}
 															</p>
 														</div>
 
-														{/* Technology tags with consistent height */}
+														{/* Technology tags with consistent height - uniformly at bottom */}
 														<div className="mt-auto">
 															<div className="flex min-h-[32px] flex-wrap items-start gap-2">
 																{project.technologies.map((tech) => (

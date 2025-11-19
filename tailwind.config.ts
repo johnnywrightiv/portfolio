@@ -1,30 +1,10 @@
 import type { Config } from 'tailwindcss';
 import plugin from 'tailwindcss/plugin';
 
-const hoverCapabilityVariants = plugin(({ addVariant, e }) => {
-	addVariant('hover', ({ modifySelectors, separator }) => {
-		modifySelectors(({ className }) => {
-			return `.can-hover .${e(
-				`hover${separator}${className}`
-			)}:hover`;
-		});
-	});
-
-	addVariant('group-hover', ({ modifySelectors, separator }) => {
-		modifySelectors(({ className }) => {
-			return `.can-hover .group:hover .${e(
-				`group-hover${separator}${className}`
-			)}`;
-		});
-	});
-
-	addVariant('peer-hover', ({ modifySelectors, separator }) => {
-		modifySelectors(({ className }) => {
-			return `.can-hover .peer:hover ~ .${e(
-				`peer-hover${separator}${className}`
-			)}`;
-		});
-	});
+const hoverCapabilityVariants = plugin(({ addVariant }) => {
+	addVariant('hover', '.can-hover &:hover');
+	addVariant('group-hover', '.can-hover .group:hover &');
+	addVariant('peer-hover', '.can-hover .peer:hover ~ &');
 });
 
 const config: Config = {

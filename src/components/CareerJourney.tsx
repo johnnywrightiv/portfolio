@@ -18,7 +18,7 @@ export default function CareerJourney() {
 
 	return (
 		<section id="career" className="py-section">
-			<div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-12">
+			<div className="container-section">
 				<div className="mb-12 text-center">
 					<h2 className="mb-4 text-3xl font-bold text-white md:text-4xl">
 						Career Journey
@@ -76,7 +76,7 @@ export default function CareerJourney() {
 						))}
 					</div>
 				) : (
-					<div className="relative space-y-12 before:absolute before:inset-0 before:left-1/2 before:z-0 before:ml-0 before:h-full before:-translate-x-px before:border-l-2 before:border-white/20">
+					<div className="relative space-y-12 before:absolute before:inset-0 before:left-1/2 before:z-0 before:ml-0 before:h-full before:-translate-x-px before:border-l-2 before:border-white/20 xl:space-y-20 2xl:space-y-24">
 						{experiences.map((experience, index) => (
 							<div
 								key={index}

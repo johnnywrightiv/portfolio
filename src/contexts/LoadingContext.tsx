@@ -23,9 +23,9 @@ export function LoadingProvider({ children }: { children: React.ReactNode }) {
 	}, []);
 
 	// Update sessionStorage when splash runs
-	const handleSetHasSplashRun = (_value: boolean) => {
-		setHasSplashRun(_value);
-		if (_value) {
+	const handleSetHasSplashRun = (value: boolean) => {
+		setHasSplashRun(value);
+		if (value) {
 			sessionStorage.setItem('splash-has-run', 'true');
 		}
 	};
