@@ -196,7 +196,7 @@ export default function FeaturedProjects() {
 													role="button"
 													tabIndex={0}
 													aria-label={`View details for ${project.title}`}
-													className="group relative mx-auto flex h-[520px] max-w-[380px] cursor-pointer flex-col overflow-hidden rounded-2xl border border-white/20 bg-black/40 shadow-lg backdrop-blur-sm transition-all duration-500 ease-out hover:border-white/40 hover:shadow-2xl focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-black sm:h-[580px] min-[900px]:mx-0 min-[900px]:max-w-none"
+													className="group relative mx-auto flex h-[520px] max-w-[380px] cursor-pointer flex-col overflow-hidden rounded-2xl border border-white/20 bg-black/40 shadow-lg backdrop-blur-sm transition-all duration-500 ease-out focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-black hover:border-white/40 hover:shadow-2xl sm:h-[580px] min-[900px]:mx-0 min-[900px]:max-w-none"
 													onMouseMove={handleMouseMove}
 													style={
 														{

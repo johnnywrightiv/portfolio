@@ -35,6 +35,7 @@ interface Project {
 interface ProjectModalProps {
 	project: Project | undefined;
 	open: boolean;
+	// eslint-disable-next-line no-unused-vars
 	onOpenChange: (open: boolean) => void;
 	onPrev: () => void;
 	onNext: () => void;

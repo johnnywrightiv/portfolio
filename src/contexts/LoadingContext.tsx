@@ -4,8 +4,10 @@ import React, { createContext, useContext, useState, useEffect } from 'react';
 
 interface LoadingContextType {
 	hasSplashRun: boolean;
+	// eslint-disable-next-line no-unused-vars
 	setHasSplashRun: (value: boolean) => void;
 	isInitialLoad: boolean;
+	// eslint-disable-next-line no-unused-vars
 	setIsInitialLoad: (value: boolean) => void;
 }
 
