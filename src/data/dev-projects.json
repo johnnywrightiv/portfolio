@@ -23,7 +23,7 @@
 			}
 		],
 		"image": "/images/projects/SEO-AI.png",
-		"description": "AI-powered automation workflow that transforms manual SEO content management into a streamlined background process. Conceived and built an end-to-end system that eliminates hours of repetitive work by automatically generating SEO-optimized content across pages, posts, and media libraries. Leverages OpenAI's vision and text generation capabilities to create alt text, meta descriptions, and optimized filenames at scale. Designed with flexible prompting architecture to adapt across diverse industries and use cases, freeing teams to focus on strategic work.",
+		"description": "AI-powered automation workflow that transforms manual SEO content management into a streamlined background process. Came up with an idea to leverage OpenAI API for image vison and text generation tooling capabilities to create alt text, meta descriptions, and optimized filenames at scale. Developed an end-to-end system that eliminates hours of repetitive work by automatically generating SEO-optimized content across pages, posts, and media libraries. Designed with flexible prompting architecture to adapt across diverse industries and use cases, freeing teams to focus on strategic work.",
 		"technologies": [
 			"OpenAI API",
 			"Playwright",
