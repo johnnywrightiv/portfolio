@@ -39,7 +39,7 @@
 		]
 	},
 	{
-		"title": "Dynamic Blog Content Generator & Scheduler Workflow",
+		"title": "Dynamic Blog Content Generator & Scheduler Automation",
 		"featured": true,
 		"origin": "Agency Work",
 		"type": "Automation",
@@ -65,6 +65,7 @@
 		"description": "Content automation system that transforms manual blog production workflows into scalable, error-free processes. Conceived and built a dynamic content generation platform that creates property-specific blog variants from templates and handles automated scheduling across multiple sites. Replaces time-consuming manual processes like find-and-replace, formatting cleanup, and scheduling with intelligent automation. Built robust Playwright automation to reliably navigate challenging third-party platforms, enabling seamless content deployment at scale.",
 		"technologies": [
 			"Playwright",
+			"Python",
 			"Next.js",
 			"MongoDB",
 			"TypeScript",
