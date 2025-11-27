@@ -380,6 +380,46 @@
 		]
 	},
 	{
+		"title": "Producer Social Feed",
+		"featured": false,
+		"origin": "Side Project",
+		"type": "Web Application",
+		"highlightSections": [
+			{
+				"title": "Key Features",
+				"items": [
+					"Social feed for musicians and producers",
+					"Audio upload and playback with Supabase Storage",
+					"Real-time updates across multiple clients"
+				]
+			},
+			{
+				"title": "Technical Highlights",
+				"items": [
+					"Rapid one-day development cycle",
+					"Supabase backend with GraphQL and REST",
+					"GitHub Actions to keep project active"
+				]
+			}
+		],
+		"image": "/images/projects/placeholder.webp",
+		"description": "A simple social media feed web app designed for musicians and producers to share audio and collaborate. Built as a rapid one-afternoon side project to deepen practical experience with SQL, GraphQL, and Supabase. Includes GitHub Actions for continuous integration to keep the project active.",
+		"technologies": [
+			"PostgreSQL",
+			"GraphQL",
+			"Supabase",
+			"GitHub Actions",
+			"Next.js",
+			"Tailwind"
+		],
+		"links": [
+			{
+				"name": "Live Demo",
+				"url": "https://produer-social-feed.vercel.app/"
+			}
+		]
+	},
+	{
 		"title": "Harmony Companion",
 		"featured": false,
 		"origin": "Side Project",

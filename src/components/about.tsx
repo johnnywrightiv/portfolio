@@ -131,8 +131,8 @@ export default function AboutSection() {
 									quality and user experience.
 								</p>
 								<p className="mt-6 text-white/75">
-									When I&apos;m not coding, you can typically find me practicing
-									my jumpshot, hanging out with my{' '}
+									When I&apos;m not coding, you can typically find me in the
+									gym, hanging out with my{' '}
 									<span
 										className="cursor-pointer font-semibold text-blue-300 transition-colors duration-200 hover:text-blue-200"
 										onMouseEnter={() => handleMouseEnter('cats')}
