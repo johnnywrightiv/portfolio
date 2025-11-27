@@ -8,7 +8,7 @@ export const PROJECT_TYPE_COLORS: Record<string, string> = {
 	'Web Application': 'text-blue-400',
 	Website: 'text-cyan-400',
 	'Mobile First App': 'text-purple-400',
-	'Ecommerce Platform': 'text-orange-400',
+	'Ecommerce App': 'text-orange-400',
 	'Embedded Web App': 'text-green-300',
 	'AI Integration': 'text-yellow-400',
 	Automation: 'text-indigo-400',
