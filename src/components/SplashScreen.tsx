@@ -25,7 +25,7 @@ export default function SplashScreen({
 			{ text: 'Polishing pixels...', threshold: 30 },
 			{ text: 'Debugging reality...', threshold: 60 },
 			{
-				text: 'Compiling good vibes...',
+				text: 'Compiling my best work...',
 				threshold: 90,
 			},
 		];

@@ -402,7 +402,7 @@
 				]
 			}
 		],
-		"image": "/images/projects/placeholder.webp",
+		"image": "/images/projects/producer-social-feed.png",
 		"description": "A simple social media feed web app designed for musicians and producers to share audio and collaborate. Built as a rapid one-afternoon side project to deepen practical experience with SQL, GraphQL, and Supabase. Includes GitHub Actions for continuous integration to keep the project active.",
 		"technologies": [
 			"PostgreSQL",
