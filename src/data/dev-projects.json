@@ -188,7 +188,7 @@
 		"description": "A minimal viable product for tracking workouts, featuring exercise logs, template creation, and progress tracking with a sleek, mobile-friendly design. Focused on simplicity and ease of use, built around custom templates that make logging exercises straightforward. The mobile-first design prioritizes an uncomplicated UI that works well on-the-go. Built with Next.js for unified frontend and backend, with secure authentication and a clean, modern interface.",
 		"technologies": [
 			"Next.js",
-			"TypeScript",
+			"Typescript",
 			"Tailwind",
 			"shadcn UI",
 			"MongoDB",
@@ -209,7 +209,7 @@
 		"title": "Order Management App",
 		"featured": true,
 		"origin": "Client Work",
-		"type": "Ecommerce App",
+		"type": "Ecommerce Platform",
 		"highlightSections": [
 			{
 				"title": "Contributions",
@@ -380,46 +380,6 @@
 		]
 	},
 	{
-		"title": "Producer Social Feed",
-		"featured": false,
-		"origin": "Side Project",
-		"type": "Web Application",
-		"highlightSections": [
-			{
-				"title": "Key Features",
-				"items": [
-					"Social feed for musicians and producers",
-					"Audio upload and playback with Supabase Storage",
-					"Real-time updates across multiple clients"
-				]
-			},
-			{
-				"title": "Technical Highlights",
-				"items": [
-					"Rapid one-day development cycle",
-					"Supabase backend with GraphQL and REST",
-					"GitHub Actions to keep project active"
-				]
-			}
-		],
-		"image": "/images/projects/placeholder.webp",
-		"description": "A simple social media feed web app designed for musicians and producers to share audio and collaborate. Built as a rapid one-afternoon side project to deepen practical experience with SQL, GraphQL, and Supabase. Includes GitHub Actions for continuous integration to keep the project active.",
-		"technologies": [
-			"PostgreSQL",
-			"GraphQL",
-			"Supabase",
-			"GitHub Actions",
-			"Next.js",
-			"Tailwind"
-		],
-		"links": [
-			{
-				"name": "Live Demo",
-				"url": "https://produer-social-feed.vercel.app/"
-			}
-		]
-	},
-	{
 		"title": "Harmony Companion",
 		"featured": false,
 		"origin": "Side Project",
@@ -444,7 +404,7 @@
 		"image": "/images/projects/Harmony-App.png",
 		"description": "A tool for improvising musicians to create harmonic accompaniment and practice theory concepts in real-time. Built to solve the frustration of constantly needing different backing tracks for practice. The app generates harmonic accompaniment with customizable theory parameters, allowing musicians to practice varied styles and concepts on the fly. Includes interactive visual and audio tools for scale and chord visualization, plus progress tracking for practice sessions.",
 		"technologies": [
-			"TypeScript",
+			"Typescript",
 			"Next.js",
 			"React",
 			"Tailwind",
@@ -487,7 +447,7 @@
 			"SQLite",
 			"Prisma",
 			"Stripe",
-			"TypeScript",
+			"Typescript",
 			"Next.js",
 			"React",
 			"Tailwind"
