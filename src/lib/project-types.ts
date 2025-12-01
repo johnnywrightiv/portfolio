@@ -12,6 +12,7 @@ export const PROJECT_TYPE_COLORS: Record<string, string> = {
 	'Embedded Web App': 'text-green-300',
 	'AI Integration': 'text-yellow-400',
 	Automation: 'text-indigo-400',
+	'3D Animation': 'text-pink-400',
 };
 
 /**

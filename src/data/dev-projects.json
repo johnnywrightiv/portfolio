@@ -164,7 +164,7 @@
 	{
 		"title": "Workout Tracker Mobile App",
 		"featured": true,
-		"origin": "Side Project",
+		"origin": "MVP Development",
 		"type": "Mobile First App",
 		"highlightSections": [
 			{
@@ -376,6 +376,49 @@
 		]
 	},
 	{
+		"title": "Brain Rot 3D Web Animation",
+		"featured": true,
+		"origin": "Side Project",
+		"type": "3D Animation",
+		"highlightSections": [
+			{
+				"title": "Key Features",
+				"items": [
+					"Immersive 360-degree environment",
+					"3D objects with interactive features & animations",
+					"Guided spatial navigation through various perspectives"
+				]
+			},
+			{
+				"title": "Technical Highlights",
+				"items": [
+					"Three.js scene & camera management",
+					"WebGL performance optimization",
+					"Complex 3D animation states"
+				]
+			}
+		],
+		"image": "/images/projects/BrainRotPortfolio.png",
+		"description": "An immersive 3D web experience pushing the boundaries of browser-based graphics. Built with Next.js and Three.js, this project features a fully interactive 360-degree environment where users navigate through a spatial narrative. The environment demonstrates advanced WebGL techniques including custom camera controls, smooth transition animations, and 3D object rendering, all wrapped in a satirical 'brain rot' meme culture theme to showcase creative flexibility alongside technical depth.",
+		"technologies": [
+			"Three.js",
+			"Next.js",
+			"React",
+			"3D Animations",
+			"Custom CSS"
+		],
+		"links": [
+			{
+				"name": "Visit Website",
+				"url": "https://brain-rot-portfolio.vercel.app/"
+			},
+			{
+				"name": "GitHub",
+				"url": "https://github.com/johnnywrightiv/brain-rot-portfolio"
+			}
+		]
+	},
+	{
 		"title": "Harmony Companion",
 		"featured": false,
 		"origin": "Side Project",
@@ -536,39 +579,6 @@
 			{
 				"name": "GitHub",
 				"url": "https://github.com/Johnnywrightiv/agile-trello-clone"
-			}
-		]
-	},
-	{
-		"title": "Interactive Animated Portfolio",
-		"featured": false,
-		"origin": "Side Project",
-		"type": "Website",
-		"highlightSections": [
-			{
-				"title": "Key Features",
-				"items": ["Dynamic color themes", "Custom CSS animations"]
-			},
-			{
-				"title": "Technical Highlights",
-				"items": [
-					"Dynamic theme system with CSS variables",
-					"Context provider for dark mode",
-					"Custom animations and interactions"
-				]
-			}
-		],
-		"image": "/images/projects/Portfolio.webp",
-		"description": "Explore my development journey through an interactive portfolio website, highlighting my skills in responsive design, front-end development, and animation. This project allowed me to dive deep into front-end technologies and design principles while gaining valuable experience creating engaging, user-focused web applications.",
-		"technologies": ["React", "Tailwind", "Custom CSS", "Animations", "Vercel"],
-		"links": [
-			{
-				"name": "Visit Website",
-				"url": "https://portfolio-git-v1-johnnys-projects-2201ec05.vercel.app?_vercel_share=cKbv9VKL3Zk5NCgPiSxYqn9KQxJYs4D0"
-			},
-			{
-				"name": "GitHub",
-				"url": "https://github.com/johnnywrightiv/portfolio/tree/v1"
 			}
 		]
 	},
