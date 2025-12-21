@@ -377,7 +377,7 @@
 	},
 	{
 		"title": "Brain Rot 3D Web Animation",
-		"featured": true,
+		"featured": false,
 		"origin": "Side Project",
 		"type": "3D Animation",
 		"highlightSections": [
