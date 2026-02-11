@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent } from '@/components/ui/dialog';
 import { ExternalLink, Github, ChevronLeft, ChevronRight } from 'lucide-react';
-import { motion, AnimatePresence, PanInfo } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import {
 	getProjectOriginClass,
 	getProjectTypeClass,
@@ -44,11 +44,10 @@ interface ProjectModalProps {
 }
 
 // Animation variants for smooth transitions
-
 const contentVariants = {
-	hidden: { opacity: 0, x: 20 },
-	visible: { opacity: 1, x: 0 },
-	exit: { opacity: 0, x: -20 },
+	hidden: { opacity: 0, scale: 0.98 },
+	visible: { opacity: 1, scale: 1, transition: { duration: 0.3, ease: 'easeOut' } },
+	exit: { opacity: 0, scale: 0.98, transition: { duration: 0.2, ease: 'easeIn' } },
 };
 
 export default function ProjectModal({
@@ -60,8 +59,9 @@ export default function ProjectModal({
 	projects,
 	currentIndex,
 }: ProjectModalProps) {
-	// Enhanced swipe state for mobile navigation
-	const [isTransitioning, setIsTransitioning] = React.useState(false);
+	// Swipe state for mobile navigation
+	const [touchStart, setTouchStart] = React.useState<number | null>(null);
+	const [touchEnd, setTouchEnd] = React.useState<number | null>(null);
 
 	// Keyboard navigation inside modal
 	React.useEffect(() => {
@@ -74,37 +74,28 @@ export default function ProjectModal({
 		return () => window.removeEventListener('keydown', handleKeyDown);
 	}, [open, onPrev, onNext]);
 
-	// Enhanced drag handler with Framer Motion
-	const handleDragEnd = (
-		event: MouseEvent | TouchEvent | PointerEvent,
-		info: PanInfo
-	) => {
-		const { offset, velocity } = info;
+	// Simple swipe handler without drag physics
+	const minSwipeDistance = 50;
 
-		// Enhanced swipe detection with momentum
-		const swipeThreshold = 50;
-		const velocityThreshold = 500;
+	const onTouchStart = (e: React.TouchEvent) => {
+		setTouchEnd(null);
+		setTouchStart(e.targetTouches[0].clientX);
+	};
 
-		// Check if swipe has enough distance or velocity
-		const isSwipe =
-			Math.abs(offset.x) > swipeThreshold ||
-			Math.abs(velocity.x) > velocityThreshold;
+	const onTouchMove = (e: React.TouchEvent) => {
+		setTouchEnd(e.targetTouches[0].clientX);
+	};
 
-		if (isSwipe) {
-			if (offset.x > 0 || velocity.x > 0) {
-				// Swipe right = previous
-				setIsTransitioning(true);
-				onPrev();
-			} else {
-				// Swipe left = next
-				setIsTransitioning(true);
-				onNext();
-			}
+	const onTouchEnd = () => {
+		if (!touchStart || !touchEnd) return;
+		const distance = touchStart - touchEnd;
+		const isLeftSwipe = distance > minSwipeDistance;
+		const isRightSwipe = distance < -minSwipeDistance;
 
-			// Reset transition state after animation
-			setTimeout(() => {
-				setIsTransitioning(false);
-			}, 400);
+		if (isLeftSwipe) {
+			onNext();
+		} else if (isRightSwipe) {
+			onPrev();
 		}
 	};
 
@@ -139,18 +130,12 @@ export default function ProjectModal({
 					</>
 				)}
 
-				{/* Draggable content container */}
-				<motion.div
+				{/* Content container with touch handlers */}
+				<div
 					className="flex h-full max-h-[90vh] flex-col overflow-y-auto px-12 py-6 lg:px-20"
-					drag="x"
-					dragConstraints={{ left: 0, right: 0 }}
-					dragElastic={0.1}
-					onDragEnd={handleDragEnd}
-					dragMomentum={false}
-					initial="visible"
-					animate={isTransitioning ? 'exit' : 'visible'}
-					variants={contentVariants}
-					transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
+					onTouchStart={onTouchStart}
+					onTouchMove={onTouchMove}
+					onTouchEnd={onTouchEnd}
 				>
 					<AnimatePresence mode="wait">
 						<motion.div
@@ -160,16 +145,15 @@ export default function ProjectModal({
 							initial="hidden"
 							animate="visible"
 							exit="exit"
-							transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
 						>
 							{/* Row 1: Image and Header */}
 							<div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-2">
 								{/* Left column - Image */}
 								<motion.div
 									className="space-y-6"
-									initial={{ opacity: 0, y: 20 }}
+									initial={{ opacity: 0, y: 10 }}
 									animate={{ opacity: 1, y: 0 }}
-									transition={{ duration: 0.4, delay: 0.1 }}
+									transition={{ duration: 0.3, delay: 0.1 }}
 								>
 									{currentProject.image && (
 										<div className="relative aspect-video w-full rounded-xl bg-muted">
@@ -386,7 +370,7 @@ export default function ProjectModal({
 							</motion.div>
 						</motion.div>
 					</AnimatePresence>
-				</motion.div>
+				</div>
 			</DialogContent>
 		</Dialog>
 	);
