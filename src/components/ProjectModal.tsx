@@ -49,12 +49,12 @@ const contentVariants = {
 	visible: {
 		opacity: 1,
 		scale: 1,
-		transition: { duration: 0.3, ease: 'easeOut' },
+		transition: { duration: 0.3, ease: 'easeOut' as const },
 	},
 	exit: {
 		opacity: 0,
 		scale: 0.98,
-		transition: { duration: 0.2, ease: 'easeIn' },
+		transition: { duration: 0.2, ease: 'easeIn' as const },
 	},
 };
 
