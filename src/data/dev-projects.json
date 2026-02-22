@@ -104,7 +104,7 @@
 			}
 		],
 		"image": "/images/projects/NavyPier1.png",
-		"description": "Refactored Navy Pier's website to replace their Events Calendar plugin with custom post types for events and locations. Built the frontend from design comps and added features like favorites and trip planning. The site serves nearly 9 million annual visitors, and I continue to handle maintenance and SEO improvements.",
+		"description": "Refactored Navy Pier's website to replace their Events Calendar plugin with custom post types for events and locations. Built the frontend from design comps and added features like favorites and trip planning. The site serves nearly 9 million annual visitors, and I developed workflows to handle maintenance and SEO improvements.",
 		"technologies": [
 			"PHP",
 			"WordPress",
