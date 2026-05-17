@@ -204,7 +204,7 @@ export default function ProjectModal({
 											)}
 											{currentProject.origin && (
 												<div
-													className={`text-sm font-normal uppercase tracking-wider ${getProjectOriginClass()}`}
+													className={`text-sm font-normal uppercase tracking-wider ${getProjectOriginClass(currentProject.origin)}`}
 												>
 													{currentProject.origin}
 												</div>
