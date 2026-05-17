@@ -1,0 +1,99 @@
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+      time: "06:00"
+      timezone: America/Chicago
+    open-pull-requests-limit: 10
+    versioning-strategy: increase
+    labels:
+      - dependencies
+    groups:
+      # Framework majors get their own PRs so you can review them
+      next-major:
+        patterns:
+          - next
+          - eslint-config-next
+        update-types:
+          - major
+      react-major:
+        patterns:
+          - react
+          - react-dom
+          - "@types/react"
+          - "@types/react-dom"
+        update-types:
+          - major
+      # Everything else: grouped patch+minor PRs by area
+      radix:
+        patterns:
+          - "@radix-ui/*"
+        update-types:
+          - minor
+          - patch
+      types:
+        patterns:
+          - "@types/*"
+        update-types:
+          - minor
+          - patch
+      lint-format:
+        patterns:
+          - eslint*
+          - prettier*
+          - "@typescript-eslint/*"
+        update-types:
+          - minor
+          - patch
+      tailwind:
+        patterns:
+          - tailwind*
+          - postcss
+          - "*tailwindcss*"
+        update-types:
+          - minor
+          - patch
+      production-minor:
+        dependency-type: production
+        update-types:
+          - minor
+          - patch
+        exclude-patterns:
+          - next
+          - react
+          - react-dom
+          - "@radix-ui/*"
+          - tailwind*
+          - "*tailwindcss*"
+          - postcss
+      dev-minor:
+        dependency-type: development
+        update-types:
+          - minor
+          - patch
+        exclude-patterns:
+          - "@types/*"
+          - eslint*
+          - prettier*
+          - "@typescript-eslint/*"
+          - tailwind*
+          - "*tailwindcss*"
+          - postcss
+
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+      time: "06:00"
+      timezone: America/Chicago
+    labels:
+      - dependencies
+      - github-actions
+    groups:
+      actions:
+        patterns:
+          - "*"
