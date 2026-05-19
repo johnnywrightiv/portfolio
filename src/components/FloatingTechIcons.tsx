@@ -45,10 +45,7 @@ import {
 	SiPostman,
 	SiRedux,
 } from 'react-icons/si';
-import {
-	TbBrandAdobePhotoshop,
-	TbBrandAdobeIllustrator,
-} from 'react-icons/tb';
+import { TbBrandAdobePhotoshop, TbBrandAdobeIllustrator } from 'react-icons/tb';
 import { VscVscode } from 'react-icons/vsc';
 import { RiClaudeLine, RiOpenaiFill } from 'react-icons/ri';
 
