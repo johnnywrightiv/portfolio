@@ -583,7 +583,7 @@ export default function AllProjects() {
 													)}
 													{project.origin && (
 														<div
-															className={`text-sm font-normal uppercase tracking-wider transition-colors duration-300 ${getProjectOriginClass()} group-hover:opacity-80`}
+															className={`text-sm font-normal uppercase tracking-wider transition-colors duration-300 ${getProjectOriginClass(project.origin)} group-hover:opacity-80`}
 														>
 															{project.origin}
 														</div>

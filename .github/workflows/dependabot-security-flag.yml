@@ -1,0 +1,52 @@
+name: Dependabot security flag
+
+# Flags security PRs that need human attention:
+#   - Major version bumps (auto-merge is intentionally skipped for these)
+#   - High or Critical severity (CVSS >= 7.0), even if patch/minor
+#
+# Patch/minor security fixes below CVSS 7.0 auto-merge silently — no noise.
+
+on: pull_request_target
+
+permissions:
+  contents: read
+  pull-requests: write
+  issues: write
+
+jobs:
+  flag:
+    if: github.actor == 'dependabot[bot]'
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - name: Fetch Dependabot metadata
+        id: meta
+        uses: dependabot/fetch-metadata@v3
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Flag if major bump or High/Critical CVE
+        if: steps.meta.outputs.alert-state == 'OPEN'
+        env:
+          PR_URL: ${{ github.event.pull_request.html_url }}
+          PR_TITLE: ${{ github.event.pull_request.title }}
+          UPDATE_TYPE: ${{ steps.meta.outputs.update-type }}
+          CVSS: ${{ steps.meta.outputs.cvss }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          IS_MAJOR=false
+          IS_HIGH=false
+
+          [[ "$UPDATE_TYPE" == "version-update:semver-major" ]] && IS_MAJOR=true
+
+          # Flag High (>=7.0) or Critical (>=9.0)
+          if [[ -n "$CVSS" ]]; then
+            python3 -c "import sys; sys.exit(0 if float('$CVSS') >= 7.0 else 1)" && IS_HIGH=true || true
+          fi
+
+          if [[ "$IS_MAJOR" == "true" || "$IS_HIGH" == "true" ]]; then
+            if [[ "$PR_TITLE" != 🚨* ]]; then
+              gh pr edit "$PR_URL" --title "🚨 SECURITY: $PR_TITLE"
+            fi
+            gh pr edit "$PR_URL" --add-label security
+          fi

@@ -24,9 +24,23 @@ export function getProjectTypeClass(type: string | undefined): string {
 }
 
 /**
- * Get neutral styling for project origin tag (muted, categorical)
+ * Project Origin Color Configuration
+ *
+ * Most origins use a neutral muted style; specific origins can opt into a color
+ * to call them out (e.g., "Internal Tools" for tools built in-house).
  */
-export function getProjectOriginClass(): string {
+export const PROJECT_ORIGIN_COLORS: Record<string, string> = {
+	'Internal Tools': 'text-teal-400',
+};
+
+/**
+ * Get styling for project origin tag. Defaults to neutral muted styling,
+ * with specific origins opting into a color via PROJECT_ORIGIN_COLORS.
+ */
+export function getProjectOriginClass(origin?: string): string {
+	if (origin && PROJECT_ORIGIN_COLORS[origin]) {
+		return PROJECT_ORIGIN_COLORS[origin];
+	}
 	return 'text-white/60';
 }
 

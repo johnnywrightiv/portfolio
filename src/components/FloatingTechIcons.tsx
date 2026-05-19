@@ -37,16 +37,15 @@ import {
 	SiGulp,
 	SiWebpack,
 	SiRadixui,
-	SiAdobephotoshop,
-	SiAdobeillustrator,
 	SiCanva,
 	SiHtml5,
-	SiCss3,
+	SiCss,
 	SiPhp,
 	SiWordpress,
 	SiPostman,
 	SiRedux,
 } from 'react-icons/si';
+import { TbBrandAdobePhotoshop, TbBrandAdobeIllustrator } from 'react-icons/tb';
 import { VscVscode } from 'react-icons/vsc';
 import { RiClaudeLine, RiOpenaiFill } from 'react-icons/ri';
 
@@ -95,7 +94,7 @@ export default function FloatingTechIcons({ onReady }: FloatingTechIconsProps) {
 			{ name: 'Python', icon: FaPython, color: '#3776AB', priority: 2 },
 			{ name: 'PHP', icon: SiPhp, color: '#777BB4', priority: 4 },
 			{ name: 'HTML5', icon: SiHtml5, color: '#E34F26', priority: 3 },
-			{ name: 'CSS3', icon: SiCss3, color: '#1572B6', priority: 3 },
+			{ name: 'CSS3', icon: SiCss, color: '#1572B6', priority: 3 },
 			{ name: 'Sass', icon: FaSass, color: '#CC6699', priority: 4 },
 			{
 				name: 'Tailwind CSS',
@@ -138,13 +137,13 @@ export default function FloatingTechIcons({ onReady }: FloatingTechIconsProps) {
 			{ name: 'Figma', icon: FaFigma, color: '#F24E1E', priority: 2 },
 			{
 				name: 'Adobe Photoshop',
-				icon: SiAdobephotoshop,
+				icon: TbBrandAdobePhotoshop,
 				color: '#31A8FF',
 				priority: 3,
 			},
 			{
 				name: 'Adobe Illustrator',
-				icon: SiAdobeillustrator,
+				icon: TbBrandAdobeIllustrator,
 				color: '#FF9A00',
 				priority: 4,
 			},
