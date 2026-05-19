@@ -1,12 +1,10 @@
 name: Dependabot security flag
 
-# Rewrites the PR title of any Dependabot security-update PR to start with
-# "🚨 SECURITY:" so it stands out in Gmail subject lines. Also applies the
-# `security` label.
+# Flags security PRs that need human attention:
+#   - Major version bumps (auto-merge is intentionally skipped for these)
+#   - High or Critical severity (CVSS >= 7.0), even if patch/minor
 #
-# Dependabot's "security-updates" mechanism is separate from "version-updates"
-# and bypasses the `ignore` rules in dependabot.yml — so even with majors
-# deferred, a CVE-driven PR will still open and get loud-flagged here.
+# Patch/minor security fixes below CVSS 7.0 auto-merge silently — no noise.
 
 on: pull_request_target
 
@@ -27,14 +25,28 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Prefix title and label security PRs
+      - name: Flag if major bump or High/Critical CVE
         if: steps.meta.outputs.alert-state == 'OPEN'
         env:
           PR_URL: ${{ github.event.pull_request.html_url }}
           PR_TITLE: ${{ github.event.pull_request.title }}
+          UPDATE_TYPE: ${{ steps.meta.outputs.update-type }}
+          CVSS: ${{ steps.meta.outputs.cvss }}
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          if [[ "$PR_TITLE" != 🚨* ]]; then
-            gh pr edit "$PR_URL" --title "🚨 SECURITY: $PR_TITLE"
+          IS_MAJOR=false
+          IS_HIGH=false
+
+          [[ "$UPDATE_TYPE" == "version-update:semver-major" ]] && IS_MAJOR=true
+
+          # Flag High (>=7.0) or Critical (>=9.0)
+          if [[ -n "$CVSS" ]]; then
+            python3 -c "import sys; sys.exit(0 if float('$CVSS') >= 7.0 else 1)" && IS_HIGH=true || true
           fi
-          gh pr edit "$PR_URL" --add-label security
+
+          if [[ "$IS_MAJOR" == "true" || "$IS_HIGH" == "true" ]]; then
+            if [[ "$PR_TITLE" != 🚨* ]]; then
+              gh pr edit "$PR_URL" --title "🚨 SECURITY: $PR_TITLE"
+            fi
+            gh pr edit "$PR_URL" --add-label security
+          fi
