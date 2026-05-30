@@ -4,6 +4,7 @@
 	"private": true,
 	"scripts": {
 		"dev": "next dev",
+		"dev:safe": "node scripts/safe-dev.js npx next dev -H 127.0.0.1",
 		"build": "next build",
 		"start": "next start",
 		"lint": "eslint .",
