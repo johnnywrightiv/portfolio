@@ -1,130 +1,59 @@
 version: 2
+
+# Hands-off Dependabot config.
+# Goal: at most 2 PRs from this file per monthly cycle (1 versions, 1 security).
+# Pattern documented at: ~/code/Agents Hub/vault/40-reference/servers-security-deployment.md
+# (see "Hands-off ≠ silent" section).
+
 updates:
   - package-ecosystem: npm
     directory: /
     schedule:
-      interval: weekly
+      interval: monthly
       day: monday
       time: "06:00"
       timezone: America/Chicago
-    open-pull-requests-limit: 10
+    open-pull-requests-limit: 2
     versioning-strategy: increase
     labels:
       - dependencies
-    # Defer major bumps for these packages — they tend to require manual
-    # migration work (codemods, broken APIs, removed exports). Dependabot
-    # security-updates IGNORE these rules, so CVE-driven majors still open
-    # and get flagged loud by the security-flag workflow.
+    commit-message:
+      prefix: "chore(deps):"
+    # Hands-off policy: ignore ALL major-version bumps. Majors require
+    # intentional migration/testing. Security-updates IGNORE these rules,
+    # so CVE-driven majors still surface via the security-flag workflow.
     ignore:
-      - dependency-name: next
-        update-types: [version-update:semver-major]
-      - dependency-name: eslint-config-next
-        update-types: [version-update:semver-major]
-      - dependency-name: react
-        update-types: [version-update:semver-major]
-      - dependency-name: react-dom
-        update-types: [version-update:semver-major]
-      - dependency-name: "@types/react"
-        update-types: [version-update:semver-major]
-      - dependency-name: "@types/react-dom"
-        update-types: [version-update:semver-major]
-      - dependency-name: "@types/node"
-        update-types: [version-update:semver-major]
-      - dependency-name: typescript
-        update-types: [version-update:semver-major]
-      - dependency-name: eslint
-        update-types: [version-update:semver-major]
-      - dependency-name: "@typescript-eslint/*"
-        update-types: [version-update:semver-major]
-      - dependency-name: tailwindcss
-        update-types: [version-update:semver-major]
-      - dependency-name: tailwind-merge
-        update-types: [version-update:semver-major]
-      - dependency-name: lucide-react
-        update-types: [version-update:semver-major]
+      - dependency-name: "*"
+        update-types:
+          - "version-update:semver-major"
     groups:
-      # Framework majors are deferred above; the groups remain so that when
-      # we do a deliberate major-bump pass, related deps move together.
-      next-major:
+      # One PR for all security fixes (any update-type).
+      root-security:
+        applies-to: security-updates
         patterns:
-          - next
-          - eslint-config-next
-        update-types:
-          - major
-      react-major:
-        patterns:
-          - react
-          - react-dom
-          - "@types/react"
-          - "@types/react-dom"
-        update-types:
-          - major
-      # Everything else: grouped patch+minor PRs by area
-      radix:
-        patterns:
-          - "@radix-ui/*"
+          - "*"
+      # One PR for all non-major version updates (prod + dev).
+      root-versions:
+        applies-to: version-updates
         update-types:
           - minor
           - patch
-      types:
         patterns:
-          - "@types/*"
-        update-types:
-          - minor
-          - patch
-      lint-format:
-        patterns:
-          - eslint*
-          - prettier*
-          - "@typescript-eslint/*"
-        update-types:
-          - minor
-          - patch
-      tailwind:
-        patterns:
-          - tailwind*
-          - postcss
-          - "*tailwindcss*"
-        update-types:
-          - minor
-          - patch
-      production-minor:
-        dependency-type: production
-        update-types:
-          - minor
-          - patch
-        exclude-patterns:
-          - next
-          - react
-          - react-dom
-          - "@radix-ui/*"
-          - tailwind*
-          - "*tailwindcss*"
-          - postcss
-      dev-minor:
-        dependency-type: development
-        update-types:
-          - minor
-          - patch
-        exclude-patterns:
-          - "@types/*"
-          - eslint*
-          - prettier*
-          - "@typescript-eslint/*"
-          - tailwind*
-          - "*tailwindcss*"
-          - postcss
+          - "*"
 
   - package-ecosystem: github-actions
     directory: /
     schedule:
-      interval: weekly
+      interval: monthly
       day: monday
       time: "06:00"
       timezone: America/Chicago
+    open-pull-requests-limit: 1
     labels:
       - dependencies
       - github-actions
+    commit-message:
+      prefix: "chore(actions):"
     groups:
       actions:
         patterns:
