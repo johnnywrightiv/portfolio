@@ -31,3 +31,54 @@ jobs:
       - run: npm run build
         env:
           NEXT_TELEMETRY_DISABLED: "1"
+
+  # Auto-merge gates on `needs: ci` so it can never merge before CI is green.
+  # Only High/Critical CVE fixes (CVSS >= 7.0), non-major, auto-merge — routine
+  # version PRs are suppressed entirely in dependabot.yml. (main branch protection
+  # also requires the "type-check, lint, build" check before any merge.)
+  auto-merge:
+    name: auto-merge
+    needs: ci
+    if: github.event_name == 'pull_request' && github.actor == 'dependabot[bot]'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - name: Fetch Dependabot metadata
+        id: meta
+        uses: dependabot/fetch-metadata@v3
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Decide (High/Critical CVE, non-major only)
+        id: decide
+        env:
+          ALERT_STATE: ${{ steps.meta.outputs.alert-state }}
+          UPDATE_TYPE: ${{ steps.meta.outputs.update-type }}
+          CVSS: ${{ steps.meta.outputs.cvss }}
+        run: |
+          MERGE=false
+          if [[ "$ALERT_STATE" == "OPEN" \
+                && "$UPDATE_TYPE" != "version-update:semver-major" \
+                && -n "$CVSS" ]]; then
+            if python3 -c "import sys; sys.exit(0 if float('$CVSS') >= 7.0 else 1)"; then
+              MERGE=true
+            fi
+          fi
+          echo "merge=$MERGE" >> "$GITHUB_OUTPUT"
+          echo "Decision: merge=$MERGE (alert=$ALERT_STATE type=$UPDATE_TYPE cvss=$CVSS)"
+
+      - name: Approve & squash-merge
+        if: steps.decide.outputs.merge == 'true'
+        run: |
+          # The Actions token can't approve PRs when "Allow GitHub Actions to
+          # approve pull requests" is off; approval isn't required (branch
+          # protection here requires the status check, not reviews) — so don't
+          # fail the merge on the approve step.
+          gh pr review --approve "$PR_URL" || echo "approve skipped (Actions token cannot approve; not required)"
+          gh pr merge --squash "$PR_URL"
+        env:
+          PR_URL: ${{ github.event.pull_request.html_url }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

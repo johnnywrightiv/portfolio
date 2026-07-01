@@ -1,0 +1,52 @@
+name: Post-merge smoke
+
+# Robustness net: after anything lands on main (including an auto-merged CVE
+# fix), do a clean install + build. If it breaks, open/update a single tracking
+# issue so a broken merge can't sit silently. Triage recipe:
+# agents-hub vault/Processes/servers-security-deployment.md → "When an update breaks prod".
+
+on:
+  push:
+    branches: [main]
+
+concurrency:
+  group: smoke-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - run: npm ci
+
+      - run: npm run build
+        env:
+          NEXT_TELEMETRY_DISABLED: "1"
+
+      - name: Open/update tracking issue on failure
+        if: failure()
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SHA: ${{ github.sha }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          TITLE="post-merge smoke build failing on main"
+          BODY="Post-merge smoke build failed on main after commit ${SHA}. Run: ${RUN_URL}. Likely a merged dependency update broke the build — triage: vault/Processes/servers-security-deployment.md → 'When an update breaks prod'."
+          EXISTING=$(gh issue list --state open --search "in:title $TITLE" --json number --jq '.[0].number')
+          if [[ -n "$EXISTING" ]]; then
+            gh issue comment "$EXISTING" --body "$BODY"
+          else
+            gh issue create --title "$TITLE" --body "$BODY"
+          fi
