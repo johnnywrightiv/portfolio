@@ -1,60 +1,49 @@
 version: 2
 
-# Hands-off Dependabot config.
-# Goal: at most 2 PRs from this file per monthly cycle (1 versions, 1 security).
-# Pattern documented at: ~/code/Agents Hub/vault/40-reference/servers-security-deployment.md
-# (see "Hands-off ≠ silent" section).
+# Security-only Dependabot config.
+#
+# Policy (source of truth: agents-hub vault/Processes/servers-security-deployment.md):
+#   - Routine version updates are SUPPRESSED (open-pull-requests-limit: 0).
+#     Supply chain is the top attack vector — nothing enters the tree just to
+#     stay "current." Do deliberate `npm outdated` sweeps manually when wanted.
+#   - Security updates STILL open (they ignore open-pull-requests-limit) and are
+#     batched into ONE PR per ecosystem via the `security` group.
+#   - High/Critical CVE (CVSS >= 7.0), non-major → auto-merged by ci.yml after CI.
+#   - Everything else (low/moderate CVE, CVE-driven majors) → flagged 🚨 by
+#     dependabot-security-flag.yml and left for manual review.
 
 updates:
   - package-ecosystem: npm
     directory: /
     schedule:
-      interval: monthly
+      interval: weekly
       day: monday
       time: "06:00"
       timezone: America/Chicago
-    open-pull-requests-limit: 2
-    versioning-strategy: increase
+    open-pull-requests-limit: 0 # disables routine version PRs; security updates unaffected
     labels:
       - dependencies
     commit-message:
       prefix: "chore(deps):"
-    # Hands-off policy: ignore ALL major-version bumps. Majors require
-    # intentional migration/testing. Security-updates IGNORE these rules,
-    # so CVE-driven majors still surface via the security-flag workflow.
-    ignore:
-      - dependency-name: "*"
-        update-types:
-          - "version-update:semver-major"
     groups:
-      # One PR for all security fixes (any update-type).
-      root-security:
+      security:
         applies-to: security-updates
-        patterns:
-          - "*"
-      # One PR for all non-major version updates (prod + dev).
-      root-versions:
-        applies-to: version-updates
-        update-types:
-          - minor
-          - patch
         patterns:
           - "*"
 
   - package-ecosystem: github-actions
     directory: /
     schedule:
-      interval: monthly
+      interval: weekly
       day: monday
       time: "06:00"
       timezone: America/Chicago
-    open-pull-requests-limit: 1
+    open-pull-requests-limit: 0
     labels:
       - dependencies
       - github-actions
-    commit-message:
-      prefix: "chore(actions):"
     groups:
-      actions:
+      security:
+        applies-to: security-updates
         patterns:
           - "*"
