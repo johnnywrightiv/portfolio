@@ -52,23 +52,22 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Decide (High/Critical CVE, non-major only)
+      - name: Decide — auto-merge non-major security fixes
         id: decide
         env:
-          ALERT_STATE: ${{ steps.meta.outputs.alert-state }}
           UPDATE_TYPE: ${{ steps.meta.outputs.update-type }}
-          CVSS: ${{ steps.meta.outputs.cvss }}
         run: |
-          MERGE=false
-          if [[ "$ALERT_STATE" == "OPEN" \
-                && "$UPDATE_TYPE" != "version-update:semver-major" \
-                && -n "$CVSS" ]]; then
-            if python3 -c "import sys; sys.exit(0 if float('$CVSS') >= 7.0 else 1)"; then
-              MERGE=true
-            fi
+          # CVSS/severity isn't readable with the default GITHUB_TOKEN, so we key
+          # on update-type. Routine version PRs are suppressed in dependabot.yml,
+          # so every PR that opens is a security fix: auto-merge patch/minor;
+          # leave majors (may need migration) for manual review — they get flagged.
+          if [[ "$UPDATE_TYPE" == "version-update:semver-patch" \
+                || "$UPDATE_TYPE" == "version-update:semver-minor" ]]; then
+            echo "merge=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "merge=false" >> "$GITHUB_OUTPUT"
           fi
-          echo "merge=$MERGE" >> "$GITHUB_OUTPUT"
-          echo "Decision: merge=$MERGE (alert=$ALERT_STATE type=$UPDATE_TYPE cvss=$CVSS)"
+          echo "Decision: update-type=$UPDATE_TYPE"
 
       - name: Approve & squash-merge
         if: steps.decide.outputs.merge == 'true'
