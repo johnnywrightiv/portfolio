@@ -1,0 +1,36 @@
+name: Supply-chain audit
+
+# Weekly integrity check: verifies installed packages against the registry's
+# signed provenance (Sigstore). Fails (→ notification) only on an INVALID
+# signature — missing provenance is expected for many packages and is not an alert.
+
+on:
+  schedule:
+    - cron: "30 9 * * 1" # Mondays 09:30 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - run: npm ci
+
+      - name: Verify package signatures (fail only on INVALID)
+        run: |
+          npm audit signatures 2>&1 | tee sig.txt || true
+          if grep -qiE "invalid|tampered|does not match|failed to verify" sig.txt; then
+            echo "::error::Invalid package signature detected — investigate before deploying."
+            exit 1
+          fi
+          echo "Signature check OK (missing provenance for some packages is expected)."
